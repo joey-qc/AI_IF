@@ -4,7 +4,7 @@
 
 This document defines how repository files should be managed across the AI Interactive Fiction project.
 
-The project uses GitHub as persistent shared storage for architecture documents, prompt modules, schemas, generated game packages, validation reports, playtest reports, revision notes, and postgame findings.
+The project uses GitHub as persistent shared storage for architecture documents, prompt modules, schemas, generated game packages, validation reports, playtest reports, revision notes, runtime state, assets, and postgame findings.
 
 The goal is to prevent the repository from becoming disorganized as multiple AI roles create and update files over time.
 
@@ -14,12 +14,136 @@ Separate project-level knowledge from case-level knowledge.
 
 ```text
 Project-level lesson -> docs/
-Case-specific issue  -> games/<case-id>/
+Case-specific issue  -> games/<caseId>-<slug>/
 ```
 
 The master documents in `docs/` should evolve slowly and intentionally.
 
-Per-game files under `games/<case-id>/` should capture the details, failures, revisions, and outcomes for individual cases.
+Per-game files under `games/<caseId>-<slug>/` should capture the setup, authored package, hidden solution, validation, playtesting, revisions, runtime state, assets, and postgame findings for one specific story.
+
+## Case identity and naming
+
+Every authored game/story must have three identity fields.
+
+### caseId
+
+A stable machine-friendly identifier.
+
+Examples:
+
+```text
+quick-001
+one-001
+standard-001
+extended-001
+```
+
+Rules:
+
+- must be unique in the repository;
+- should not change after creation;
+- should not depend on the final title;
+- should be used for references, reports, commits, and internal IDs.
+
+### title
+
+A human-friendly story title.
+
+Examples:
+
+```text
+The Case of the Missing Melody
+The Clock in the Locked Study
+The Vanishing Guest at Table Three
+```
+
+Rules:
+
+- should be memorable;
+- may be changed before final approval;
+- should be shown in game menus, setup summaries, and postgame reports;
+- should be stored in `caseMetadata.title`.
+
+### slug
+
+A URL/file-safe version of the title.
+
+Examples:
+
+```text
+the-missing-melody
+the-clock-in-the-locked-study
+the-vanishing-guest-at-table-three
+```
+
+Rules:
+
+- lowercase;
+- words separated by hyphens;
+- no spaces;
+- no punctuation except hyphens;
+- should be stored in `caseMetadata.slug`.
+
+## Game folder naming convention
+
+Each game folder should use this format:
+
+```text
+games/<caseId>-<slug>/
+```
+
+Example:
+
+```text
+games/quick-001-the-clock-in-the-locked-study/
+```
+
+Rationale:
+
+- `caseId` keeps references stable.
+- `slug` makes the folder readable.
+- The folder remains manageable even when many games exist.
+
+If the title changes after folder creation, do not automatically rename the folder unless the user requests it. Prefer stable paths over cosmetic renames.
+
+## Game library index
+
+The repository should maintain a game library index:
+
+```text
+games/index.json
+```
+
+Purpose:
+
+- list all authored games;
+- make games browsable by title;
+- track status, difficulty, length, and folder path;
+- help future ChatGPT conversations locate available games quickly.
+
+Recommended structure:
+
+```json
+[
+  {
+    "caseId": "quick-001",
+    "title": "The Clock in the Locked Study",
+    "slug": "the-clock-in-the-locked-study",
+    "folder": "games/quick-001-the-clock-in-the-locked-study",
+    "lengthPreset": "quick_mystery",
+    "difficulty": "easy",
+    "genre": "classic detective",
+    "tone": "lighthearted",
+    "status": "draft",
+    "validationStatus": "not_validated",
+    "playtestStatus": "not_playtested",
+    "lastUpdatedAt": "",
+    "notes": ""
+  }
+]
+```
+
+Update `games/index.json` when a new case is created, renamed, approved, completed, archived, or materially revised.
 
 ## Repository layers
 
@@ -83,12 +207,14 @@ Changing a schema may require updating prompts, validators, and existing game pa
 
 ## 4. Game packages
 
-Each generated game should have its own folder.
+Each authored game should have its own folder.
 
 Example:
 
 ```text
-games/quick-001/
+games/quick-001-the-clock-in-the-locked-study/
+  setup.md
+  player-config.json
   game-package.json
   solution.md
   case-board-seed.json
@@ -96,6 +222,9 @@ games/quick-001/
   validation-report.md
   playtest-report.md
   revision-notes.md
+  runtime-state.json
+  case-board-current.json
+  session-log.md
   postgame-report.md
   assets/
 ```
@@ -126,13 +255,16 @@ Archived files are reference material. They are not active instructions unless e
 README.md
 docs/gameplay-setup-and-scope-presets.md
 docs/design-principles.md
+docs/repository-workflow.md
+games/index.json
 ```
 
 ### Writes
 
 ```text
-games/<case-id>/setup.md
-games/<case-id>/player-config.json
+games/<caseId>-<slug>/setup.md
+games/<caseId>-<slug>/player-config.json
+games/index.json
 ```
 
 ### May recommend updates to
@@ -161,6 +293,7 @@ docs/project-architecture.md
 docs/design-principles.md
 docs/playtest-findings.md
 docs/gameplay-setup-and-scope-presets.md
+docs/repository-workflow.md
 ```
 
 ### Writes or updates
@@ -180,7 +313,7 @@ docs/project-architecture.md
 ### Should not write
 
 ```text
-games/<case-id>/game-package.json
+games/<caseId>-<slug>/game-package.json
 ```
 
 The Template Designer defines structure; it does not author cases.
@@ -194,20 +327,22 @@ README.md
 docs/design-principles.md
 docs/playtest-findings.md
 docs/gameplay-setup-and-scope-presets.md
+docs/repository-workflow.md
 schemas/game-package-schema.md
 schemas/game-package.schema.json
 prompts/02-story-author.md
-games/<case-id>/player-config.json
+games/<caseId>-<slug>/player-config.json
 ```
 
 ### Writes
 
 ```text
-games/<case-id>/game-package.json
-games/<case-id>/solution.md
-games/<case-id>/case-board-seed.json
-games/<case-id>/asset-manifest.json
-games/<case-id>/author-notes.md
+games/<caseId>-<slug>/game-package.json
+games/<caseId>-<slug>/solution.md
+games/<caseId>-<slug>/case-board-seed.json
+games/<caseId>-<slug>/asset-manifest.json
+games/<caseId>-<slug>/author-notes.md
+games/index.json
 ```
 
 ### Should not update
@@ -231,19 +366,21 @@ README.md
 docs/design-principles.md
 docs/playtest-findings.md
 docs/gameplay-setup-and-scope-presets.md
+docs/repository-workflow.md
 schemas/game-package-schema.md
 schemas/game-package.schema.json
 prompts/03-validator.md
-games/<case-id>/game-package.json
-games/<case-id>/solution.md
-games/<case-id>/case-board-seed.json
-games/<case-id>/asset-manifest.json
+games/<caseId>-<slug>/game-package.json
+games/<caseId>-<slug>/solution.md
+games/<caseId>-<slug>/case-board-seed.json
+games/<caseId>-<slug>/asset-manifest.json
 ```
 
 ### Writes
 
 ```text
-games/<case-id>/validation-report.md
+games/<caseId>-<slug>/validation-report.md
+games/index.json
 ```
 
 ### May recommend updates to
@@ -258,7 +395,7 @@ prompts/03-validator.md
 ### Should not directly update
 
 ```text
-games/<case-id>/game-package.json
+games/<caseId>-<slug>/game-package.json
 ```
 
 The Validator diagnoses. The Revision Engine repairs.
@@ -271,16 +408,18 @@ The Validator diagnoses. The Revision Engine repairs.
 README.md
 docs/design-principles.md
 docs/playtest-findings.md
+docs/repository-workflow.md
 prompts/04-ai-playtester.md
-games/<case-id>/game-package.json
-games/<case-id>/solution.md
-games/<case-id>/validation-report.md
+games/<caseId>-<slug>/game-package.json
+games/<caseId>-<slug>/solution.md
+games/<caseId>-<slug>/validation-report.md
 ```
 
 ### Writes
 
 ```text
-games/<case-id>/playtest-report.md
+games/<caseId>-<slug>/playtest-report.md
+games/index.json
 ```
 
 ### May recommend updates to
@@ -294,7 +433,7 @@ prompts/04-ai-playtester.md
 ### Should not directly update
 
 ```text
-games/<case-id>/game-package.json
+games/<caseId>-<slug>/game-package.json
 docs/playtest-findings.md
 ```
 
@@ -308,21 +447,23 @@ unless explicitly instructed.
 README.md
 docs/design-principles.md
 docs/playtest-findings.md
+docs/repository-workflow.md
 prompts/05-revision-engine.md
-games/<case-id>/game-package.json
-games/<case-id>/solution.md
-games/<case-id>/validation-report.md
-games/<case-id>/playtest-report.md
+games/<caseId>-<slug>/game-package.json
+games/<caseId>-<slug>/solution.md
+games/<caseId>-<slug>/validation-report.md
+games/<caseId>-<slug>/playtest-report.md
 ```
 
 ### Writes or updates
 
 ```text
-games/<case-id>/game-package.json
-games/<case-id>/solution.md
-games/<case-id>/case-board-seed.json
-games/<case-id>/asset-manifest.json
-games/<case-id>/revision-notes.md
+games/<caseId>-<slug>/game-package.json
+games/<caseId>-<slug>/solution.md
+games/<caseId>-<slug>/case-board-seed.json
+games/<caseId>-<slug>/asset-manifest.json
+games/<caseId>-<slug>/revision-notes.md
+games/index.json
 ```
 
 ### May recommend updates to
@@ -345,13 +486,15 @@ Approval requires validation and, ideally, AI playtesting after revision.
 ```text
 README.md
 docs/design-principles.md
+docs/repository-workflow.md
 prompts/06-game-master.md
-games/<case-id>/game-package.json
-games/<case-id>/solution.md
-games/<case-id>/case-board-seed.json
-games/<case-id>/asset-manifest.json
-games/<case-id>/validation-report.md
-games/<case-id>/playtest-report.md
+games/index.json
+games/<caseId>-<slug>/game-package.json
+games/<caseId>-<slug>/solution.md
+games/<caseId>-<slug>/case-board-seed.json
+games/<caseId>-<slug>/asset-manifest.json
+games/<caseId>-<slug>/validation-report.md
+games/<caseId>-<slug>/playtest-report.md
 ```
 
 ### Writes during active gameplay
@@ -359,16 +502,17 @@ games/<case-id>/playtest-report.md
 Prefer writing active play state to files such as:
 
 ```text
-games/<case-id>/runtime-state.json
-games/<case-id>/case-board-current.json
-games/<case-id>/session-log.md
-games/<case-id>/postgame-report.md
+games/<caseId>-<slug>/runtime-state.json
+games/<caseId>-<slug>/case-board-current.json
+games/<caseId>-<slug>/session-log.md
+games/<caseId>-<slug>/postgame-report.md
+games/index.json
 ```
 
 ### May update
 
 ```text
-games/<case-id>/asset-manifest.json
+games/<caseId>-<slug>/asset-manifest.json
 ```
 
 only when a new player-facing asset is generated or recorded.
@@ -402,6 +546,7 @@ Examples:
 - Quick Mystery needs hard scope limits.
 - Evidence provenance must be validated.
 - Game Master must not invent the solution during play.
+- Each authored game needs a stable `caseId`, human-friendly title, slug, and folder.
 
 ### Inappropriate entries
 
@@ -433,8 +578,8 @@ Use this path:
 
 ```text
 Case issue found
-  -> games/<case-id>/playtest-report.md or validation-report.md
-  -> games/<case-id>/revision-notes.md if repaired
+  -> games/<caseId>-<slug>/playtest-report.md or validation-report.md
+  -> games/<caseId>-<slug>/revision-notes.md if repaired
   -> user reviews whether it is broader
   -> docs/playtest-findings.md if promoted
   -> docs/design-principles.md, schemas/, or prompts/ if it changes rules
@@ -498,7 +643,7 @@ Purpose:
 Each case should maintain an asset manifest.
 
 ```text
-games/<case-id>/asset-manifest.json
+games/<caseId>-<slug>/asset-manifest.json
 ```
 
 The manifest should track:
@@ -524,9 +669,9 @@ The canonical game package should remain stable during play.
 Use separate runtime files for changing state:
 
 ```text
-games/<case-id>/runtime-state.json
-games/<case-id>/case-board-current.json
-games/<case-id>/session-log.md
+games/<caseId>-<slug>/runtime-state.json
+games/<caseId>-<slug>/case-board-current.json
+games/<caseId>-<slug>/session-log.md
 ```
 
 Do not write discovered clues or visited locations back into `game-package.json` unless deliberately producing a revised package.
@@ -547,7 +692,7 @@ draft
   -> archived
 ```
 
-Status should be stored in `game-package.json` under `caseMetadata.status`.
+Status should be stored in `game-package.json` under `caseMetadata.status` and mirrored in `games/index.json`.
 
 ## Commit discipline
 
@@ -560,6 +705,7 @@ Add Quick Mystery setup preset
 Add game package schema draft
 Add validator report for quick-001
 Revise quick-001 timeline and clue closure
+Add game library index
 Promote image handling finding to design principles
 ```
 
@@ -587,17 +733,23 @@ If a requested change is ambiguous, prefer adding a new report or notes file rat
 
 ## Current recommended next files
 
-The next missing files are likely:
+The next missing project file is likely:
 
 ```text
-prompts/00-player-setup.md
 docs/roadmap.md
+```
+
+The next missing game library file is:
+
+```text
+games/index.json
 ```
 
 The next missing case structure is likely:
 
 ```text
-games/quick-001/
+games/quick-001-the-clock-in-the-locked-study/
+  setup.md
   player-config.json
   game-package.json
   solution.md
@@ -613,6 +765,8 @@ Use `prompts/` for reusable AI role instructions.
 
 Use `schemas/` for shared data contracts.
 
-Use `games/<case-id>/` for case-specific generated content, validation, playtesting, revision, runtime state, and postgame reports.
+Use `games/index.json` for the human-friendly game library.
+
+Use `games/<caseId>-<slug>/` for one complete authored story, including setup, game package, validation, playtesting, revision, runtime state, assets, and postgame reports.
 
 Promote lessons upward only when they change the system, not merely because one case had a defect.
