@@ -1,0 +1,353 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/joey-qc/AI_IF/schemas/case-board-current.schema.json",
+  "title": "AI_IF Case Board Current",
+  "description": "Machine-readable schema for the player-facing current case board during active play. The case board records only information available to the player and must remain separate from canonical mystery truth.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "knownFacts",
+    "evidence",
+    "knownNPCs",
+    "suspects",
+    "clearedSuspects",
+    "locations",
+    "visitedLocations",
+    "visibleObjects",
+    "inspectedObjects",
+    "ruledOutAreas",
+    "recoveredEvidence",
+    "imagesSeen",
+    "openQuestions",
+    "workingTheories",
+    "timelineNotes",
+    "pendingLeads",
+    "closedLeads",
+    "contradictions"
+  ],
+  "properties": {
+    "metadata": { "$ref": "#/$defs/metadata" },
+    "knownFacts": { "type": "array", "items": { "$ref": "#/$defs/factEntry" }, "default": [] },
+    "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidenceEntry" }, "default": [] },
+    "knownNPCs": { "type": "array", "items": { "$ref": "#/$defs/npcEntry" }, "default": [] },
+    "suspects": { "type": "array", "items": { "$ref": "#/$defs/suspectEntry" }, "default": [] },
+    "clearedSuspects": { "type": "array", "items": { "$ref": "#/$defs/clearedSuspectEntry" }, "default": [] },
+    "locations": { "type": "array", "items": { "$ref": "#/$defs/locationEntry" }, "default": [] },
+    "visitedLocations": { "type": "array", "items": { "$ref": "#/$defs/visitedLocationEntry" }, "default": [] },
+    "visibleObjects": { "type": "array", "items": { "$ref": "#/$defs/visibleObjectEntry" }, "default": [] },
+    "inspectedObjects": { "type": "array", "items": { "$ref": "#/$defs/inspectedObjectEntry" }, "default": [] },
+    "ruledOutAreas": { "type": "array", "items": { "$ref": "#/$defs/ruledOutAreaEntry" }, "default": [] },
+    "recoveredEvidence": { "type": "array", "items": { "$ref": "#/$defs/recoveredEvidenceEntry" }, "default": [] },
+    "imagesSeen": { "type": "array", "items": { "$ref": "#/$defs/imageSeenEntry" }, "default": [] },
+    "openQuestions": { "type": "array", "items": { "$ref": "#/$defs/questionEntry" }, "default": [] },
+    "workingTheories": { "type": "array", "items": { "$ref": "#/$defs/theoryEntry" }, "default": [] },
+    "timelineNotes": { "type": "array", "items": { "$ref": "#/$defs/timelineNoteEntry" }, "default": [] },
+    "pendingLeads": { "type": "array", "items": { "$ref": "#/$defs/leadEntry" }, "default": [] },
+    "closedLeads": { "type": "array", "items": { "$ref": "#/$defs/closedLeadEntry" }, "default": [] },
+    "contradictions": { "type": "array", "items": { "$ref": "#/$defs/contradictionEntry" }, "default": [] },
+    "summary": { "type": "string" },
+    "notes": { "type": "string" }
+  },
+  "$defs": {
+    "idString": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$"
+    },
+    "optionalIdString": {
+      "type": ["string", "null"],
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$"
+    },
+    "stringArray": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "canonicalRefs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "clueIds": { "type": "array", "items": { "$ref": "#/$defs/idString" }, "default": [] },
+        "npcIds": { "type": "array", "items": { "$ref": "#/$defs/idString" }, "default": [] },
+        "locationIds": { "type": "array", "items": { "$ref": "#/$defs/idString" }, "default": [] },
+        "objectIds": { "type": "array", "items": { "$ref": "#/$defs/idString" }, "default": [] },
+        "evidenceIds": { "type": "array", "items": { "$ref": "#/$defs/idString" }, "default": [] },
+        "imageIds": { "type": "array", "items": { "$ref": "#/$defs/idString" }, "default": [] }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["caseId", "caseTitle", "caseBoardSchemaVersion", "lastUpdatedTurn"],
+      "properties": {
+        "caseId": { "$ref": "#/$defs/idString" },
+        "caseTitle": { "type": "string", "minLength": 1 },
+        "gamePackageVersion": { "type": "string" },
+        "caseBoardSchemaVersion": { "type": "string", "const": "1.0" },
+        "sourceSeedFile": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "lastUpdatedAt": { "type": "string" },
+        "lastUpdatedTurn": { "type": "integer", "minimum": 0 },
+        "playerVisibleOnly": { "type": "boolean", "const": true }
+      }
+    },
+    "factEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["factId", "summary", "source"],
+      "properties": {
+        "factId": { "$ref": "#/$defs/idString" },
+        "summary": { "type": "string", "minLength": 1 },
+        "source": { "type": "string" },
+        "turnDiscovered": { "type": "integer", "minimum": 0 },
+        "confidence": { "type": "string", "enum": ["observed", "reported", "inferred", "uncertain"] },
+        "refs": { "$ref": "#/$defs/canonicalRefs" }
+      }
+    },
+    "evidenceEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidenceBoardId", "title", "status"],
+      "properties": {
+        "evidenceBoardId": { "$ref": "#/$defs/idString" },
+        "evidenceId": { "$ref": "#/$defs/optionalIdString" },
+        "clueId": { "$ref": "#/$defs/optionalIdString" },
+        "title": { "type": "string", "minLength": 1 },
+        "descriptionKnownToPlayer": { "type": "string" },
+        "foundAtLocationId": { "$ref": "#/$defs/optionalIdString" },
+        "foundAtObjectId": { "$ref": "#/$defs/optionalIdString" },
+        "status": { "type": "string", "enum": ["observed", "inspected", "recovered", "interpreted", "ruled_out"] },
+        "interpretationStatus": { "type": "string", "enum": ["uninterpreted", "partial", "interpreted", "uncertain"] },
+        "turnDiscovered": { "type": "integer", "minimum": 0 },
+        "playerNotes": { "type": "string" }
+      }
+    },
+    "npcEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["npcBoardId", "name", "status"],
+      "properties": {
+        "npcBoardId": { "$ref": "#/$defs/idString" },
+        "npcId": { "$ref": "#/$defs/optionalIdString" },
+        "name": { "type": "string", "minLength": 1 },
+        "roleKnownToPlayer": { "type": "string" },
+        "status": { "type": "string", "enum": ["known", "met", "questioned", "unavailable"] },
+        "knownClaims": { "$ref": "#/$defs/stringArray" },
+        "knownContradictions": { "$ref": "#/$defs/stringArray" },
+        "lastKnownLocationId": { "$ref": "#/$defs/optionalIdString" },
+        "turnFirstKnown": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "suspectEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["suspectBoardId", "name", "status"],
+      "properties": {
+        "suspectBoardId": { "$ref": "#/$defs/idString" },
+        "npcId": { "$ref": "#/$defs/optionalIdString" },
+        "name": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "enum": ["possible", "active", "deprioritized", "uncertain"] },
+        "apparentMotive": { "type": "string" },
+        "apparentOpportunity": { "type": "string" },
+        "evidenceFor": { "$ref": "#/$defs/stringArray" },
+        "evidenceAgainst": { "$ref": "#/$defs/stringArray" },
+        "openQuestions": { "$ref": "#/$defs/stringArray" },
+        "refs": { "$ref": "#/$defs/canonicalRefs" }
+      }
+    },
+    "clearedSuspectEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["clearedBoardId", "name", "clearingStatus", "reasonKnownToPlayer"],
+      "properties": {
+        "clearedBoardId": { "$ref": "#/$defs/idString" },
+        "npcId": { "$ref": "#/$defs/optionalIdString" },
+        "name": { "type": "string", "minLength": 1 },
+        "clearingStatus": { "type": "string", "enum": ["partially_cleared", "deprioritized", "cleared_by_player_evidence"] },
+        "reasonKnownToPlayer": { "type": "string", "minLength": 1 },
+        "turnCleared": { "type": "integer", "minimum": 0 },
+        "remainingUncertainty": { "type": "string" }
+      }
+    },
+    "locationEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["locationBoardId", "name", "status"],
+      "properties": {
+        "locationBoardId": { "$ref": "#/$defs/idString" },
+        "locationId": { "$ref": "#/$defs/optionalIdString" },
+        "name": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "enum": ["known", "available", "unavailable", "ruled_out"] },
+        "descriptionKnownToPlayer": { "type": "string" },
+        "openQuestions": { "$ref": "#/$defs/stringArray" }
+      }
+    },
+    "visitedLocationEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["visitBoardId", "locationId", "name"],
+      "properties": {
+        "visitBoardId": { "$ref": "#/$defs/idString" },
+        "locationId": { "$ref": "#/$defs/idString" },
+        "name": { "type": "string", "minLength": 1 },
+        "turnFirstVisited": { "type": "integer", "minimum": 0 },
+        "turnLastVisited": { "type": "integer", "minimum": 0 },
+        "notablePlayerVisibleFindings": { "$ref": "#/$defs/stringArray" }
+      }
+    },
+    "visibleObjectEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["objectBoardId", "label", "locationId"],
+      "properties": {
+        "objectBoardId": { "$ref": "#/$defs/idString" },
+        "objectId": { "$ref": "#/$defs/optionalIdString" },
+        "label": { "type": "string", "minLength": 1 },
+        "locationId": { "$ref": "#/$defs/idString" },
+        "visibleDescription": { "type": "string" },
+        "inspectionStatus": { "type": "string", "enum": ["visible_only", "mentioned", "inspection_available"] },
+        "turnFirstSeen": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "inspectedObjectEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inspectionBoardId", "label", "resultKnownToPlayer"],
+      "properties": {
+        "inspectionBoardId": { "$ref": "#/$defs/idString" },
+        "objectId": { "$ref": "#/$defs/optionalIdString" },
+        "label": { "type": "string", "minLength": 1 },
+        "locationId": { "$ref": "#/$defs/optionalIdString" },
+        "inspectionDepth": { "type": "string", "enum": ["inspected", "closely_inspected", "tested", "compared"] },
+        "resultKnownToPlayer": { "type": "string", "minLength": 1 },
+        "clueIdsDiscovered": { "type": "array", "items": { "$ref": "#/$defs/idString" }, "default": [] },
+        "evidenceIdsDiscovered": { "type": "array", "items": { "$ref": "#/$defs/idString" }, "default": [] },
+        "closerInspectionAvailable": { "type": "boolean" },
+        "turnInspected": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "ruledOutAreaEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ruledOutBoardId", "label", "reasonKnownToPlayer"],
+      "properties": {
+        "ruledOutBoardId": { "$ref": "#/$defs/idString" },
+        "locationId": { "$ref": "#/$defs/optionalIdString" },
+        "objectId": { "$ref": "#/$defs/optionalIdString" },
+        "leadId": { "$ref": "#/$defs/optionalIdString" },
+        "label": { "type": "string", "minLength": 1 },
+        "reasonKnownToPlayer": { "type": "string", "minLength": 1 },
+        "turnRuledOut": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "recoveredEvidenceEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recoveredBoardId", "title", "recoveryMethodKnownToPlayer"],
+      "properties": {
+        "recoveredBoardId": { "$ref": "#/$defs/idString" },
+        "evidenceId": { "$ref": "#/$defs/optionalIdString" },
+        "title": { "type": "string", "minLength": 1 },
+        "recoveryMethodKnownToPlayer": { "type": "string", "minLength": 1 },
+        "currentHolder": { "type": "string" },
+        "turnRecovered": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "imageSeenEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["imageBoardId", "label", "imageClass"],
+      "properties": {
+        "imageBoardId": { "$ref": "#/$defs/idString" },
+        "imageId": { "$ref": "#/$defs/optionalIdString" },
+        "label": { "type": "string", "minLength": 1 },
+        "imageClass": { "type": "string", "enum": ["scene", "inspection", "evidence", "portrait", "document", "map", "other"] },
+        "textFallbackUsed": { "type": "string" },
+        "turnShown": { "type": "integer", "minimum": 0 },
+        "refs": { "$ref": "#/$defs/canonicalRefs" }
+      }
+    },
+    "questionEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["questionId", "question"],
+      "properties": {
+        "questionId": { "$ref": "#/$defs/idString" },
+        "question": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "enum": ["open", "partially_answered", "answered", "deprioritized"] },
+        "relatedRefs": { "$ref": "#/$defs/canonicalRefs" },
+        "turnOpened": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "theoryEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["theoryId", "summary", "status"],
+      "properties": {
+        "theoryId": { "$ref": "#/$defs/idString" },
+        "summary": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "enum": ["unsupported", "partially_supported", "contradicted", "near_correct", "resolved", "abandoned"] },
+        "supportingPlayerVisibleEvidence": { "$ref": "#/$defs/stringArray" },
+        "contradictingPlayerVisibleEvidence": { "$ref": "#/$defs/stringArray" },
+        "uncertainties": { "$ref": "#/$defs/stringArray" },
+        "turnProposed": { "type": "integer", "minimum": 0 },
+        "refs": { "$ref": "#/$defs/canonicalRefs" }
+      }
+    },
+    "timelineNoteEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["timelineNoteId", "summary", "source"],
+      "properties": {
+        "timelineNoteId": { "$ref": "#/$defs/idString" },
+        "timeLabelKnownToPlayer": { "type": "string" },
+        "summary": { "type": "string", "minLength": 1 },
+        "source": { "type": "string" },
+        "certainty": { "type": "string", "enum": ["confirmed", "claimed", "inferred", "uncertain", "contradicted"] },
+        "refs": { "$ref": "#/$defs/canonicalRefs" }
+      }
+    },
+    "leadEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["leadId", "summary", "reasonOpened"],
+      "properties": {
+        "leadId": { "$ref": "#/$defs/idString" },
+        "summary": { "type": "string", "minLength": 1 },
+        "reasonOpened": { "type": "string", "minLength": 1 },
+        "suggestedNextAction": { "type": "string" },
+        "priority": { "type": "string", "enum": ["low", "medium", "high"] },
+        "relatedRefs": { "$ref": "#/$defs/canonicalRefs" },
+        "turnOpened": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "closedLeadEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["leadId", "summary", "reasonClosedKnownToPlayer"],
+      "properties": {
+        "leadId": { "$ref": "#/$defs/idString" },
+        "summary": { "type": "string", "minLength": 1 },
+        "reasonClosedKnownToPlayer": { "type": "string", "minLength": 1 },
+        "closureType": { "type": "string", "enum": ["resolved", "ruled_out", "blocked", "deprioritized"] },
+        "turnClosed": { "type": "integer", "minimum": 0 },
+        "relatedRefs": { "$ref": "#/$defs/canonicalRefs" }
+      }
+    },
+    "contradictionEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contradictionId", "summary", "status"],
+      "properties": {
+        "contradictionId": { "$ref": "#/$defs/idString" },
+        "summary": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "enum": ["noticed", "investigating", "explained", "unresolved"] },
+        "between": { "$ref": "#/$defs/stringArray" },
+        "playerVisibleImplication": { "type": "string" },
+        "turnDiscovered": { "type": "integer", "minimum": 0 },
+        "relatedRefs": { "$ref": "#/$defs/canonicalRefs" }
+      }
+    }
+  }
+}

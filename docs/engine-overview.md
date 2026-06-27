@@ -52,7 +52,8 @@ Read in this order:
 6. image-system-v2.md
 7. case-board-v2.md
 8. runtime-state-v1.md
-9. runtime-self-checks.md
+9. case-board-current-v1.md
+10. runtime-self-checks.md
 
 ## Runtime State Contract
 
@@ -74,6 +75,25 @@ games/<case-folder>/runtime-state.json
 ```
 
 Do not store player progress in `game-package.json`.
+
+## Case Board Current Contract
+
+Player-facing case board state is governed by:
+
+```text
+docs/case-board-current-v1.md
+schemas/case-board-current.schema.json
+```
+
+The canonical `game-package.json` remains the source of authored mystery truth.
+
+`case-board-seed.json` is the initial visible board at the start of play.
+
+`case-board-current.json` is the evolving player-facing board during runtime.
+
+`runtime-state.json` tracks broader gameplay and session state, such as turn count, current position, hints, accusation state, and compact continuity.
+
+Do not write the current case board back into `game-package.json`.
 
 ## Operational Prompts
 

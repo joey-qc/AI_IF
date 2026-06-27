@@ -8,6 +8,16 @@ The case board is the player's structured memory of the investigation. It helps 
 
 The case board should support play without becoming a spoiler device.
 
+The structured current-state contract for active play is:
+
+```text
+docs/case-board-current-v1.md
+schemas/case-board-current.schema.json
+games/<case-folder>/case-board-current.json
+```
+
+Use this document for design behavior. Use Case Board Current v1 and its schema for the JSON file contract.
+
 ## Core principle
 
 The case board records discovered or reasonably inferred information. It must not reveal hidden solution facts before the player earns them.
@@ -334,6 +344,12 @@ The case board is part of runtime state, not canonical truth.
 Canonical truth is stored in the game package.
 
 The case board stores the player's known state.
+
+`case-board-seed.json` initializes the visible board at the start of play.
+
+`case-board-current.json` stores the evolving player-facing board during active play and should follow `schemas/case-board-current.schema.json`.
+
+`runtime-state.json` tracks broader session mechanics and may include a compact case-board summary, but it is not a replacement for the structured current board.
 
 ## Validator implications
 

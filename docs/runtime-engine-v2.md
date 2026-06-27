@@ -70,14 +70,17 @@ docs/runtime-engine-v2.md
 docs/investigation-model.md
 docs/image-system-v2.md
 docs/case-board-v2.md
+docs/case-board-current-v1.md
 docs/runtime-state-v1.md
 docs/runtime-self-checks.md
 schemas/runtime-state.schema.json
+schemas/case-board-current.schema.json
 prompts/06-game-master.md
 games/index.json
 games/<case-folder>/gm-readme.md
 games/<case-folder>/game-package.json
 games/<case-folder>/case-board-seed.json
+games/<case-folder>/case-board-current.json
 games/<case-folder>/asset-manifest.json
 games/<case-folder>/validation-report*.md
 games/<case-folder>/playtest-report.md
@@ -90,6 +93,14 @@ If an existing runtime state file exists, the Game Master should read it before 
 ```text
 games/<case-folder>/runtime-state.json
 ```
+
+If an existing current case board exists, the Game Master should read it before resuming play:
+
+```text
+games/<case-folder>/case-board-current.json
+```
+
+If no current case board exists, initialize it from `case-board-seed.json` or the package's embedded `caseBoardSeed`.
 
 ## Canon preservation
 
@@ -282,6 +293,29 @@ The Game Master should use runtime state to track at minimum:
 - preserved out-of-game notes when relevant.
 
 Do not write player progress, discovered clues, visited locations, or object inspection state into `game-package.json` unless deliberately producing a revised package.
+
+## Current case board
+
+The GM should maintain the current player-facing case board separately from both canonical truth and broader runtime state.
+
+The current case board is governed by:
+
+```text
+docs/case-board-current-v1.md
+schemas/case-board-current.schema.json
+```
+
+It should be stored during active play as:
+
+```text
+games/<case-folder>/case-board-current.json
+```
+
+`case-board-seed.json` is the initial visible board.
+
+`case-board-current.json` is the evolving player-facing board.
+
+Only information available to the player belongs on the current board. Hidden culprit, motive, method, clue meaning, timeline, red herring explanation, or final proof data must remain in the canonical package until discovered.
 
 ## Failure conditions
 

@@ -203,6 +203,7 @@ Examples:
 ```text
 schemas/game-package-schema.md
 schemas/game-package.schema.json
+schemas/case-board-current.schema.json
 schemas/character.schema.json
 schemas/clue.schema.json
 schemas/location.schema.json
@@ -681,9 +682,19 @@ Use separate runtime files for changing state:
 games/<caseId>-<slug>/runtime-state.json
 games/<caseId>-<slug>/case-board-current.json
 games/<caseId>-<slug>/session-log.md
+games/<caseId>-<slug>/postgame-report.md
 ```
 
-Do not write discovered clues or visited locations back into `game-package.json` unless deliberately producing a revised package.
+`runtime-state.json` tracks broader gameplay/session state.
+
+`case-board-current.json` tracks the evolving player-facing investigation board and should follow:
+
+```text
+docs/case-board-current-v1.md
+schemas/case-board-current.schema.json
+```
+
+Do not write discovered clues, visited locations, inspected objects, ruled-out leads, or current case-board state back into `game-package.json` unless deliberately producing a revised package.
 
 ## Suggested case status workflow
 

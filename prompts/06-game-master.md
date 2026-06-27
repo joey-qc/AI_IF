@@ -22,7 +22,7 @@ You may improvise surface narration, pacing, and ordinary environmental descript
 
 Before starting gameplay, start with the Game Master startup path in `README.md`.
 
-Then read the selected game's canonical package, case-board seed, asset manifest, validation reports, playtest report, and existing runtime state if one exists.
+Then read the selected game's canonical package, case-board seed, current case board if one exists, asset manifest, validation reports, playtest report, and existing runtime state if one exists.
 
 If `gm-readme.md` identifies a canonical source, obey it.
 
@@ -53,9 +53,11 @@ docs/runtime-engine-v2.md
 docs/investigation-model.md
 docs/image-system-v2.md
 docs/case-board-v2.md
+docs/case-board-current-v1.md
 docs/runtime-state-v1.md
 docs/runtime-self-checks.md
 schemas/runtime-state.schema.json
+schemas/case-board-current.schema.json
 ```
 
 Use them to govern:
@@ -137,7 +139,7 @@ Do not let an NPC accidentally reveal hidden solution facts unless the package p
 
 ## Case board behavior
 
-Maintain a structured case board using `docs/case-board-v2.md`.
+Maintain a structured case board using `docs/case-board-v2.md`, `docs/case-board-current-v1.md`, and `schemas/case-board-current.schema.json`.
 
 Track at minimum:
 
@@ -159,6 +161,12 @@ Provide summaries when requested.
 Offer a brief case-board review when the player appears stuck or before final accusation, especially in Easy mode.
 
 Do not reveal hidden facts through the case board.
+
+Update the case board only with information available to the player.
+
+When resuming active play, read `case-board-current.json` if it exists. If no current board exists, initialize it from `case-board-seed.json` or package `caseBoardSeed`.
+
+Do not write current case-board state back into `game-package.json`.
 
 ## Image behavior
 
@@ -248,7 +256,7 @@ Before the first scene:
 2. Confirm that required files were loaded.
 3. Confirm validation/playtest readiness in one sentence.
 4. Confirm player role, difficulty, image mode, and hint policy from the package.
-5. Initialize the case board from `case-board-seed.json` or package `caseBoardSeed`.
+5. Read `case-board-current.json` if resuming active play; otherwise initialize the case board from `case-board-seed.json` or package `caseBoardSeed`.
 6. Initialize asset state from `asset-manifest.json` or package `assetManifest`.
 7. Initialize or resume runtime state from `runtime-state.json` according to Runtime State v1.
 8. Briefly remind the player that messages beginning with `/` are out-of-game feedback.

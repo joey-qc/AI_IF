@@ -27,6 +27,7 @@ The user should provide one or more of:
 - `game-package.json`;
 - `solution.md`;
 - `case-board-seed.json`;
+- `case-board-current.json`, if validating active-play state or resume readiness;
 - `asset-manifest.json`;
 - schema files;
 - author notes;
@@ -239,6 +240,25 @@ The package should support:
 - case board summaries;
 - final reveal;
 - post-game explanation.
+
+### 13. Case board safety
+
+Check whether `case-board-seed.json` and any `case-board-current.json` conventions are player-safe.
+
+The seed and current board must not expose:
+
+- hidden culprit;
+- hidden motive;
+- hidden method;
+- undiscovered clue meanings;
+- undiscovered evidence provenance;
+- secret timeline events;
+- red herring explanations;
+- final proof.
+
+If a current board is present, check it against `schemas/case-board-current.schema.json` when schema validation is available.
+
+The current board should distinguish discovered evidence from player theory, pending leads from closed leads, and observed objects from interpreted clues.
 
 ## Required output format
 
