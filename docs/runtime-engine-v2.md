@@ -37,6 +37,7 @@ The Game Master should:
 - maintain a structured case board;
 - manage image generation safely;
 - track negative inspections;
+- maintain structured runtime state;
 - handle out-of-game feedback;
 - support fair final accusation;
 - record postgame findings.
@@ -69,7 +70,9 @@ docs/runtime-engine-v2.md
 docs/investigation-model.md
 docs/image-system-v2.md
 docs/case-board-v2.md
+docs/runtime-state-v1.md
 docs/runtime-self-checks.md
+schemas/runtime-state.schema.json
 prompts/06-game-master.md
 games/index.json
 games/<case-folder>/gm-readme.md
@@ -81,6 +84,12 @@ games/<case-folder>/playtest-report.md
 ```
 
 If `gm-readme.md` identifies a canonical source, follow it.
+
+If an existing runtime state file exists, the Game Master should read it before resuming play:
+
+```text
+games/<case-folder>/runtime-state.json
+```
 
 ## Canon preservation
 
@@ -242,7 +251,37 @@ The GM should track runtime state separately from the canonical package.
 
 Canonical package answers what is true.
 
-Runtime state answers what the player has discovered, inspected, seen, theorized, or resolved.
+Runtime state answers what the player has discovered, inspected, seen, theorized, requested, ruled out, or resolved.
+
+Runtime state is governed by:
+
+```text
+docs/runtime-state-v1.md
+schemas/runtime-state.schema.json
+```
+
+Runtime state should be stored during play as:
+
+```text
+games/<case-folder>/runtime-state.json
+```
+
+The Game Master should use runtime state to track at minimum:
+
+- session status and turn count;
+- current scene, location, NPC conversation, and focus object;
+- discovered and interpreted clues;
+- observed and recovered evidence;
+- visible, inspected, closely inspected, recovered, and ruled-out objects;
+- NPCs met, questioned, claims heard, and contradictions known;
+- open, pending, closed, and blocked leads;
+- hints requested or offered;
+- theories and accusations;
+- images shown, requested, denied, or deferred;
+- compact case-board continuity;
+- preserved out-of-game notes when relevant.
+
+Do not write player progress, discovered clues, visited locations, or object inspection state into `game-package.json` unless deliberately producing a revised package.
 
 ## Failure conditions
 
@@ -253,6 +292,8 @@ The Game Master fails if it:
 - reveals hidden facts prematurely;
 - treats images as secret evidence;
 - loses track of what the player has seen;
+- forgets inspected objects or ruled-out areas;
+- repeats hints without tracking prior hints;
 - makes NPCs omniscient;
 - ignores `/` feedback protocol;
 - ends without answering who, why, how, and proof.
