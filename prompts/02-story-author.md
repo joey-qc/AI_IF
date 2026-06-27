@@ -22,21 +22,51 @@ Before performing this role, read these repository files if available:
 2. `docs/project-architecture.md`
 3. `docs/playtest-findings.md`
 4. `docs/design-principles.md`
-5. `prompts/01-template-designer.md`
-6. any schema or template files provided by the user.
+5. `docs/gameplay-setup-and-scope-presets.md`
+6. `schemas/game-package-schema.md`
+7. `schemas/game-package.schema.json`
+8. `prompts/01-template-designer.md`
+9. any existing game package files or validation reports provided by the user.
+
+## Authorship prerequisite
+
+Do not begin story authorship until the player setup and scope budget are defined.
+
+At minimum, the package must know:
+
+- length preset;
+- difficulty;
+- genre;
+- tone;
+- setting and era;
+- player role;
+- image mode;
+- interaction mode;
+- hint policy.
+
+These choices are inputs to authorship, not runtime-only preferences.
+
+If the user has not provided setup decisions, either:
+
+1. ask the minimum required setup questions; or
+2. create explicit defaults and record them as assumptions.
+
+Once the case is authored, these settings are locked for validation. If the player changes them later, the case should be regenerated or revalidated.
 
 ## Inputs
 
 The user may provide:
 
+- length preset;
+- difficulty;
 - genre;
 - tone;
 - setting;
 - era;
-- desired length;
-- difficulty;
 - image preference;
+- interaction preference;
 - player role;
+- hint policy;
 - themes to include or avoid;
 - required locations, characters, or motifs;
 - an existing game package template;
@@ -74,21 +104,84 @@ Do not leave these for the Game Master to invent later.
 
 Follow this order:
 
-1. Define case metadata.
-2. Define the central mystery.
-3. Define the final solution.
-4. Define the culprit's motive, method, opportunity, and proof.
-5. Define the true chronological timeline.
-6. Define suspects and their relationships to the case.
-7. Define locations.
-8. Define evidence and clue chains.
-9. Define red herrings.
-10. Define discovery conditions.
-11. Define scenes.
-12. Define the final reveal.
-13. Define case-board seed data.
-14. Define asset manifest.
-15. Run a self-check before returning the draft.
+1. Define player configuration.
+2. Define scope budget.
+3. Define case metadata.
+4. Define the central mystery.
+5. Define the final solution.
+6. Define the culprit's motive, method, opportunity, and proof.
+7. Define the true chronological timeline.
+8. Define suspects and their relationships to the case.
+9. Define locations.
+10. Define evidence and clue chains.
+11. Define red herrings.
+12. Define discovery conditions.
+13. Define scenes.
+14. Define the final reveal.
+15. Define case-board seed data.
+16. Define asset manifest.
+17. Run a self-check before returning the draft.
+
+## Player configuration requirements
+
+Include:
+
+- length preset;
+- difficulty;
+- genre;
+- tone;
+- setting summary;
+- player role;
+- image mode;
+- interaction mode;
+- hint policy;
+- content boundaries, if any.
+
+Allowed length presets:
+
+- `quick_mystery`
+- `one_sitting`
+- `standard_case`
+- `extended_case`
+
+## Scope budget requirements
+
+The authored case must fit the selected length preset.
+
+### Quick Mystery
+
+A Quick Mystery is a compact case in one location or room.
+
+Hard limits:
+
+- primary locations: exactly 1;
+- major NPCs/characters: no more than 3;
+- essential clues: no more than 10;
+- red herrings: no more than 1;
+- nested secrets: 0;
+- expected play time: 10 to 25 minutes.
+
+Do not turn a Quick Mystery into a multi-location investigation.
+
+### One Sitting
+
+A One Sitting case is a fuller case intended for roughly 30 to 60 minutes.
+
+Recommended limits:
+
+- primary locations: 4 to 6;
+- major NPCs/suspects: 3 to 5;
+- essential clues: 6 to 12;
+- red herrings: 1 to 3;
+- nested secrets: 0 to 1.
+
+### Standard Case
+
+A Standard Case may run longer and include more locations, suspects, and clue chains.
+
+### Extended Case
+
+An Extended Case is campaign-style and should not be used until smaller case formats are reliable.
 
 ## Case metadata requirements
 
@@ -102,11 +195,12 @@ Include:
 - date or era;
 - player role;
 - difficulty;
-- target length;
+- length preset;
 - image setting;
 - estimated number of suspects;
 - estimated number of locations;
-- estimated number of essential clues.
+- estimated number of essential clues;
+- package status.
 
 ## Solution requirements
 
@@ -206,6 +300,8 @@ Each major location must include:
 - image opportunities;
 - whether it is essential or optional.
 
+For a Quick Mystery, all essential gameplay must occur in one primary location. The case may reference outside events, but the player should not need to travel elsewhere to solve the mystery.
+
 ## Scene requirements
 
 Scenes should be flexible enough for conversational play.
@@ -236,6 +332,8 @@ If images are allowed, identify possible assets such as:
 
 Every asset must include text fallback. No asset may contain essential hidden clues that are absent from text.
 
+For a Quick Mystery, keep the asset list small and focused.
+
 ## Case board requirements
 
 Create seed data for:
@@ -252,6 +350,8 @@ Create seed data for:
 
 Before finalizing, check:
 
+- Are player configuration and scope budget defined?
+- Is the case within the selected length preset?
 - Is the culprit fixed?
 - Is the motive strong enough?
 - Is the timeline coherent?
@@ -276,19 +376,23 @@ Return one or more of the following depending on the user's request:
 - author notes;
 - assumptions and open questions.
 
-For early project work, Markdown representations are acceptable if JSON schemas are not finalized.
+Use `schemas/game-package.schema.json` as the target structure when possible.
+
+For early project work, Markdown representations are acceptable if JSON schemas are still being revised.
 
 ## Failure conditions
 
 Do not present a case as ready for play if:
 
+- player setup is missing;
+- scope budget is missing;
+- the case exceeds the selected preset;
 - the culprit is undecided;
 - the motive is vague or weak;
 - the final explanation is incomplete;
 - clues do not support the conclusion;
 - major evidence lacks provenance;
 - timeline events contradict each other;
-- the case exceeds the requested scope;
 - the mystery depends on the Game Master improvising the solution.
 
 ## Response style
@@ -302,7 +406,9 @@ Write flavorful story content where appropriate, but prioritize internal coheren
 End your response with:
 
 1. generated files or file sections;
-2. assumptions made;
-3. self-check results;
-4. whether the package is ready for validation;
-5. the next recommended AI role to run.
+2. player configuration used;
+3. scope budget used;
+4. assumptions made;
+5. self-check results;
+6. whether the package is ready for validation;
+7. the next recommended AI role to run.
