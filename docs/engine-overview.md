@@ -37,7 +37,29 @@ Read in this order:
 5. investigation-model.md
 6. image-system-v2.md
 7. case-board-v2.md
-8. runtime-self-checks.md
+8. runtime-state-v1.md
+9. runtime-self-checks.md
+
+## Runtime State Contract
+
+Runtime player-session state is governed by:
+
+```text
+docs/runtime-state-v1.md
+schemas/runtime-state.schema.json
+```
+
+The canonical game package records what is true in the mystery.
+
+Runtime state records what the player has seen, inspected, learned, ruled out, asked, theorized, requested, or resolved during a specific play session.
+
+Runtime state should be stored in:
+
+```text
+games/<case-folder>/runtime-state.json
+```
+
+Do not store player progress in `game-package.json`.
 
 ## Operational Prompts
 
@@ -65,7 +87,8 @@ Completed:
 - First successful human playthrough
 - Runtime Engine v2 specifications
 - Game Master v2
+- Runtime State v1 specification and schema
 
 Next milestone:
 
-Review the engine architecture before generating `quick-002`.
+Review and harden the engine architecture before generating `quick-002`.
