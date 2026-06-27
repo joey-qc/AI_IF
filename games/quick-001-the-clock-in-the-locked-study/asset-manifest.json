@@ -1,0 +1,78 @@
+[
+  {
+    "assetId": "asset-study-overview",
+    "title": "Study overview",
+    "assetType": "location image",
+    "associatedLocationId": "loc-locked-study",
+    "associatedCharacterIds": [],
+    "associatedClueIds": [],
+    "discoveryConditions": "Player requests an overview of the study.",
+    "textFallback": "The study contains a writing desk, fireplace, display case, tallcase clock, tea trolley, green-shaded lamp, and rain-streaked window.",
+    "retrievalLabel": "study overview",
+    "spoilerLevel": "low",
+    "isCanonicalEvidence": false,
+    "containsHiddenClues": false,
+    "hasBeenShownToPlayer": false
+  },
+  {
+    "assetId": "asset-display-case",
+    "title": "Locked display case",
+    "assetType": "evidence image",
+    "associatedLocationId": "loc-locked-study",
+    "associatedCharacterIds": [],
+    "associatedClueIds": [
+      "clue-loose-hinge",
+      "clue-brass-dust",
+      "clue-black-thread",
+      "clue-clock-oil"
+    ],
+    "discoveryConditions": "Player inspects or requests the display case.",
+    "textFallback": "The case has an intact front lock, but the rear hinge is loose and freshly disturbed.",
+    "retrievalLabel": "display case",
+    "spoilerLevel": "medium",
+    "isCanonicalEvidence": true,
+    "containsHiddenClues": false,
+    "hasBeenShownToPlayer": false
+  },
+  {
+    "assetId": "asset-tallcase-clock",
+    "title": "Tallcase clock",
+    "assetType": "evidence image",
+    "associatedLocationId": "loc-locked-study",
+    "associatedCharacterIds": [
+      "char-thomas-greer"
+    ],
+    "associatedClueIds": [
+      "clue-stopped-clock",
+      "clue-scraped-clock-latch",
+      "clue-watch-in-clock"
+    ],
+    "discoveryConditions": "Player inspects or requests the clock.",
+    "textFallback": "The tallcase clock has stopped at 8:13 and its lower latch shows a fresh scrape.",
+    "retrievalLabel": "tallcase clock",
+    "spoilerLevel": "medium",
+    "isCanonicalEvidence": true,
+    "containsHiddenClues": false,
+    "hasBeenShownToPlayer": false
+  },
+  {
+    "assetId": "asset-pocket-watch",
+    "title": "Breguet pocket watch",
+    "assetType": "evidence image",
+    "associatedLocationId": "loc-locked-study",
+    "associatedCharacterIds": [
+      "char-rowan-vale",
+      "char-thomas-greer"
+    ],
+    "associatedClueIds": [
+      "clue-watch-in-clock"
+    ],
+    "discoveryConditions": "Player discovers the watch inside the clock.",
+    "textFallback": "The missing gold pocket watch is wrapped in a polishing cloth inside the clock compartment.",
+    "retrievalLabel": "pocket watch",
+    "spoilerLevel": "high",
+    "isCanonicalEvidence": true,
+    "containsHiddenClues": false,
+    "hasBeenShownToPlayer": false
+  }
+]
