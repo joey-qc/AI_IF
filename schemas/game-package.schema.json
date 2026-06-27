@@ -1,0 +1,536 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/joey-qc/AI_IF/schemas/game-package.schema.json",
+  "title": "AI Interactive Fiction Game Package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "caseMetadata",
+    "playerConfig",
+    "scopeBudget",
+    "setting",
+    "centralMystery",
+    "solution",
+    "characters",
+    "locations",
+    "timeline",
+    "clues",
+    "evidence",
+    "scenes",
+    "discoveryRules",
+    "caseBoardSeed",
+    "assetManifest",
+    "validationTargets"
+  ],
+  "properties": {
+    "caseMetadata": { "$ref": "#/$defs/caseMetadata" },
+    "playerConfig": { "$ref": "#/$defs/playerConfig" },
+    "scopeBudget": { "$ref": "#/$defs/scopeBudget" },
+    "setting": { "$ref": "#/$defs/setting" },
+    "centralMystery": { "$ref": "#/$defs/centralMystery" },
+    "solution": { "$ref": "#/$defs/solution" },
+    "characters": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/character" },
+      "minItems": 1
+    },
+    "locations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/location" },
+      "minItems": 1
+    },
+    "timeline": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/timelineEvent" },
+      "minItems": 1
+    },
+    "clues": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/clue" },
+      "minItems": 1
+    },
+    "redHerrings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/redHerring" },
+      "default": []
+    },
+    "evidence": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/evidence" },
+      "minItems": 1
+    },
+    "scenes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/scene" },
+      "minItems": 1
+    },
+    "discoveryRules": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/discoveryRule" }
+    },
+    "caseBoardSeed": { "$ref": "#/$defs/caseBoardSeed" },
+    "assetManifest": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/asset" },
+      "default": []
+    },
+    "validationTargets": { "$ref": "#/$defs/validationTargets" },
+    "runtimeState": { "$ref": "#/$defs/runtimeState" }
+  },
+  "$defs": {
+    "idString": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$"
+    },
+    "stringArray": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "idArray": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/idString" },
+      "default": []
+    },
+    "caseMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["caseId", "title", "version", "status", "validationStatus", "playtestStatus"],
+      "properties": {
+        "caseId": { "$ref": "#/$defs/idString" },
+        "title": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "validation_failed",
+            "validated",
+            "playtest_failed",
+            "playtested",
+            "approved_for_human_play",
+            "in_play",
+            "completed",
+            "archived"
+          ]
+        },
+        "createdAt": { "type": "string" },
+        "lastUpdatedAt": { "type": "string" },
+        "authorRole": { "type": "string" },
+        "validationStatus": {
+          "type": "string",
+          "enum": ["not_validated", "failed", "passed_with_minor_issues", "passed"]
+        },
+        "playtestStatus": {
+          "type": "string",
+          "enum": ["not_playtested", "failed", "passed_with_issues", "passed"]
+        },
+        "shortDescription": { "type": "string" },
+        "estimatedPlayTimeMinutes": { "type": "integer", "minimum": 1 },
+        "repositoryPath": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "playerConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lengthPreset",
+        "difficulty",
+        "genre",
+        "tone",
+        "settingSummary",
+        "playerRole",
+        "imageMode",
+        "interactionMode",
+        "hintPolicy"
+      ],
+      "properties": {
+        "lengthPreset": {
+          "type": "string",
+          "enum": ["quick_mystery", "one_sitting", "standard_case", "extended_case"]
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": ["easy", "medium", "hard"]
+        },
+        "genre": { "type": "string", "minLength": 1 },
+        "tone": { "type": "string", "minLength": 1 },
+        "settingSummary": { "type": "string", "minLength": 1 },
+        "playerRole": { "type": "string", "minLength": 1 },
+        "imageMode": {
+          "type": "string",
+          "enum": ["none", "player_requested_only", "occasional_suggested", "asset_rich"]
+        },
+        "interactionMode": {
+          "type": "string",
+          "enum": ["text_first", "voice_friendly", "mixed"]
+        },
+        "hintPolicy": {
+          "type": "string",
+          "enum": ["none", "on_request_only", "gentle_when_stuck", "proactive_for_easy_mode"]
+        },
+        "contentBoundaries": { "$ref": "#/$defs/stringArray" }
+      }
+    },
+    "scopeBudget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maxPrimaryLocations",
+        "maxMajorNpcCount",
+        "maxEssentialClueCount",
+        "maxRedHerringCount",
+        "maxNestedSecrets",
+        "expectedPlayTimeMinutesMin",
+        "expectedPlayTimeMinutesMax"
+      ],
+      "properties": {
+        "maxPrimaryLocations": { "type": "integer", "minimum": 1 },
+        "maxMajorNpcCount": { "type": "integer", "minimum": 1 },
+        "maxEssentialClueCount": { "type": "integer", "minimum": 1 },
+        "maxRedHerringCount": { "type": "integer", "minimum": 0 },
+        "maxNestedSecrets": { "type": "integer", "minimum": 0 },
+        "expectedPlayTimeMinutesMin": { "type": "integer", "minimum": 1 },
+        "expectedPlayTimeMinutesMax": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "setting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["place", "era", "dateOrSeason", "socialContext", "technologyLevel", "toneNotes"],
+      "properties": {
+        "place": { "type": "string" },
+        "era": { "type": "string" },
+        "dateOrSeason": { "type": "string" },
+        "socialContext": { "type": "string" },
+        "technologyLevel": { "type": "string" },
+        "toneNotes": { "type": "string" },
+        "sensoryStyle": { "type": "string" },
+        "historicalConstraints": { "$ref": "#/$defs/stringArray" },
+        "languageStyle": { "type": "string" }
+      }
+    },
+    "centralMystery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mysteryType", "openingProblem", "stakes", "playerObjective", "successCondition"],
+      "properties": {
+        "mysteryType": { "type": "string" },
+        "openingProblem": { "type": "string" },
+        "victimOrTarget": { "type": "string" },
+        "stakes": { "type": "string" },
+        "playerObjective": { "type": "string" },
+        "successCondition": { "type": "string" }
+      }
+    },
+    "solution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "culpritCharacterId",
+        "motive",
+        "motiveProportionality",
+        "method",
+        "opportunity",
+        "means",
+        "concealmentPlan",
+        "culpritMistake",
+        "proofRequiredForAccusation",
+        "essentialClueIds",
+        "finalRevealBeats"
+      ],
+      "properties": {
+        "culpritCharacterId": { "$ref": "#/$defs/idString" },
+        "victimCharacterId": { "$ref": "#/$defs/idString" },
+        "targetId": { "$ref": "#/$defs/idString" },
+        "motive": { "type": "string" },
+        "motiveProportionality": { "type": "string" },
+        "method": { "type": "string" },
+        "opportunity": { "type": "string" },
+        "means": { "type": "string" },
+        "concealmentPlan": { "type": "string" },
+        "culpritMistake": { "type": "string" },
+        "proofRequiredForAccusation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["requiredClueIds", "deductionRequired", "insufficientAccusationResponse"],
+          "properties": {
+            "requiredClueIds": { "$ref": "#/$defs/idArray" },
+            "deductionRequired": { "type": "string" },
+            "insufficientAccusationResponse": { "type": "string" }
+          }
+        },
+        "essentialClueIds": { "$ref": "#/$defs/idArray" },
+        "supportingClueIds": { "$ref": "#/$defs/idArray" },
+        "redHerringIds": { "$ref": "#/$defs/idArray" },
+        "trueTimelineEventIds": { "$ref": "#/$defs/idArray" },
+        "finalRevealBeats": { "$ref": "#/$defs/stringArray" },
+        "postResolutionAnswers": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "character": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "characterId",
+        "name",
+        "role",
+        "isMajorNpc",
+        "isSuspect",
+        "relationshipToMystery",
+        "knowledge"
+      ],
+      "properties": {
+        "characterId": { "$ref": "#/$defs/idString" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "isMajorNpc": { "type": "boolean" },
+        "isSuspect": { "type": "boolean" },
+        "relationshipToMystery": { "type": "string" },
+        "apparentMotive": { "type": "string" },
+        "trueMotiveOrInnocentExplanation": { "type": "string" },
+        "alibiClaim": { "type": "string" },
+        "alibiTruth": { "type": "string" },
+        "knowledge": { "$ref": "#/$defs/stringArray" },
+        "secrets": { "$ref": "#/$defs/stringArray" },
+        "liesOrOmissions": { "$ref": "#/$defs/stringArray" },
+        "cluesPointingToward": { "$ref": "#/$defs/idArray" },
+        "cluesClearingOrImplicating": { "$ref": "#/$defs/idArray" },
+        "interrogationGuidance": { "type": "string" }
+      }
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["locationId", "name", "isPrimaryLocation", "description", "purpose"],
+      "properties": {
+        "locationId": { "$ref": "#/$defs/idString" },
+        "name": { "type": "string" },
+        "isPrimaryLocation": { "type": "boolean" },
+        "description": { "type": "string" },
+        "purpose": { "type": "string" },
+        "availableFromStart": { "type": "boolean" },
+        "entryConditions": { "type": "string" },
+        "charactersPresent": { "$ref": "#/$defs/idArray" },
+        "clueIds": { "$ref": "#/$defs/idArray" },
+        "evidenceIds": { "$ref": "#/$defs/idArray" },
+        "exitLeads": { "$ref": "#/$defs/stringArray" },
+        "assetIds": { "$ref": "#/$defs/idArray" }
+      }
+    },
+    "timelineEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eventId", "sequenceOrder", "dateTimeLabel", "locationId", "summary", "cause", "effect"],
+      "properties": {
+        "eventId": { "$ref": "#/$defs/idString" },
+        "sequenceOrder": { "type": "integer", "minimum": 0 },
+        "dateTimeLabel": { "type": "string" },
+        "locationId": { "$ref": "#/$defs/idString" },
+        "participantCharacterIds": { "$ref": "#/$defs/idArray" },
+        "summary": { "type": "string" },
+        "cause": { "type": "string" },
+        "effect": { "type": "string" },
+        "evidenceCreatedIds": { "$ref": "#/$defs/idArray" },
+        "evidenceMovedIds": { "$ref": "#/$defs/idArray" },
+        "clueIdsGenerated": { "$ref": "#/$defs/idArray" },
+        "witnessKnowledgeCreated": { "$ref": "#/$defs/stringArray" },
+        "visibilityToPlayer": { "type": "string" }
+      }
+    },
+    "clue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "clueId",
+        "title",
+        "playerFacingDescription",
+        "trueMeaning",
+        "importance",
+        "discoveryLocationId",
+        "discoveryConditions",
+        "sourceOrProvenance",
+        "supportsSolution",
+        "resolvedInFinalReveal",
+        "textFallback"
+      ],
+      "properties": {
+        "clueId": { "$ref": "#/$defs/idString" },
+        "title": { "type": "string" },
+        "playerFacingDescription": { "type": "string" },
+        "trueMeaning": { "type": "string" },
+        "importance": {
+          "type": "string",
+          "enum": ["essential", "supporting", "optional", "red_herring", "atmosphere"]
+        },
+        "discoveryLocationId": { "$ref": "#/$defs/idString" },
+        "discoveryConditions": { "type": "string" },
+        "sourceOrProvenance": { "type": "string" },
+        "associatedTimelineEventId": { "$ref": "#/$defs/idString" },
+        "associatedCharacterIds": { "$ref": "#/$defs/idArray" },
+        "associatedEvidenceIds": { "$ref": "#/$defs/idArray" },
+        "pointsTowardCharacterIds": { "$ref": "#/$defs/idArray" },
+        "clearsCharacterIds": { "$ref": "#/$defs/idArray" },
+        "supportsSolution": { "type": "boolean" },
+        "resolvedInFinalReveal": { "type": "string" },
+        "assetIds": { "$ref": "#/$defs/idArray" },
+        "textFallback": { "type": "string" }
+      }
+    },
+    "redHerring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["redHerringId", "title", "appearsToSuggest", "innocentExplanation", "fairnessNotes"],
+      "properties": {
+        "redHerringId": { "$ref": "#/$defs/idString" },
+        "title": { "type": "string" },
+        "appearsToSuggest": { "type": "string" },
+        "innocentExplanation": { "type": "string" },
+        "discoveryConditions": { "type": "string" },
+        "clearanceConditions": { "type": "string" },
+        "relatedClueIds": { "$ref": "#/$defs/idArray" },
+        "fairnessNotes": { "type": "string" }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceId",
+        "title",
+        "type",
+        "description",
+        "currentLocationId",
+        "chainOfCustody",
+        "accessHistory",
+        "discoveryConditions"
+      ],
+      "properties": {
+        "evidenceId": { "$ref": "#/$defs/idString" },
+        "title": { "type": "string" },
+        "type": { "type": "string" },
+        "description": { "type": "string" },
+        "currentLocationId": { "$ref": "#/$defs/idString" },
+        "createdByCharacterId": { "$ref": "#/$defs/idString" },
+        "createdDuringTimelineEventId": { "$ref": "#/$defs/idString" },
+        "chainOfCustody": { "$ref": "#/$defs/stringArray" },
+        "accessHistory": { "$ref": "#/$defs/stringArray" },
+        "discoveryConditions": { "type": "string" },
+        "associatedClueIds": { "$ref": "#/$defs/idArray" },
+        "assetIds": { "$ref": "#/$defs/idArray" }
+      }
+    },
+    "scene": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sceneId", "locationId", "entryConditions", "openingNarration"],
+      "properties": {
+        "sceneId": { "$ref": "#/$defs/idString" },
+        "locationId": { "$ref": "#/$defs/idString" },
+        "entryConditions": { "type": "string" },
+        "openingNarration": { "type": "string" },
+        "availableCharacterIds": { "$ref": "#/$defs/idArray" },
+        "availableClueIds": { "$ref": "#/$defs/idArray" },
+        "availableEvidenceIds": { "$ref": "#/$defs/idArray" },
+        "likelyPlayerQuestions": { "$ref": "#/$defs/stringArray" },
+        "safeAnswers": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "hiddenFactsNotYetRevealed": { "$ref": "#/$defs/stringArray" },
+        "exitLeads": { "$ref": "#/$defs/stringArray" }
+      }
+    },
+    "discoveryRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ruleId", "triggerType", "triggerDescription"],
+      "properties": {
+        "ruleId": { "$ref": "#/$defs/idString" },
+        "triggerType": { "type": "string" },
+        "triggerDescription": { "type": "string" },
+        "revealsClueIds": { "$ref": "#/$defs/idArray" },
+        "revealsEvidenceIds": { "$ref": "#/$defs/idArray" },
+        "revealsLocationIds": { "$ref": "#/$defs/idArray" },
+        "revealsAssetIds": { "$ref": "#/$defs/idArray" },
+        "caseBoardUpdates": { "$ref": "#/$defs/stringArray" }
+      }
+    },
+    "caseBoardSeed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["knownFacts", "knownCharacters", "knownLocations", "openQuestions", "activeLeads"],
+      "properties": {
+        "knownFacts": { "$ref": "#/$defs/stringArray" },
+        "knownCharacters": { "$ref": "#/$defs/idArray" },
+        "knownLocations": { "$ref": "#/$defs/idArray" },
+        "openQuestions": { "$ref": "#/$defs/stringArray" },
+        "activeLeads": { "$ref": "#/$defs/stringArray" },
+        "discoveredClueIds": { "$ref": "#/$defs/idArray" },
+        "discoveredEvidenceIds": { "$ref": "#/$defs/idArray" },
+        "seenAssetIds": { "$ref": "#/$defs/idArray" },
+        "playerTheories": { "$ref": "#/$defs/stringArray" }
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assetId", "title", "assetType", "textFallback", "retrievalLabel", "spoilerLevel", "isCanonicalEvidence", "containsHiddenClues"],
+      "properties": {
+        "assetId": { "$ref": "#/$defs/idString" },
+        "title": { "type": "string" },
+        "assetType": { "type": "string" },
+        "associatedLocationId": { "$ref": "#/$defs/idString" },
+        "associatedCharacterIds": { "$ref": "#/$defs/idArray" },
+        "associatedClueIds": { "$ref": "#/$defs/idArray" },
+        "discoveryConditions": { "type": "string" },
+        "textFallback": { "type": "string" },
+        "retrievalLabel": { "type": "string" },
+        "spoilerLevel": { "type": "string", "enum": ["none", "low", "medium", "high"] },
+        "isCanonicalEvidence": { "type": "boolean" },
+        "containsHiddenClues": { "type": "boolean" }
+      }
+    },
+    "validationTargets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mustResolveClueIds",
+        "mustExplainRedHerringIds",
+        "mustValidateTimelineEventIds",
+        "mustValidateEvidenceIds",
+        "mustSupportAccusationWithClueIds"
+      ],
+      "properties": {
+        "mustResolveClueIds": { "$ref": "#/$defs/idArray" },
+        "mustExplainRedHerringIds": { "$ref": "#/$defs/idArray" },
+        "mustValidateTimelineEventIds": { "$ref": "#/$defs/idArray" },
+        "mustValidateEvidenceIds": { "$ref": "#/$defs/idArray" },
+        "mustSupportAccusationWithClueIds": { "$ref": "#/$defs/idArray" },
+        "knownRiskAreas": { "$ref": "#/$defs/stringArray" }
+      }
+    },
+    "runtimeState": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "currentSceneId": { "$ref": "#/$defs/idString" },
+        "visitedLocationIds": { "$ref": "#/$defs/idArray" },
+        "discoveredClueIds": { "$ref": "#/$defs/idArray" },
+        "discoveredEvidenceIds": { "$ref": "#/$defs/idArray" },
+        "knownCharacterIds": { "$ref": "#/$defs/idArray" },
+        "seenAssetIds": { "$ref": "#/$defs/idArray" },
+        "openLeads": { "$ref": "#/$defs/stringArray" },
+        "closedLeads": { "$ref": "#/$defs/stringArray" },
+        "playerTheories": { "$ref": "#/$defs/stringArray" },
+        "accusationsMade": { "$ref": "#/$defs/stringArray" },
+        "gameStatus": { "type": "string" }
+      }
+    }
+  }
+}
