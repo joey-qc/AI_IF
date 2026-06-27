@@ -3,17 +3,18 @@
     "caseId": "quick-001",
     "title": "The Clock in the Locked Study",
     "slug": "the-clock-in-the-locked-study",
-    "version": "0.2.0",
-    "status": "draft",
+    "version": "0.2.1",
+    "status": "approved_for_human_play",
     "createdAt": "2026-06-27",
     "lastUpdatedAt": "2026-06-27",
     "authorRole": "Revision Engine",
-    "validationStatus": "not_validated",
-    "playtestStatus": "not_playtested",
+    "validationStatus": "passed_with_minor_repository_issue",
+    "playtestStatus": "passed_with_minor_runtime_guidance",
+    "humanPlayStatus": "completed_once",
     "shortDescription": "A compact one-room theft mystery for the first end-to-end engine test.",
     "estimatedPlayTimeMinutes": 20,
     "repositoryPath": "games/quick-001-the-clock-in-the-locked-study",
-    "notes": "Revised after validation; awaiting revalidation."
+    "notes": "Approved for human play after validation v2, AI playtest, handoff preparation, and one completed human play-through. game-package.json is canonical; solution.md remains non-canonical unless explicitly restored."
   },
   "playerConfig": {
     "lengthPreset": "quick_mystery",
@@ -25,7 +26,11 @@
     "imageMode": "player_requested_only",
     "interactionMode": "text_first",
     "hintPolicy": "gentle_when_stuck",
-    "contentBoundaries": ["No graphic violence", "No horror", "No sexual content"]
+    "contentBoundaries": [
+      "No graphic violence",
+      "No horror",
+      "No sexual content"
+    ]
   },
   "scopeBudget": {
     "maxPrimaryLocations": 1,
@@ -44,12 +49,14 @@
     "technologyLevel": "Mid-century domestic technology, mechanical clocks, paper records.",
     "toneNotes": "Light classic-detective tone.",
     "sensoryStyle": "Polished wood, clock oil, old paper, lamplight, rain at the window.",
-    "historicalConstraints": ["No modern digital evidence"],
+    "historicalConstraints": [
+      "No modern digital evidence"
+    ],
     "languageStyle": "Clear, lightly period-flavored prose."
   },
   "centralMystery": {
     "mysteryType": "theft",
-    "openingProblem": "A valuable pocket watch vanishes from a locked display case during a small gathering in one study.",
+    "openingProblem": "A valuable pocket watch vanishes from a locked display case during a small gathering in one study. The tallcase clock in the study has stopped at 8:13.",
     "victimOrTarget": "The missing pocket watch",
     "stakes": "The object is valuable and scheduled for transfer the next morning.",
     "playerObjective": "Determine who took the watch, how, why, and where it is now.",
@@ -66,15 +73,50 @@
     "concealmentPlan": "Use the intact front lock and another suspect's visible money-related issue to misdirect suspicion.",
     "culpritMistake": "Trace evidence, a mechanical disturbance, a discoverable motive clue, and an over-specific denial connect the culprit to the theft.",
     "proofRequiredForAccusation": {
-      "requiredClueIds": ["clue-loose-service-panel", "clue-clock-oil", "clue-black-thread", "clue-stopped-clock", "clue-watch-in-clock"],
+      "requiredClueIds": [
+        "clue-loose-service-panel",
+        "clue-clock-oil",
+        "clue-black-thread",
+        "clue-stopped-clock",
+        "clue-watch-in-clock"
+      ],
       "deductionRequired": "Connect alternate case access, trace evidence, opportunity, motive, and hiding place.",
       "insufficientAccusationResponse": "The accusation needs the hidden object or a firm physical chain."
     },
-    "essentialClueIds": ["clue-loose-service-panel", "clue-brass-dust", "clue-black-thread", "clue-clock-oil", "clue-stopped-clock", "clue-scraped-clock-latch", "clue-watch-in-clock", "clue-thomas-contradiction"],
-    "supportingClueIds": ["clue-thomas-money-note", "clue-celia-pawn-envelope"],
-    "redHerringIds": ["rh-celia-pawn-envelope"],
-    "trueTimelineEventIds": ["event-money-pressure", "event-panel-prepared", "event-gathering-begins", "event-distraction-window", "event-watch-taken", "event-watch-hidden", "event-theft-discovered"],
-    "finalRevealBeats": ["The front lock was not the access point.", "A rear service panel was prepared earlier.", "Physical traces connect the preparation to the culprit.", "The mechanical clue identifies the hiding place.", "A discoverable motive clue explains why the culprit acted.", "The red herring has an innocent explanation."],
+    "essentialClueIds": [
+      "clue-loose-service-panel",
+      "clue-brass-dust",
+      "clue-black-thread",
+      "clue-clock-oil",
+      "clue-stopped-clock",
+      "clue-scraped-clock-latch",
+      "clue-watch-in-clock",
+      "clue-thomas-contradiction"
+    ],
+    "supportingClueIds": [
+      "clue-thomas-money-note",
+      "clue-celia-pawn-envelope"
+    ],
+    "redHerringIds": [
+      "rh-celia-pawn-envelope"
+    ],
+    "trueTimelineEventIds": [
+      "event-money-pressure",
+      "event-panel-prepared",
+      "event-gathering-begins",
+      "event-distraction-window",
+      "event-watch-taken",
+      "event-watch-hidden",
+      "event-theft-discovered"
+    ],
+    "finalRevealBeats": [
+      "The front lock was not the access point.",
+      "A rear service panel was prepared earlier.",
+      "Physical traces connect the preparation to the culprit.",
+      "The mechanical clue identifies the hiding place.",
+      "A discoverable motive clue explains why the culprit acted.",
+      "The red herring has an innocent explanation."
+    ],
     "postResolutionAnswers": {
       "Who took the watch?": "Thomas Greer.",
       "Why?": "A private financial pressure created motive.",
@@ -95,11 +137,22 @@
       "trueMotiveOrInnocentExplanation": "He wants the watch recovered.",
       "alibiClaim": "He stayed near the desk.",
       "alibiTruth": "He turned away during the opportunity window.",
-      "knowledge": ["The watch was present shortly before the theft.", "The display case has a rear service panel.", "Thomas maintains the clock.", "Thomas recently requested money."],
-      "secrets": ["He is embarrassed by household money discussions."],
-      "liesOrOmissions": ["Initially downplays the recent request for money."],
+      "knowledge": [
+        "The watch was present shortly before the theft.",
+        "The display case has a rear service panel.",
+        "Thomas maintains the tallcase clock.",
+        "Thomas recently requested money."
+      ],
+      "secrets": [
+        "He is embarrassed by household money discussions."
+      ],
+      "liesOrOmissions": [
+        "Initially downplays the recent request for money."
+      ],
       "cluesPointingToward": [],
-      "cluesClearingOrImplicating": ["clue-thomas-money-note"],
+      "cluesClearingOrImplicating": [
+        "clue-thomas-money-note"
+      ],
       "interrogationGuidance": "Cooperative and flustered; useful for context, not for solving the case."
     },
     {
@@ -112,12 +165,23 @@
       "apparentMotive": "A private document suggests money trouble.",
       "trueMotiveOrInnocentExplanation": "Her private matter is unrelated to the watch.",
       "alibiClaim": "She remained near the fireplace.",
-      "alibiTruth": "She bent to recover a dropped item during the opportunity window.",
-      "knowledge": ["Thomas moved near the case and clock.", "Her own private document is unrelated to the watch."],
-      "secrets": ["She is hiding an embarrassing but innocent money matter."],
-      "liesOrOmissions": ["Initially gives a vague explanation for the document."],
-      "cluesPointingToward": ["clue-celia-pawn-envelope"],
-      "cluesClearingOrImplicating": ["clue-watch-in-clock"],
+      "alibiTruth": "She bent to recover a dropped handkerchief during the opportunity window.",
+      "knowledge": [
+        "Thomas moved near the case and clock.",
+        "Her own private document is unrelated to the watch."
+      ],
+      "secrets": [
+        "She is hiding an embarrassing but innocent money matter."
+      ],
+      "liesOrOmissions": [
+        "Initially gives a vague explanation for the document."
+      ],
+      "cluesPointingToward": [
+        "clue-celia-pawn-envelope"
+      ],
+      "cluesClearingOrImplicating": [
+        "clue-watch-in-clock"
+      ],
       "interrogationGuidance": "Defensive at first, then clarifies if pressed fairly."
     },
     {
@@ -126,16 +190,35 @@
       "role": "Valet",
       "isMajorNpc": true,
       "isSuspect": true,
-      "relationshipToMystery": "Has access to the room, case area, and clock.",
+      "relationshipToMystery": "Has access to the room, case area, and tallcase clock.",
       "apparentMotive": "Initially appears to have none.",
       "trueMotiveOrInnocentExplanation": "He has a private financial pressure and is the thief.",
       "alibiClaim": "He only served and did not touch the case or clock after preparation.",
       "alibiTruth": "He prepared the rear panel, used the distraction window, and hid the watch.",
-      "knowledge": ["The prepared panel", "The hiding place", "The motive clue"],
-      "secrets": ["A private financial pressure."],
-      "liesOrOmissions": ["Denies touching the clock after preparation.", "Denies any money pressure."],
-      "cluesPointingToward": ["clue-loose-service-panel", "clue-black-thread", "clue-clock-oil", "clue-stopped-clock", "clue-watch-in-clock", "clue-thomas-contradiction", "clue-thomas-money-note"],
-      "cluesClearingOrImplicating": ["clue-watch-in-clock"],
+      "knowledge": [
+        "The prepared panel",
+        "The hiding place",
+        "The motive clue"
+      ],
+      "secrets": [
+        "A private financial pressure."
+      ],
+      "liesOrOmissions": [
+        "Denies touching the clock after preparation.",
+        "Denies any money pressure."
+      ],
+      "cluesPointingToward": [
+        "clue-loose-service-panel",
+        "clue-black-thread",
+        "clue-clock-oil",
+        "clue-stopped-clock",
+        "clue-watch-in-clock",
+        "clue-thomas-contradiction",
+        "clue-thomas-money-note"
+      ],
+      "cluesClearingOrImplicating": [
+        "clue-watch-in-clock"
+      ],
       "interrogationGuidance": "Polite and precise; becomes strained when evidence is connected."
     }
   ],
@@ -144,88 +227,1157 @@
       "locationId": "loc-locked-study",
       "name": "Locked study",
       "isPrimaryLocation": true,
-      "description": "A study with desk, fireplace, display case, tallcase clock, tea trolley, lamp, and window.",
+      "description": "A late-1940s mid-century private townhouse study with desk, fireplace, display case, tallcase clock, tea trolley, lamp, and window.",
       "purpose": "The entire mystery occurs here.",
       "availableFromStart": true,
       "entryConditions": "Opening scene.",
-      "charactersPresent": ["char-rowan-vale", "char-celia-vale", "char-thomas-greer"],
-      "clueIds": ["clue-loose-service-panel", "clue-brass-dust", "clue-black-thread", "clue-clock-oil", "clue-stopped-clock", "clue-scraped-clock-latch", "clue-watch-in-clock", "clue-thomas-contradiction", "clue-thomas-money-note", "clue-celia-pawn-envelope"],
-      "evidenceIds": ["evidence-display-case", "evidence-panel-screw", "evidence-black-thread", "evidence-clock-oil", "evidence-tallcase-clock", "evidence-pocket-watch", "evidence-thomas-note", "evidence-pawn-envelope"],
+      "charactersPresent": [
+        "char-rowan-vale",
+        "char-celia-vale",
+        "char-thomas-greer"
+      ],
+      "clueIds": [
+        "clue-loose-service-panel",
+        "clue-brass-dust",
+        "clue-black-thread",
+        "clue-clock-oil",
+        "clue-stopped-clock",
+        "clue-scraped-clock-latch",
+        "clue-watch-in-clock",
+        "clue-thomas-contradiction",
+        "clue-thomas-money-note",
+        "clue-celia-pawn-envelope"
+      ],
+      "evidenceIds": [
+        "evidence-display-case",
+        "evidence-panel-screw",
+        "evidence-black-thread",
+        "evidence-clock-oil",
+        "evidence-tallcase-clock",
+        "evidence-pocket-watch",
+        "evidence-thomas-note",
+        "evidence-pawn-envelope"
+      ],
       "exitLeads": [],
-      "assetIds": ["asset-study-overview", "asset-display-case", "asset-tallcase-clock", "asset-pocket-watch"]
+      "assetIds": [
+        "asset-study-overview",
+        "asset-display-case",
+        "asset-tallcase-clock",
+        "asset-pocket-watch"
+      ]
     }
   ],
   "timeline": [
-    {"eventId": "event-money-pressure", "sequenceOrder": 1, "dateTimeLabel": "Before the gathering", "locationId": "loc-locked-study", "participantCharacterIds": ["char-thomas-greer"], "summary": "The culprit receives private financial pressure.", "cause": "An urgent payment is due.", "effect": "The watch becomes tempting.", "evidenceCreatedIds": ["evidence-thomas-note"], "evidenceMovedIds": [], "clueIdsGenerated": ["clue-thomas-money-note"], "witnessKnowledgeCreated": ["Rowan knows of a recent request for money."], "visibilityToPlayer": "Discoverable."},
-    {"eventId": "event-panel-prepared", "sequenceOrder": 2, "dateTimeLabel": "Earlier that day", "locationId": "loc-locked-study", "participantCharacterIds": ["char-thomas-greer"], "summary": "The rear service panel is loosened.", "cause": "The culprit needs an alternate access point.", "effect": "The front lock can remain intact.", "evidenceCreatedIds": ["evidence-panel-screw", "evidence-black-thread"], "evidenceMovedIds": [], "clueIdsGenerated": ["clue-loose-service-panel", "clue-brass-dust", "clue-black-thread", "clue-clock-oil"], "witnessKnowledgeCreated": [], "visibilityToPlayer": "Discoverable."},
-    {"eventId": "event-gathering-begins", "sequenceOrder": 3, "dateTimeLabel": "Shortly before the theft", "locationId": "loc-locked-study", "participantCharacterIds": ["char-rowan-vale", "char-celia-vale", "char-thomas-greer"], "summary": "The watch is present while all three are in the room.", "cause": "The owner displays it.", "effect": "All suspects know it is present.", "evidenceCreatedIds": [], "evidenceMovedIds": [], "clueIdsGenerated": [], "witnessKnowledgeCreated": ["The watch was present shortly before the theft."], "visibilityToPlayer": "Opening fact."},
-    {"eventId": "event-distraction-window", "sequenceOrder": 4, "dateTimeLabel": "During service", "locationId": "loc-locked-study", "participantCharacterIds": ["char-rowan-vale", "char-celia-vale", "char-thomas-greer"], "summary": "A brief attention break occurs while the culprit is beside the case.", "cause": "Two witnesses are momentarily looking elsewhere.", "effect": "The culprit has a few seconds of opportunity.", "evidenceCreatedIds": [], "evidenceMovedIds": [], "clueIdsGenerated": [], "witnessKnowledgeCreated": ["Celia recalls Thomas beside the case."], "visibilityToPlayer": "Discoverable through questioning."},
-    {"eventId": "event-watch-taken", "sequenceOrder": 5, "dateTimeLabel": "Moments later", "locationId": "loc-locked-study", "participantCharacterIds": ["char-thomas-greer"], "summary": "The watch is removed through the prepared panel.", "cause": "The panel and opportunity window align.", "effect": "The object leaves the case while the front lock remains intact.", "evidenceCreatedIds": [], "evidenceMovedIds": ["evidence-pocket-watch"], "clueIdsGenerated": ["clue-thomas-contradiction"], "witnessKnowledgeCreated": [], "visibilityToPlayer": "Inferred."},
-    {"eventId": "event-watch-hidden", "sequenceOrder": 6, "dateTimeLabel": "Before discovery", "locationId": "loc-locked-study", "participantCharacterIds": ["char-thomas-greer"], "summary": "The object is hidden in the clock, disturbing the mechanism.", "cause": "The culprit needs a temporary hiding place.", "effect": "The clock becomes an evidence source.", "evidenceCreatedIds": ["evidence-tallcase-clock"], "evidenceMovedIds": ["evidence-pocket-watch"], "clueIdsGenerated": ["clue-stopped-clock", "clue-scraped-clock-latch", "clue-watch-in-clock"], "witnessKnowledgeCreated": [], "visibilityToPlayer": "Discoverable."},
-    {"eventId": "event-theft-discovered", "sequenceOrder": 7, "dateTimeLabel": "Opening moment", "locationId": "loc-locked-study", "participantCharacterIds": ["char-rowan-vale", "char-celia-vale", "char-thomas-greer"], "summary": "The missing watch is discovered.", "cause": "Attention returns to the case.", "effect": "The investigation begins.", "evidenceCreatedIds": ["evidence-pawn-envelope"], "evidenceMovedIds": [], "clueIdsGenerated": ["clue-celia-pawn-envelope"], "witnessKnowledgeCreated": ["The room remained closed."], "visibilityToPlayer": "Opening scene."}
+    {
+      "eventId": "event-money-pressure",
+      "sequenceOrder": 1,
+      "dateTimeLabel": "Before the gathering",
+      "locationId": "loc-locked-study",
+      "participantCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "summary": "The culprit receives private financial pressure.",
+      "cause": "An urgent payment is due.",
+      "effect": "The watch becomes tempting.",
+      "evidenceCreatedIds": [
+        "evidence-thomas-note"
+      ],
+      "evidenceMovedIds": [],
+      "clueIdsGenerated": [
+        "clue-thomas-money-note"
+      ],
+      "witnessKnowledgeCreated": [
+        "Rowan knows of a recent request for money."
+      ],
+      "visibilityToPlayer": "Discoverable."
+    },
+    {
+      "eventId": "event-panel-prepared",
+      "sequenceOrder": 2,
+      "dateTimeLabel": "Earlier that day",
+      "locationId": "loc-locked-study",
+      "participantCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "summary": "The rear service panel is loosened.",
+      "cause": "The culprit needs an alternate access point.",
+      "effect": "The front lock can remain intact.",
+      "evidenceCreatedIds": [
+        "evidence-panel-screw",
+        "evidence-black-thread"
+      ],
+      "evidenceMovedIds": [],
+      "clueIdsGenerated": [
+        "clue-loose-service-panel",
+        "clue-brass-dust",
+        "clue-black-thread",
+        "clue-clock-oil"
+      ],
+      "witnessKnowledgeCreated": [],
+      "visibilityToPlayer": "Discoverable."
+    },
+    {
+      "eventId": "event-gathering-begins",
+      "sequenceOrder": 3,
+      "dateTimeLabel": "Shortly before the theft",
+      "locationId": "loc-locked-study",
+      "participantCharacterIds": [
+        "char-rowan-vale",
+        "char-celia-vale",
+        "char-thomas-greer"
+      ],
+      "summary": "The watch is present while all three are in the room.",
+      "cause": "The owner displays it.",
+      "effect": "All suspects know it is present.",
+      "evidenceCreatedIds": [],
+      "evidenceMovedIds": [],
+      "clueIdsGenerated": [],
+      "witnessKnowledgeCreated": [
+        "The watch was present shortly before the theft.",
+        "The tallcase clock in the study later stopped at 8:13."
+      ],
+      "visibilityToPlayer": "Opening fact."
+    },
+    {
+      "eventId": "event-distraction-window",
+      "sequenceOrder": 4,
+      "dateTimeLabel": "During service",
+      "locationId": "loc-locked-study",
+      "participantCharacterIds": [
+        "char-rowan-vale",
+        "char-celia-vale",
+        "char-thomas-greer"
+      ],
+      "summary": "A brief attention break occurs while the culprit is beside the case.",
+      "cause": "Two witnesses are momentarily looking elsewhere.",
+      "effect": "The culprit has a few seconds of opportunity.",
+      "evidenceCreatedIds": [],
+      "evidenceMovedIds": [],
+      "clueIdsGenerated": [],
+      "witnessKnowledgeCreated": [
+        "Celia recalls Thomas beside the case."
+      ],
+      "visibilityToPlayer": "Discoverable through questioning."
+    },
+    {
+      "eventId": "event-watch-taken",
+      "sequenceOrder": 5,
+      "dateTimeLabel": "Moments later",
+      "locationId": "loc-locked-study",
+      "participantCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "summary": "The watch is removed through the prepared panel.",
+      "cause": "The panel and opportunity window align.",
+      "effect": "The object leaves the case while the front lock remains intact.",
+      "evidenceCreatedIds": [],
+      "evidenceMovedIds": [
+        "evidence-pocket-watch"
+      ],
+      "clueIdsGenerated": [
+        "clue-thomas-contradiction"
+      ],
+      "witnessKnowledgeCreated": [],
+      "visibilityToPlayer": "Inferred."
+    },
+    {
+      "eventId": "event-watch-hidden",
+      "sequenceOrder": 6,
+      "dateTimeLabel": "Before discovery",
+      "locationId": "loc-locked-study",
+      "participantCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "summary": "The object is hidden in the tallcase clock, disturbing the mechanism.",
+      "cause": "The culprit needs a temporary hiding place.",
+      "effect": "The tallcase clock becomes an evidence source.",
+      "evidenceCreatedIds": [
+        "evidence-tallcase-clock"
+      ],
+      "evidenceMovedIds": [
+        "evidence-pocket-watch"
+      ],
+      "clueIdsGenerated": [
+        "clue-stopped-clock",
+        "clue-scraped-clock-latch",
+        "clue-watch-in-clock"
+      ],
+      "witnessKnowledgeCreated": [],
+      "visibilityToPlayer": "Discoverable."
+    },
+    {
+      "eventId": "event-theft-discovered",
+      "sequenceOrder": 7,
+      "dateTimeLabel": "Opening moment",
+      "locationId": "loc-locked-study",
+      "participantCharacterIds": [
+        "char-rowan-vale",
+        "char-celia-vale",
+        "char-thomas-greer"
+      ],
+      "summary": "The missing watch is discovered; the tallcase clock in the study has stopped at 8:13.",
+      "cause": "Attention returns to the case.",
+      "effect": "The investigation begins.",
+      "evidenceCreatedIds": [
+        "evidence-pawn-envelope"
+      ],
+      "evidenceMovedIds": [],
+      "clueIdsGenerated": [
+        "clue-celia-pawn-envelope"
+      ],
+      "witnessKnowledgeCreated": [
+        "The room remained closed."
+      ],
+      "visibilityToPlayer": "Opening scene."
+    }
   ],
   "clues": [
-    {"clueId": "clue-loose-service-panel", "title": "Loose rear service panel", "playerFacingDescription": "The front lock is intact, but a rear service panel is loose.", "trueMeaning": "The object was removed through the rear panel.", "importance": "essential", "discoveryLocationId": "loc-locked-study", "discoveryConditions": "Inspect the case rear panel.", "sourceOrProvenance": "Prepared earlier by the culprit.", "associatedTimelineEventId": "event-panel-prepared", "associatedCharacterIds": ["char-thomas-greer"], "associatedEvidenceIds": ["evidence-display-case", "evidence-panel-screw"], "pointsTowardCharacterIds": ["char-thomas-greer"], "clearsCharacterIds": [], "supportsSolution": true, "resolvedInFinalReveal": "The front lock was not the access point.", "assetIds": ["asset-display-case"], "textFallback": "The rear service panel can lift slightly."},
-    {"clueId": "clue-brass-dust", "title": "Fresh brass dust", "playerFacingDescription": "Bright brass dust sits below the rear panel screws.", "trueMeaning": "The screws were recently disturbed.", "importance": "essential", "discoveryLocationId": "loc-locked-study", "discoveryConditions": "Inspect the area below the case.", "sourceOrProvenance": "Created during preparation.", "associatedTimelineEventId": "event-panel-prepared", "associatedCharacterIds": ["char-thomas-greer"], "associatedEvidenceIds": ["evidence-panel-screw"], "pointsTowardCharacterIds": ["char-thomas-greer"], "clearsCharacterIds": [], "supportsSolution": true, "resolvedInFinalReveal": "The tampering was recent.", "assetIds": [], "textFallback": "The dust is fresh."},
-    {"clueId": "clue-black-thread", "title": "Black thread", "playerFacingDescription": "A black thread is caught on the case panel.", "trueMeaning": "It connects the case tampering to the culprit's clothing.", "importance": "essential", "discoveryLocationId": "loc-locked-study", "discoveryConditions": "Inspect the panel or compare clothing.", "sourceOrProvenance": "Snagged during preparation.", "associatedTimelineEventId": "event-panel-prepared", "associatedCharacterIds": ["char-thomas-greer"], "associatedEvidenceIds": ["evidence-black-thread"], "pointsTowardCharacterIds": ["char-thomas-greer"], "clearsCharacterIds": ["char-celia-vale", "char-rowan-vale"], "supportsSolution": true, "resolvedInFinalReveal": "The trace links the culprit to the panel.", "assetIds": [], "textFallback": "The thread matches the culprit's clothing."},
-    {"clueId": "clue-clock-oil", "title": "Clock oil trace", "playerFacingDescription": "A disturbed screw carries a faint oil scent.", "trueMeaning": "The panel handler also handled the clock oil.", "importance": "essential", "discoveryLocationId": "loc-locked-study", "discoveryConditions": "Inspect the screw and compare with clock oil.", "sourceOrProvenance": "Transferred from clock duties.", "associatedTimelineEventId": "event-panel-prepared", "associatedCharacterIds": ["char-thomas-greer"], "associatedEvidenceIds": ["evidence-clock-oil", "evidence-panel-screw"], "pointsTowardCharacterIds": ["char-thomas-greer"], "clearsCharacterIds": [], "supportsSolution": true, "resolvedInFinalReveal": "The oil links case tampering and clock access.", "assetIds": [], "textFallback": "The same oil smell appears near the clock."},
-    {"clueId": "clue-stopped-clock", "title": "Stopped clock", "playerFacingDescription": "The clock has stopped during the theft window.", "trueMeaning": "The hidden object disturbed the mechanism.", "importance": "essential", "discoveryLocationId": "loc-locked-study", "discoveryConditions": "Inspect the clock.", "sourceOrProvenance": "The hiding place created the disturbance.", "associatedTimelineEventId": "event-watch-hidden", "associatedCharacterIds": ["char-thomas-greer"], "associatedEvidenceIds": ["evidence-tallcase-clock", "evidence-pocket-watch"], "pointsTowardCharacterIds": ["char-thomas-greer"], "clearsCharacterIds": [], "supportsSolution": true, "resolvedInFinalReveal": "The stopped clock identifies the hiding area.", "assetIds": ["asset-tallcase-clock"], "textFallback": "The clock stopped during the theft window."},
-    {"clueId": "clue-scraped-clock-latch", "title": "Scraped clock latch", "playerFacingDescription": "The lower clock latch has a fresh scrape.", "trueMeaning": "The compartment was opened recently.", "importance": "essential", "discoveryLocationId": "loc-locked-study", "discoveryConditions": "Inspect the lower clock door.", "sourceOrProvenance": "Created when the culprit hid the object.", "associatedTimelineEventId": "event-watch-hidden", "associatedCharacterIds": ["char-thomas-greer"], "associatedEvidenceIds": ["evidence-tallcase-clock"], "pointsTowardCharacterIds": ["char-thomas-greer"], "clearsCharacterIds": [], "supportsSolution": true, "resolvedInFinalReveal": "The compartment was recently opened.", "assetIds": ["asset-tallcase-clock"], "textFallback": "The scrape is fresh."},
-    {"clueId": "clue-watch-in-clock", "title": "Hidden ticking", "playerFacingDescription": "A faint second ticking can be heard inside the stopped clock.", "trueMeaning": "The missing object is hidden inside the clock.", "importance": "essential", "discoveryLocationId": "loc-locked-study", "discoveryConditions": "Listen to or open the clock compartment.", "sourceOrProvenance": "The culprit hid the object there.", "associatedTimelineEventId": "event-watch-hidden", "associatedCharacterIds": ["char-thomas-greer"], "associatedEvidenceIds": ["evidence-pocket-watch", "evidence-tallcase-clock"], "pointsTowardCharacterIds": ["char-thomas-greer"], "clearsCharacterIds": ["char-celia-vale", "char-rowan-vale"], "supportsSolution": true, "resolvedInFinalReveal": "The hidden object proves the solution.", "assetIds": ["asset-pocket-watch", "asset-tallcase-clock"], "textFallback": "The missing object is inside the clock."},
-    {"clueId": "clue-thomas-contradiction", "title": "Over-specific denial", "playerFacingDescription": "When asked about his movements, Thomas volunteers a denial about the clock before the player raises it.", "trueMeaning": "He is too aware of the clock issue.", "importance": "essential", "discoveryLocationId": "loc-locked-study", "discoveryConditions": "Question Thomas about movements without first raising the clock.", "sourceOrProvenance": "Guilty overcorrection.", "associatedTimelineEventId": "event-watch-hidden", "associatedCharacterIds": ["char-thomas-greer"], "associatedEvidenceIds": ["evidence-tallcase-clock"], "pointsTowardCharacterIds": ["char-thomas-greer"], "clearsCharacterIds": [], "supportsSolution": true, "resolvedInFinalReveal": "The denial reveals guilty awareness.", "assetIds": [], "textFallback": "Thomas answers more specifically than the question requires."},
-    {"clueId": "clue-thomas-money-note", "title": "Private money note", "playerFacingDescription": "A folded note refers to an urgent payment.", "trueMeaning": "Thomas has a motive for theft.", "importance": "supporting", "discoveryLocationId": "loc-locked-study", "discoveryConditions": "Search near the service area or ask about recent money requests.", "sourceOrProvenance": "Carried and lost by Thomas.", "associatedTimelineEventId": "event-money-pressure", "associatedCharacterIds": ["char-thomas-greer"], "associatedEvidenceIds": ["evidence-thomas-note"], "pointsTowardCharacterIds": ["char-thomas-greer"], "clearsCharacterIds": [], "supportsSolution": true, "resolvedInFinalReveal": "The note supplies motive.", "assetIds": [], "textFallback": "The note shows urgent financial pressure."},
-    {"clueId": "clue-celia-pawn-envelope", "title": "Private envelope", "playerFacingDescription": "A private envelope is visible near Celia's belongings.", "trueMeaning": "It concerns Celia's own matter and is unrelated to the watch.", "importance": "red_herring", "discoveryLocationId": "loc-locked-study", "discoveryConditions": "Notice Celia's nervousness or ask about the envelope.", "sourceOrProvenance": "Brought by Celia.", "associatedTimelineEventId": "event-theft-discovered", "associatedCharacterIds": ["char-celia-vale"], "associatedEvidenceIds": ["evidence-pawn-envelope"], "pointsTowardCharacterIds": ["char-celia-vale"], "clearsCharacterIds": ["char-celia-vale"], "supportsSolution": false, "resolvedInFinalReveal": "It explains nervousness, not theft.", "assetIds": [], "textFallback": "The envelope concerns a different item."}
+    {
+      "clueId": "clue-loose-service-panel",
+      "title": "Loose rear service panel",
+      "playerFacingDescription": "The front lock is intact, but a rear service panel is loose.",
+      "trueMeaning": "The object was removed through the rear panel.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-locked-study",
+      "discoveryConditions": "Inspect the case rear panel.",
+      "sourceOrProvenance": "Prepared earlier by the culprit.",
+      "associatedTimelineEventId": "event-panel-prepared",
+      "associatedCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "associatedEvidenceIds": [
+        "evidence-display-case",
+        "evidence-panel-screw"
+      ],
+      "pointsTowardCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "clearsCharacterIds": [],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "The front lock was not the access point.",
+      "assetIds": [
+        "asset-display-case"
+      ],
+      "textFallback": "The rear service panel can lift slightly."
+    },
+    {
+      "clueId": "clue-brass-dust",
+      "title": "Fresh brass dust",
+      "playerFacingDescription": "Bright brass dust sits below the rear panel screws.",
+      "trueMeaning": "The screws were recently disturbed.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-locked-study",
+      "discoveryConditions": "Inspect the area below the case.",
+      "sourceOrProvenance": "Created during preparation.",
+      "associatedTimelineEventId": "event-panel-prepared",
+      "associatedCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "associatedEvidenceIds": [
+        "evidence-panel-screw"
+      ],
+      "pointsTowardCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "clearsCharacterIds": [],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "The tampering was recent.",
+      "assetIds": [],
+      "textFallback": "The dust is fresh."
+    },
+    {
+      "clueId": "clue-black-thread",
+      "title": "Black thread",
+      "playerFacingDescription": "A black thread is caught on the case panel.",
+      "trueMeaning": "It connects the case tampering to the culprit's clothing.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-locked-study",
+      "discoveryConditions": "Inspect the panel or compare clothing.",
+      "sourceOrProvenance": "Snagged during preparation.",
+      "associatedTimelineEventId": "event-panel-prepared",
+      "associatedCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "associatedEvidenceIds": [
+        "evidence-black-thread"
+      ],
+      "pointsTowardCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "clearsCharacterIds": [
+        "char-celia-vale",
+        "char-rowan-vale"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "The trace links the culprit to the panel.",
+      "assetIds": [],
+      "textFallback": "The thread matches the culprit's clothing."
+    },
+    {
+      "clueId": "clue-clock-oil",
+      "title": "Clock oil trace",
+      "playerFacingDescription": "A disturbed screw carries a faint oil scent.",
+      "trueMeaning": "The panel handler also handled the clock oil.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-locked-study",
+      "discoveryConditions": "Inspect the screw and compare with clock oil.",
+      "sourceOrProvenance": "Transferred from clock duties.",
+      "associatedTimelineEventId": "event-panel-prepared",
+      "associatedCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "associatedEvidenceIds": [
+        "evidence-clock-oil",
+        "evidence-panel-screw"
+      ],
+      "pointsTowardCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "clearsCharacterIds": [],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "The oil links case tampering and clock access.",
+      "assetIds": [],
+      "textFallback": "The same oil smell appears near the tallcase clock."
+    },
+    {
+      "clueId": "clue-stopped-clock",
+      "title": "Stopped tallcase clock",
+      "playerFacingDescription": "The tallcase clock in the study has stopped during the theft window.",
+      "trueMeaning": "The hidden object disturbed the mechanism.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-locked-study",
+      "discoveryConditions": "Inspect the tallcase clock.",
+      "sourceOrProvenance": "The hiding place created the disturbance.",
+      "associatedTimelineEventId": "event-watch-hidden",
+      "associatedCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "associatedEvidenceIds": [
+        "evidence-tallcase-clock",
+        "evidence-pocket-watch"
+      ],
+      "pointsTowardCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "clearsCharacterIds": [],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "The stopped tallcase clock identifies the hiding area.",
+      "assetIds": [
+        "asset-tallcase-clock"
+      ],
+      "textFallback": "The tallcase clock stopped during the theft window."
+    },
+    {
+      "clueId": "clue-scraped-clock-latch",
+      "title": "Scraped clock latch",
+      "playerFacingDescription": "The lower clock latch has a fresh scrape.",
+      "trueMeaning": "The compartment was opened recently.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-locked-study",
+      "discoveryConditions": "Inspect the lower clock door.",
+      "sourceOrProvenance": "Created when the culprit hid the object.",
+      "associatedTimelineEventId": "event-watch-hidden",
+      "associatedCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "associatedEvidenceIds": [
+        "evidence-tallcase-clock"
+      ],
+      "pointsTowardCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "clearsCharacterIds": [],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "The compartment was recently opened.",
+      "assetIds": [
+        "asset-tallcase-clock"
+      ],
+      "textFallback": "The scrape is fresh."
+    },
+    {
+      "clueId": "clue-watch-in-clock",
+      "title": "Hidden ticking",
+      "playerFacingDescription": "A faint second ticking can be heard inside the stopped tallcase clock.",
+      "trueMeaning": "The missing object is hidden inside the clock.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-locked-study",
+      "discoveryConditions": "Listen to or open the clock compartment.",
+      "sourceOrProvenance": "The culprit hid the object there.",
+      "associatedTimelineEventId": "event-watch-hidden",
+      "associatedCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "associatedEvidenceIds": [
+        "evidence-pocket-watch",
+        "evidence-tallcase-clock"
+      ],
+      "pointsTowardCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "clearsCharacterIds": [
+        "char-celia-vale",
+        "char-rowan-vale"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "The hidden object proves the solution.",
+      "assetIds": [
+        "asset-pocket-watch",
+        "asset-tallcase-clock"
+      ],
+      "textFallback": "The missing object is inside the clock."
+    },
+    {
+      "clueId": "clue-thomas-contradiction",
+      "title": "Over-specific denial",
+      "playerFacingDescription": "When asked about his movements, Thomas volunteers a denial about the clock before the player raises it.",
+      "trueMeaning": "He is too aware of the clock issue.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-locked-study",
+      "discoveryConditions": "Question Thomas about movements without first raising the clock.",
+      "sourceOrProvenance": "Guilty overcorrection.",
+      "associatedTimelineEventId": "event-watch-hidden",
+      "associatedCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "associatedEvidenceIds": [
+        "evidence-tallcase-clock"
+      ],
+      "pointsTowardCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "clearsCharacterIds": [],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "The denial reveals guilty awareness.",
+      "assetIds": [],
+      "textFallback": "Thomas answers more specifically than the question requires."
+    },
+    {
+      "clueId": "clue-thomas-money-note",
+      "title": "Private money note",
+      "playerFacingDescription": "A folded note refers to an urgent payment.",
+      "trueMeaning": "Thomas has a motive for theft.",
+      "importance": "supporting",
+      "discoveryLocationId": "loc-locked-study",
+      "discoveryConditions": "Search near the service area or ask about recent money requests.",
+      "sourceOrProvenance": "Carried and lost by Thomas.",
+      "associatedTimelineEventId": "event-money-pressure",
+      "associatedCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "associatedEvidenceIds": [
+        "evidence-thomas-note"
+      ],
+      "pointsTowardCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "clearsCharacterIds": [],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "The note supplies motive.",
+      "assetIds": [],
+      "textFallback": "The note shows urgent financial pressure."
+    },
+    {
+      "clueId": "clue-celia-pawn-envelope",
+      "title": "Private envelope",
+      "playerFacingDescription": "A private envelope is visible near Celia's belongings.",
+      "trueMeaning": "It concerns Celia's own matter and is unrelated to the watch.",
+      "importance": "red_herring",
+      "discoveryLocationId": "loc-locked-study",
+      "discoveryConditions": "Notice Celia's nervousness or ask about the envelope.",
+      "sourceOrProvenance": "Brought by Celia.",
+      "associatedTimelineEventId": "event-theft-discovered",
+      "associatedCharacterIds": [
+        "char-celia-vale"
+      ],
+      "associatedEvidenceIds": [
+        "evidence-pawn-envelope"
+      ],
+      "pointsTowardCharacterIds": [
+        "char-celia-vale"
+      ],
+      "clearsCharacterIds": [
+        "char-celia-vale"
+      ],
+      "supportsSolution": false,
+      "resolvedInFinalReveal": "It explains nervousness, not theft.",
+      "assetIds": [],
+      "textFallback": "The envelope concerns a different item."
+    }
   ],
-  "redHerrings": [{"redHerringId": "rh-celia-pawn-envelope", "title": "Private envelope", "appearsToSuggest": "Celia needs money.", "innocentExplanation": "The matter is unrelated to the stolen watch.", "discoveryConditions": "Ask about Celia's nervousness.", "clearanceConditions": "Read or explain the envelope.", "relatedClueIds": ["clue-celia-pawn-envelope"], "fairnessNotes": "Clearable and limited to one red herring."}],
+  "redHerrings": [
+    {
+      "redHerringId": "rh-celia-pawn-envelope",
+      "title": "Private envelope",
+      "appearsToSuggest": "Celia needs money.",
+      "innocentExplanation": "The matter is unrelated to the stolen watch.",
+      "discoveryConditions": "Ask about Celia's nervousness.",
+      "clearanceConditions": "Read or explain the envelope.",
+      "relatedClueIds": [
+        "clue-celia-pawn-envelope"
+      ],
+      "fairnessNotes": "Clearable and limited to one red herring."
+    }
+  ],
   "evidence": [
-    {"evidenceId": "evidence-display-case", "title": "Display case", "type": "furniture", "description": "A case with an intact front lock and loosened rear panel.", "currentLocationId": "loc-locked-study", "createdByCharacterId": "char-rowan-vale", "createdDuringTimelineEventId": "event-gathering-begins", "chainOfCustody": ["Owned by Rowan", "Prepared by Thomas", "Inspected by player"], "accessHistory": ["Rowan has front-key access", "Thomas has preparation access"], "discoveryConditions": "Visible from start; details require inspection.", "associatedClueIds": ["clue-loose-service-panel", "clue-brass-dust", "clue-black-thread", "clue-clock-oil"], "assetIds": ["asset-display-case"]},
-    {"evidenceId": "evidence-panel-screw", "title": "Rear panel screw", "type": "physical trace", "description": "A recently disturbed screw.", "currentLocationId": "loc-locked-study", "createdByCharacterId": "char-thomas-greer", "createdDuringTimelineEventId": "event-panel-prepared", "chainOfCustody": ["Part of case", "Disturbed by culprit", "Found in place"], "accessHistory": ["Accessible during room preparation"], "discoveryConditions": "Inspect rear panel.", "associatedClueIds": ["clue-loose-service-panel", "clue-brass-dust", "clue-clock-oil"], "assetIds": ["asset-display-case"]},
-    {"evidenceId": "evidence-black-thread", "title": "Black thread", "type": "fiber", "description": "A black fiber caught on the case panel.", "currentLocationId": "loc-locked-study", "createdByCharacterId": "char-thomas-greer", "createdDuringTimelineEventId": "event-panel-prepared", "chainOfCustody": ["Transferred from culprit", "Caught on panel", "Available to discover"], "accessHistory": ["Requires contact with panel"], "discoveryConditions": "Inspect panel.", "associatedClueIds": ["clue-black-thread"], "assetIds": []},
-    {"evidenceId": "evidence-clock-oil", "title": "Clock oil cloth", "type": "tool trace", "description": "Oil cloth used for clock maintenance.", "currentLocationId": "loc-locked-study", "createdByCharacterId": "char-thomas-greer", "createdDuringTimelineEventId": "event-panel-prepared", "chainOfCustody": ["Kept near clock", "Used by Thomas"], "accessHistory": ["Routine valet access"], "discoveryConditions": "Inspect clock area.", "associatedClueIds": ["clue-clock-oil"], "assetIds": ["asset-tallcase-clock"]},
-    {"evidenceId": "evidence-tallcase-clock", "title": "Tallcase clock", "type": "furniture/mechanism", "description": "Clock with disturbed lower compartment.", "currentLocationId": "loc-locked-study", "createdByCharacterId": "char-rowan-vale", "createdDuringTimelineEventId": "event-watch-hidden", "chainOfCustody": ["Owned by Rowan", "Maintained by Thomas", "Used as hiding place"], "accessHistory": ["Thomas has routine access"], "discoveryConditions": "Visible from start; clues require inspection or listening.", "associatedClueIds": ["clue-stopped-clock", "clue-scraped-clock-latch", "clue-watch-in-clock"], "assetIds": ["asset-tallcase-clock"]},
-    {"evidenceId": "evidence-pocket-watch", "title": "Pocket watch", "type": "stolen object", "description": "The missing watch.", "currentLocationId": "loc-locked-study", "createdByCharacterId": "char-rowan-vale", "createdDuringTimelineEventId": "event-watch-hidden", "chainOfCustody": ["Owned by Rowan", "Displayed in case", "Taken by culprit", "Hidden in clock"], "accessHistory": ["Visible to all", "Handled by culprit"], "discoveryConditions": "Search clock after clues.", "associatedClueIds": ["clue-watch-in-clock"], "assetIds": ["asset-pocket-watch"]},
-    {"evidenceId": "evidence-thomas-note", "title": "Private money note", "type": "document", "description": "A note showing urgent financial pressure.", "currentLocationId": "loc-locked-study", "createdByCharacterId": "char-thomas-greer", "createdDuringTimelineEventId": "event-money-pressure", "chainOfCustody": ["Received by Thomas", "Carried during service", "Found near service area"], "accessHistory": ["Private before investigation"], "discoveryConditions": "Search service area or ask about money request.", "associatedClueIds": ["clue-thomas-money-note"], "assetIds": []},
-    {"evidenceId": "evidence-pawn-envelope", "title": "Private envelope", "type": "document", "description": "A red-herring document unrelated to the watch.", "currentLocationId": "loc-locked-study", "createdByCharacterId": "char-celia-vale", "createdDuringTimelineEventId": "event-theft-discovered", "chainOfCustody": ["Brought by Celia", "Visible during investigation"], "accessHistory": ["Celia possessed it"], "discoveryConditions": "Notice Celia's nervousness.", "associatedClueIds": ["clue-celia-pawn-envelope"], "assetIds": []}
+    {
+      "evidenceId": "evidence-display-case",
+      "title": "Display case",
+      "type": "furniture",
+      "description": "A case with an intact front lock and loosened rear panel.",
+      "currentLocationId": "loc-locked-study",
+      "createdByCharacterId": "char-rowan-vale",
+      "createdDuringTimelineEventId": "event-gathering-begins",
+      "chainOfCustody": [
+        "Owned by Rowan",
+        "Prepared by Thomas",
+        "Inspected by player"
+      ],
+      "accessHistory": [
+        "Rowan has front-key access",
+        "Thomas has preparation access"
+      ],
+      "discoveryConditions": "Visible from start; details require inspection.",
+      "associatedClueIds": [
+        "clue-loose-service-panel",
+        "clue-brass-dust",
+        "clue-black-thread",
+        "clue-clock-oil"
+      ],
+      "assetIds": [
+        "asset-display-case"
+      ]
+    },
+    {
+      "evidenceId": "evidence-panel-screw",
+      "title": "Rear panel screw",
+      "type": "physical trace",
+      "description": "A recently disturbed screw.",
+      "currentLocationId": "loc-locked-study",
+      "createdByCharacterId": "char-thomas-greer",
+      "createdDuringTimelineEventId": "event-panel-prepared",
+      "chainOfCustody": [
+        "Part of case",
+        "Disturbed by culprit",
+        "Found in place"
+      ],
+      "accessHistory": [
+        "Accessible during room preparation"
+      ],
+      "discoveryConditions": "Inspect rear panel.",
+      "associatedClueIds": [
+        "clue-loose-service-panel",
+        "clue-brass-dust",
+        "clue-clock-oil"
+      ],
+      "assetIds": [
+        "asset-display-case"
+      ]
+    },
+    {
+      "evidenceId": "evidence-black-thread",
+      "title": "Black thread",
+      "type": "fiber",
+      "description": "A black fiber caught on the case panel.",
+      "currentLocationId": "loc-locked-study",
+      "createdByCharacterId": "char-thomas-greer",
+      "createdDuringTimelineEventId": "event-panel-prepared",
+      "chainOfCustody": [
+        "Transferred from culprit",
+        "Caught on panel",
+        "Available to discover"
+      ],
+      "accessHistory": [
+        "Requires contact with panel"
+      ],
+      "discoveryConditions": "Inspect panel.",
+      "associatedClueIds": [
+        "clue-black-thread"
+      ],
+      "assetIds": []
+    },
+    {
+      "evidenceId": "evidence-clock-oil",
+      "title": "Clock oil cloth",
+      "type": "tool trace",
+      "description": "Oil cloth used for clock maintenance.",
+      "currentLocationId": "loc-locked-study",
+      "createdByCharacterId": "char-thomas-greer",
+      "createdDuringTimelineEventId": "event-panel-prepared",
+      "chainOfCustody": [
+        "Kept near clock",
+        "Used by Thomas"
+      ],
+      "accessHistory": [
+        "Routine valet access"
+      ],
+      "discoveryConditions": "Inspect clock area.",
+      "associatedClueIds": [
+        "clue-clock-oil"
+      ],
+      "assetIds": [
+        "asset-tallcase-clock"
+      ]
+    },
+    {
+      "evidenceId": "evidence-tallcase-clock",
+      "title": "Tallcase clock",
+      "type": "furniture/mechanism",
+      "description": "Tallcase clock with disturbed lower compartment.",
+      "currentLocationId": "loc-locked-study",
+      "createdByCharacterId": "char-rowan-vale",
+      "createdDuringTimelineEventId": "event-watch-hidden",
+      "chainOfCustody": [
+        "Owned by Rowan",
+        "Maintained by Thomas",
+        "Used as hiding place"
+      ],
+      "accessHistory": [
+        "Thomas has routine access"
+      ],
+      "discoveryConditions": "Visible from start; clues require inspection or listening.",
+      "associatedClueIds": [
+        "clue-stopped-clock",
+        "clue-scraped-clock-latch",
+        "clue-watch-in-clock"
+      ],
+      "assetIds": [
+        "asset-tallcase-clock"
+      ]
+    },
+    {
+      "evidenceId": "evidence-pocket-watch",
+      "title": "Pocket watch",
+      "type": "stolen object",
+      "description": "The missing watch.",
+      "currentLocationId": "loc-locked-study",
+      "createdByCharacterId": "char-rowan-vale",
+      "createdDuringTimelineEventId": "event-watch-hidden",
+      "chainOfCustody": [
+        "Owned by Rowan",
+        "Displayed in case",
+        "Taken by culprit",
+        "Hidden in clock"
+      ],
+      "accessHistory": [
+        "Visible to all",
+        "Handled by culprit"
+      ],
+      "discoveryConditions": "Search clock after clues.",
+      "associatedClueIds": [
+        "clue-watch-in-clock"
+      ],
+      "assetIds": [
+        "asset-pocket-watch"
+      ]
+    },
+    {
+      "evidenceId": "evidence-thomas-note",
+      "title": "Private money note",
+      "type": "document",
+      "description": "A note showing urgent financial pressure.",
+      "currentLocationId": "loc-locked-study",
+      "createdByCharacterId": "char-thomas-greer",
+      "createdDuringTimelineEventId": "event-money-pressure",
+      "chainOfCustody": [
+        "Received by Thomas",
+        "Carried during service",
+        "Found near service area"
+      ],
+      "accessHistory": [
+        "Private before investigation"
+      ],
+      "discoveryConditions": "Search service area or ask about money request.",
+      "associatedClueIds": [
+        "clue-thomas-money-note"
+      ],
+      "assetIds": []
+    },
+    {
+      "evidenceId": "evidence-pawn-envelope",
+      "title": "Private envelope",
+      "type": "document",
+      "description": "A red-herring document unrelated to the watch.",
+      "currentLocationId": "loc-locked-study",
+      "createdByCharacterId": "char-celia-vale",
+      "createdDuringTimelineEventId": "event-theft-discovered",
+      "chainOfCustody": [
+        "Brought by Celia",
+        "Visible during investigation"
+      ],
+      "accessHistory": [
+        "Celia possessed it"
+      ],
+      "discoveryConditions": "Notice Celia's nervousness.",
+      "associatedClueIds": [
+        "clue-celia-pawn-envelope"
+      ],
+      "assetIds": []
+    }
   ],
   "scenes": [
-    {"sceneId": "scene-opening", "locationId": "loc-locked-study", "entryConditions": "Start of game.", "openingNarration": "The investigation begins in the study with three suspects present and the watch missing from an apparently locked case.", "availableCharacterIds": ["char-rowan-vale", "char-celia-vale", "char-thomas-greer"], "availableClueIds": ["clue-celia-pawn-envelope"], "availableEvidenceIds": ["evidence-display-case", "evidence-tallcase-clock", "evidence-pawn-envelope"], "likelyPlayerQuestions": ["Who was present?", "When was the watch last seen?", "Was the case locked?", "Can I inspect the case?"], "safeAnswers": {"Who was present?": "The three NPCs in the room.", "Was the case locked?": "The front lock appears intact."}, "hiddenFactsNotYetRevealed": ["The rear panel was prepared earlier.", "The object is hidden nearby."], "exitLeads": ["Inspect case", "Inspect clock", "Question suspects"]},
-    {"sceneId": "scene-inspect-display-case", "locationId": "loc-locked-study", "entryConditions": "Player inspects display case.", "openingNarration": "The front lock is clean; the rear of the case is more interesting.", "availableCharacterIds": ["char-rowan-vale", "char-celia-vale", "char-thomas-greer"], "availableClueIds": ["clue-loose-service-panel", "clue-brass-dust", "clue-black-thread", "clue-clock-oil"], "availableEvidenceIds": ["evidence-display-case", "evidence-panel-screw", "evidence-black-thread"], "likelyPlayerQuestions": ["Is the lock damaged?", "Can the case open another way?", "Who prepared the room?"], "safeAnswers": {"Is the lock damaged?": "No.", "Who prepared the room?": "Thomas prepared it."}, "hiddenFactsNotYetRevealed": ["The watch left through the rear panel."], "exitLeads": ["Compare traces", "Inspect clock", "Question Thomas"]},
-    {"sceneId": "scene-inspect-clock", "locationId": "loc-locked-study", "entryConditions": "Player inspects clock.", "openingNarration": "The clock is not behaving as it should.", "availableCharacterIds": ["char-rowan-vale", "char-celia-vale", "char-thomas-greer"], "availableClueIds": ["clue-stopped-clock", "clue-scraped-clock-latch", "clue-watch-in-clock"], "availableEvidenceIds": ["evidence-tallcase-clock", "evidence-clock-oil", "evidence-pocket-watch"], "likelyPlayerQuestions": ["Who tends the clock?", "Can I open it?", "Do I hear anything?"], "safeAnswers": {"Who tends the clock?": "Thomas tends it.", "Can I open it?": "Yes, with permission."}, "hiddenFactsNotYetRevealed": ["The missing object is inside until discovered."], "exitLeads": ["Question Thomas", "Search clock", "Make accusation"]},
-    {"sceneId": "scene-questioning", "locationId": "loc-locked-study", "entryConditions": "Player questions NPCs.", "openingNarration": "Each person has a different reason to be uneasy.", "availableCharacterIds": ["char-rowan-vale", "char-celia-vale", "char-thomas-greer"], "availableClueIds": ["clue-thomas-contradiction", "clue-thomas-money-note", "clue-celia-pawn-envelope"], "availableEvidenceIds": ["evidence-thomas-note", "evidence-pawn-envelope"], "likelyPlayerQuestions": ["Where were you?", "Who had access?", "Who needed money?"], "safeAnswers": {"Who had access?": "The owner had front-key access; Thomas had preparation access."}, "hiddenFactsNotYetRevealed": ["The motive clue should be discoverable, not volunteered too early."], "exitLeads": ["Inspect evidence", "Reconstruct timeline", "Accuse"]},
-    {"sceneId": "scene-final-accusation", "locationId": "loc-locked-study", "entryConditions": "Player has enough proof or finds the hidden object.", "openingNarration": "The evidence chain is complete.", "availableCharacterIds": ["char-rowan-vale", "char-celia-vale", "char-thomas-greer"], "availableClueIds": ["clue-loose-service-panel", "clue-black-thread", "clue-clock-oil", "clue-stopped-clock", "clue-watch-in-clock", "clue-thomas-money-note"], "availableEvidenceIds": ["evidence-pocket-watch", "evidence-thomas-note"], "likelyPlayerQuestions": ["Who did it?", "How?", "Why?"], "safeAnswers": {"Was the red herring suspect involved?": "No."}, "hiddenFactsNotYetRevealed": [], "exitLeads": []}
+    {
+      "sceneId": "scene-opening",
+      "locationId": "loc-locked-study",
+      "entryConditions": "Start of game.",
+      "openingNarration": "The investigation begins in the study with three suspects present, the watch missing from an apparently locked case, and the tallcase clock in the study stopped at 8:13.",
+      "availableCharacterIds": [
+        "char-rowan-vale",
+        "char-celia-vale",
+        "char-thomas-greer"
+      ],
+      "availableClueIds": [
+        "clue-celia-pawn-envelope"
+      ],
+      "availableEvidenceIds": [
+        "evidence-display-case",
+        "evidence-tallcase-clock",
+        "evidence-pawn-envelope"
+      ],
+      "likelyPlayerQuestions": [
+        "Who was present?",
+        "When was the watch last seen?",
+        "Was the case locked?",
+        "Which clock stopped?",
+        "Can I inspect the case?"
+      ],
+      "safeAnswers": {
+        "Who was present?": "The three NPCs in the room.",
+        "Was the case locked?": "The front lock appears intact.",
+        "Which clock stopped?": "The tallcase clock in the study stopped at 8:13; the missing pocket watch is not visible at the start."
+      },
+      "hiddenFactsNotYetRevealed": [
+        "The rear panel was prepared earlier.",
+        "The object is hidden nearby."
+      ],
+      "exitLeads": [
+        "Inspect case",
+        "Inspect clock",
+        "Question suspects"
+      ]
+    },
+    {
+      "sceneId": "scene-inspect-display-case",
+      "locationId": "loc-locked-study",
+      "entryConditions": "Player inspects display case.",
+      "openingNarration": "The front lock is clean; the rear of the case is more interesting.",
+      "availableCharacterIds": [
+        "char-rowan-vale",
+        "char-celia-vale",
+        "char-thomas-greer"
+      ],
+      "availableClueIds": [
+        "clue-loose-service-panel",
+        "clue-brass-dust",
+        "clue-black-thread",
+        "clue-clock-oil"
+      ],
+      "availableEvidenceIds": [
+        "evidence-display-case",
+        "evidence-panel-screw",
+        "evidence-black-thread"
+      ],
+      "likelyPlayerQuestions": [
+        "Is the lock damaged?",
+        "Can the case open another way?",
+        "Who prepared the room?"
+      ],
+      "safeAnswers": {
+        "Is the lock damaged?": "No.",
+        "Who prepared the room?": "Thomas prepared it."
+      },
+      "hiddenFactsNotYetRevealed": [
+        "The watch left through the rear panel."
+      ],
+      "exitLeads": [
+        "Compare traces",
+        "Inspect clock",
+        "Question Thomas"
+      ]
+    },
+    {
+      "sceneId": "scene-inspect-clock",
+      "locationId": "loc-locked-study",
+      "entryConditions": "Player inspects the tallcase clock.",
+      "openingNarration": "The tallcase clock is not behaving as it should.",
+      "availableCharacterIds": [
+        "char-rowan-vale",
+        "char-celia-vale",
+        "char-thomas-greer"
+      ],
+      "availableClueIds": [
+        "clue-stopped-clock",
+        "clue-scraped-clock-latch",
+        "clue-watch-in-clock"
+      ],
+      "availableEvidenceIds": [
+        "evidence-tallcase-clock",
+        "evidence-clock-oil",
+        "evidence-pocket-watch"
+      ],
+      "likelyPlayerQuestions": [
+        "Who tends the clock?",
+        "Can I open it?",
+        "Do I hear anything?"
+      ],
+      "safeAnswers": {
+        "Who tends the clock?": "Thomas tends it.",
+        "Can I open it?": "Yes, with permission."
+      },
+      "hiddenFactsNotYetRevealed": [
+        "The missing object is inside until discovered."
+      ],
+      "exitLeads": [
+        "Question Thomas",
+        "Search clock",
+        "Make accusation"
+      ]
+    },
+    {
+      "sceneId": "scene-questioning",
+      "locationId": "loc-locked-study",
+      "entryConditions": "Player questions NPCs.",
+      "openingNarration": "Each person has a different reason to be uneasy.",
+      "availableCharacterIds": [
+        "char-rowan-vale",
+        "char-celia-vale",
+        "char-thomas-greer"
+      ],
+      "availableClueIds": [
+        "clue-thomas-contradiction",
+        "clue-thomas-money-note",
+        "clue-celia-pawn-envelope"
+      ],
+      "availableEvidenceIds": [
+        "evidence-thomas-note",
+        "evidence-pawn-envelope"
+      ],
+      "likelyPlayerQuestions": [
+        "Where were you?",
+        "Who had access?",
+        "Who needed money?"
+      ],
+      "safeAnswers": {
+        "Who had access?": "The owner had front-key access; Thomas had preparation access."
+      },
+      "hiddenFactsNotYetRevealed": [
+        "The motive clue should be discoverable, not volunteered too early."
+      ],
+      "exitLeads": [
+        "Inspect evidence",
+        "Reconstruct timeline",
+        "Accuse"
+      ]
+    },
+    {
+      "sceneId": "scene-final-accusation",
+      "locationId": "loc-locked-study",
+      "entryConditions": "Player has enough proof or finds the hidden object.",
+      "openingNarration": "The evidence chain is complete.",
+      "availableCharacterIds": [
+        "char-rowan-vale",
+        "char-celia-vale",
+        "char-thomas-greer"
+      ],
+      "availableClueIds": [
+        "clue-loose-service-panel",
+        "clue-black-thread",
+        "clue-clock-oil",
+        "clue-stopped-clock",
+        "clue-watch-in-clock",
+        "clue-thomas-money-note"
+      ],
+      "availableEvidenceIds": [
+        "evidence-pocket-watch",
+        "evidence-thomas-note"
+      ],
+      "likelyPlayerQuestions": [
+        "Who did it?",
+        "How?",
+        "Why?"
+      ],
+      "safeAnswers": {
+        "Was the red herring suspect involved?": "No."
+      },
+      "hiddenFactsNotYetRevealed": [],
+      "exitLeads": []
+    }
   ],
   "discoveryRules": [
-    {"ruleId": "rule-case-inspection", "triggerType": "inspect object", "triggerDescription": "Inspect rear panel of display case.", "revealsClueIds": ["clue-loose-service-panel", "clue-brass-dust", "clue-black-thread", "clue-clock-oil"], "revealsEvidenceIds": ["evidence-panel-screw", "evidence-black-thread"], "revealsLocationIds": [], "revealsAssetIds": ["asset-display-case"], "caseBoardUpdates": ["The front lock may not be the entry point."]},
-    {"ruleId": "rule-clock-inspection", "triggerType": "inspect object", "triggerDescription": "Inspect, listen to, or open the clock.", "revealsClueIds": ["clue-stopped-clock", "clue-scraped-clock-latch", "clue-watch-in-clock"], "revealsEvidenceIds": ["evidence-tallcase-clock", "evidence-pocket-watch"], "revealsLocationIds": [], "revealsAssetIds": ["asset-tallcase-clock", "asset-pocket-watch"], "caseBoardUpdates": ["The clock is part of the evidence chain."]},
-    {"ruleId": "rule-motive-discovery", "triggerType": "inspect object", "triggerDescription": "Search service area or ask about recent money request.", "revealsClueIds": ["clue-thomas-money-note"], "revealsEvidenceIds": ["evidence-thomas-note"], "revealsLocationIds": [], "revealsAssetIds": [], "caseBoardUpdates": ["A concealed money pressure may explain motive."]},
-    {"ruleId": "rule-red-herring", "triggerType": "ask NPC", "triggerDescription": "Ask Celia about the private envelope.", "revealsClueIds": ["clue-celia-pawn-envelope"], "revealsEvidenceIds": ["evidence-pawn-envelope"], "revealsLocationIds": [], "revealsAssetIds": [], "caseBoardUpdates": ["One apparent money clue has an innocent explanation."]},
-    {"ruleId": "rule-thomas-contradiction", "triggerType": "ask NPC", "triggerDescription": "Ask Thomas about movements without first raising the clock.", "revealsClueIds": ["clue-thomas-contradiction"], "revealsEvidenceIds": [], "revealsLocationIds": [], "revealsAssetIds": [], "caseBoardUpdates": ["Thomas may know too much about an object not yet discussed."]},
-    {"ruleId": "rule-final-accusation", "triggerType": "accuse suspect", "triggerDescription": "Accuse with method, motive, opportunity, and proof.", "revealsClueIds": [], "revealsEvidenceIds": [], "revealsLocationIds": [], "revealsAssetIds": [], "caseBoardUpdates": ["Case solved."]}
+    {
+      "ruleId": "rule-case-inspection",
+      "triggerType": "inspect object",
+      "triggerDescription": "Inspect rear panel of display case.",
+      "revealsClueIds": [
+        "clue-loose-service-panel",
+        "clue-brass-dust",
+        "clue-black-thread",
+        "clue-clock-oil"
+      ],
+      "revealsEvidenceIds": [
+        "evidence-panel-screw",
+        "evidence-black-thread"
+      ],
+      "revealsLocationIds": [],
+      "revealsAssetIds": [
+        "asset-display-case"
+      ],
+      "caseBoardUpdates": [
+        "The front lock may not be the entry point."
+      ]
+    },
+    {
+      "ruleId": "rule-clock-inspection",
+      "triggerType": "inspect object",
+      "triggerDescription": "Inspect, listen to, or open the tallcase clock.",
+      "revealsClueIds": [
+        "clue-stopped-clock",
+        "clue-scraped-clock-latch",
+        "clue-watch-in-clock"
+      ],
+      "revealsEvidenceIds": [
+        "evidence-tallcase-clock",
+        "evidence-pocket-watch"
+      ],
+      "revealsLocationIds": [],
+      "revealsAssetIds": [
+        "asset-tallcase-clock",
+        "asset-pocket-watch"
+      ],
+      "caseBoardUpdates": [
+        "The tallcase clock is part of the evidence chain."
+      ]
+    },
+    {
+      "ruleId": "rule-motive-discovery",
+      "triggerType": "inspect object",
+      "triggerDescription": "Search service area or ask about recent money request.",
+      "revealsClueIds": [
+        "clue-thomas-money-note"
+      ],
+      "revealsEvidenceIds": [
+        "evidence-thomas-note"
+      ],
+      "revealsLocationIds": [],
+      "revealsAssetIds": [],
+      "caseBoardUpdates": [
+        "A concealed money pressure may explain motive."
+      ]
+    },
+    {
+      "ruleId": "rule-red-herring",
+      "triggerType": "ask NPC",
+      "triggerDescription": "Ask Celia about the private envelope.",
+      "revealsClueIds": [
+        "clue-celia-pawn-envelope"
+      ],
+      "revealsEvidenceIds": [
+        "evidence-pawn-envelope"
+      ],
+      "revealsLocationIds": [],
+      "revealsAssetIds": [],
+      "caseBoardUpdates": [
+        "One apparent money clue has an innocent explanation."
+      ]
+    },
+    {
+      "ruleId": "rule-thomas-contradiction",
+      "triggerType": "ask NPC",
+      "triggerDescription": "Ask Thomas about movements without first raising the clock.",
+      "revealsClueIds": [
+        "clue-thomas-contradiction"
+      ],
+      "revealsEvidenceIds": [],
+      "revealsLocationIds": [],
+      "revealsAssetIds": [],
+      "caseBoardUpdates": [
+        "Thomas may know too much about an object not yet discussed."
+      ]
+    },
+    {
+      "ruleId": "rule-final-accusation",
+      "triggerType": "accuse suspect",
+      "triggerDescription": "Accuse with method, motive, opportunity, and proof.",
+      "revealsClueIds": [],
+      "revealsEvidenceIds": [],
+      "revealsLocationIds": [],
+      "revealsAssetIds": [],
+      "caseBoardUpdates": [
+        "Case solved."
+      ]
+    }
   ],
   "caseBoardSeed": {
-    "knownFacts": ["The watch was last seen in a locked case.", "The room stayed closed.", "Only three people were present.", "The front lock appears intact."],
-    "knownCharacters": ["char-rowan-vale", "char-celia-vale", "char-thomas-greer"],
-    "knownLocations": ["loc-locked-study"],
-    "openQuestions": ["How was the watch removed?", "Where is it now?", "Who had motive?", "Which money clue matters?"],
-    "activeLeads": ["Inspect case", "Inspect clock", "Question suspects", "Look for motive evidence"],
+    "knownFacts": [
+      "The watch was last seen in a locked case.",
+      "The room stayed closed.",
+      "Only three people were present.",
+      "The front lock appears intact.",
+      "The tallcase clock in the study has stopped at 8:13."
+    ],
+    "knownCharacters": [
+      "char-rowan-vale",
+      "char-celia-vale",
+      "char-thomas-greer"
+    ],
+    "knownLocations": [
+      "loc-locked-study"
+    ],
+    "openQuestions": [
+      "How was the watch removed?",
+      "Where is it now?",
+      "Who had motive?",
+      "Which money clue matters?",
+      "Why did the tallcase clock stop at 8:13?"
+    ],
+    "activeLeads": [
+      "Inspect case",
+      "Inspect tallcase clock",
+      "Question suspects",
+      "Look for motive evidence"
+    ],
     "discoveredClueIds": [],
     "discoveredEvidenceIds": [],
     "seenAssetIds": [],
     "playerTheories": []
   },
+  "assetGenerationGuidance": {
+    "imageMode": "player_requested_only",
+    "styleConstraints": [
+      "Late 1940s mid-century private townhouse study, not Victorian or Edwardian unless the user explicitly asks for an anachronistic style.",
+      "Show only canonical room elements: writing desk, fireplace, display case, tallcase clock, tea trolley, green-shaded lamp, rain-streaked window, Rowan Vale, Celia Vale, and Thomas Greer.",
+      "Do not add new suspects, exits, props, weapons, hidden compartments, labels, diagrams, or clue-like markings not established in text.",
+      "Images are supportive visualizations only. Any clue visible in an image must also be described in text."
+    ],
+    "textFallbackRequired": true
+  },
   "assetManifest": [
-    {"assetId": "asset-study-overview", "title": "Study overview", "assetType": "location image", "associatedLocationId": "loc-locked-study", "associatedCharacterIds": [], "associatedClueIds": [], "discoveryConditions": "Player requests overview.", "textFallback": "The study contains desk, fireplace, display case, clock, tea trolley, lamp, and window.", "retrievalLabel": "study overview", "spoilerLevel": "low", "isCanonicalEvidence": false, "containsHiddenClues": false},
-    {"assetId": "asset-display-case", "title": "Display case", "assetType": "evidence image", "associatedLocationId": "loc-locked-study", "associatedCharacterIds": [], "associatedClueIds": ["clue-loose-service-panel", "clue-brass-dust", "clue-black-thread", "clue-clock-oil"], "discoveryConditions": "Player inspects case.", "textFallback": "The case has an intact front lock and disturbed rear panel.", "retrievalLabel": "display case", "spoilerLevel": "medium", "isCanonicalEvidence": true, "containsHiddenClues": false},
-    {"assetId": "asset-tallcase-clock", "title": "Tallcase clock", "assetType": "evidence image", "associatedLocationId": "loc-locked-study", "associatedCharacterIds": ["char-thomas-greer"], "associatedClueIds": ["clue-stopped-clock", "clue-scraped-clock-latch", "clue-watch-in-clock"], "discoveryConditions": "Player inspects clock.", "textFallback": "The clock has stopped and its lower compartment shows recent disturbance.", "retrievalLabel": "tallcase clock", "spoilerLevel": "medium", "isCanonicalEvidence": true, "containsHiddenClues": false},
-    {"assetId": "asset-pocket-watch", "title": "Pocket watch", "assetType": "evidence image", "associatedLocationId": "loc-locked-study", "associatedCharacterIds": ["char-rowan-vale", "char-thomas-greer"], "associatedClueIds": ["clue-watch-in-clock"], "discoveryConditions": "Player discovers hidden object.", "textFallback": "The missing object is found where the evidence points.", "retrievalLabel": "pocket watch", "spoilerLevel": "high", "isCanonicalEvidence": true, "containsHiddenClues": false}
+    {
+      "assetId": "asset-study-overview",
+      "title": "Study overview",
+      "assetType": "location image",
+      "associatedLocationId": "loc-locked-study",
+      "associatedCharacterIds": [],
+      "associatedClueIds": [],
+      "discoveryConditions": "Player requests overview.",
+      "textFallback": "The late-1940s study contains a writing desk, fireplace, display case, tallcase clock, tea trolley, green-shaded lamp, and rain-streaked window.",
+      "retrievalLabel": "study overview",
+      "spoilerLevel": "low",
+      "isCanonicalEvidence": false,
+      "containsHiddenClues": false,
+      "imagePromptGuidance": "Late 1940s mid-century private townhouse study, warm lamplight, writing desk, fireplace, display case, tallcase clock, tea trolley, green-shaded lamp, rain-streaked window. Do not use Victorian or Edwardian styling. Do not add hidden clues, labels, diagrams, or extra props."
+    },
+    {
+      "assetId": "asset-display-case",
+      "title": "Display case",
+      "assetType": "evidence image",
+      "associatedLocationId": "loc-locked-study",
+      "associatedCharacterIds": [],
+      "associatedClueIds": [
+        "clue-loose-service-panel",
+        "clue-brass-dust",
+        "clue-black-thread",
+        "clue-clock-oil"
+      ],
+      "discoveryConditions": "Player inspects case.",
+      "textFallback": "The case has an intact front lock and disturbed rear panel.",
+      "retrievalLabel": "display case",
+      "spoilerLevel": "medium",
+      "isCanonicalEvidence": true,
+      "containsHiddenClues": false,
+      "imagePromptGuidance": "Depict the canonical display case only after text discovery. Do not imply a broken front lock or add extra mechanisms."
+    },
+    {
+      "assetId": "asset-tallcase-clock",
+      "title": "Tallcase clock",
+      "assetType": "evidence image",
+      "associatedLocationId": "loc-locked-study",
+      "associatedCharacterIds": [
+        "char-thomas-greer"
+      ],
+      "associatedClueIds": [
+        "clue-stopped-clock",
+        "clue-scraped-clock-latch",
+        "clue-watch-in-clock"
+      ],
+      "discoveryConditions": "Player inspects clock.",
+      "textFallback": "The tallcase clock has stopped and its lower compartment shows recent disturbance.",
+      "retrievalLabel": "tallcase clock",
+      "spoilerLevel": "medium",
+      "isCanonicalEvidence": true,
+      "containsHiddenClues": false,
+      "imagePromptGuidance": "Depict a late-1940s study tallcase clock. Do not reveal the pocket watch visually before the player discovers it in text."
+    },
+    {
+      "assetId": "asset-pocket-watch",
+      "title": "Pocket watch",
+      "assetType": "evidence image",
+      "associatedLocationId": "loc-locked-study",
+      "associatedCharacterIds": [
+        "char-rowan-vale",
+        "char-thomas-greer"
+      ],
+      "associatedClueIds": [
+        "clue-watch-in-clock"
+      ],
+      "discoveryConditions": "Player discovers hidden object.",
+      "textFallback": "The missing object is found where the evidence points.",
+      "retrievalLabel": "pocket watch",
+      "spoilerLevel": "high",
+      "isCanonicalEvidence": true,
+      "containsHiddenClues": false,
+      "imagePromptGuidance": "Depict the recovered Breguet pocket watch only after text discovery. No hidden inscriptions or additional clues."
+    }
   ],
   "validationTargets": {
-    "mustResolveClueIds": ["clue-loose-service-panel", "clue-brass-dust", "clue-black-thread", "clue-clock-oil", "clue-stopped-clock", "clue-scraped-clock-latch", "clue-watch-in-clock", "clue-thomas-contradiction", "clue-thomas-money-note", "clue-celia-pawn-envelope"],
-    "mustExplainRedHerringIds": ["rh-celia-pawn-envelope"],
-    "mustValidateTimelineEventIds": ["event-money-pressure", "event-panel-prepared", "event-gathering-begins", "event-distraction-window", "event-watch-taken", "event-watch-hidden", "event-theft-discovered"],
-    "mustValidateEvidenceIds": ["evidence-display-case", "evidence-panel-screw", "evidence-black-thread", "evidence-clock-oil", "evidence-tallcase-clock", "evidence-pocket-watch", "evidence-thomas-note", "evidence-pawn-envelope"],
-    "mustSupportAccusationWithClueIds": ["clue-loose-service-panel", "clue-clock-oil", "clue-black-thread", "clue-stopped-clock", "clue-watch-in-clock", "clue-thomas-money-note"],
-    "knownRiskAreas": ["Verify motive is discoverable before final reveal.", "Verify opportunity window is fair.", "Verify hiding place is not revealed too early."]
+    "mustResolveClueIds": [
+      "clue-loose-service-panel",
+      "clue-brass-dust",
+      "clue-black-thread",
+      "clue-clock-oil",
+      "clue-stopped-clock",
+      "clue-scraped-clock-latch",
+      "clue-watch-in-clock",
+      "clue-thomas-contradiction",
+      "clue-thomas-money-note",
+      "clue-celia-pawn-envelope"
+    ],
+    "mustExplainRedHerringIds": [
+      "rh-celia-pawn-envelope"
+    ],
+    "mustValidateTimelineEventIds": [
+      "event-money-pressure",
+      "event-panel-prepared",
+      "event-gathering-begins",
+      "event-distraction-window",
+      "event-watch-taken",
+      "event-watch-hidden",
+      "event-theft-discovered"
+    ],
+    "mustValidateEvidenceIds": [
+      "evidence-display-case",
+      "evidence-panel-screw",
+      "evidence-black-thread",
+      "evidence-clock-oil",
+      "evidence-tallcase-clock",
+      "evidence-pocket-watch",
+      "evidence-thomas-note",
+      "evidence-pawn-envelope"
+    ],
+    "mustSupportAccusationWithClueIds": [
+      "clue-loose-service-panel",
+      "clue-clock-oil",
+      "clue-black-thread",
+      "clue-stopped-clock",
+      "clue-watch-in-clock",
+      "clue-thomas-money-note"
+    ],
+    "knownRiskAreas": [
+      "Verify motive is discoverable before final reveal.",
+      "Verify opportunity window is fair.",
+      "Verify hiding place is not revealed too early.",
+      "Opening wording must distinguish the tallcase clock from the missing pocket watch.",
+      "Generated room images must not drift into Victorian or Edwardian styling or add non-canonical clues."
+    ]
   },
   "runtimeState": {}
 }
