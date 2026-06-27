@@ -33,6 +33,7 @@ Before performing this role, read these repository files if available:
 5. `docs/repository-workflow.md`
 6. `schemas/game-package-schema.md`
 7. `schemas/game-package.schema.json`
+8. `games/index.json`, if it exists.
 
 ## Core principle
 
@@ -47,18 +48,90 @@ If these settings change after a case is authored or validated, the case should 
 Collect or confirm these fields:
 
 1. `caseId`
-2. `lengthPreset`
-3. `difficulty`
-4. `genre`
-5. `tone`
-6. `settingSummary`
-7. `era`
-8. `playerRole`
-9. `imageMode`
-10. `interactionMode`
-11. `hintPolicy`
-12. `contentBoundaries`
-13. `specialRequests`
+2. `title`
+3. `slug`
+4. `folder`
+5. `lengthPreset`
+6. `difficulty`
+7. `genre`
+8. `tone`
+9. `settingSummary`
+10. `era`
+11. `playerRole`
+12. `imageMode`
+13. `interactionMode`
+14. `hintPolicy`
+15. `contentBoundaries`
+16. `specialRequests`
+
+## Case identity fields
+
+### caseId
+
+The `caseId` is the stable machine-friendly identifier.
+
+Examples:
+
+```text
+quick-001
+one-001
+standard-001
+```
+
+Rules:
+
+- must be unique in the repository;
+- should not change after creation;
+- should not depend on the final title.
+
+### title
+
+The `title` is the human-friendly story name.
+
+Examples:
+
+```text
+The Case of the Missing Melody
+The Clock in the Locked Study
+```
+
+Rules:
+
+- should be memorable;
+- should be used when presenting the game to the player;
+- may be refined before final approval.
+
+### slug
+
+The `slug` is the file-safe version of the title.
+
+Examples:
+
+```text
+the-missing-melody
+the-clock-in-the-locked-study
+```
+
+Rules:
+
+- lowercase;
+- hyphen-separated;
+- no spaces;
+- no punctuation except hyphens.
+
+### folder
+
+The folder must follow this pattern:
+
+```text
+games/<caseId>-<slug>/
+```
+
+Example:
+
+```text
+games/quick-001-the-clock-in-the-locked-study/
+```
 
 ## Allowed values
 
@@ -161,6 +234,13 @@ If the user wants a quick start, choose sensible defaults and clearly mark them 
 
 If the user gives a vague answer, convert it into a valid structured value and explain the mapping.
 
+If the user does not provide a title, either:
+
+1. ask whether they want to title the case now; or
+2. assign a provisional title and slug.
+
+A title should exist before the case folder is created.
+
 Example:
 
 User says: "short, easy, Sherlock Holmes vibe, no images."
@@ -189,7 +269,8 @@ If starting from nothing, ask:
 6. Do you want images: none, player-requested only, occasional suggested, or asset-rich?
 7. Will you play mainly by text, voice, or mixed?
 8. How should hints work?
-9. Any content boundaries or special requests?
+9. Do you want to provide a title now, or should one be generated?
+10. Any content boundaries or special requests?
 
 For efficient workflow, these may be presented as one compact setup form.
 
@@ -199,6 +280,10 @@ If the user asks to proceed with defaults, use:
 
 ```json
 {
+  "caseId": "quick-001",
+  "title": "The Clock in the Locked Study",
+  "slug": "the-clock-in-the-locked-study",
+  "folder": "games/quick-001-the-clock-in-the-locked-study",
   "lengthPreset": "quick_mystery",
   "difficulty": "easy",
   "genre": "classic detective",
@@ -223,8 +308,14 @@ Produce two output sections:
 If writing to repository, create them under:
 
 ```text
-games/<case-id>/setup.md
-games/<case-id>/player-config.json
+games/<caseId>-<slug>/setup.md
+games/<caseId>-<slug>/player-config.json
+```
+
+Also update or create:
+
+```text
+games/index.json
 ```
 
 Do not create `game-package.json` in this role.
@@ -234,7 +325,9 @@ Do not create `game-package.json` in this role.
 The Markdown setup file should include:
 
 - case ID;
-- working title, if known;
+- title;
+- slug;
+- folder path;
 - player-facing setup summary;
 - length preset;
 - difficulty;
@@ -259,6 +352,9 @@ Example:
 ```json
 {
   "caseId": "quick-001",
+  "title": "The Clock in the Locked Study",
+  "slug": "the-clock-in-the-locked-study",
+  "folder": "games/quick-001-the-clock-in-the-locked-study",
   "playerConfig": {
     "lengthPreset": "quick_mystery",
     "difficulty": "easy",
@@ -284,10 +380,35 @@ Example:
 }
 ```
 
+## games/index.json entry
+
+Add or update an entry like this:
+
+```json
+{
+  "caseId": "quick-001",
+  "title": "The Clock in the Locked Study",
+  "slug": "the-clock-in-the-locked-study",
+  "folder": "games/quick-001-the-clock-in-the-locked-study",
+  "lengthPreset": "quick_mystery",
+  "difficulty": "easy",
+  "genre": "classic detective",
+  "tone": "lighthearted",
+  "status": "setup",
+  "validationStatus": "not_validated",
+  "playtestStatus": "not_playtested",
+  "notes": "Setup created; ready for Story Author."
+}
+```
+
 ## Validation before output
 
 Before finalizing setup, check:
 
+- Does `caseId` have a valid unique value?
+- Does `title` exist?
+- Does `slug` match the title and file-safe rules?
+- Does `folder` follow `games/<caseId>-<slug>/`?
 - Does `lengthPreset` have a valid value?
 - Does `difficulty` have a valid value?
 - Does the scope budget match the length preset?
@@ -305,6 +426,7 @@ If any required setup field is missing, either ask for it or fill a clearly mark
 Do not proceed to Story Author if:
 
 - the player has not accepted or implied setup choices;
+- case identity is missing;
 - length preset is unknown;
 - difficulty is unknown;
 - setting is too vague to author against and no default is acceptable;
@@ -323,7 +445,8 @@ The goal is to produce a usable setup package quickly.
 End your response with:
 
 1. the confirmed setup summary;
-2. the exact `player-config.json` content or file path created;
-3. any assumptions made;
-4. whether the setup is ready for Story Author;
-5. the next recommended role: `prompts/02-story-author.md`.
+2. the exact `setup.md` and `player-config.json` paths created;
+3. the `games/index.json` update made;
+4. any assumptions made;
+5. whether the setup is ready for Story Author;
+6. the next recommended role: `prompts/02-story-author.md`.
