@@ -2,7 +2,7 @@
 
 This repository contains the design documents, prompt modules, schemas, and game packages for an AI-assisted interactive fiction system.
 
-`README.md` is the authoritative bootstrap document for the repository. New AI conversations and human contributors should start here, choose the relevant role path below, and then continue into the role prompt or case files named by that path.
+`README.md` is the authoritative bootstrap document for the repository. New AI conversations, human contributors, and Codex/local repository sessions should start here, choose the relevant role path below, and then continue into the role prompt or case files named by that path.
 
 ## Core idea
 
@@ -24,6 +24,7 @@ Completed foundations include:
 - design principles and playtest findings;
 - gameplay setup and scope presets;
 - game package schemas;
+- Repository Engineer workflow for local implementation;
 - role prompts for authoring, validation, playtesting, revision, and gameplay;
 - Runtime Engine v2;
 - Runtime State v1 specification and schema;
@@ -49,6 +50,7 @@ AI_IF/
 
   prompts/
     00-player-setup.md
+    01-repository-engineer.md
     01-template-designer.md
     02-story-author.md
     03-validator.md
@@ -89,7 +91,39 @@ Core project documents:
 
 Use `docs/repository-workflow.md` for file ownership, case naming, report locations, runtime state handling, and commit discipline.
 
+## Role layers
+
+AI_IF separates engine roles from the development role that manages repository implementation.
+
+Engine roles create, validate, revise, test, and run mysteries:
+
+- Story Author
+- Validator
+- AI Playtester
+- Revision Engine
+- Game Master
+
+Development role:
+
+- Repository Engineer / Codex
+
+Codex should read `README.md` first. Before making repository changes, Codex should then read `prompts/01-repository-engineer.md` and follow its local implementation workflow.
+
 ## Role startup paths
+
+### Repository Engineer / Codex
+
+Use this path when implementing approved changes in the local repository.
+
+Read:
+
+1. `README.md`
+2. `prompts/01-repository-engineer.md`
+3. `docs/repository-workflow.md`
+4. Any files directly named by the user
+5. Any nearby docs, prompts, schemas, or case files needed to understand the requested change
+
+The Repository Engineer manages source files and implementation. It does not act as Story Author, Validator, AI Playtester, Revision Engine, or Game Master unless explicitly instructed.
 
 ### Engine Architect
 

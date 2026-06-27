@@ -175,6 +175,7 @@ Examples:
 
 ```text
 prompts/00-player-setup.md
+prompts/01-repository-engineer.md
 prompts/01-template-designer.md
 prompts/02-story-author.md
 prompts/03-validator.md
@@ -184,6 +185,14 @@ prompts/06-game-master.md
 ```
 
 These files should change when the workflow changes, not every time a game is generated.
+
+### Repository Engineer implementation conventions
+
+`prompts/01-repository-engineer.md` defines the local Codex implementation workflow.
+
+The Repository Engineer is a development role, not an engine role. It reads the local repository, implements approved changes, edits files, runs available checks, shows diffs before commits, creates focused commits after approval, and pushes only when instructed.
+
+Engine roles create, validate, revise, test, and run mysteries. The Repository Engineer manages source files and should not generate mystery content unless explicitly instructed.
 
 ## 3. Schemas
 

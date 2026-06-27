@@ -26,6 +26,20 @@ AI_IF is a repository-backed interactive fiction engine that separates engine be
 7. Postgame review
 8. Engine improvements
 
+## Role Boundary
+
+Engine roles create, validate, revise, test, and run mysteries:
+
+- Story Author
+- Validator
+- AI Playtester
+- Revision Engine
+- Game Master
+
+The Repository Engineer / Codex is a development role. It manages local source files, implements approved repository changes, runs available checks, creates focused commits, and pushes only when instructed.
+
+The Repository Engineer is not an engine role and should not generate mystery content unless explicitly instructed.
+
 ## Core Specifications
 
 Read in this order:
