@@ -20,6 +20,8 @@ Before performing this role, start with the Story Author startup path in `README
 
 Then read any existing game package files, validation reports, or user-provided constraints relevant to the case.
 
+When authoring or revising package content, use stable canonical IDs and validation notes so future diagnostics can cite exact clues, evidence, NPC topics, discovery rules, assets, and timeline events.
+
 ## Authorship prerequisite
 
 Do not begin story authorship until the player setup and scope budget are defined.
@@ -252,6 +254,8 @@ Each clue must include:
 - how it helps solve the case;
 - how it is resolved in the final explanation.
 
+Use stable IDs that can be cited by validation reports.
+
 Each required clue must also have at least one typed discovery rule in `discoveryRules`.
 
 Use `docs/discovery-rules-v1.md` and `schemas/game-package.schema.json`.
@@ -335,6 +339,8 @@ For each important NPC, define topics that cover expected questioning:
 Each topic should define what the NPC knows, what they do not know, what they will not say yet, and what clues or evidence can be revealed when eligible.
 
 Do not leave important NPC answers for the Game Master to invent during play.
+
+Add validation notes where a clue path, NPC lie, red herring, image, or timeline dependency may need special Validator attention.
 
 ## Location requirements
 

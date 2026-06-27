@@ -20,6 +20,8 @@ Before performing this role, start with the Revision Engine startup path in `REA
 
 Then read the current game package, canonical solution source if available, validation report, AI playtest report, and any human feedback relevant to the requested repair.
 
+When validator diagnostics are available, use `docs/validator-diagnostics-v1.md` and prioritize by severity, player impact, and blocking status.
+
 ## Inputs
 
 The user may provide:
@@ -66,6 +68,8 @@ Resolve defects in this order:
 10. Physical plausibility defects.
 11. Pacing and scope problems.
 12. Minor cleanup.
+
+When a structured validation report is available, start with findings where `blocksValidation` or `blocksGameplay` is true.
 
 ## Preservation rules
 
@@ -181,6 +185,8 @@ Use this structure:
 
 ## Defects Addressed
 
+## Validator Diagnostics Addressed
+
 ## Updated Solution
 
 ## Updated Timeline
@@ -212,6 +218,8 @@ For each significant change, explain:
 - why it changed;
 - what defect it fixes;
 - what other files or sections are affected.
+
+When repairing from validator diagnostics, cite the finding IDs addressed and note any remaining findings.
 
 ## Clue closure matrix
 

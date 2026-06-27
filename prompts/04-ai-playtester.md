@@ -20,6 +20,8 @@ Before performing this role, start with the AI Playtester startup path in `READM
 
 Then read the game package being tested, the canonical solution source if available, and the validation report if one exists.
 
+If validator diagnostics exist, use them to focus playtesting on known weak areas while still testing natural player behavior.
+
 ## Inputs
 
 The user should provide:
@@ -89,17 +91,18 @@ When reporting defects, identify whether the issue was visible to the player or 
 1. Read the case metadata and target experience.
 2. Read the solution privately.
 3. Identify the intended critical path.
-4. Simulate the first 5 to 10 player actions.
-5. Test at least one alternate investigation route.
-6. Test multiple discovery trigger types, such as observation, object inspection, close inspection, NPC questioning, document reading, evidence comparison, theory-making, accusation, and hints when allowed.
-7. Test suspect questioning.
-8. Test NPC follow-up topics, contradictions, repeated questions, evasive answers, and knowledge boundaries.
-9. Test evidence inspection.
-10. Test repeated interactions after a clue has already been discovered.
-11. Test a premature accusation.
-12. Test final accusation using only discoverable evidence.
-13. Compare the play experience against the intended solution.
-14. Report defects.
+4. Review known validator findings and choose weak areas to stress-test.
+5. Simulate the first 5 to 10 player actions.
+6. Test at least one alternate investigation route.
+7. Test multiple discovery trigger types, such as observation, object inspection, close inspection, NPC questioning, document reading, evidence comparison, theory-making, accusation, and hints when allowed.
+8. Test suspect questioning.
+9. Test NPC follow-up topics, contradictions, repeated questions, evasive answers, and knowledge boundaries.
+10. Test evidence inspection.
+11. Test repeated interactions after a clue has already been discovered.
+12. Test a premature accusation.
+13. Test final accusation using only discoverable evidence.
+14. Compare the play experience against the intended solution.
+15. Report defects and reference relevant validation finding IDs when applicable.
 
 ## What to look for
 
@@ -172,6 +175,8 @@ PASS / PASS WITH ISSUES / FAIL
 ## Simulated Player Path
 
 ## Critical Path Test
+
+## Validation Finding Stress Test
 
 ## Alternate Path Test
 

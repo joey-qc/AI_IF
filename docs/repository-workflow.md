@@ -204,6 +204,7 @@ Examples:
 schemas/game-package-schema.md
 schemas/game-package.schema.json
 schemas/case-board-current.schema.json
+schemas/validation-report.schema.json
 schemas/character.schema.json
 schemas/clue.schema.json
 schemas/location.schema.json
@@ -611,6 +612,23 @@ Purpose:
 - motive review;
 - solvability review;
 - pass/fail decision.
+
+Validation reports may be stored as:
+
+```text
+games/<caseId>-<slug>/validation-report.md
+games/<caseId>-<slug>/validation-report-v*.md
+games/<caseId>-<slug>/validation-report.json
+```
+
+Structured validation reports should follow:
+
+```text
+docs/validator-diagnostics-v1.md
+schemas/validation-report.schema.json
+```
+
+Validation reports are diagnostic artifacts, not canonical truth. They should reference canonical IDs rather than duplicate canonical package content.
 
 ### playtest-report.md
 

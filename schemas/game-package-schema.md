@@ -613,6 +613,19 @@ Possible fields:
 
 Runtime state should not replace the canonical solution.
 
+## Validation report schema
+
+Validation reports are separate diagnostic artifacts, not part of `game-package.json`.
+
+Structured reports should follow:
+
+```text
+docs/validator-diagnostics-v1.md
+schemas/validation-report.schema.json
+```
+
+Validation reports should cite canonical IDs instead of duplicating canonical content.
+
 ## Quick Mystery example skeleton
 
 ```json

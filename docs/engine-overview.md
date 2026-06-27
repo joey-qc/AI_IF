@@ -50,12 +50,13 @@ Read in this order:
 4. runtime-engine-v2.md
 5. discovery-rules-v1.md
 6. npc-interview-model-v1.md
-7. investigation-model.md
-8. image-system-v2.md
-9. case-board-v2.md
-10. runtime-state-v1.md
-11. case-board-current-v1.md
-12. runtime-self-checks.md
+7. validator-diagnostics-v1.md
+8. investigation-model.md
+9. image-system-v2.md
+10. case-board-v2.md
+11. runtime-state-v1.md
+12. case-board-current-v1.md
+13. runtime-self-checks.md
 
 ## Runtime State Contract
 
@@ -129,6 +130,19 @@ NPC interview topics are canonical authoring data inside `game-package.json`.
 
 `case-board-current.json` records only player-visible NPC answers, witness statements, contradictions, and follow-up leads.
 
+## Validator Diagnostics Contract
+
+Validation reports are structured diagnostic artifacts governed by:
+
+```text
+docs/validator-diagnostics-v1.md
+schemas/validation-report.schema.json
+```
+
+Validation reports are not canonical game truth.
+
+They cite affected canonical IDs, summarize schema and mystery-quality checks, and inform Revision Engine work.
+
 ## Operational Prompts
 
 Operational prompts implement the specifications. They should reference the documents above rather than duplicate them.
@@ -156,6 +170,7 @@ Completed:
 - Runtime Engine v2 specifications
 - Discovery Rules v1
 - NPC Interview Model v1
+- Validator Diagnostics v1
 - Game Master v2
 - Runtime State v1 specification and schema
 

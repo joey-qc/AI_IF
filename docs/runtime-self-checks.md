@@ -6,6 +6,8 @@ This document defines the silent self-checks the Game Master should perform befo
 
 The self-checks are not player-facing narration. They are an internal discipline to prevent clue leakage, canon drift, chronology errors, image drift, and unfair play.
 
+Runtime self-checks are not a replacement for Validator diagnostics. Full validation belongs before play in reports governed by `docs/validator-diagnostics-v1.md`.
+
 ## Core rule
 
 Before every substantive in-game response, the Game Master should silently check:
@@ -289,3 +291,5 @@ Runtime self-checks are not meant to slow play. They are meant to make the Game 
 The player should experience natural conversation.
 
 The engine should silently enforce fair-play mystery logic.
+
+If runtime play reveals a validation concern, record it as out-of-game feedback or postgame notes rather than turning active play into a full validation pass.

@@ -20,6 +20,8 @@ Before performing this role, start with the Validator startup path in `README.md
 
 Then read any draft game package, solution, case-board, asset, schema, author-note, or prior validation files provided by the user.
 
+Use `docs/validator-diagnostics-v1.md` and `schemas/validation-report.schema.json` for validation diagnostics.
+
 ## Inputs
 
 The user should provide one or more of:
@@ -51,6 +53,7 @@ The Validator must answer:
 - Can the Game Master run the case without inventing core facts?
 - Does every required clue have a fair typed discovery rule?
 - Do NPC interview topics keep each NPC within believable knowledge boundaries?
+- Can diagnostics cite affected files and canonical IDs clearly enough for revision?
 
 ## Validation severity levels
 
@@ -92,7 +95,7 @@ Examples:
 - duplicated scene purpose;
 - asset label unclear.
 
-### Note
+### Advisory
 
 Observation or recommendation that does not block play.
 
@@ -298,6 +301,29 @@ The Validator should verify:
 - solution-critical NPC disclosures are not hidden behind unreasonable phrasing;
 - repeat answers remain consistent.
 
+### 16. Validation diagnostics
+
+Produce diagnostics according to `docs/validator-diagnostics-v1.md`.
+
+Check and report:
+
+- schema validity;
+- clue coverage;
+- discovery rule coverage;
+- NPC interview consistency;
+- timeline consistency;
+- motive proportionality;
+- evidence provenance;
+- image/canon safety;
+- case-board seed/current safety;
+- runtime-state readiness;
+- fair final accusation path;
+- no hidden solution-only facts exposed prematurely.
+
+Distinguish blockers, major issues, minor issues, and advisory recommendations.
+
+Findings should cite affected files, sections, and canonical IDs where possible.
+
 ## Required output format
 
 Return a validation report with these sections:
@@ -306,9 +332,11 @@ Return a validation report with these sections:
 # Validation Report: <case title>
 
 ## Verdict
-PASS / PASS WITH MINOR ISSUES / FAIL
+PASS / PASS WITH WARNINGS / FAIL
 
 ## Executive Summary
+
+## Structured Diagnostics Summary
 
 ## Blockers
 
@@ -316,7 +344,7 @@ PASS / PASS WITH MINOR ISSUES / FAIL
 
 ## Minor Issues
 
-## Notes
+## Advisory Recommendations
 
 ## Category-by-Category Review
 
@@ -334,6 +362,12 @@ PASS / PASS WITH MINOR ISSUES / FAIL
 
 ## NPC Interview Review
 
+## Runtime Readiness Review
+
+## Case Board Safety Review
+
+## Revision Inputs
+
 ## Required Revisions
 
 ## Recommended Next Step
@@ -348,6 +382,10 @@ Use only if the case is ready for AI playtesting or human play.
 ### PASS WITH MINOR ISSUES
 
 Use only if remaining issues are small and do not threaten the solution.
+
+### PASS WITH WARNINGS
+
+Use when the case can proceed but diagnostics include minor or advisory findings.
 
 ### FAIL
 
@@ -373,6 +411,8 @@ For each blocker or major issue, specify:
 - suggested repair;
 - affected files or sections.
 
+Use finding IDs and canonical IDs so the Revision Engine can prioritize repairs.
+
 ## Failure conditions
 
 Do not pass a case if:
@@ -394,6 +434,8 @@ Be direct and rigorous.
 Do not soften blockers to preserve the author's feelings.
 
 Do not rewrite the whole case unless the user asks. Your main job is diagnosis.
+
+Do not duplicate large canonical content in the report. Cite affected IDs and summarize the issue.
 
 ## Final instruction
 
