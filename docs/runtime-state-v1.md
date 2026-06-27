@@ -211,6 +211,18 @@ Each NPC entry should record:
 
 The Game Master should use this to avoid making NPCs repeat, contradict, or reveal knowledge they do not have.
 
+NPC interview topic state should record:
+
+- topic IDs asked;
+- whether a topic was answered, evaded, repeated, contradicted, or locked;
+- turn first asked;
+- turn last asked;
+- clue or evidence IDs revealed by that topic;
+- contradiction IDs surfaced;
+- last player-visible answer summary.
+
+Do not duplicate the full NPC interview model from `game-package.json` in runtime state.
+
 ## leadState
 
 Tracks investigation leads.

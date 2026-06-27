@@ -68,6 +68,7 @@ docs/playtest-findings.md
 docs/repository-workflow.md
 docs/runtime-engine-v2.md
 docs/discovery-rules-v1.md
+docs/npc-interview-model-v1.md
 docs/investigation-model.md
 docs/image-system-v2.md
 docs/case-board-v2.md
@@ -221,6 +222,25 @@ NPCs should answer only from:
 NPCs must not speak from omniscient solution knowledge.
 
 If a player asks an NPC something the NPC cannot know, the NPC should say so or answer from limited perception.
+
+NPC interview topics are governed by:
+
+```text
+docs/npc-interview-model-v1.md
+```
+
+For NPC questions, the Game Master should:
+
+1. Map the natural-language question to the closest valid NPC topic.
+2. Respect the NPC's knowledge boundary.
+3. Check topic prerequisites and `question_npc` discovery rules.
+4. Reveal only eligible clue or evidence IDs.
+5. Use lie, omission, evasion, ignorance, or truthful answer behavior as defined.
+6. Use repeat answers when the topic was already asked.
+7. Record asked topics in `runtime-state.json`.
+8. Update `case-board-current.json` only with player-visible answers, contradictions, or leads.
+
+NPCs must not become omniscient or overhelpful because the player asks a broad question.
 
 ## Hint progression
 

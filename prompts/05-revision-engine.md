@@ -43,6 +43,7 @@ Focus especially on:
 - timeline coherence;
 - clue closure;
 - typed discovery rule fairness;
+- NPC interview consistency;
 - evidence provenance;
 - physical plausibility;
 - solvability;
@@ -59,11 +60,12 @@ Resolve defects in this order:
 4. Timeline and causality defects.
 5. Clue closure defects.
 6. Discovery rule defects.
-7. Motive weakness.
-8. Evidence provenance defects.
-9. Physical plausibility defects.
-10. Pacing and scope problems.
-11. Minor cleanup.
+7. NPC interview defects.
+8. Motive weakness.
+9. Evidence provenance defects.
+10. Physical plausibility defects.
+11. Pacing and scope problems.
+12. Minor cleanup.
 
 ## Preservation rules
 
@@ -127,6 +129,19 @@ For each missing, brittle, unfair, or overgenerous discovery rule:
 - mark optional clues and red herrings appropriately;
 - update case-board sections only with player-visible information.
 
+### If NPC interviews are brittle or inconsistent
+
+For each missing, inconsistent, overrevealing, or underrevealing NPC topic:
+
+- add or revise structured interview topics;
+- define the NPC's knowledge boundary;
+- separate truthful answers from lies, omissions, evasions, and ignorance;
+- connect topic reveals to clue and evidence IDs;
+- add fair prerequisites and follow-up topics;
+- add repeat answers;
+- make contradictions discoverable without requiring exact phrasing;
+- keep NPC answers consistent with timeline, motive, and evidence provenance.
+
 ### If chronology breaks
 
 Build a corrected true timeline first, then revise clues and witness statements to match.
@@ -173,6 +188,8 @@ Use this structure:
 ## Updated Clue Closure Matrix
 
 ## Updated Discovery Rules
+
+## Updated NPC Interview Topics
 
 ## Updated Evidence Provenance
 
@@ -224,6 +241,7 @@ Do not:
 - add complexity to hide a contradiction;
 - leave essential evidence unexplained;
 - leave essential clues without fair typed discovery rules;
+- leave important NPCs without bounded interview topics;
 - preserve a scene just because it is dramatic if it breaks logic;
 - claim the case is fixed without explaining how.
 
@@ -237,6 +255,7 @@ The revision fails if:
 - the timeline remains contradictory;
 - major clues remain unexplained;
 - essential discovery rules are missing, unfair, or impossible to trigger;
+- NPC interview topics are omniscient, inconsistent, overrevealing, or too brittle to use;
 - the Game Master still needs to invent core facts.
 
 ## Response style

@@ -175,6 +175,23 @@ unresolved
 
 Do not include the hidden explanation until the player earns it.
 
+## NPC answers and witness statements
+
+NPC answers may update the current case board when they become player-visible.
+
+Use relevant sections such as:
+
+```text
+knownNPCs
+knownFacts
+timelineNotes
+openQuestions
+pendingLeads
+contradictions
+```
+
+The board should record what the NPC said or what contradiction the player noticed. It should not record hidden author knowledge, undiscovered lies, or private motive truth until the player discovers them.
+
 ## Images
 
 Images seen should record player-facing image activity.

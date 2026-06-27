@@ -48,6 +48,7 @@ AI_IF/
     repository-workflow.md
     runtime-engine-v2.md
     discovery-rules-v1.md
+    npc-interview-model-v1.md
     runtime-state-v1.md
     case-board-current-v1.md
 
@@ -144,11 +145,12 @@ Read:
 6. `docs/repository-workflow.md`
 7. `docs/runtime-engine-v2.md`
 8. `docs/discovery-rules-v1.md`
-9. `docs/runtime-state-v1.md`
-10. `docs/case-board-current-v1.md`
-11. `schemas/game-package.schema.json`
-12. `schemas/runtime-state.schema.json`
-13. `schemas/case-board-current.schema.json`
+9. `docs/npc-interview-model-v1.md`
+10. `docs/runtime-state-v1.md`
+11. `docs/case-board-current-v1.md`
+12. `schemas/game-package.schema.json`
+13. `schemas/runtime-state.schema.json`
+14. `schemas/case-board-current.schema.json`
 
 Then inspect whichever prompt, schema, or case files are directly affected by the requested architecture change.
 
@@ -164,10 +166,11 @@ Read:
 4. `docs/gameplay-setup-and-scope-presets.md`
 5. `docs/repository-workflow.md`
 6. `docs/discovery-rules-v1.md`
-7. `schemas/game-package-schema.md`
-8. `schemas/game-package.schema.json`
-9. `prompts/02-story-author.md`
-10. `games/<caseId>-<slug>/player-config.json`, if continuing an existing setup
+7. `docs/npc-interview-model-v1.md`
+8. `schemas/game-package-schema.md`
+9. `schemas/game-package.schema.json`
+10. `prompts/02-story-author.md`
+11. `games/<caseId>-<slug>/player-config.json`, if continuing an existing setup
 
 The Story Author writes case content but does not approve it for play.
 
@@ -183,15 +186,16 @@ Read:
 4. `docs/gameplay-setup-and-scope-presets.md`
 5. `docs/repository-workflow.md`
 6. `docs/discovery-rules-v1.md`
-7. `schemas/game-package-schema.md`
-8. `schemas/game-package.schema.json`
-9. `prompts/03-validator.md`
-10. `docs/case-board-current-v1.md`
-11. `schemas/case-board-current.schema.json`
-12. `games/<caseId>-<slug>/game-package.json`
-13. `games/<caseId>-<slug>/solution.md`, if canonical or required by the case handoff
-14. `games/<caseId>-<slug>/case-board-seed.json`
-15. `games/<caseId>-<slug>/asset-manifest.json`
+7. `docs/npc-interview-model-v1.md`
+8. `schemas/game-package-schema.md`
+9. `schemas/game-package.schema.json`
+10. `prompts/03-validator.md`
+11. `docs/case-board-current-v1.md`
+12. `schemas/case-board-current.schema.json`
+13. `games/<caseId>-<slug>/game-package.json`
+14. `games/<caseId>-<slug>/solution.md`, if canonical or required by the case handoff
+15. `games/<caseId>-<slug>/case-board-seed.json`
+16. `games/<caseId>-<slug>/asset-manifest.json`
 
 The Validator diagnoses. The Revision Engine repairs.
 
@@ -206,12 +210,13 @@ Read:
 3. `docs/playtest-findings.md`
 4. `docs/repository-workflow.md`
 5. `docs/discovery-rules-v1.md`
-6. `docs/case-board-current-v1.md`
-7. `schemas/case-board-current.schema.json`
-8. `prompts/04-ai-playtester.md`
-9. `games/<caseId>-<slug>/game-package.json`
-10. `games/<caseId>-<slug>/solution.md`, if canonical or required by the case handoff
-11. `games/<caseId>-<slug>/validation-report*.md`, if available
+6. `docs/npc-interview-model-v1.md`
+7. `docs/case-board-current-v1.md`
+8. `schemas/case-board-current.schema.json`
+9. `prompts/04-ai-playtester.md`
+10. `games/<caseId>-<slug>/game-package.json`
+11. `games/<caseId>-<slug>/solution.md`, if canonical or required by the case handoff
+12. `games/<caseId>-<slug>/validation-report*.md`, if available
 
 The AI Playtester tests how the case behaves in practice and reports defects.
 
@@ -226,14 +231,15 @@ Read:
 3. `docs/playtest-findings.md`
 4. `docs/repository-workflow.md`
 5. `docs/discovery-rules-v1.md`
-6. `docs/case-board-current-v1.md`
-7. `schemas/case-board-current.schema.json`
-8. `prompts/05-revision-engine.md`
-9. `games/<caseId>-<slug>/game-package.json`
-10. `games/<caseId>-<slug>/solution.md`, if canonical or required by the case handoff
-11. `games/<caseId>-<slug>/validation-report*.md`, if available
-12. `games/<caseId>-<slug>/playtest-report.md`, if available
-13. Any human feedback or postgame report supplied by the user
+6. `docs/npc-interview-model-v1.md`
+7. `docs/case-board-current-v1.md`
+8. `schemas/case-board-current.schema.json`
+9. `prompts/05-revision-engine.md`
+10. `games/<caseId>-<slug>/game-package.json`
+11. `games/<caseId>-<slug>/solution.md`, if canonical or required by the case handoff
+12. `games/<caseId>-<slug>/validation-report*.md`, if available
+13. `games/<caseId>-<slug>/playtest-report.md`, if available
+14. Any human feedback or postgame report supplied by the user
 
 The Revision Engine should preserve intended experience while fixing defects.
 
@@ -250,23 +256,24 @@ Read:
 5. `docs/runtime-engine-v2.md`
 6. `docs/investigation-model.md`
 7. `docs/discovery-rules-v1.md`
-8. `docs/image-system-v2.md`
-9. `docs/case-board-v2.md`
-10. `docs/runtime-state-v1.md`
-11. `docs/case-board-current-v1.md`
-12. `docs/runtime-self-checks.md`
-13. `schemas/runtime-state.schema.json`
-14. `schemas/case-board-current.schema.json`
-15. `prompts/06-game-master.md`
-16. `games/index.json`
-17. `games/<caseId>-<slug>/gm-readme.md`
-18. `games/<caseId>-<slug>/game-package.json`
-19. `games/<caseId>-<slug>/case-board-seed.json`
-20. `games/<caseId>-<slug>/case-board-current.json`, if resuming active play
-21. `games/<caseId>-<slug>/asset-manifest.json`
-22. `games/<caseId>-<slug>/validation-report*.md`, if available
-23. `games/<caseId>-<slug>/playtest-report.md`, if available
-24. `games/<caseId>-<slug>/runtime-state.json`, if resuming active play
+8. `docs/npc-interview-model-v1.md`
+9. `docs/image-system-v2.md`
+10. `docs/case-board-v2.md`
+11. `docs/runtime-state-v1.md`
+12. `docs/case-board-current-v1.md`
+13. `docs/runtime-self-checks.md`
+14. `schemas/runtime-state.schema.json`
+15. `schemas/case-board-current.schema.json`
+16. `prompts/06-game-master.md`
+17. `games/index.json`
+18. `games/<caseId>-<slug>/gm-readme.md`
+19. `games/<caseId>-<slug>/game-package.json`
+20. `games/<caseId>-<slug>/case-board-seed.json`
+21. `games/<caseId>-<slug>/case-board-current.json`, if resuming active play
+22. `games/<caseId>-<slug>/asset-manifest.json`
+23. `games/<caseId>-<slug>/validation-report*.md`, if available
+24. `games/<caseId>-<slug>/playtest-report.md`, if available
+25. `games/<caseId>-<slug>/runtime-state.json`, if resuming active play
 
 If `gm-readme.md` identifies a canonical source, follow it. Do not rely on stale companion files unless the case handoff says they are canonical.
 

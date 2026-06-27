@@ -239,9 +239,38 @@
         "knowledge": { "$ref": "#/$defs/stringArray" },
         "secrets": { "$ref": "#/$defs/stringArray" },
         "liesOrOmissions": { "$ref": "#/$defs/stringArray" },
+        "interviewTopics": { "type": "array", "items": { "$ref": "#/$defs/npcInterviewTopic" }, "default": [] },
         "cluesPointingToward": { "$ref": "#/$defs/idArray" },
         "cluesClearingOrImplicating": { "$ref": "#/$defs/idArray" },
         "interrogationGuidance": { "type": "string" }
+      }
+    },
+    "npcInterviewTopic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["topicId", "topicLabel", "topicType"],
+      "properties": {
+        "topicId": { "$ref": "#/$defs/idString" },
+        "topicLabel": { "type": "string", "minLength": 1 },
+        "topicType": {
+          "type": "string",
+          "enum": ["background", "alibi", "motive", "relationship", "timeline", "evidence", "clue", "location", "contradiction", "accusation", "other"]
+        },
+        "npcId": { "$ref": "#/$defs/idString" },
+        "playerQuestionExamples": { "$ref": "#/$defs/stringArray" },
+        "truthfulAnswer": { "type": "string" },
+        "lieOrOmission": { "type": "string" },
+        "evasiveAnswer": { "type": "string" },
+        "knowledgeBoundary": { "type": "string" },
+        "emotionalState": { "type": "string" },
+        "revealsClueIds": { "$ref": "#/$defs/idArray" },
+        "revealsEvidenceIds": { "$ref": "#/$defs/idArray" },
+        "prerequisiteClueIds": { "$ref": "#/$defs/idArray" },
+        "prerequisiteEvidenceIds": { "$ref": "#/$defs/idArray" },
+        "contradictionIds": { "$ref": "#/$defs/idArray" },
+        "followUpTopicIds": { "$ref": "#/$defs/idArray" },
+        "repeatAnswer": { "type": "string" },
+        "validationNotes": { "type": "string" }
       }
     },
     "location": {

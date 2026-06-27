@@ -73,6 +73,10 @@ Use when the player asks an NPC about a topic.
 
 The rule should identify the NPC and topic when possible.
 
+NPC topics should be defined by `docs/npc-interview-model-v1.md`.
+
+The discovery rule decides when a topic reveals clue or evidence IDs. The interview topic defines what the NPC knows, withholds, lies about, evades, or repeats.
+
 ### compare_evidence
 
 Use when the player compares two or more clues, evidence items, documents, statements, or object states.

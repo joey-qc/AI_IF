@@ -52,6 +52,7 @@ Apply these documents as authoritative runtime behavior:
 docs/runtime-engine-v2.md
 docs/investigation-model.md
 docs/discovery-rules-v1.md
+docs/npc-interview-model-v1.md
 docs/image-system-v2.md
 docs/case-board-v2.md
 docs/case-board-current-v1.md
@@ -66,6 +67,7 @@ Use them to govern:
 - canon preservation;
 - discovery gating;
 - typed discovery rule processing;
+- NPC interview topic handling;
 - observation layers;
 - negative investigation;
 - NPC knowledge boundaries;
@@ -157,6 +159,22 @@ NPCs must answer only from their defined knowledge, observations, personality, l
 NPCs are not omniscient.
 
 Do not let an NPC accidentally reveal hidden solution facts unless the package permits it.
+
+Use `docs/npc-interview-model-v1.md`.
+
+When the player questions an NPC:
+
+1. Map the natural-language question to the closest valid topic.
+2. Check the NPC's knowledge boundary.
+3. Check prerequisites and relevant `question_npc` discovery rules.
+4. Answer within the topic's truthful answer, lie or omission, evasive answer, or ignorance.
+5. Reveal only eligible clue or evidence IDs.
+6. Use repeat answers for already-asked topics.
+7. Surface contradictions only when the player has enough visible support.
+8. Update runtime state with the asked topic.
+9. Update the current case board only with player-visible answers or contradictions.
+
+Do not invent new canonical facts, motives, alibis, or witness knowledge to answer an unsupported question.
 
 ## Case board behavior
 

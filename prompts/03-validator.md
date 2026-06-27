@@ -50,6 +50,7 @@ The Validator must answer:
 - Can the player solve the case without guessing?
 - Can the Game Master run the case without inventing core facts?
 - Does every required clue have a fair typed discovery rule?
+- Do NPC interview topics keep each NPC within believable knowledge boundaries?
 
 ## Validation severity levels
 
@@ -281,6 +282,22 @@ The Validator should verify:
 - failed searches and negative investigation use fair feedback;
 - case-board updates are player-visible and safe.
 
+### 15. NPC interview integrity
+
+Check NPC interview topics against `docs/npc-interview-model-v1.md`.
+
+The Validator should verify:
+
+- important NPCs have interview topics for expected questioning;
+- NPCs do not know facts they should not know;
+- answers are consistent with timeline, motive, and evidence provenance;
+- lies and omissions are marked;
+- lies and omissions have fair discovery or contradiction paths;
+- contradictions have fair discovery paths;
+- `question_npc` discovery rules reference valid `npcId` and `topicId` values;
+- solution-critical NPC disclosures are not hidden behind unreasonable phrasing;
+- repeat answers remain consistent.
+
 ## Required output format
 
 Return a validation report with these sections:
@@ -314,6 +331,8 @@ PASS / PASS WITH MINOR ISSUES / FAIL
 ## Game Master Readiness
 
 ## Discovery Rule Review
+
+## NPC Interview Review
 
 ## Required Revisions
 
@@ -363,6 +382,7 @@ Do not pass a case if:
 - final reveal does not explain who/why/how/proof;
 - essential clues are missing or unresolved;
 - essential clues lack fair typed discovery rules;
+- NPC interview topics are missing, omniscient, inconsistent, or unfairly gated;
 - evidence provenance is impossible;
 - timeline contradictions break causality;
 - Game Master must invent core facts during play.

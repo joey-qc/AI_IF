@@ -104,15 +104,16 @@ Follow this order:
 6. Define the culprit's motive, method, opportunity, and proof.
 7. Define the true chronological timeline.
 8. Define suspects and their relationships to the case.
-9. Define locations.
-10. Define evidence and clue chains.
-11. Define red herrings.
-12. Define typed discovery rules.
-13. Define scenes.
-14. Define the final reveal.
-15. Define case-board seed data.
-16. Define asset manifest.
-17. Run a self-check before returning the draft.
+9. Define NPC interview topics and knowledge boundaries.
+10. Define locations.
+11. Define evidence and clue chains.
+12. Define red herrings.
+13. Define typed discovery rules.
+14. Define scenes.
+15. Define the final reveal.
+16. Define case-board seed data.
+17. Define asset manifest.
+18. Run a self-check before returning the draft.
 
 ## Player configuration requirements
 
@@ -313,6 +314,28 @@ Each major suspect must include:
 - what clues point toward them;
 - what clues clear them.
 
+## NPC interview requirements
+
+Important NPCs must include structured interview topics and knowledge boundaries.
+
+Use `docs/npc-interview-model-v1.md` and `schemas/game-package.schema.json`.
+
+For each important NPC, define topics that cover expected questioning:
+
+- alibi;
+- motive or apparent motive;
+- relationship to the mystery;
+- timeline claims;
+- relevant evidence or clues;
+- lies, omissions, evasions, and ignorance;
+- contradictions;
+- follow-up topics;
+- repeat answers.
+
+Each topic should define what the NPC knows, what they do not know, what they will not say yet, and what clues or evidence can be revealed when eligible.
+
+Do not leave important NPC answers for the Game Master to invent during play.
+
 ## Location requirements
 
 Each major location must include:
@@ -390,6 +413,7 @@ Before finalizing, check:
 - Is evidence provenance clear?
 - Is the scope appropriate for the requested length?
 - Can the Game Master run this without inventing core facts?
+- Do important NPCs have interview topics and knowledge boundaries?
 
 If any answer is no, revise before returning the package.
 

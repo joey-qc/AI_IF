@@ -66,6 +66,7 @@ You should test:
 - typed discovery trigger coverage;
 - clue interpretation;
 - suspect interrogation;
+- NPC topic mapping and follow-up questioning;
 - location flow;
 - chronology;
 - scope and pacing;
@@ -92,12 +93,13 @@ When reporting defects, identify whether the issue was visible to the player or 
 5. Test at least one alternate investigation route.
 6. Test multiple discovery trigger types, such as observation, object inspection, close inspection, NPC questioning, document reading, evidence comparison, theory-making, accusation, and hints when allowed.
 7. Test suspect questioning.
-8. Test evidence inspection.
-9. Test repeated interactions after a clue has already been discovered.
-10. Test a premature accusation.
-11. Test final accusation using only discoverable evidence.
-12. Compare the play experience against the intended solution.
-13. Report defects.
+8. Test NPC follow-up topics, contradictions, repeated questions, evasive answers, and knowledge boundaries.
+9. Test evidence inspection.
+10. Test repeated interactions after a clue has already been discovered.
+11. Test a premature accusation.
+12. Test final accusation using only discoverable evidence.
+13. Compare the play experience against the intended solution.
+14. Report defects.
 
 ## What to look for
 
@@ -128,6 +130,14 @@ Would the Game Master have to contradict the package to answer natural questions
 ### NPC fragility
 
 Do NPCs have enough knowledge, lies, and limits to withstand questioning?
+
+Do natural-language questions map to valid topics?
+
+Do follow-up questions unlock fairly?
+
+Do repeated questions use stable repeat answers?
+
+Do evasive answers feel bounded rather than obstructive?
 
 ### Timeline confusion
 
@@ -180,6 +190,8 @@ PASS / PASS WITH ISSUES / FAIL
 ## Discovery Trigger Assessment
 
 ## Game Master Stress Points
+
+## NPC Interview Assessment
 
 ## Asset and Case Board Assessment
 
@@ -242,6 +254,7 @@ Mark the playtest as FAIL if:
 - the culprit is not supported by discovered evidence;
 - the final reveal depends on hidden information;
 - typed discovery rules do not allow essential clues to surface through plausible play;
+- NPC questioning cannot reveal required information through fair topic paths;
 - natural player actions expose contradictions;
 - the Game Master must invent essential facts;
 - the case runs far beyond the requested scope.

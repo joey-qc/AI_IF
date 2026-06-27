@@ -49,12 +49,13 @@ Read in this order:
 3. repository-workflow.md
 4. runtime-engine-v2.md
 5. discovery-rules-v1.md
-6. investigation-model.md
-7. image-system-v2.md
-8. case-board-v2.md
-9. runtime-state-v1.md
-10. case-board-current-v1.md
-11. runtime-self-checks.md
+6. npc-interview-model-v1.md
+7. investigation-model.md
+8. image-system-v2.md
+9. case-board-v2.md
+10. runtime-state-v1.md
+11. case-board-current-v1.md
+12. runtime-self-checks.md
 
 ## Runtime State Contract
 
@@ -113,6 +114,21 @@ Discovery rules define how canonical clues, evidence, and related player-visible
 
 `case-board-current.json` records only the player-visible results of fired rules, failed searches, theories, contradictions, and ruled-out paths.
 
+## NPC Interview Model Contract
+
+NPC interview data is governed by:
+
+```text
+docs/npc-interview-model-v1.md
+schemas/game-package.schema.json
+```
+
+NPC interview topics are canonical authoring data inside `game-package.json`.
+
+`runtime-state.json` tracks which NPC topics have been asked and what player-visible claims, lies, omissions, or contradictions have surfaced.
+
+`case-board-current.json` records only player-visible NPC answers, witness statements, contradictions, and follow-up leads.
+
 ## Operational Prompts
 
 Operational prompts implement the specifications. They should reference the documents above rather than duplicate them.
@@ -139,6 +155,7 @@ Completed:
 - First successful human playthrough
 - Runtime Engine v2 specifications
 - Discovery Rules v1
+- NPC Interview Model v1
 - Game Master v2
 - Runtime State v1 specification and schema
 

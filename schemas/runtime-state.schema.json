@@ -156,11 +156,28 @@
         "met": { "type": "boolean" },
         "questioned": { "type": "boolean" },
         "topicsAsked": { "$ref": "#/$defs/stringArray" },
+        "topicIdsAsked": { "$ref": "#/$defs/idArray" },
+        "interviewTopics": { "type": "array", "items": { "$ref": "#/$defs/npcInterviewStateEntry" }, "default": [] },
         "claimsHeard": { "$ref": "#/$defs/stringArray" },
         "liesOrOmissionsRevealed": { "$ref": "#/$defs/stringArray" },
         "contradictionsKnown": { "$ref": "#/$defs/stringArray" },
         "currentAttitude": { "type": "string" },
         "turnLastQuestioned": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "npcInterviewStateEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["topicId", "status"],
+      "properties": {
+        "topicId": { "$ref": "#/$defs/idString" },
+        "status": { "type": "string", "enum": ["asked", "repeated", "evaded", "answered", "contradicted", "locked"] },
+        "turnFirstAsked": { "type": "integer", "minimum": 0 },
+        "turnLastAsked": { "type": "integer", "minimum": 0 },
+        "revealedClueIds": { "$ref": "#/$defs/idArray" },
+        "revealedEvidenceIds": { "$ref": "#/$defs/idArray" },
+        "contradictionIds": { "$ref": "#/$defs/idArray" },
+        "lastAnswerSummary": { "type": "string" }
       }
     },
     "leadEntry": {

@@ -306,11 +306,41 @@ Required fields for each character:
 - `knowledge`
 - `secrets`
 - `liesOrOmissions`
+- `interviewTopics`
 - `cluesPointingToward`
 - `cluesClearingOrImplicating`
 - `interrogationGuidance`
 
 NPCs should have bounded knowledge. The Game Master should know what each person can and cannot truthfully answer.
+
+Important NPCs should include structured `interviewTopics` following:
+
+```text
+docs/npc-interview-model-v1.md
+```
+
+Recommended interview topic fields:
+
+- `topicId`
+- `topicLabel`
+- `topicType`
+- `npcId`
+- `playerQuestionExamples`
+- `truthfulAnswer`
+- `lieOrOmission`
+- `evasiveAnswer`
+- `knowledgeBoundary`
+- `emotionalState`
+- `revealsClueIds`
+- `revealsEvidenceIds`
+- `prerequisiteClueIds`
+- `prerequisiteEvidenceIds`
+- `contradictionIds`
+- `followUpTopicIds`
+- `repeatAnswer`
+- `validationNotes`
+
+Interview topics define what the NPC can say. `question_npc` discovery rules define when a topic reveals clue or evidence IDs.
 
 ## 8. locations
 
