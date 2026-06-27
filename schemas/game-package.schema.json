@@ -2,6 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/joey-qc/AI_IF/schemas/game-package.schema.json",
   "title": "AI Interactive Fiction Game Package",
+  "description": "Machine-readable schema for repository-backed AI interactive mystery game packages. Aligned after quick-001 first human play-through.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -29,51 +30,17 @@
     "setting": { "$ref": "#/$defs/setting" },
     "centralMystery": { "$ref": "#/$defs/centralMystery" },
     "solution": { "$ref": "#/$defs/solution" },
-    "characters": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/character" },
-      "minItems": 1
-    },
-    "locations": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/location" },
-      "minItems": 1
-    },
-    "timeline": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/timelineEvent" },
-      "minItems": 1
-    },
-    "clues": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/clue" },
-      "minItems": 1
-    },
-    "redHerrings": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/redHerring" },
-      "default": []
-    },
-    "evidence": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/evidence" },
-      "minItems": 1
-    },
-    "scenes": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/scene" },
-      "minItems": 1
-    },
-    "discoveryRules": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/discoveryRule" }
-    },
+    "characters": { "type": "array", "items": { "$ref": "#/$defs/character" }, "minItems": 1 },
+    "locations": { "type": "array", "items": { "$ref": "#/$defs/location" }, "minItems": 1 },
+    "timeline": { "type": "array", "items": { "$ref": "#/$defs/timelineEvent" }, "minItems": 1 },
+    "clues": { "type": "array", "items": { "$ref": "#/$defs/clue" }, "minItems": 1 },
+    "redHerrings": { "type": "array", "items": { "$ref": "#/$defs/redHerring" }, "default": [] },
+    "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" }, "minItems": 1 },
+    "scenes": { "type": "array", "items": { "$ref": "#/$defs/scene" }, "minItems": 1 },
+    "discoveryRules": { "type": "array", "items": { "$ref": "#/$defs/discoveryRule" } },
     "caseBoardSeed": { "$ref": "#/$defs/caseBoardSeed" },
-    "assetManifest": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/asset" },
-      "default": []
-    },
+    "assetGenerationGuidance": { "$ref": "#/$defs/assetGenerationGuidance" },
+    "assetManifest": { "type": "array", "items": { "$ref": "#/$defs/asset" }, "default": [] },
     "validationTargets": { "$ref": "#/$defs/validationTargets" },
     "runtimeState": { "$ref": "#/$defs/runtimeState" }
   },
@@ -82,6 +49,11 @@
       "type": "string",
       "minLength": 1,
       "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$"
+    },
+    "slugString": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
     },
     "stringArray": {
       "type": "array",
@@ -96,10 +68,11 @@
     "caseMetadata": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["caseId", "title", "version", "status", "validationStatus", "playtestStatus"],
+      "required": ["caseId", "title", "slug", "version", "status", "validationStatus", "playtestStatus"],
       "properties": {
         "caseId": { "$ref": "#/$defs/idString" },
         "title": { "type": "string", "minLength": 1 },
+        "slug": { "$ref": "#/$defs/slugString" },
         "version": { "type": "string", "minLength": 1 },
         "status": {
           "type": "string",
@@ -120,11 +93,34 @@
         "authorRole": { "type": "string" },
         "validationStatus": {
           "type": "string",
-          "enum": ["not_validated", "failed", "passed_with_minor_issues", "passed"]
+          "enum": [
+            "not_validated",
+            "failed",
+            "passed_with_minor_issues",
+            "passed_with_minor_repository_issue",
+            "passed"
+          ]
         },
         "playtestStatus": {
           "type": "string",
-          "enum": ["not_playtested", "failed", "passed_with_issues", "passed"]
+          "enum": [
+            "not_playtested",
+            "failed",
+            "passed_with_issues",
+            "passed_with_minor_runtime_guidance",
+            "passed"
+          ]
+        },
+        "humanPlayStatus": {
+          "type": "string",
+          "enum": [
+            "not_played",
+            "in_progress",
+            "completed_once",
+            "completed_multiple",
+            "abandoned",
+            "blocked"
+          ]
         },
         "shortDescription": { "type": "string" },
         "estimatedPlayTimeMinutes": { "type": "integer", "minimum": 1 },
@@ -135,57 +131,24 @@
     "playerConfig": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "lengthPreset",
-        "difficulty",
-        "genre",
-        "tone",
-        "settingSummary",
-        "playerRole",
-        "imageMode",
-        "interactionMode",
-        "hintPolicy"
-      ],
+      "required": ["lengthPreset", "difficulty", "genre", "tone", "settingSummary", "playerRole", "imageMode", "interactionMode", "hintPolicy"],
       "properties": {
-        "lengthPreset": {
-          "type": "string",
-          "enum": ["quick_mystery", "one_sitting", "standard_case", "extended_case"]
-        },
-        "difficulty": {
-          "type": "string",
-          "enum": ["easy", "medium", "hard"]
-        },
+        "lengthPreset": { "type": "string", "enum": ["quick_mystery", "one_sitting", "standard_case", "extended_case"] },
+        "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"] },
         "genre": { "type": "string", "minLength": 1 },
         "tone": { "type": "string", "minLength": 1 },
         "settingSummary": { "type": "string", "minLength": 1 },
         "playerRole": { "type": "string", "minLength": 1 },
-        "imageMode": {
-          "type": "string",
-          "enum": ["none", "player_requested_only", "occasional_suggested", "asset_rich"]
-        },
-        "interactionMode": {
-          "type": "string",
-          "enum": ["text_first", "voice_friendly", "mixed"]
-        },
-        "hintPolicy": {
-          "type": "string",
-          "enum": ["none", "on_request_only", "gentle_when_stuck", "proactive_for_easy_mode"]
-        },
+        "imageMode": { "type": "string", "enum": ["none", "player_requested_only", "occasional_suggested", "asset_rich"] },
+        "interactionMode": { "type": "string", "enum": ["text_first", "voice_friendly", "mixed"] },
+        "hintPolicy": { "type": "string", "enum": ["none", "on_request_only", "gentle_when_stuck", "proactive_for_easy_mode"] },
         "contentBoundaries": { "$ref": "#/$defs/stringArray" }
       }
     },
     "scopeBudget": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "maxPrimaryLocations",
-        "maxMajorNpcCount",
-        "maxEssentialClueCount",
-        "maxRedHerringCount",
-        "maxNestedSecrets",
-        "expectedPlayTimeMinutesMin",
-        "expectedPlayTimeMinutesMax"
-      ],
+      "required": ["maxPrimaryLocations", "maxMajorNpcCount", "maxEssentialClueCount", "maxRedHerringCount", "maxNestedSecrets", "expectedPlayTimeMinutesMin", "expectedPlayTimeMinutesMax"],
       "properties": {
         "maxPrimaryLocations": { "type": "integer", "minimum": 1 },
         "maxMajorNpcCount": { "type": "integer", "minimum": 1 },
@@ -228,19 +191,7 @@
     "solution": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "culpritCharacterId",
-        "motive",
-        "motiveProportionality",
-        "method",
-        "opportunity",
-        "means",
-        "concealmentPlan",
-        "culpritMistake",
-        "proofRequiredForAccusation",
-        "essentialClueIds",
-        "finalRevealBeats"
-      ],
+      "required": ["culpritCharacterId", "motive", "motiveProportionality", "method", "opportunity", "means", "concealmentPlan", "culpritMistake", "proofRequiredForAccusation", "essentialClueIds", "finalRevealBeats"],
       "properties": {
         "culpritCharacterId": { "$ref": "#/$defs/idString" },
         "victimCharacterId": { "$ref": "#/$defs/idString" },
@@ -267,24 +218,13 @@
         "redHerringIds": { "$ref": "#/$defs/idArray" },
         "trueTimelineEventIds": { "$ref": "#/$defs/idArray" },
         "finalRevealBeats": { "$ref": "#/$defs/stringArray" },
-        "postResolutionAnswers": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
-        }
+        "postResolutionAnswers": { "type": "object", "additionalProperties": { "type": "string" } }
       }
     },
     "character": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "characterId",
-        "name",
-        "role",
-        "isMajorNpc",
-        "isSuspect",
-        "relationshipToMystery",
-        "knowledge"
-      ],
+      "required": ["characterId", "name", "role", "isMajorNpc", "isSuspect", "relationshipToMystery", "knowledge"],
       "properties": {
         "characterId": { "$ref": "#/$defs/idString" },
         "name": { "type": "string" },
@@ -346,28 +286,13 @@
     "clue": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "clueId",
-        "title",
-        "playerFacingDescription",
-        "trueMeaning",
-        "importance",
-        "discoveryLocationId",
-        "discoveryConditions",
-        "sourceOrProvenance",
-        "supportsSolution",
-        "resolvedInFinalReveal",
-        "textFallback"
-      ],
+      "required": ["clueId", "title", "playerFacingDescription", "trueMeaning", "importance", "discoveryLocationId", "discoveryConditions", "sourceOrProvenance", "supportsSolution", "resolvedInFinalReveal", "textFallback"],
       "properties": {
         "clueId": { "$ref": "#/$defs/idString" },
         "title": { "type": "string" },
         "playerFacingDescription": { "type": "string" },
         "trueMeaning": { "type": "string" },
-        "importance": {
-          "type": "string",
-          "enum": ["essential", "supporting", "optional", "red_herring", "atmosphere"]
-        },
+        "importance": { "type": "string", "enum": ["essential", "supporting", "optional", "red_herring", "atmosphere"] },
         "discoveryLocationId": { "$ref": "#/$defs/idString" },
         "discoveryConditions": { "type": "string" },
         "sourceOrProvenance": { "type": "string" },
@@ -400,16 +325,7 @@
     "evidence": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "evidenceId",
-        "title",
-        "type",
-        "description",
-        "currentLocationId",
-        "chainOfCustody",
-        "accessHistory",
-        "discoveryConditions"
-      ],
+      "required": ["evidenceId", "title", "type", "description", "currentLocationId", "chainOfCustody", "accessHistory", "discoveryConditions"],
       "properties": {
         "evidenceId": { "$ref": "#/$defs/idString" },
         "title": { "type": "string" },
@@ -438,10 +354,7 @@
         "availableClueIds": { "$ref": "#/$defs/idArray" },
         "availableEvidenceIds": { "$ref": "#/$defs/idArray" },
         "likelyPlayerQuestions": { "$ref": "#/$defs/stringArray" },
-        "safeAnswers": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
-        },
+        "safeAnswers": { "type": "object", "additionalProperties": { "type": "string" } },
         "hiddenFactsNotYetRevealed": { "$ref": "#/$defs/stringArray" },
         "exitLeads": { "$ref": "#/$defs/stringArray" }
       }
@@ -477,6 +390,16 @@
         "playerTheories": { "$ref": "#/$defs/stringArray" }
       }
     },
+    "assetGenerationGuidance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["imageMode", "styleConstraints", "textFallbackRequired"],
+      "properties": {
+        "imageMode": { "type": "string", "enum": ["none", "player_requested_only", "occasional_suggested", "asset_rich"] },
+        "styleConstraints": { "$ref": "#/$defs/stringArray" },
+        "textFallbackRequired": { "type": "boolean" }
+      }
+    },
     "asset": {
       "type": "object",
       "additionalProperties": false,
@@ -493,19 +416,15 @@
         "retrievalLabel": { "type": "string" },
         "spoilerLevel": { "type": "string", "enum": ["none", "low", "medium", "high"] },
         "isCanonicalEvidence": { "type": "boolean" },
-        "containsHiddenClues": { "type": "boolean" }
+        "containsHiddenClues": { "type": "boolean" },
+        "imagePromptGuidance": { "type": "string" },
+        "hasBeenShownToPlayer": { "type": "boolean" }
       }
     },
     "validationTargets": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "mustResolveClueIds",
-        "mustExplainRedHerringIds",
-        "mustValidateTimelineEventIds",
-        "mustValidateEvidenceIds",
-        "mustSupportAccusationWithClueIds"
-      ],
+      "required": ["mustResolveClueIds", "mustExplainRedHerringIds", "mustValidateTimelineEventIds", "mustValidateEvidenceIds", "mustSupportAccusationWithClueIds"],
       "properties": {
         "mustResolveClueIds": { "$ref": "#/$defs/idArray" },
         "mustExplainRedHerringIds": { "$ref": "#/$defs/idArray" },
