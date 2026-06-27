@@ -8,13 +8,13 @@
     "difficulty": "easy",
     "genre": "classic detective",
     "tone": "lighthearted",
-    "status": "draft",
-    "validationStatus": "not_validated",
+    "status": "validation_failed",
+    "validationStatus": "failed",
     "playtestStatus": "not_playtested",
     "lastUpdatedAt": "2026-06-27",
     "estimatedPlayTimeMinutes": 20,
     "imageMode": "player_requested_only",
     "interactionMode": "text_first",
-    "notes": "First Quick Mystery engine test package. Draft complete; ready for validation."
+    "notes": "Validation failed. Blocker: Thomas Greer's gambling-debt motive is not discoverable before final reveal. Revision required before AI playtest."
   }
 ]
