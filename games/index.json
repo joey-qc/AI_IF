@@ -8,13 +8,13 @@
     "difficulty": "easy",
     "genre": "classic detective",
     "tone": "lighthearted",
-    "status": "validated",
+    "status": "playtested",
     "validationStatus": "passed_with_minor_issues",
-    "playtestStatus": "not_playtested",
+    "playtestStatus": "passed_with_issues",
     "lastUpdatedAt": "2026-06-27",
     "estimatedPlayTimeMinutes": 20,
     "imageMode": "player_requested_only",
     "interactionMode": "text_first",
-    "notes": "Second validation passed with one minor repository schema cleanup item. Ready for AI playtesting."
+    "notes": "AI playtest passed with minor runtime guidance. Ready for final human-play handoff preparation."
   }
 ]
