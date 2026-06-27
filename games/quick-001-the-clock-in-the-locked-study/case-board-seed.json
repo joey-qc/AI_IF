@@ -1,0 +1,35 @@
+{
+  "caseId": "quick-001",
+  "title": "The Clock in the Locked Study",
+  "knownFacts": [
+    "The Breguet pocket watch was last seen in the locked glass case at 7:55 p.m.",
+    "The study door remained closed after the watch was shown.",
+    "Only Rowan Vale, Celia Vale, and Thomas Greer were present.",
+    "The front lock on the display case appears intact."
+  ],
+  "knownCharacters": [
+    "char-rowan-vale",
+    "char-celia-vale",
+    "char-thomas-greer"
+  ],
+  "knownLocations": [
+    "loc-locked-study"
+  ],
+  "openQuestions": [
+    "How did the thief remove the watch without damaging the front lock?",
+    "Where is the watch now?",
+    "Why is Celia nervous?",
+    "Why did the clock stop at 8:13?"
+  ],
+  "activeLeads": [
+    "Inspect the display case",
+    "Inspect the tallcase clock",
+    "Question Rowan Vale",
+    "Question Celia Vale",
+    "Question Thomas Greer"
+  ],
+  "discoveredClueIds": [],
+  "discoveredEvidenceIds": [],
+  "seenAssetIds": [],
+  "playerTheories": []
+}
