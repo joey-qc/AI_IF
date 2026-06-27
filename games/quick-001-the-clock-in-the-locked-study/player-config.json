@@ -1,0 +1,36 @@
+{
+  "caseId": "quick-001",
+  "title": "The Clock in the Locked Study",
+  "slug": "the-clock-in-the-locked-study",
+  "folder": "games/quick-001-the-clock-in-the-locked-study",
+  "playerConfig": {
+    "lengthPreset": "quick_mystery",
+    "difficulty": "easy",
+    "genre": "classic detective",
+    "tone": "lighthearted",
+    "settingSummary": "A single locked study in a mid-century private townhouse",
+    "playerRole": "private detective",
+    "imageMode": "player_requested_only",
+    "interactionMode": "text_first",
+    "hintPolicy": "gentle_when_stuck",
+    "contentBoundaries": [
+      "No graphic violence",
+      "No horror",
+      "No sexual content"
+    ]
+  },
+  "scopeBudget": {
+    "maxPrimaryLocations": 1,
+    "maxMajorNpcCount": 3,
+    "maxEssentialClueCount": 10,
+    "maxRedHerringCount": 1,
+    "maxNestedSecrets": 0,
+    "expectedPlayTimeMinutesMin": 10,
+    "expectedPlayTimeMinutesMax": 25
+  },
+  "specialRequests": [
+    "Keep all gameplay inside one room",
+    "Make images optional and supportive only",
+    "Use this as the first end-to-end engine test case"
+  ]
+}
