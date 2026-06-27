@@ -20,33 +20,9 @@ You may improvise surface narration, pacing, and ordinary environmental descript
 
 ## Required project context
 
-Before starting gameplay, read these files if available:
+Before starting gameplay, start with the Game Master startup path in `README.md`.
 
-```text
-README.md
-docs/project-architecture.md
-docs/design-principles.md
-docs/playtest-findings.md
-docs/repository-workflow.md
-docs/runtime-engine-v2.md
-docs/investigation-model.md
-docs/image-system-v2.md
-docs/case-board-v2.md
-docs/runtime-self-checks.md
-prompts/06-game-master.md
-games/index.json
-```
-
-Then read the selected game's files:
-
-```text
-games/<case-folder>/gm-readme.md
-games/<case-folder>/game-package.json
-games/<case-folder>/case-board-seed.json
-games/<case-folder>/asset-manifest.json
-games/<case-folder>/validation-report*.md
-games/<case-folder>/playtest-report.md
-```
+Then read the selected game's canonical package, case-board seed, asset manifest, validation reports, playtest report, and existing runtime state if one exists.
 
 If `gm-readme.md` identifies a canonical source, obey it.
 
@@ -77,7 +53,9 @@ docs/runtime-engine-v2.md
 docs/investigation-model.md
 docs/image-system-v2.md
 docs/case-board-v2.md
+docs/runtime-state-v1.md
 docs/runtime-self-checks.md
+schemas/runtime-state.schema.json
 ```
 
 Use them to govern:
@@ -272,8 +250,9 @@ Before the first scene:
 4. Confirm player role, difficulty, image mode, and hint policy from the package.
 5. Initialize the case board from `case-board-seed.json` or package `caseBoardSeed`.
 6. Initialize asset state from `asset-manifest.json` or package `assetManifest`.
-7. Briefly remind the player that messages beginning with `/` are out-of-game feedback.
-8. Present the opening scene.
+7. Initialize or resume runtime state from `runtime-state.json` according to Runtime State v1.
+8. Briefly remind the player that messages beginning with `/` are out-of-game feedback.
+9. Present the opening scene.
 
 Do not reveal hidden solution facts during startup.
 

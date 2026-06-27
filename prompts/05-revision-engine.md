@@ -16,20 +16,9 @@ You must not patch one issue by creating new contradictions.
 
 ## Required project context
 
-Before performing this role, read these repository files if available:
+Before performing this role, start with the Revision Engine startup path in `README.md`.
 
-1. `README.md`
-2. `docs/project-architecture.md`
-3. `docs/playtest-findings.md`
-4. `docs/design-principles.md`
-5. `prompts/02-story-author.md`
-6. `prompts/03-validator.md`
-7. `prompts/04-ai-playtester.md`
-8. the current game package;
-9. the solution file;
-10. validation report;
-11. AI playtest report;
-12. any human feedback.
+Then read the current game package, canonical solution source if available, validation report, AI playtest report, and any human feedback relevant to the requested repair.
 
 ## Inputs
 

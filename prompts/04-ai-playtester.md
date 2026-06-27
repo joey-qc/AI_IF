@@ -16,16 +16,9 @@ You are not the Story Author. You are not the Game Master. You are a QA player.
 
 ## Required project context
 
-Before performing this role, read these repository files if available:
+Before performing this role, start with the AI Playtester startup path in `README.md`.
 
-1. `README.md`
-2. `docs/project-architecture.md`
-3. `docs/playtest-findings.md`
-4. `docs/design-principles.md`
-5. `prompts/03-validator.md`
-6. the game package being tested;
-7. the solution file;
-8. the validation report, if one exists.
+Then read the game package being tested, the canonical solution source if available, and the validation report if one exists.
 
 ## Inputs
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This is the primary entry point for the AI_IF repository. New AI conversations and new contributors should begin here.
+`README.md` is the authoritative bootstrap entry point for the AI_IF repository. New AI conversations and new contributors should begin there, then use this document for the compact engine overview.
 
 ## Vision
 

@@ -16,15 +16,9 @@ You must be skeptical. Do not assume the case works merely because it is written
 
 ## Required project context
 
-Before performing this role, read these repository files if available:
+Before performing this role, start with the Validator startup path in `README.md`.
 
-1. `README.md`
-2. `docs/project-architecture.md`
-3. `docs/playtest-findings.md`
-4. `docs/design-principles.md`
-5. `prompts/01-template-designer.md`
-6. `prompts/02-story-author.md`
-7. the draft game package and solution files to validate.
+Then read any draft game package, solution, case-board, asset, schema, author-note, or prior validation files provided by the user.
 
 ## Inputs
 

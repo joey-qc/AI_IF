@@ -1,14 +1,12 @@
 # AI Interactive Fiction
 
-This repository contains the design documents, prompt modules, schemas, and future game packages for an AI-assisted interactive fiction system.
+This repository contains the design documents, prompt modules, schemas, and game packages for an AI-assisted interactive fiction system.
 
-The project began as a prompt-only experiment: a user uploaded Markdown prompt files, then interacted with ChatGPT as a game master for a detective mystery. The playtest demonstrated that conversational AI can create an engaging investigative experience, but it also revealed that prompt-only improvisation is not enough to guarantee a fair, coherent mystery with a satisfying solution.
-
-The goal of this repository is to evolve the project from a single monolithic game-master prompt into a structured, multi-phase system for generating, validating, revising, storing, and playing interactive mysteries.
+`README.md` is the authoritative bootstrap document for the repository. New AI conversations and human contributors should start here, choose the relevant role path below, and then continue into the role prompt or case files named by that path.
 
 ## Core idea
 
-The system should separate three jobs that were previously combined in one conversation:
+The system separates three jobs that were previously combined in one conversation:
 
 1. Author the mystery.
 2. Validate the mystery.
@@ -18,29 +16,39 @@ The player-facing Game Master should not invent the mystery during gameplay. It 
 
 ## Current status
 
-This repository is in early architecture/design stage.
+This repository is in early engine-hardening stage.
 
-Current foundational documents:
+Completed foundations include:
 
-- `docs/project-architecture.md` - system tiers, AI roles, repositories, and workflow.
-- `docs/playtest-findings.md` - lessons from the first full gameplay test.
-- `docs/design-principles.md` - non-negotiable design rules for future versions.
+- repository architecture;
+- design principles and playtest findings;
+- gameplay setup and scope presets;
+- game package schemas;
+- role prompts for authoring, validation, playtesting, revision, and gameplay;
+- Runtime Engine v2;
+- Runtime State v1 specification and schema;
+- Game Master v2.
 
-A test file, `connector-test.md`, was created to verify ChatGPT GitHub connector write access.
+Next work should harden the existing engine architecture and repository workflow before generating additional cases.
 
-## Planned repository structure
+## Repository structure
 
 ```text
 AI_IF/
   README.md
 
   docs/
+    engine-overview.md
     project-architecture.md
     playtest-findings.md
     design-principles.md
-    roadmap.md
+    gameplay-setup-and-scope-presets.md
+    repository-workflow.md
+    runtime-engine-v2.md
+    runtime-state-v1.md
 
   prompts/
+    00-player-setup.md
     01-template-designer.md
     02-story-author.md
     03-validator.md
@@ -51,48 +59,188 @@ AI_IF/
   schemas/
     game-package-schema.md
     game-package.schema.json
-    character.schema.json
-    clue.schema.json
-    location.schema.json
-    timeline.schema.json
-    asset.schema.json
+    runtime-state.schema.json
 
   games/
-    case-001/
+    index.json
+    <caseId>-<slug>/
+      gm-readme.md
       game-package.json
-      solution.md
-      case-board.json
-      assets/
-
-  archive/
-    v1-playtest-prompts/
-      README.md
+      case-board-seed.json
+      asset-manifest.json
+      validation-report.md
+      playtest-report.md
+      runtime-state.json
 ```
 
 This structure may change as the design matures.
+
+## General startup path
+
+All roles should begin with this file, then follow the role-specific startup path below.
+
+Core project documents:
+
+1. `docs/project-architecture.md`
+2. `docs/design-principles.md`
+3. `docs/playtest-findings.md`
+4. `docs/repository-workflow.md`
+5. `docs/engine-overview.md`
+
+Use `docs/repository-workflow.md` for file ownership, case naming, report locations, runtime state handling, and commit discipline.
+
+## Role startup paths
+
+### Engine Architect
+
+Use this path when changing durable project architecture, engine behavior, schemas, workflow rules, or role responsibilities.
+
+Read:
+
+1. `README.md`
+2. `docs/engine-overview.md`
+3. `docs/project-architecture.md`
+4. `docs/design-principles.md`
+5. `docs/playtest-findings.md`
+6. `docs/repository-workflow.md`
+7. `docs/runtime-engine-v2.md`
+8. `docs/runtime-state-v1.md`
+9. `schemas/runtime-state.schema.json`
+
+Then inspect whichever prompt, schema, or case files are directly affected by the requested architecture change.
+
+### Story Author
+
+Use this path when creating or revising authored mystery content from setup constraints.
+
+Read:
+
+1. `README.md`
+2. `docs/design-principles.md`
+3. `docs/playtest-findings.md`
+4. `docs/gameplay-setup-and-scope-presets.md`
+5. `docs/repository-workflow.md`
+6. `schemas/game-package-schema.md`
+7. `schemas/game-package.schema.json`
+8. `prompts/02-story-author.md`
+9. `games/<caseId>-<slug>/player-config.json`, if continuing an existing setup
+
+The Story Author writes case content but does not approve it for play.
+
+### Validator
+
+Use this path when checking whether a mystery package is coherent, fair, complete, and ready for playtesting or human play.
+
+Read:
+
+1. `README.md`
+2. `docs/design-principles.md`
+3. `docs/playtest-findings.md`
+4. `docs/gameplay-setup-and-scope-presets.md`
+5. `docs/repository-workflow.md`
+6. `schemas/game-package-schema.md`
+7. `schemas/game-package.schema.json`
+8. `prompts/03-validator.md`
+9. `games/<caseId>-<slug>/game-package.json`
+10. `games/<caseId>-<slug>/solution.md`, if canonical or required by the case handoff
+11. `games/<caseId>-<slug>/case-board-seed.json`
+12. `games/<caseId>-<slug>/asset-manifest.json`
+
+The Validator diagnoses. The Revision Engine repairs.
+
+### AI Playtester
+
+Use this path when simulating player investigation against a drafted or validated case.
+
+Read:
+
+1. `README.md`
+2. `docs/design-principles.md`
+3. `docs/playtest-findings.md`
+4. `docs/repository-workflow.md`
+5. `prompts/04-ai-playtester.md`
+6. `games/<caseId>-<slug>/game-package.json`
+7. `games/<caseId>-<slug>/solution.md`, if canonical or required by the case handoff
+8. `games/<caseId>-<slug>/validation-report*.md`, if available
+
+The AI Playtester tests how the case behaves in practice and reports defects.
+
+### Revision Engine
+
+Use this path when repairing a case based on validation, AI playtest, or human feedback.
+
+Read:
+
+1. `README.md`
+2. `docs/design-principles.md`
+3. `docs/playtest-findings.md`
+4. `docs/repository-workflow.md`
+5. `prompts/05-revision-engine.md`
+6. `games/<caseId>-<slug>/game-package.json`
+7. `games/<caseId>-<slug>/solution.md`, if canonical or required by the case handoff
+8. `games/<caseId>-<slug>/validation-report*.md`, if available
+9. `games/<caseId>-<slug>/playtest-report.md`, if available
+10. Any human feedback or postgame report supplied by the user
+
+The Revision Engine should preserve intended experience while fixing defects.
+
+### Game Master
+
+Use this path when running a validated, repository-backed mystery for a human player.
+
+Read:
+
+1. `README.md`
+2. `docs/design-principles.md`
+3. `docs/playtest-findings.md`
+4. `docs/repository-workflow.md`
+5. `docs/runtime-engine-v2.md`
+6. `docs/investigation-model.md`
+7. `docs/image-system-v2.md`
+8. `docs/case-board-v2.md`
+9. `docs/runtime-state-v1.md`
+10. `docs/runtime-self-checks.md`
+11. `schemas/runtime-state.schema.json`
+12. `prompts/06-game-master.md`
+13. `games/index.json`
+14. `games/<caseId>-<slug>/gm-readme.md`
+15. `games/<caseId>-<slug>/game-package.json`
+16. `games/<caseId>-<slug>/case-board-seed.json`
+17. `games/<caseId>-<slug>/asset-manifest.json`
+18. `games/<caseId>-<slug>/validation-report*.md`, if available
+19. `games/<caseId>-<slug>/playtest-report.md`, if available
+20. `games/<caseId>-<slug>/runtime-state.json`, if resuming active play
+
+If `gm-readme.md` identifies a canonical source, follow it. Do not rely on stale companion files unless the case handoff says they are canonical.
+
+Runtime player-session state is governed by:
+
+```text
+docs/runtime-state-v1.md
+schemas/runtime-state.schema.json
+```
+
+Runtime state belongs in:
+
+```text
+games/<caseId>-<slug>/runtime-state.json
+```
+
+Do not write player progress back into `game-package.json`.
 
 ## Intended workflow
 
 A future game should move through these phases:
 
-1. Define the game package structure.
-2. Author a complete mystery from that structure.
-3. Validate the mystery for chronology, motive, clues, causality, and solvability.
-4. Simulate playthroughs with one or more AI playtesters.
-5. Feed failures back into revision.
-6. Approve a game package for play.
-7. Run the validated package through an AI Game Master.
-8. Maintain player-facing state through a case board and asset library.
-
-## How to use this repository in a new ChatGPT conversation
-
-Start by asking ChatGPT to read this `README.md`, then read:
-
-1. `docs/project-architecture.md`
-2. `docs/playtest-findings.md`
-3. `docs/design-principles.md`
-
-After those files are loaded, continue work on the next required phase.
+1. Define or select the game package structure.
+2. Capture player setup and scope constraints.
+3. Author a complete mystery from that structure.
+4. Validate the mystery for chronology, motive, clues, causality, and solvability.
+5. Simulate playthroughs with one or more AI playtesters.
+6. Feed failures back into revision.
+7. Approve a game package for play.
+8. Run the validated package through an AI Game Master.
+9. Maintain player-facing state through runtime state, case board, session log, and asset library files.
 
 ## Design stance
 

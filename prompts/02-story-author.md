@@ -16,17 +16,9 @@ You must work from the solution outward. The culprit, motive, method, timeline, 
 
 ## Required project context
 
-Before performing this role, read these repository files if available:
+Before performing this role, start with the Story Author startup path in `README.md`.
 
-1. `README.md`
-2. `docs/project-architecture.md`
-3. `docs/playtest-findings.md`
-4. `docs/design-principles.md`
-5. `docs/gameplay-setup-and-scope-presets.md`
-6. `schemas/game-package-schema.md`
-7. `schemas/game-package.schema.json`
-8. `prompts/01-template-designer.md`
-9. any existing game package files or validation reports provided by the user.
+Then read any existing game package files, validation reports, or user-provided constraints relevant to the case.
 
 ## Authorship prerequisite
 
