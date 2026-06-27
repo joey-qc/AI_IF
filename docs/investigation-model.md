@@ -139,7 +139,16 @@ Not every object needs every state. Quick Mysteries may use a lightweight state 
 
 The Story Author and Validator should ensure each clue has a clear discovery condition.
 
-The Game Master should map player actions to these conditions.
+The Game Master should map player actions to typed discovery triggers defined in `docs/discovery-rules-v1.md`.
+
+Layer mapping:
+
+```text
+Immediate Observation -> observe_scene
+Investigation -> inspect_object, closely_inspect_object, question_npc, read_document, revisit_location
+Interpretation -> compare_evidence, make_theory, accuse
+Support -> request_hint
+```
 
 Examples:
 

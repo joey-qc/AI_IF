@@ -42,6 +42,7 @@ Focus especially on:
 - motive proportionality;
 - timeline coherence;
 - clue closure;
+- typed discovery rule fairness;
 - evidence provenance;
 - physical plausibility;
 - solvability;
@@ -57,11 +58,12 @@ Resolve defects in this order:
 3. Solvability defects.
 4. Timeline and causality defects.
 5. Clue closure defects.
-6. Motive weakness.
-7. Evidence provenance defects.
-8. Physical plausibility defects.
-9. Pacing and scope problems.
-10. Minor cleanup.
+6. Discovery rule defects.
+7. Motive weakness.
+8. Evidence provenance defects.
+9. Physical plausibility defects.
+10. Pacing and scope problems.
+11. Minor cleanup.
 
 ## Preservation rules
 
@@ -112,6 +114,19 @@ For each unresolved clue:
 - demote it to atmosphere;
 - or replace it with a clue that supports the solution.
 
+### If discovery rules are missing or brittle
+
+For each missing, brittle, unfair, or overgenerous discovery rule:
+
+- add or revise a typed discovery rule;
+- use a standard trigger type;
+- connect the rule to valid canonical IDs;
+- add fair prerequisites where needed;
+- add `failureText` for plausible failed searches;
+- add `repeatText` for repeated interactions;
+- mark optional clues and red herrings appropriately;
+- update case-board sections only with player-visible information.
+
 ### If chronology breaks
 
 Build a corrected true timeline first, then revise clues and witness statements to match.
@@ -156,6 +171,8 @@ Use this structure:
 ## Updated Timeline
 
 ## Updated Clue Closure Matrix
+
+## Updated Discovery Rules
 
 ## Updated Evidence Provenance
 
@@ -206,6 +223,7 @@ Do not:
 - change the culprit without updating every affected clue;
 - add complexity to hide a contradiction;
 - leave essential evidence unexplained;
+- leave essential clues without fair typed discovery rules;
 - preserve a scene just because it is dramatic if it breaks logic;
 - claim the case is fixed without explaining how.
 
@@ -218,6 +236,7 @@ The revision fails if:
 - any blocker from the validation report remains unresolved;
 - the timeline remains contradictory;
 - major clues remain unexplained;
+- essential discovery rules are missing, unfair, or impossible to trigger;
 - the Game Master still needs to invent core facts.
 
 ## Response style

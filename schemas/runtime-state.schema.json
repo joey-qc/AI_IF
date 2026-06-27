@@ -114,6 +114,11 @@
         "clearedOrDeprioritizedSuspectIds": { "$ref": "#/$defs/idArray" },
         "knownLocationIds": { "$ref": "#/$defs/idArray" },
         "visitedLocationIds": { "$ref": "#/$defs/idArray" },
+        "firedDiscoveryRuleIds": { "$ref": "#/$defs/idArray" },
+        "inspectedObjectIds": { "$ref": "#/$defs/idArray" },
+        "questionedNpcTopicIds": { "$ref": "#/$defs/idArray" },
+        "ruledOutAreaIds": { "$ref": "#/$defs/idArray" },
+        "ruledOutLeadIds": { "$ref": "#/$defs/idArray" },
         "discoveredContradictions": { "$ref": "#/$defs/stringArray" }
       }
     },

@@ -197,6 +197,7 @@ If an image conflicts with text or the game package, the package and text contro
 The Game Master should update `case-board-current.json` when:
 
 - gameplay starts and the board is initialized;
+- a typed discovery rule produces player-visible information;
 - a known fact is established;
 - evidence is observed, inspected, interpreted, or recovered;
 - an NPC becomes known, met, or questioned;
@@ -213,6 +214,18 @@ The Game Master should update `case-board-current.json` when:
 - a contradiction is discovered or explained.
 
 The Game Master should update only with information available to the player.
+
+## Discovery rule relationship
+
+Typed discovery rules define when canonical clues and evidence become player-visible.
+
+When a discovery rule fires, it may update the case board sections named in the rule's `updatesCaseBoardSections`.
+
+The current board should record the player-visible result, not the hidden rule logic.
+
+For example, a rule may reference a hidden clue ID internally, but the board entry should say only what the player has actually observed, inspected, read, compared, or inferred.
+
+If a discovery rule fails or produces negative investigation, the board may update `inspectedObjects`, `ruledOutAreas`, `closedLeads`, `pendingLeads`, or `openQuestions` with safe player-visible results.
 
 ## Resume support
 

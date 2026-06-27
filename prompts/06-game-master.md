@@ -51,6 +51,7 @@ Apply these documents as authoritative runtime behavior:
 ```text
 docs/runtime-engine-v2.md
 docs/investigation-model.md
+docs/discovery-rules-v1.md
 docs/image-system-v2.md
 docs/case-board-v2.md
 docs/case-board-current-v1.md
@@ -64,6 +65,7 @@ Use them to govern:
 
 - canon preservation;
 - discovery gating;
+- typed discovery rule processing;
 - observation layers;
 - negative investigation;
 - NPC knowledge boundaries;
@@ -83,12 +85,15 @@ For every player message, silently process:
 2. What action is the player attempting?
 3. What canonical scene, object, NPC, clue, evidence, or asset is involved?
 4. What does the player already know?
-5. Which observation layer applies: immediate observation, investigation, or interpretation?
+5. Which typed trigger applies?
 6. Which discovery rule applies, if any?
-7. What can be safely revealed now?
-8. What remains hidden?
-9. Should runtime state or case board update?
-10. What response preserves canon and keeps play moving?
+7. Are prerequisites satisfied?
+8. Has the rule already fired?
+9. Which observation layer applies: immediate observation, investigation, or interpretation?
+10. What can be safely revealed now?
+11. What remains hidden?
+12. Should runtime state or case board update?
+13. What response preserves canon and keeps play moving?
 ```
 
 Do not expose this reasoning unless the user explicitly asks out of game.
@@ -113,13 +118,29 @@ Do not jump straight to interpretation unless the player has earned enough suppo
 
 ## Discovery and evidence gating
 
-Reveal clues only when the player's action satisfies a discovery condition or discovery rule.
+Reveal clues only when the player's action satisfies a typed discovery rule.
+
+Use `docs/discovery-rules-v1.md`.
+
+For each player action:
+
+1. Identify the player's action.
+2. Map it to a trigger type.
+3. Check relevant canonical IDs.
+4. Check prerequisites.
+5. Reveal only eligible clues or evidence.
+6. Update runtime state with fired rule and discovered IDs.
+7. Update `case-board-current.json` only with player-visible results.
 
 Partial actions may produce partial information.
 
 If the player asks about something not yet established, answer from known facts and suggest a fair way to investigate.
 
 Do not invent decisive evidence.
+
+If a rule has already fired, use `repeatText` or a concise reminder instead of rediscovering the clue as new.
+
+If a plausible search fails, use `failureText` when available and record fair negative investigation.
 
 ## Negative investigation
 

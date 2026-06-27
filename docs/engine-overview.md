@@ -48,12 +48,13 @@ Read in this order:
 2. design-principles.md
 3. repository-workflow.md
 4. runtime-engine-v2.md
-5. investigation-model.md
-6. image-system-v2.md
-7. case-board-v2.md
-8. runtime-state-v1.md
-9. case-board-current-v1.md
-10. runtime-self-checks.md
+5. discovery-rules-v1.md
+6. investigation-model.md
+7. image-system-v2.md
+8. case-board-v2.md
+9. runtime-state-v1.md
+10. case-board-current-v1.md
+11. runtime-self-checks.md
 
 ## Runtime State Contract
 
@@ -95,6 +96,23 @@ The canonical `game-package.json` remains the source of authored mystery truth.
 
 Do not write the current case board back into `game-package.json`.
 
+## Discovery Rules Contract
+
+Typed discovery rules are governed by:
+
+```text
+docs/discovery-rules-v1.md
+schemas/game-package.schema.json
+```
+
+The canonical `game-package.json` remains the source of clue truth.
+
+Discovery rules define how canonical clues, evidence, and related player-visible information become available.
+
+`runtime-state.json` tracks which discovery rules have fired and which clue or evidence IDs the player has discovered.
+
+`case-board-current.json` records only the player-visible results of fired rules, failed searches, theories, contradictions, and ruled-out paths.
+
 ## Operational Prompts
 
 Operational prompts implement the specifications. They should reference the documents above rather than duplicate them.
@@ -120,6 +138,7 @@ Completed:
 - AI playtesting workflow
 - First successful human playthrough
 - Runtime Engine v2 specifications
+- Discovery Rules v1
 - Game Master v2
 - Runtime State v1 specification and schema
 

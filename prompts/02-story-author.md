@@ -107,7 +107,7 @@ Follow this order:
 9. Define locations.
 10. Define evidence and clue chains.
 11. Define red herrings.
-12. Define discovery conditions.
+12. Define typed discovery rules.
 13. Define scenes.
 14. Define the final reveal.
 15. Define case-board seed data.
@@ -251,6 +251,12 @@ Each clue must include:
 - how it helps solve the case;
 - how it is resolved in the final explanation.
 
+Each required clue must also have at least one typed discovery rule in `discoveryRules`.
+
+Use `docs/discovery-rules-v1.md` and `schemas/game-package.schema.json`.
+
+Do not rely only on prose discovery notes.
+
 ## Red herring requirements
 
 Each red herring must include:
@@ -260,6 +266,35 @@ Each red herring must include:
 - the innocent explanation;
 - when or how the player can clear it;
 - why it does not unfairly block the solution.
+
+Red herring discovery rules should set `isRedHerring` and include validation notes explaining how the misleading path remains fair.
+
+## Discovery rule requirements
+
+Author typed discovery rules for clues and evidence.
+
+Use standard trigger types:
+
+```text
+observe_scene
+inspect_object
+closely_inspect_object
+question_npc
+compare_evidence
+read_document
+revisit_location
+make_theory
+accuse
+request_hint
+```
+
+Each rule should identify relevant canonical IDs where useful, such as `locationId`, `objectId`, `npcId`, `topicId`, `clueId`, `evidenceId`, or `documentId`.
+
+Use prerequisites when a clue should require prior discovery.
+
+Use `discoveryText`, `failureText`, and `repeatText` to help the Game Master reveal, deny, or repeat information fairly.
+
+Use `updatesCaseBoardSections` to identify safe player-facing board updates.
 
 ## Suspect requirements
 
@@ -348,6 +383,7 @@ Before finalizing, check:
 - Is the motive strong enough?
 - Is the timeline coherent?
 - Does every essential clue connect to the solution?
+- Does every essential clue have at least one fair typed discovery rule?
 - Does every major clue have closure?
 - Are red herrings explainable?
 - Are physical actions plausible?

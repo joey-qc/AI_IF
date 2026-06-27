@@ -63,6 +63,8 @@ Was a contradiction already discovered?
 Was a hint already given?
 Has this image already been shown?
 Is this clue visible, discovered, interpreted, or still hidden?
+Has this discovery rule already fired?
+Has this NPC topic already been asked?
 ```
 
 ## Top-level sections
@@ -150,6 +152,11 @@ Should include arrays for:
 - cleared or deprioritized suspect IDs;
 - known location IDs;
 - visited location IDs;
+- fired discovery rule IDs;
+- inspected object IDs;
+- questioned NPC topic IDs;
+- ruled-out area IDs;
+- ruled-out lead IDs;
 - discovered contradiction IDs or labels.
 
 A clue may be discovered without being interpreted.
@@ -313,13 +320,16 @@ The Game Master should update runtime state when:
 
 - gameplay starts;
 - the player changes location or scene;
+- a discovery rule fires;
 - a clue is discovered;
 - a clue is interpreted;
 - evidence is observed or recovered;
 - an object is inspected or ruled out;
 - an NPC is questioned;
+- an NPC topic is questioned;
 - a contradiction is discovered;
 - a lead opens, closes, or becomes blocked;
+- an area or lead is ruled out;
 - a hint is requested or offered;
 - an image is shown, requested, denied, or deferred;
 - a theory or accusation is made;
@@ -347,6 +357,25 @@ caseBoardSummary
 The purpose is not bureaucracy.
 
 The purpose is to prevent the Game Master from forgetting what the player has already done.
+
+## Discovery rule tracking
+
+Runtime state should track fired discovery rules by ID:
+
+```text
+firedDiscoveryRuleIds
+```
+
+This lets the Game Master distinguish:
+
+- a first discovery;
+- a repeated inspection;
+- a failed search;
+- a rule blocked by missing prerequisites.
+
+Runtime state should also track discovered clue IDs, discovered evidence IDs, inspected object IDs, questioned NPC topic IDs, ruled-out area IDs, and ruled-out lead IDs.
+
+Do not duplicate the full current case board inside runtime state. Use `case-board-current.json` for structured player-facing board details.
 
 ## Failure conditions
 

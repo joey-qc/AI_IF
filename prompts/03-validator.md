@@ -49,6 +49,7 @@ The Validator must answer:
 - Does every major clue have closure?
 - Can the player solve the case without guessing?
 - Can the Game Master run the case without inventing core facts?
+- Does every required clue have a fair typed discovery rule?
 
 ## Validation severity levels
 
@@ -149,6 +150,8 @@ Every significant clue must have:
 
 Flag any clue that is introduced but not resolved.
 
+Also check that every required clue has at least one typed discovery rule with a standard trigger type and valid references.
+
 ### 5. Evidence provenance
 
 For each major evidence item, check:
@@ -208,6 +211,8 @@ Ask:
 - Are there enough confirmations?
 - Is the proof threshold clear?
 
+Check whether solution-critical clues are locked behind unreasonable, invisible, or overly brittle discovery rules.
+
 ### 10. Scope and pacing
 
 Check whether the number of suspects, locations, clues, and twists matches the requested length and difficulty.
@@ -260,6 +265,22 @@ If a current board is present, check it against `schemas/case-board-current.sche
 
 The current board should distinguish discovered evidence from player theory, pending leads from closed leads, and observed objects from interpreted clues.
 
+### 14. Discovery rule integrity
+
+Check typed discovery rules against `docs/discovery-rules-v1.md`.
+
+The Validator should verify:
+
+- every required clue has at least one fair discovery path;
+- every discovery rule uses a standard trigger type;
+- rule references point to valid canonical IDs;
+- prerequisites do not create impossible chains;
+- solution-critical clues are not locked behind unreasonable or invisible actions;
+- optional clues and red herrings are marked appropriately;
+- discovery rules do not reveal hidden solution facts prematurely;
+- failed searches and negative investigation use fair feedback;
+- case-board updates are player-visible and safe.
+
 ## Required output format
 
 Return a validation report with these sections:
@@ -291,6 +312,8 @@ PASS / PASS WITH MINOR ISSUES / FAIL
 ## Solvability Review
 
 ## Game Master Readiness
+
+## Discovery Rule Review
 
 ## Required Revisions
 
@@ -339,6 +362,7 @@ Do not pass a case if:
 - motive is weak or disproportionate;
 - final reveal does not explain who/why/how/proof;
 - essential clues are missing or unresolved;
+- essential clues lack fair typed discovery rules;
 - evidence provenance is impossible;
 - timeline contradictions break causality;
 - Game Master must invent core facts during play.

@@ -449,28 +449,63 @@ Scenes are not rigid branches. They are structured support for conversational pl
 
 ## 14. discoveryRules
 
-Defines when clues, scenes, assets, and information become available.
+Defines when clues, evidence, scenes, assets, and information become available.
+
+Discovery rules should follow:
+
+```text
+docs/discovery-rules-v1.md
+```
+
+Discovery rules replace loose discovery-condition prose with typed, machine-checkable triggers.
 
 Required fields:
 
 - `ruleId`
 - `triggerType`
-- `triggerDescription`
+
+Recommended fields:
+
+- `description`
+- `locationId`
+- `objectId`
+- `npcId`
+- `topicId`
+- `clueId`
+- `evidenceId`
+- `documentId`
+- `prerequisiteClueIds`
+- `prerequisiteEvidenceIds`
+- `prerequisiteLocationIds`
+- `prerequisiteObjectIds`
 - `revealsClueIds`
 - `revealsEvidenceIds`
 - `revealsLocationIds`
 - `revealsAssetIds`
-- `caseBoardUpdates`
+- `updatesCaseBoardSections`
+- `discoveryText`
+- `failureText`
+- `repeatText`
+- `isOptional`
+- `isRedHerring`
+- `validationNotes`
 
-Examples of `triggerType`:
+Allowed `triggerType` values:
 
-- inspect object;
-- ask NPC;
-- compare clues;
-- revisit location;
-- accuse suspect;
-- request case board;
-- time/event progression.
+- `observe_scene`
+- `inspect_object`
+- `closely_inspect_object`
+- `question_npc`
+- `compare_evidence`
+- `read_document`
+- `revisit_location`
+- `make_theory`
+- `accuse`
+- `request_hint`
+
+Design rule:
+
+Every essential clue should have at least one fair discovery rule. Optional clues and red herrings should be marked so the Validator, AI Playtester, Revision Engine, and Game Master can distinguish critical path information from enrichment or misdirection.
 
 ## 15. caseBoardSeed
 

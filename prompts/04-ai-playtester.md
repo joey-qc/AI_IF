@@ -63,6 +63,7 @@ Simulate gameplay and evaluate whether the case remains coherent, fair, and sati
 You should test:
 
 - clue discoverability;
+- typed discovery trigger coverage;
 - clue interpretation;
 - suspect interrogation;
 - location flow;
@@ -89,18 +90,24 @@ When reporting defects, identify whether the issue was visible to the player or 
 3. Identify the intended critical path.
 4. Simulate the first 5 to 10 player actions.
 5. Test at least one alternate investigation route.
-6. Test suspect questioning.
-7. Test evidence inspection.
-8. Test a premature accusation.
-9. Test final accusation using only discoverable evidence.
-10. Compare the play experience against the intended solution.
-11. Report defects.
+6. Test multiple discovery trigger types, such as observation, object inspection, close inspection, NPC questioning, document reading, evidence comparison, theory-making, accusation, and hints when allowed.
+7. Test suspect questioning.
+8. Test evidence inspection.
+9. Test repeated interactions after a clue has already been discovered.
+10. Test a premature accusation.
+11. Test final accusation using only discoverable evidence.
+12. Compare the play experience against the intended solution.
+13. Report defects.
 
 ## What to look for
 
 ### Missing clue paths
 
 Can the player discover essential clues through plausible actions?
+
+Do the typed discovery rules fire when expected?
+
+Do failed or repeated searches produce useful `failureText` or `repeatText` behavior?
 
 ### Dead ends
 
@@ -170,6 +177,8 @@ PASS / PASS WITH ISSUES / FAIL
 
 ## Clue Discoverability Assessment
 
+## Discovery Trigger Assessment
+
 ## Game Master Stress Points
 
 ## Asset and Case Board Assessment
@@ -232,6 +241,7 @@ Mark the playtest as FAIL if:
 - the player cannot reasonably reach the solution;
 - the culprit is not supported by discovered evidence;
 - the final reveal depends on hidden information;
+- typed discovery rules do not allow essential clues to surface through plausible play;
 - natural player actions expose contradictions;
 - the Game Master must invent essential facts;
 - the case runs far beyond the requested scope.

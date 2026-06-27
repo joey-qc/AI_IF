@@ -67,6 +67,7 @@ docs/design-principles.md
 docs/playtest-findings.md
 docs/repository-workflow.md
 docs/runtime-engine-v2.md
+docs/discovery-rules-v1.md
 docs/investigation-model.md
 docs/image-system-v2.md
 docs/case-board-v2.md
@@ -127,13 +128,16 @@ For each player message, the Game Master should silently process:
 2. What is the player trying to do?
 3. What scene, object, NPC, or evidence does it concern?
 4. What has the player already discovered?
-5. Which discovery rule, if any, applies?
-6. What observation layer is being requested?
-7. What can be revealed now?
-8. What remains hidden?
-9. Does the case board change?
-10. Does runtime state change?
-11. What concise response preserves canon and moves play forward?
+5. What typed discovery trigger does the action map to?
+6. Which discovery rule, if any, applies?
+7. Are rule prerequisites satisfied?
+8. Has this rule already fired?
+9. What observation layer is being requested?
+10. What can be revealed now?
+11. What remains hidden?
+12. Does the case board change?
+13. Does runtime state change?
+14. What concise response preserves canon and moves play forward?
 ```
 
 The player should not see this checklist unless they ask for process notes out of game.
@@ -156,7 +160,15 @@ The Game Master must not skip from immediate observation directly to interpretat
 
 ## Discovery gating
 
-A clue is earned when the player's action satisfies its discovery condition or a relevant discovery rule.
+A clue is earned when the player's action satisfies a relevant typed discovery rule.
+
+Typed discovery rules are governed by:
+
+```text
+docs/discovery-rules-v1.md
+```
+
+The Game Master should not reveal a clue unless the proper discovery trigger is satisfied and listed prerequisites are met.
 
 If an action partially satisfies a condition, reveal partial information.
 
@@ -172,6 +184,12 @@ GM permits interpretation.
 ```
 
 Do not reveal a clue's true meaning too early.
+
+When a rule fires, record its `ruleId` in runtime state and record any discovered clue or evidence IDs. If the rule has already fired, use `repeatText` or summarize the prior discovery.
+
+If a plausible action does not reveal a clue, use `failureText` when available and treat the result as negative investigation rather than inventing evidence.
+
+`case-board-current.json` should receive only player-visible updates from the fired rule.
 
 ## Negative investigation
 
@@ -281,10 +299,11 @@ The Game Master should use runtime state to track at minimum:
 
 - session status and turn count;
 - current scene, location, NPC conversation, and focus object;
+- fired discovery rule IDs;
 - discovered and interpreted clues;
 - observed and recovered evidence;
 - visible, inspected, closely inspected, recovered, and ruled-out objects;
-- NPCs met, questioned, claims heard, and contradictions known;
+- NPCs met, questioned, topics asked, claims heard, and contradictions known;
 - open, pending, closed, and blocked leads;
 - hints requested or offered;
 - theories and accusations;

@@ -362,15 +362,74 @@
     "discoveryRule": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ruleId", "triggerType", "triggerDescription"],
+      "required": ["ruleId", "triggerType"],
       "properties": {
         "ruleId": { "$ref": "#/$defs/idString" },
-        "triggerType": { "type": "string" },
-        "triggerDescription": { "type": "string" },
+        "triggerType": {
+          "type": "string",
+          "enum": [
+            "observe_scene",
+            "inspect_object",
+            "closely_inspect_object",
+            "question_npc",
+            "compare_evidence",
+            "read_document",
+            "revisit_location",
+            "make_theory",
+            "accuse",
+            "request_hint"
+          ]
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "locationId": { "$ref": "#/$defs/idString" },
+        "objectId": { "$ref": "#/$defs/idString" },
+        "npcId": { "$ref": "#/$defs/idString" },
+        "topicId": { "$ref": "#/$defs/idString" },
+        "clueId": { "$ref": "#/$defs/idString" },
+        "evidenceId": { "$ref": "#/$defs/idString" },
+        "documentId": { "$ref": "#/$defs/idString" },
+        "prerequisiteClueIds": { "$ref": "#/$defs/idArray" },
+        "prerequisiteEvidenceIds": { "$ref": "#/$defs/idArray" },
+        "prerequisiteLocationIds": { "$ref": "#/$defs/idArray" },
+        "prerequisiteObjectIds": { "$ref": "#/$defs/idArray" },
         "revealsClueIds": { "$ref": "#/$defs/idArray" },
         "revealsEvidenceIds": { "$ref": "#/$defs/idArray" },
         "revealsLocationIds": { "$ref": "#/$defs/idArray" },
         "revealsAssetIds": { "$ref": "#/$defs/idArray" },
+        "updatesCaseBoardSections": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "knownFacts",
+              "evidence",
+              "knownNPCs",
+              "suspects",
+              "clearedSuspects",
+              "locations",
+              "visitedLocations",
+              "visibleObjects",
+              "inspectedObjects",
+              "ruledOutAreas",
+              "recoveredEvidence",
+              "imagesSeen",
+              "openQuestions",
+              "workingTheories",
+              "timelineNotes",
+              "pendingLeads",
+              "closedLeads",
+              "contradictions"
+            ]
+          },
+          "default": []
+        },
+        "discoveryText": { "type": "string" },
+        "failureText": { "type": "string" },
+        "repeatText": { "type": "string" },
+        "isOptional": { "type": "boolean" },
+        "isRedHerring": { "type": "boolean" },
+        "validationNotes": { "type": "string" },
+        "triggerDescription": { "type": "string" },
         "caseBoardUpdates": { "$ref": "#/$defs/stringArray" }
       }
     },
