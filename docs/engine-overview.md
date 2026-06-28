@@ -50,18 +50,19 @@ Read in this order:
 4. runtime-engine-v2.md
 5. runtime-fidelity-engine-v1.md
 6. reverse-mystery-authoring-and-resolution-v1.md
-7. canonical-assets-and-runtime-budgets-v1.md
-8. image-fidelity-contract-v1.md
-9. discovery-rules-v1.md
-10. npc-interview-model-v1.md
-11. validator-diagnostics-v1.md
-12. runtime-fidelity-report-v1.md
-13. investigation-model.md
-14. image-system-v2.md
-15. case-board-v2.md
-16. runtime-state-v1.md
-17. case-board-current-v1.md
-18. runtime-self-checks.md
+7. human-engagement-and-playability-v1.md
+8. canonical-assets-and-runtime-budgets-v1.md
+9. image-fidelity-contract-v1.md
+10. discovery-rules-v1.md
+11. npc-interview-model-v1.md
+12. validator-diagnostics-v1.md
+13. runtime-fidelity-report-v1.md
+14. investigation-model.md
+15. image-system-v2.md
+16. case-board-v2.md
+17. runtime-state-v1.md
+18. case-board-current-v1.md
+19. runtime-self-checks.md
 
 ## Runtime State Contract
 
@@ -111,6 +112,16 @@ docs/reverse-mystery-authoring-and-resolution-v1.md
 Canonical truth and a complete final resolution must exist before runtime. The Story Author works from what actually happened, proof, timeline, and suspect clearance outward into scenes, NPC dialogue, images, red herrings, and gameplay flow.
 
 The Game Master must be able to explain the full canonical solution from authored package data. Missing culprit, motive, method, opportunity, timeline, proof chain, red herring explanation, suspect clearance, endgame explanation, or fallback solution reveal is an authoring and validation failure, not a runtime problem to improvise around.
+
+## Human Engagement and Playability Contract
+
+Human engagement and playability are governed by:
+
+```text
+docs/human-engagement-and-playability-v1.md
+```
+
+Logical solvability is not enough. Cases must also pass engagement and playability expectations: concrete human conflict, emotionally legible stakes, non-generic motive mechanics, plain-language handling of specialized mechanisms, neutral recaps, and voice-safe clarification when player input is ambiguous.
 
 ## Canonical Asset and Budget Contract
 
@@ -248,6 +259,7 @@ Completed:
 - Runtime Engine v2 specifications
 - Runtime Fidelity Engine v1
 - Reverse Mystery Authoring and Resolution v1
+- Human Engagement and Playability v1
 - Canonical Asset and Runtime Budget Enforcement v1
 - Image Fidelity Contract v1
 - Runtime Fidelity Report v1

@@ -28,6 +28,8 @@ Use `docs/image-fidelity-contract-v1.md` when image mode is enabled or available
 
 Use `docs/reverse-mystery-authoring-and-resolution-v1.md` to author the mystery backward from canonical truth and to complete the Final Resolution Contract before writing scenes or gameplay flow.
 
+Use `docs/human-engagement-and-playability-v1.md` to ensure the case passes the Human Engagement Gate and Motive Mechanism Requirement before validation.
+
 ## Authorship prerequisite
 
 Do not begin story authorship until the player setup and scope budget are defined.
@@ -99,6 +101,8 @@ The case must include:
 - a final reveal that explains who, why, how, and proof.
 
 Do not leave these for the Game Master to invent later.
+
+The case must also pass the Human Engagement Gate. Logical solvability is not enough: include central human conflict, emotionally legible stakes, at least two plausible suspect pressures, a concrete culprit motive, minimal dependence on jargon, and a final reveal grounded in human betrayal, desperation, fear, greed, pride, jealousy, protection, revenge, or shame.
 
 ## Reverse authoring requirement
 
@@ -249,6 +253,17 @@ The motive must be proportional to the crime.
 For murder, kidnapping, blackmail, arson, or other serious crimes, the motive must involve serious consequences.
 
 Do not use a weak secret unless the crime is minor.
+
+The motive must also explain its mechanism:
+
+- what the culprit wants;
+- why now;
+- what specific benefit they expect;
+- how the crime solves their problem;
+- what happens if they fail;
+- why they chose this method.
+
+Generic motives such as financial pressure, jealousy, career trouble, or revenge are insufficient without the concrete action plan.
 
 ## Timeline requirements
 
@@ -469,6 +484,9 @@ Before finalizing, check:
 - Are red herrings explainable?
 - Does the package contain a complete Final Resolution Contract?
 - Can the Game Master provide a canonical endgame explanation and fallback solution reveal without inventing anything?
+- Does the case pass the Human Engagement Gate?
+- Is the motive mechanism concrete rather than generic?
+- If the case uses specialized technical, forensic, medical, mechanical, or financial mechanisms, are player tests, limits, proof value, and plain-language explanations authored?
 - Are physical actions plausible?
 - Is evidence provenance clear?
 - Is the scope appropriate for the requested length?
@@ -506,6 +524,8 @@ Do not present a case as ready for play if:
 - the case exceeds the selected preset;
 - the culprit is undecided;
 - the motive is vague or weak;
+- the motive mechanism is generic or lacks a concrete action plan;
+- the case is logically solvable but likely dull, over-technical, jargon-heavy, or emotionally thin;
 - the final explanation is incomplete;
 - fallback solution reveal is missing;
 - clues do not support the conclusion;

@@ -25,6 +25,8 @@ The player should be able to:
 
 A custom application may eventually exist, but the core interaction should still feel like a conversation with an intelligent Game Master.
 
+Mysteries are human stories first and puzzles second. The player should care because people want, fear, hide, betray, protect, resent, or regret something concrete. A technically solvable case can still fail if it feels like a checklist of logs, devices, and abstractions rather than an interactive human mystery.
+
 ## 2. The mystery must have a complete solution before play begins
 
 The culprit, motive, method, timeline, clue structure, and proof must exist before the first scene is shown to the player.

@@ -32,6 +32,8 @@ Use `docs/image-fidelity-contract-v1.md` when testing image mode, image requests
 
 Use `docs/reverse-mystery-authoring-and-resolution-v1.md` when checking whether the endgame and fallback solution reveal are complete and authored.
 
+Use `docs/human-engagement-and-playability-v1.md` to test engagement, boredom, over-steering, jargon load, technical confusion, voice ambiguity, and reveal satisfaction.
+
 ## Inputs
 
 The user should provide:
@@ -87,6 +89,7 @@ You should test:
 - final accusation;
 - final reveal;
 - fallback solution reveal in playtest or out-of-game contexts when appropriate;
+- boredom, over-steering, jargon, technical confusion, and human engagement;
 - runtime fidelity when the player asks about unauthored content;
 - budget enforcement when the player asks for extra witnesses, evidence, documents, images, locations, or branches.
 - image fidelity when the player requests new views, repeated views, close-ups, evidence photos, cutaways, maps, portraits, or image recall.
@@ -196,6 +199,14 @@ Does the ending make prior clues click into place?
 Does the endgame explanation fully cover who, why, how, when, proof, key clue meanings, red herrings, innocent suspect clearance, and consequences from authored data?
 
 If testing in a playtest context, can the Game Master provide the fallback solution reveal when the player stops early or asks out of game for the canonical answer?
+
+Does the reveal feel like a human story rather than a technical procedure? Did the culprit's concrete plan, pressure, and emotional motive make the ending satisfying?
+
+### Engagement and steering
+
+Assess whether the player is curious, bored, confused by jargon, or being pushed too obviously toward one answer.
+
+Test whether neutral recaps balance culprit-pointing facts, red herrings, innocent clearances, and open questions. In voice-friendly mode, test at least one ambiguous or misheard name and confirm the GM clarifies instead of guessing.
 
 ## Required output format
 
@@ -323,6 +334,9 @@ Mark the playtest as FAIL if:
 - the culprit is not supported by discovered evidence;
 - the final reveal depends on hidden information;
 - the final reveal or fallback solution reveal requires invented material;
+- the experience feels dull, over-technical, jargon-heavy, or over-steered;
+- technical tests a reasonable player would try are blocked without authored safe responses;
+- voice ambiguity causes the GM to answer about the wrong entity;
 - typed discovery rules do not allow essential clues to surface through plausible play;
 - NPC questioning cannot reveal required information through fair topic paths;
 - natural player actions expose contradictions;

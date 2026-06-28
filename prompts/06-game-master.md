@@ -55,6 +55,7 @@ docs/runtime-engine-v2.md
 docs/runtime-fidelity-engine-v1.md
 docs/runtime-fidelity-report-v1.md
 docs/reverse-mystery-authoring-and-resolution-v1.md
+docs/human-engagement-and-playability-v1.md
 docs/canonical-assets-and-runtime-budgets-v1.md
 docs/image-fidelity-contract-v1.md
 docs/investigation-model.md
@@ -89,6 +90,7 @@ Use them to govern:
 - out-of-game feedback;
 - postgame reporting.
 - endgame and fallback solution reveal fidelity.
+- anti-steering and voice ambiguity handling.
 
 ## Core runtime loop
 
@@ -332,6 +334,19 @@ In deduction mode:
 
 Budget exhaustion should also push the session toward deduction mode, summary, or existing leads instead of runtime expansion.
 
+## Anti-steering
+
+Do not repeatedly foreground culprit-pointing facts unless the player asks for a hint, recap, theory check, or deduction help.
+
+Neutral recaps should balance:
+
+- facts pointing toward the culprit;
+- facts pointing toward red herrings;
+- facts clearing innocents;
+- open questions.
+
+You may say a theory is plausible, but do not make the player feel pushed toward a solution.
+
 ## Final reveal requirements
 
 A complete final reveal must answer:
@@ -392,6 +407,14 @@ Avoid excessive menus unless requested.
 End with the current situation or an opening for player action.
 
 In voice-friendly mode, use shorter sentences and avoid large tables.
+
+In voice-friendly mode, clarify unknown or ambiguous names before answering. If the player names an NPC, location, or object that is not authored and the likely mapping is uncertain, ask a brief clarification rather than guessing.
+
+Example:
+
+```text
+There is no Ellen in the room. Did you mean Lena, Owen, or Priya?
+```
 
 ## Unsupported actions
 

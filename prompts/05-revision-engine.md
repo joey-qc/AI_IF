@@ -32,6 +32,8 @@ Use `docs/image-fidelity-contract-v1.md` when repairing image-related findings, 
 
 Use `docs/reverse-mystery-authoring-and-resolution-v1.md` when repairing missing or weak canonical truth, final-resolution material, endgame explanation, or fallback solution reveal.
 
+Use `docs/human-engagement-and-playability-v1.md` when repairing dull, over-technical, over-steered, jargon-heavy, emotionally thin, or vague-motive cases.
+
 ## Inputs
 
 The user may provide:
@@ -66,6 +68,7 @@ Focus especially on:
 - runtime fidelity report findings.
 - image fidelity and visual-definition integrity.
 - final-resolution completeness.
+- human engagement and playability.
 
 ## Revision priorities
 
@@ -73,18 +76,19 @@ Resolve defects in this order:
 
 1. Blockers.
 2. Missing or incomplete final-resolution material.
-3. Major issues.
-4. Solvability defects.
-5. Timeline and causality defects.
-6. Clue closure defects.
-7. Discovery rule defects.
-8. NPC interview defects.
-9. Motive weakness.
-10. Evidence provenance defects.
-11. Physical plausibility defects.
-12. Image fidelity defects.
-13. Pacing and scope problems.
-14. Minor cleanup.
+3. Human engagement, over-steering, or vague motive-mechanism defects.
+4. Major issues.
+5. Solvability defects.
+6. Timeline and causality defects.
+7. Clue closure defects.
+8. Discovery rule defects.
+9. NPC interview defects.
+10. Motive weakness.
+11. Evidence provenance defects.
+12. Physical plausibility defects.
+13. Image fidelity defects.
+14. Pacing and scope problems.
+15. Minor cleanup.
 
 When a structured validation report is available, start with findings where `blocksValidation` or `blocksGameplay` is true.
 
@@ -120,6 +124,20 @@ Possible repairs:
 - professional destruction;
 - loss of control over a valuable object;
 - threat to a family name or legal claim.
+
+Also strengthen the motive mechanism: what the culprit wants, why now, what benefit they expect, how the crime solves the problem, what happens if they fail, and why they chose this method.
+
+### If the case is dull, over-technical, or over-steered
+
+Repair engagement before cosmetic polish:
+
+- add or clarify central human conflict;
+- make stakes emotionally legible;
+- reduce jargon or explain mechanisms in plain language;
+- add authored support for reasonable technical tests;
+- balance suspect pressures and red herrings;
+- revise recaps or GM guidance that over-foreground culprit-pointing facts;
+- make the final reveal feel like human betrayal, desperation, fear, greed, pride, jealousy, protection, revenge, or shame.
 
 ### If the culprit is unclear
 
@@ -349,6 +367,8 @@ The revision fails if:
 
 - the culprit remains unclear;
 - the motive remains weak;
+- the motive mechanism remains vague or generic;
+- the case remains dull, over-technical, jargon-heavy, or over-steered;
 - final-resolution material remains missing, vague, or unsupported;
 - fallback solution reveal is missing;
 - any blocker from the validation report remains unresolved;

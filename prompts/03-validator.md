@@ -32,6 +32,8 @@ Use `docs/image-fidelity-contract-v1.md` to validate canonical visual definition
 
 Use `docs/reverse-mystery-authoring-and-resolution-v1.md` to treat missing final-resolution material as a blocker-level validation failure.
 
+Use `docs/human-engagement-and-playability-v1.md` to validate engagement, motive concreteness, technical-test support, anti-steering risk, voice ambiguity handling, and opening consistency.
+
 ## Inputs
 
 The user should provide one or more of:
@@ -57,6 +59,8 @@ The Validator must answer:
 - Does the case satisfy the Final Resolution Contract?
 - Is the solution supported by discoverable clues?
 - Is the motive proportional?
+- Is the motive mechanism concrete?
+- Is the case engaging as human interactive fiction rather than only logically solvable?
 - Is the timeline coherent?
 - Are physical actions plausible?
 - Does every major clue have closure?
@@ -88,6 +92,8 @@ Examples:
 - final reveal unsupported;
 - final-resolution material missing or incomplete;
 - fallback solution reveal missing;
+- motive mechanism vague or generic;
+- experience likely to feel procedural, over-technical, or steered;
 - evidence appears with impossible provenance.
 
 ### Major
@@ -164,6 +170,27 @@ For serious crimes, ask:
 - Why would lesser actions not suffice?
 - Why is the risk of the crime rational or emotionally plausible?
 
+Also check motive mechanism:
+
+- What does the culprit want?
+- Why now?
+- What specific benefit do they expect?
+- How does the crime solve their problem?
+- What happens if they fail?
+- Why did they choose this method?
+
+Generic labels such as financial pressure, jealousy, career trouble, or revenge are insufficient without this mechanism.
+
+### 2a. Human engagement and playability
+
+Check whether the case has central human conflict, emotionally legible stakes, at least two plausible pressures among suspects, minimal jargon dependence, and a final reveal that feels human rather than procedural.
+
+Flag cases where the player is likely to feel pushed through logs, devices, checklists, or abstract business stakes without a reason to care.
+
+### 2b. Technical-test support
+
+For technical, forensic, medical, mechanical, financial, or specialized mechanisms, check whether the package defines what the player can test, what cannot be tested, why not, what each test proves, what it cannot prove, plain-language explanation, and safe responses to obvious real-world challenges.
+
 ### 3. Timeline coherence
 
 Check whether all major events fit together.
@@ -177,6 +204,8 @@ Look for:
 - clues created after they are discovered;
 - object movements without access windows;
 - conflicting witness statements.
+
+Also check opening consistency: event scheduled vs already happened, setup interrupted vs call aborted, victim discovered vs victim still missing, countdown language, and player-facing facts vs hidden timeline.
 
 ### 4. Clue closure
 
@@ -366,6 +395,10 @@ Check and report:
 - NPC interview consistency;
 - timeline consistency;
 - motive proportionality;
+- motive mechanism concreteness;
+- human engagement and playability;
+- technical-test support;
+- opening consistency;
 - evidence provenance;
 - image/canon safety;
 - image fidelity and visual-definition safety;
@@ -504,6 +537,10 @@ Do not pass a case if:
 
 - culprit is unknown or undecided;
 - motive is weak or disproportionate;
+- motive mechanism is vague, generic, or lacks a concrete action plan;
+- the case is logically solvable but not engaging as interactive fiction;
+- specialized mechanisms lack authored test limits or safe responses;
+- opening-state language is internally inconsistent;
 - final reveal does not explain who/why/how/proof;
 - final-resolution material is missing or incomplete;
 - fallback solution reveal is missing;
