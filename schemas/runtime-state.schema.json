@@ -19,18 +19,57 @@
     "caseBoardSummary"
   ],
   "properties": {
-    "metadata": { "$ref": "#/$defs/metadata" },
-    "session": { "$ref": "#/$defs/session" },
-    "currentPosition": { "$ref": "#/$defs/currentPosition" },
-    "discoveredState": { "$ref": "#/$defs/discoveredState" },
-    "objectState": { "type": "array", "items": { "$ref": "#/$defs/objectStateEntry" }, "default": [] },
-    "npcState": { "type": "array", "items": { "$ref": "#/$defs/npcStateEntry" }, "default": [] },
-    "leadState": { "$ref": "#/$defs/leadState" },
-    "hintState": { "$ref": "#/$defs/hintState" },
-    "accusationState": { "$ref": "#/$defs/accusationState" },
-    "imageState": { "$ref": "#/$defs/imageState" },
-    "caseBoardSummary": { "$ref": "#/$defs/caseBoardSummary" },
-    "outOfGameNotes": { "type": "array", "items": { "$ref": "#/$defs/outOfGameNote" }, "default": [] }
+    "metadata": {
+      "$ref": "#/$defs/metadata"
+    },
+    "session": {
+      "$ref": "#/$defs/session"
+    },
+    "currentPosition": {
+      "$ref": "#/$defs/currentPosition"
+    },
+    "discoveredState": {
+      "$ref": "#/$defs/discoveredState"
+    },
+    "objectState": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/objectStateEntry"
+      },
+      "default": []
+    },
+    "npcState": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/npcStateEntry"
+      },
+      "default": []
+    },
+    "leadState": {
+      "$ref": "#/$defs/leadState"
+    },
+    "hintState": {
+      "$ref": "#/$defs/hintState"
+    },
+    "accusationState": {
+      "$ref": "#/$defs/accusationState"
+    },
+    "imageState": {
+      "$ref": "#/$defs/imageState"
+    },
+    "caseBoardSummary": {
+      "$ref": "#/$defs/caseBoardSummary"
+    },
+    "outOfGameNotes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/outOfGameNote"
+      },
+      "default": []
+    },
+    "budgetUsage": {
+      "$ref": "#/$defs/budgetUsage"
+    }
   },
   "$defs": {
     "idString": {
@@ -39,64 +78,159 @@
       "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$"
     },
     "optionalIdString": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$"
     },
     "stringArray": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "default": []
     },
     "idArray": {
       "type": "array",
-      "items": { "$ref": "#/$defs/idString" },
+      "items": {
+        "$ref": "#/$defs/idString"
+      },
       "default": []
     },
     "metadata": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["caseId", "caseTitle", "runtimeSchemaVersion", "lastUpdatedTurn"],
+      "required": [
+        "caseId",
+        "caseTitle",
+        "runtimeSchemaVersion",
+        "lastUpdatedTurn"
+      ],
       "properties": {
-        "caseId": { "$ref": "#/$defs/idString" },
-        "caseTitle": { "type": "string", "minLength": 1 },
-        "gamePackageVersion": { "type": "string" },
-        "runtimeSchemaVersion": { "type": "string", "const": "1.0" },
-        "createdAt": { "type": "string" },
-        "lastUpdatedAt": { "type": "string" },
-        "lastUpdatedTurn": { "type": "integer", "minimum": 0 },
-        "notes": { "type": "string" }
+        "caseId": {
+          "$ref": "#/$defs/idString"
+        },
+        "caseTitle": {
+          "type": "string",
+          "minLength": 1
+        },
+        "gamePackageVersion": {
+          "type": "string"
+        },
+        "runtimeSchemaVersion": {
+          "type": "string",
+          "const": "1.0"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "lastUpdatedAt": {
+          "type": "string"
+        },
+        "lastUpdatedTurn": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notes": {
+          "type": "string"
+        }
       }
     },
     "session": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["status", "turnCount", "gameplayStarted", "caseSolved"],
+      "required": [
+        "status",
+        "turnCount",
+        "gameplayStarted",
+        "caseSolved"
+      ],
       "properties": {
         "status": {
           "type": "string",
-          "enum": ["not_started", "in_progress", "paused", "solved", "abandoned", "postgame"]
+          "enum": [
+            "not_started",
+            "in_progress",
+            "paused",
+            "solved",
+            "abandoned",
+            "postgame"
+          ]
         },
-        "turnCount": { "type": "integer", "minimum": 0 },
-        "interactionMode": { "type": "string", "enum": ["text_first", "voice_friendly", "mixed"] },
-        "imageMode": { "type": "string", "enum": ["none", "player_requested_only", "occasional_suggested", "asset_rich"] },
-        "hintPolicy": { "type": "string", "enum": ["none", "on_request_only", "gentle_when_stuck", "proactive_for_easy_mode"] },
-        "gameplayStarted": { "type": "boolean" },
-        "caseSolved": { "type": "boolean" },
-        "postgameReportRequested": { "type": "boolean" }
+        "turnCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "interactionMode": {
+          "type": "string",
+          "enum": [
+            "text_first",
+            "voice_friendly",
+            "mixed"
+          ]
+        },
+        "imageMode": {
+          "type": "string",
+          "enum": [
+            "none",
+            "player_requested_only",
+            "occasional_suggested",
+            "asset_rich"
+          ]
+        },
+        "hintPolicy": {
+          "type": "string",
+          "enum": [
+            "none",
+            "on_request_only",
+            "gentle_when_stuck",
+            "proactive_for_easy_mode"
+          ]
+        },
+        "gameplayStarted": {
+          "type": "boolean"
+        },
+        "caseSolved": {
+          "type": "boolean"
+        },
+        "postgameReportRequested": {
+          "type": "boolean"
+        }
       }
     },
     "currentPosition": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["activeMode"],
+      "required": [
+        "activeMode"
+      ],
       "properties": {
-        "currentSceneId": { "$ref": "#/$defs/optionalIdString" },
-        "currentLocationId": { "$ref": "#/$defs/optionalIdString" },
-        "currentNpcConversationCharacterId": { "$ref": "#/$defs/optionalIdString" },
-        "currentFocusObjectId": { "$ref": "#/$defs/optionalIdString" },
+        "currentSceneId": {
+          "$ref": "#/$defs/optionalIdString"
+        },
+        "currentLocationId": {
+          "$ref": "#/$defs/optionalIdString"
+        },
+        "currentNpcConversationCharacterId": {
+          "$ref": "#/$defs/optionalIdString"
+        },
+        "currentFocusObjectId": {
+          "$ref": "#/$defs/optionalIdString"
+        },
         "activeMode": {
           "type": "string",
-          "enum": ["startup", "observing", "investigating", "interviewing", "reviewing", "accusing", "out_of_game", "postgame"]
+          "enum": [
+            "startup",
+            "observing",
+            "investigating",
+            "interviewing",
+            "reviewing",
+            "deduction",
+            "accusing",
+            "out_of_game",
+            "postgame"
+          ]
         }
       }
     },
@@ -104,210 +238,575 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "knownFacts": { "$ref": "#/$defs/stringArray" },
-        "discoveredClueIds": { "$ref": "#/$defs/idArray" },
-        "interpretedClueIds": { "$ref": "#/$defs/idArray" },
-        "discoveredEvidenceIds": { "$ref": "#/$defs/idArray" },
-        "recoveredEvidenceIds": { "$ref": "#/$defs/idArray" },
-        "knownCharacterIds": { "$ref": "#/$defs/idArray" },
-        "knownSuspectIds": { "$ref": "#/$defs/idArray" },
-        "clearedOrDeprioritizedSuspectIds": { "$ref": "#/$defs/idArray" },
-        "knownLocationIds": { "$ref": "#/$defs/idArray" },
-        "visitedLocationIds": { "$ref": "#/$defs/idArray" },
-        "firedDiscoveryRuleIds": { "$ref": "#/$defs/idArray" },
-        "inspectedObjectIds": { "$ref": "#/$defs/idArray" },
-        "questionedNpcTopicIds": { "$ref": "#/$defs/idArray" },
-        "ruledOutAreaIds": { "$ref": "#/$defs/idArray" },
-        "ruledOutLeadIds": { "$ref": "#/$defs/idArray" },
-        "discoveredContradictions": { "$ref": "#/$defs/stringArray" }
+        "knownFacts": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "discoveredClueIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "interpretedClueIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "discoveredEvidenceIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "recoveredEvidenceIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "knownCharacterIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "knownSuspectIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "clearedOrDeprioritizedSuspectIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "knownLocationIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "visitedLocationIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "firedDiscoveryRuleIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "inspectedObjectIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "questionedNpcTopicIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "ruledOutAreaIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "ruledOutLeadIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "discoveredContradictions": {
+          "$ref": "#/$defs/stringArray"
+        }
       }
     },
     "objectStateEntry": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["objectId", "label", "state"],
+      "required": [
+        "objectId",
+        "label",
+        "state"
+      ],
       "properties": {
-        "objectId": { "$ref": "#/$defs/idString" },
-        "label": { "type": "string", "minLength": 1 },
-        "locationId": { "$ref": "#/$defs/optionalIdString" },
+        "objectId": {
+          "$ref": "#/$defs/idString"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locationId": {
+          "$ref": "#/$defs/optionalIdString"
+        },
         "state": {
           "type": "string",
-          "enum": ["unseen", "visible", "mentioned", "inspected", "closely_inspected", "evidence_recovered", "ruled_out", "revisited"]
+          "enum": [
+            "unseen",
+            "visible",
+            "mentioned",
+            "inspected",
+            "closely_inspected",
+            "evidence_recovered",
+            "ruled_out",
+            "revisited"
+          ]
         },
         "inspectionDepth": {
           "type": "string",
-          "enum": ["none", "visible_only", "inspected", "closely_inspected", "tested", "compared"]
+          "enum": [
+            "none",
+            "visible_only",
+            "inspected",
+            "closely_inspected",
+            "tested",
+            "compared"
+          ]
         },
-        "lastResultShown": { "type": "string" },
-        "associatedClueIds": { "$ref": "#/$defs/idArray" },
-        "associatedEvidenceIds": { "$ref": "#/$defs/idArray" },
-        "ruledOut": { "type": "boolean" },
-        "closerInspectionAvailable": { "type": "boolean" },
-        "turnFirstSeen": { "type": "integer", "minimum": 0 },
-        "turnLastInspected": { "type": "integer", "minimum": 0 }
+        "lastResultShown": {
+          "type": "string"
+        },
+        "associatedClueIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "associatedEvidenceIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "ruledOut": {
+          "type": "boolean"
+        },
+        "closerInspectionAvailable": {
+          "type": "boolean"
+        },
+        "turnFirstSeen": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "turnLastInspected": {
+          "type": "integer",
+          "minimum": 0
+        }
       }
     },
     "npcStateEntry": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["characterId", "met", "questioned"],
+      "required": [
+        "characterId",
+        "met",
+        "questioned"
+      ],
       "properties": {
-        "characterId": { "$ref": "#/$defs/idString" },
-        "met": { "type": "boolean" },
-        "questioned": { "type": "boolean" },
-        "topicsAsked": { "$ref": "#/$defs/stringArray" },
-        "topicIdsAsked": { "$ref": "#/$defs/idArray" },
-        "interviewTopics": { "type": "array", "items": { "$ref": "#/$defs/npcInterviewStateEntry" }, "default": [] },
-        "claimsHeard": { "$ref": "#/$defs/stringArray" },
-        "liesOrOmissionsRevealed": { "$ref": "#/$defs/stringArray" },
-        "contradictionsKnown": { "$ref": "#/$defs/stringArray" },
-        "currentAttitude": { "type": "string" },
-        "turnLastQuestioned": { "type": "integer", "minimum": 0 }
+        "characterId": {
+          "$ref": "#/$defs/idString"
+        },
+        "met": {
+          "type": "boolean"
+        },
+        "questioned": {
+          "type": "boolean"
+        },
+        "topicsAsked": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "topicIdsAsked": {
+          "$ref": "#/$defs/idArray"
+        },
+        "interviewTopics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/npcInterviewStateEntry"
+          },
+          "default": []
+        },
+        "claimsHeard": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "liesOrOmissionsRevealed": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "contradictionsKnown": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "currentAttitude": {
+          "type": "string"
+        },
+        "turnLastQuestioned": {
+          "type": "integer",
+          "minimum": 0
+        }
       }
     },
     "npcInterviewStateEntry": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["topicId", "status"],
+      "required": [
+        "topicId",
+        "status"
+      ],
       "properties": {
-        "topicId": { "$ref": "#/$defs/idString" },
-        "status": { "type": "string", "enum": ["asked", "repeated", "evaded", "answered", "contradicted", "locked"] },
-        "turnFirstAsked": { "type": "integer", "minimum": 0 },
-        "turnLastAsked": { "type": "integer", "minimum": 0 },
-        "revealedClueIds": { "$ref": "#/$defs/idArray" },
-        "revealedEvidenceIds": { "$ref": "#/$defs/idArray" },
-        "contradictionIds": { "$ref": "#/$defs/idArray" },
-        "lastAnswerSummary": { "type": "string" }
+        "topicId": {
+          "$ref": "#/$defs/idString"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "asked",
+            "repeated",
+            "evaded",
+            "answered",
+            "contradicted",
+            "locked"
+          ]
+        },
+        "turnFirstAsked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "turnLastAsked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "revealedClueIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "revealedEvidenceIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "contradictionIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "lastAnswerSummary": {
+          "type": "string"
+        }
       }
     },
     "leadEntry": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["leadId", "description", "status"],
+      "required": [
+        "leadId",
+        "description",
+        "status"
+      ],
       "properties": {
-        "leadId": { "$ref": "#/$defs/idString" },
-        "description": { "type": "string", "minLength": 1 },
-        "status": { "type": "string", "enum": ["open", "pending", "closed", "blocked"] },
-        "source": { "type": "string" },
-        "reasonOpened": { "type": "string" },
-        "reasonClosedOrBlocked": { "type": "string" },
-        "relatedClueIds": { "$ref": "#/$defs/idArray" },
-        "relatedEvidenceIds": { "$ref": "#/$defs/idArray" },
-        "relatedCharacterIds": { "$ref": "#/$defs/idArray" },
-        "relatedLocationIds": { "$ref": "#/$defs/idArray" },
-        "relatedObjectIds": { "$ref": "#/$defs/idArray" }
+        "leadId": {
+          "$ref": "#/$defs/idString"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "open",
+            "pending",
+            "closed",
+            "blocked"
+          ]
+        },
+        "source": {
+          "type": "string"
+        },
+        "reasonOpened": {
+          "type": "string"
+        },
+        "reasonClosedOrBlocked": {
+          "type": "string"
+        },
+        "relatedClueIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "relatedEvidenceIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "relatedCharacterIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "relatedLocationIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "relatedObjectIds": {
+          "$ref": "#/$defs/idArray"
+        }
       }
     },
     "leadState": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "openLeads": { "type": "array", "items": { "$ref": "#/$defs/leadEntry" }, "default": [] },
-        "pendingLeads": { "type": "array", "items": { "$ref": "#/$defs/leadEntry" }, "default": [] },
-        "closedLeads": { "type": "array", "items": { "$ref": "#/$defs/leadEntry" }, "default": [] },
-        "blockedLeads": { "type": "array", "items": { "$ref": "#/$defs/leadEntry" }, "default": [] }
+        "openLeads": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/leadEntry"
+          },
+          "default": []
+        },
+        "pendingLeads": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/leadEntry"
+          },
+          "default": []
+        },
+        "closedLeads": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/leadEntry"
+          },
+          "default": []
+        },
+        "blockedLeads": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/leadEntry"
+          },
+          "default": []
+        }
       }
     },
     "hintState": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["hintsRequestedCount", "proactiveHintsOfferedCount", "highestHintLevelUsed"],
+      "required": [
+        "hintsRequestedCount",
+        "proactiveHintsOfferedCount",
+        "highestHintLevelUsed"
+      ],
       "properties": {
-        "hintsRequestedCount": { "type": "integer", "minimum": 0 },
-        "proactiveHintsOfferedCount": { "type": "integer", "minimum": 0 },
+        "hintsRequestedCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "proactiveHintsOfferedCount": {
+          "type": "integer",
+          "minimum": 0
+        },
         "highestHintLevelUsed": {
           "type": "string",
-          "enum": ["none", "general_nudge", "relevant_area_or_npc", "relevant_object_or_comparison", "near_explicit_next_action"]
+          "enum": [
+            "none",
+            "general_nudge",
+            "relevant_area_or_npc",
+            "relevant_object_or_comparison",
+            "near_explicit_next_action"
+          ]
         },
-        "playerAppearsStuck": { "type": "boolean" },
-        "hintHistory": { "type": "array", "items": { "$ref": "#/$defs/hintEntry" }, "default": [] }
+        "playerAppearsStuck": {
+          "type": "boolean"
+        },
+        "hintHistory": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hintEntry"
+          },
+          "default": []
+        }
       }
     },
     "hintEntry": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["turn", "level", "summary"],
+      "required": [
+        "turn",
+        "level",
+        "summary"
+      ],
       "properties": {
-        "turn": { "type": "integer", "minimum": 0 },
+        "turn": {
+          "type": "integer",
+          "minimum": 0
+        },
         "level": {
           "type": "string",
-          "enum": ["general_nudge", "relevant_area_or_npc", "relevant_object_or_comparison", "near_explicit_next_action"]
+          "enum": [
+            "general_nudge",
+            "relevant_area_or_npc",
+            "relevant_object_or_comparison",
+            "near_explicit_next_action"
+          ]
         },
-        "summary": { "type": "string" },
-        "relatedLeadId": { "$ref": "#/$defs/optionalIdString" }
+        "summary": {
+          "type": "string"
+        },
+        "relatedLeadId": {
+          "$ref": "#/$defs/optionalIdString"
+        }
       }
     },
     "accusationState": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "theoriesProposed": { "$ref": "#/$defs/stringArray" },
-        "accusationsMade": { "type": "array", "items": { "$ref": "#/$defs/accusationEntry" }, "default": [] },
-        "proofThresholdMet": { "type": "boolean" }
+        "theoriesProposed": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "accusationsMade": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/accusationEntry"
+          },
+          "default": []
+        },
+        "proofThresholdMet": {
+          "type": "boolean"
+        }
       }
     },
     "accusationEntry": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["turn", "summary", "result"],
+      "required": [
+        "turn",
+        "summary",
+        "result"
+      ],
       "properties": {
-        "turn": { "type": "integer", "minimum": 0 },
-        "summary": { "type": "string" },
-        "culpritGuessedCharacterId": { "$ref": "#/$defs/optionalIdString" },
-        "motiveGuessed": { "type": "string" },
-        "methodGuessed": { "type": "string" },
-        "proofOffered": { "$ref": "#/$defs/stringArray" },
-        "missingProofExplained": { "type": "string" },
-        "result": { "type": "string", "enum": ["incomplete", "incorrect", "near_correct", "solved"] }
+        "turn": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "summary": {
+          "type": "string"
+        },
+        "culpritGuessedCharacterId": {
+          "$ref": "#/$defs/optionalIdString"
+        },
+        "motiveGuessed": {
+          "type": "string"
+        },
+        "methodGuessed": {
+          "type": "string"
+        },
+        "proofOffered": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "missingProofExplained": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string",
+          "enum": [
+            "incomplete",
+            "incorrect",
+            "near_correct",
+            "solved"
+          ]
+        }
       }
     },
     "imageState": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "seenAssetIds": { "$ref": "#/$defs/idArray" },
-        "requestedAssetIds": { "$ref": "#/$defs/idArray" },
-        "deferredOrDeniedRequests": { "type": "array", "items": { "$ref": "#/$defs/imageRequestEntry" }, "default": [] },
-        "generatedImageLabels": { "$ref": "#/$defs/stringArray" },
-        "textFallbacksUsed": { "$ref": "#/$defs/stringArray" }
+        "seenAssetIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "requestedAssetIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "deferredOrDeniedRequests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/imageRequestEntry"
+          },
+          "default": []
+        },
+        "generatedImageLabels": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "textFallbacksUsed": {
+          "$ref": "#/$defs/stringArray"
+        }
       }
     },
     "imageRequestEntry": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["turn", "request", "reason"],
+      "required": [
+        "turn",
+        "request",
+        "reason"
+      ],
       "properties": {
-        "turn": { "type": "integer", "minimum": 0 },
-        "request": { "type": "string" },
-        "relatedAssetId": { "$ref": "#/$defs/optionalIdString" },
-        "reason": { "type": "string" }
+        "turn": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "request": {
+          "type": "string"
+        },
+        "relatedAssetId": {
+          "$ref": "#/$defs/optionalIdString"
+        },
+        "reason": {
+          "type": "string"
+        }
       }
     },
     "caseBoardSummary": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "knownFacts": { "$ref": "#/$defs/stringArray" },
-        "evidence": { "$ref": "#/$defs/stringArray" },
-        "suspects": { "$ref": "#/$defs/stringArray" },
-        "inspectedObjects": { "$ref": "#/$defs/stringArray" },
-        "ruledOutAreas": { "$ref": "#/$defs/stringArray" },
-        "openQuestions": { "$ref": "#/$defs/stringArray" },
-        "pendingLeads": { "$ref": "#/$defs/stringArray" },
-        "closedLeads": { "$ref": "#/$defs/stringArray" },
-        "contradictions": { "$ref": "#/$defs/stringArray" },
-        "workingTheories": { "$ref": "#/$defs/stringArray" }
+        "knownFacts": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "evidence": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "suspects": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "inspectedObjects": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "ruledOutAreas": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "openQuestions": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "pendingLeads": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "closedLeads": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "contradictions": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "workingTheories": {
+          "$ref": "#/$defs/stringArray"
+        }
       }
     },
     "outOfGameNote": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["turn", "category", "summary"],
+      "required": [
+        "turn",
+        "category",
+        "summary"
+      ],
       "properties": {
-        "turn": { "type": "integer", "minimum": 0 },
-        "category": { "type": "string" },
-        "summary": { "type": "string" },
-        "preserveForPostgame": { "type": "boolean" }
+        "turn": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "category": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "preserveForPostgame": {
+          "type": "boolean"
+        }
+      }
+    },
+    "budgetUsage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "usedNpcIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "usedLocationIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "usedObjectIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "usedEvidenceIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "usedDocumentIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "usedDiscoveryRuleIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "usedImageIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "exhaustedLeadIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "deductionModeEntered": {
+          "type": "boolean"
+        },
+        "budgetWarnings": {
+          "$ref": "#/$defs/stringArray"
+        }
       }
     }
   }

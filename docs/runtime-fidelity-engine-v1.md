@@ -34,6 +34,16 @@ Investigative content includes:
 
 If it affects who did what, why, how, when, where, with what evidence, or how the player can prove it, it must come from the authored package.
 
+Runtime fidelity is enforced through canonical inventories and runtime budgets when the package provides them:
+
+```text
+docs/canonical-assets-and-runtime-budgets-v1.md
+```
+
+If an NPC, object, location, document, evidence item, image, discovery rule, interview topic, or clue path is not in `canonicalAssetInventory`, it cannot become investigative content.
+
+If a runtime budget is exhausted, the Game Master must transition toward deduction, summary, or existing authored leads rather than expanding the case.
+
 ## Canonical Package Content
 
 Canonical investigative content lives in the case package, normally:
@@ -190,6 +200,8 @@ They may help the room feel alive, but they cannot become a route to hidden trut
 
 If a background character would logically know something important, that is a package defect for validation or revision. The Game Master should not repair it during play by inventing testimony.
 
+Background characters may not become interview targets or evidence sources unless authored as canonical NPCs.
+
 ## Authored Content Exhaustion
 
 Authored investigative content may be exhausted when:
@@ -204,6 +216,8 @@ Authored investigative content may be exhausted when:
 The Game Master should not respond to exhaustion by inventing more leads.
 
 Instead, it should transition toward deduction mode.
+
+Budget exhaustion is also authored-content exhaustion. When the player asks for more NPCs, witnesses, evidence, locations, documents, images, or branches than the package inventory or budget permits, close or redirect the request rather than expanding scope.
 
 ## Deduction Mode
 
@@ -252,6 +266,8 @@ Check for:
 - case-board entries that treat unauthored theory as fact;
 - final reveal facts not present in the package;
 - images or descriptions that added canonical details.
+- runtime budget overages;
+- investigative assets not present in `canonicalAssetInventory`.
 
 Any fidelity breach should be recorded as a Game Master runtime defect. If the package lacked necessary authored content, that should become a Validator or Revision Engine finding rather than an in-play invention.
 

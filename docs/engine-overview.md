@@ -49,15 +49,16 @@ Read in this order:
 3. repository-workflow.md
 4. runtime-engine-v2.md
 5. runtime-fidelity-engine-v1.md
-6. discovery-rules-v1.md
-7. npc-interview-model-v1.md
-8. validator-diagnostics-v1.md
-9. investigation-model.md
-10. image-system-v2.md
-11. case-board-v2.md
-12. runtime-state-v1.md
-13. case-board-current-v1.md
-14. runtime-self-checks.md
+6. canonical-assets-and-runtime-budgets-v1.md
+7. discovery-rules-v1.md
+8. npc-interview-model-v1.md
+9. validator-diagnostics-v1.md
+10. investigation-model.md
+11. image-system-v2.md
+12. case-board-v2.md
+13. runtime-state-v1.md
+14. case-board-current-v1.md
+15. runtime-self-checks.md
 
 ## Runtime State Contract
 
@@ -95,6 +96,23 @@ The Game Master may improvise surface narration, ordinary atmosphere, and natura
 If the player asks about unauthored content, the Game Master should answer with a natural negative or redirect response, update runtime state or case-board state only with player-visible negative investigation when appropriate, and return to authored leads.
 
 When authored investigative content is exhausted, the Game Master should transition to deduction mode rather than inventing additional leads.
+
+## Canonical Asset and Budget Contract
+
+Canonical asset and runtime budget enforcement is governed by:
+
+```text
+docs/canonical-assets-and-runtime-budgets-v1.md
+schemas/game-package.schema.json
+```
+
+`game-package.json` defines what exists in the mystery.
+
+`canonicalAssetInventory` lists investigative assets the runtime may expose, including authored NPCs, locations, objects, evidence, documents, images, discovery rules, interview topics, scenes, clues, and red herrings.
+
+`runtimeBudgets` define maximum runtime scope. The Game Master cannot exceed those budgets or invent investigative assets during play.
+
+Background atmosphere is allowed only when it remains non-investigative. Background characters, descriptive objects, incidental writing, and flavor props cannot become witnesses, clues, documents, evidence, or branches unless authored in the package.
 
 ## Case Board Current Contract
 
@@ -186,6 +204,7 @@ Completed:
 - First successful human playthrough
 - Runtime Engine v2 specifications
 - Runtime Fidelity Engine v1
+- Canonical Asset and Runtime Budget Enforcement v1
 - Discovery Rules v1
 - NPC Interview Model v1
 - Validator Diagnostics v1

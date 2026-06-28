@@ -22,6 +22,8 @@ The canonical game package records what is true.
 
 Discovery rules record how the player can fairly discover player-visible parts of that truth.
 
+When `canonicalAssetInventory` exists in the game package, discovery rules may reveal only IDs listed in that inventory.
+
 The Game Master should not reveal a clue merely because it exists in the package. A clue should become visible when the player's action satisfies a typed discovery rule and any listed prerequisites.
 
 ## Why typed rules exist
@@ -155,6 +157,8 @@ Discovery rules may reference canonical IDs from:
 
 References should point to canonical IDs, but the player-facing text in `discoveryText`, `failureText`, and `repeatText` must remain spoiler-safe.
 
+Discovery rules must not create assets by implication. A rule that reveals an NPC, location, object, evidence item, document, image, or clue path should reference an authored ID from the package and, when present, `canonicalAssetInventory`.
+
 ## Case-board updates
 
 `updatesCaseBoardSections` identifies which player-facing board sections may change when the rule fires.
@@ -260,6 +264,7 @@ The Validator should check that:
 - every required clue has at least one fair discovery rule;
 - every rule uses a standard trigger type;
 - rule references point to valid canonical IDs;
+- rule references point to canonical inventory IDs when the package declares `canonicalAssetInventory`;
 - prerequisites do not create impossible chains;
 - solution-critical clues are not locked behind unreasonable actions;
 - optional clues and red herrings are marked appropriately;

@@ -24,6 +24,8 @@ If validator diagnostics exist, use them to focus playtesting on known weak area
 
 Use `docs/runtime-fidelity-engine-v1.md` to stress-test whether gameplay can proceed without the Game Master inventing investigative content.
 
+Use `docs/canonical-assets-and-runtime-budgets-v1.md` to stress-test inventory and budget enforcement.
+
 ## Inputs
 
 The user should provide:
@@ -78,7 +80,8 @@ You should test:
 - asset retrieval;
 - final accusation;
 - final reveal;
-- runtime fidelity when the player asks about unauthored content.
+- runtime fidelity when the player asks about unauthored content;
+- budget enforcement when the player asks for extra witnesses, evidence, documents, images, locations, or branches.
 
 ## Important constraints
 
@@ -104,9 +107,10 @@ When reporting defects, identify whether the issue was visible to the player or 
 11. Test repeated interactions after a clue has already been discovered.
 12. Test a premature accusation.
 13. Test unsupported searches, background-character questions, and off-path requests that could tempt the Game Master to invent content.
-14. Test final accusation using only discoverable evidence.
-15. Compare the play experience against the intended solution.
-16. Report defects and reference relevant validation finding IDs when applicable.
+14. Test requests that would exceed runtime budgets.
+15. Test final accusation using only discoverable evidence.
+16. Compare the play experience against the intended solution.
+17. Report defects and reference relevant validation finding IDs when applicable.
 
 ## What to look for
 
@@ -263,6 +267,8 @@ Examples:
 
 Also test whether the Game Master can answer unsupported questions with natural negative or redirect responses instead of inventing new suspects, witnesses, evidence, clue paths, locations, documents, timeline events, or physical access routes.
 
+Test whether the Game Master refuses or redirects attempts to exceed `canonicalAssetInventory` or `runtimeBudgets`.
+
 ## Failure conditions
 
 Mark the playtest as FAIL if:
@@ -275,6 +281,8 @@ Mark the playtest as FAIL if:
 - natural player actions expose contradictions;
 - the Game Master must invent essential facts;
 - the Game Master must invent investigative content to keep play moving;
+- the Game Master permits investigative assets outside the canonical inventory;
+- the Game Master exceeds runtime budgets instead of refusing, redirecting, summarizing, or entering deduction mode;
 - authored leads are exhausted and the Game Master has no deduction-mode transition;
 - the case runs far beyond the requested scope.
 

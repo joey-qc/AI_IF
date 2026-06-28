@@ -43,6 +43,8 @@ imageId
 
 Those references are internal anchors only. The board text must still be player-safe.
 
+When the package defines `canonicalAssetInventory`, board entries may reference only player-visible information derived from canonical assets, authored discovery rules, permitted negative investigation, or player theories.
+
 Do not copy hidden solution explanations from `game-package.json` into the current case board unless the player has discovered them.
 
 ## Relationship to runtime-state.json
@@ -137,6 +139,8 @@ Fireplace inspected: no hidden object found.
 ```
 
 These entries should not invent new clues. They record what the player has reasonably ruled out.
+
+The board must not add invented investigative assets. A background character, descriptive object, incidental document, flavor prop, or image request may appear only as a negative or atmospheric note unless it maps to an authored canonical ID.
 
 ## Uncertainty and theories
 
@@ -285,5 +289,6 @@ The current case board fails if it:
 - omits useful negative findings;
 - merges pending leads with closed or ruled-out leads;
 - treats image-only details as evidence;
+- records unauthored NPCs, objects, documents, evidence, images, locations, or branches as investigative assets;
 - writes player-facing state back into `game-package.json`;
 - contradicts `runtime-state.json` or the canonical package.

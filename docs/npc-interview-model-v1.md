@@ -41,6 +41,8 @@ The Game Master may improvise tone and phrasing, but not new canonical facts.
 
 Important NPCs should define structured interview topics.
 
+Interviewable NPCs must be authored. Background characters cannot become interview topics unless they are promoted into the canonical package before play.
+
 Each topic may include:
 
 ```text
@@ -109,6 +111,8 @@ updatesCaseBoardSections
 ```
 
 The interview topic defines the NPC's answer model. The discovery rule defines when that answer reveals clue or evidence IDs.
+
+Topic expansion must stay within the package's canonical topic inventory when `canonicalAssetInventory.interviewTopicIds` is present.
 
 ## Revealing clues and evidence
 
@@ -199,6 +203,9 @@ The Validator should check that:
 - lies and omissions can be discovered fairly;
 - contradictions have fair discovery paths;
 - `question_npc` discovery rules reference valid `npcId` and `topicId` values;
+- every interview topic belongs to an authored NPC;
+- background characters are not treated as interviewable sources;
+- topic IDs stay within the canonical inventory when present;
 - solution-critical NPC disclosures are not hidden behind unreasonable phrasing;
 - repeat answers remain consistent.
 

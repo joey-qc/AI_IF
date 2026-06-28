@@ -22,6 +22,8 @@ Then read any existing game package files, validation reports, or user-provided 
 
 When authoring or revising package content, use stable canonical IDs and validation notes so future diagnostics can cite exact clues, evidence, NPC topics, discovery rules, assets, and timeline events.
 
+Use `docs/canonical-assets-and-runtime-budgets-v1.md` to define `canonicalAssetInventory` and `runtimeBudgets` for each new case package.
+
 ## Authorship prerequisite
 
 Do not begin story authorship until the player setup and scope budget are defined.
@@ -100,22 +102,24 @@ Follow this order:
 
 1. Define player configuration.
 2. Define scope budget.
-3. Define case metadata.
-4. Define the central mystery.
-5. Define the final solution.
-6. Define the culprit's motive, method, opportunity, and proof.
-7. Define the true chronological timeline.
-8. Define suspects and their relationships to the case.
-9. Define NPC interview topics and knowledge boundaries.
-10. Define locations.
-11. Define evidence and clue chains.
-12. Define red herrings.
-13. Define typed discovery rules.
-14. Define scenes.
-15. Define the final reveal.
-16. Define case-board seed data.
-17. Define asset manifest.
-18. Run a self-check before returning the draft.
+3. Define runtime budgets.
+4. Define canonical asset inventory.
+5. Define case metadata.
+6. Define the central mystery.
+7. Define the final solution.
+8. Define the culprit's motive, method, opportunity, and proof.
+9. Define the true chronological timeline.
+10. Define suspects and their relationships to the case.
+11. Define NPC interview topics and knowledge boundaries.
+12. Define locations.
+13. Define evidence and clue chains.
+14. Define red herrings.
+15. Define typed discovery rules.
+16. Define scenes.
+17. Define the final reveal.
+18. Define case-board seed data.
+19. Define asset manifest.
+20. Run a self-check before returning the draft.
 
 ## Player configuration requirements
 
@@ -151,12 +155,15 @@ Hard limits:
 
 - primary locations: exactly 1;
 - major NPCs/characters: no more than 3;
+- interviewable NPCs: no more than 3 unless explicitly allowed;
 - essential clues: no more than 10;
 - red herrings: no more than 1;
 - nested secrets: 0;
 - expected play time: 10 to 25 minutes.
 
 Do not turn a Quick Mystery into a multi-location investigation.
+
+Keep searchable objects, evidence items, documents, images, and player-facing branches tightly limited.
 
 ### One Sitting
 
@@ -301,6 +308,19 @@ Use `discoveryText`, `failureText`, and `repeatText` to help the Game Master rev
 
 Use `updatesCaseBoardSections` to identify safe player-facing board updates.
 
+Discovery rules must reference authored assets. If `canonicalAssetInventory` is present, every revealed NPC, location, object, evidence item, document, image, discovery rule, interview topic, scene, clue, or red herring should be listed in the inventory.
+
+## Canonical inventory and runtime budget requirements
+
+New packages should define:
+
+- `canonicalAssetInventory`;
+- `runtimeBudgets`.
+
+The inventory should list stable IDs for authored investigative assets. Runtime budgets should declare hard and soft limits for NPCs, locations, searchable objects, evidence, documents, images, discovery rules, interview topics, hints, red herrings, and player-facing branches.
+
+Do not imply additional witnesses, locations, documents, evidence, objects, images, or branches that the Game Master would need to invent during play.
+
 ## Suspect requirements
 
 Each major suspect must include:
@@ -418,6 +438,8 @@ Before finalizing, check:
 - Are physical actions plausible?
 - Is evidence provenance clear?
 - Is the scope appropriate for the requested length?
+- Are canonical asset inventory and runtime budgets defined?
+- Do discovery rules, NPC topics, scenes, evidence, documents, and assets stay inside the inventory and budgets?
 - Can the Game Master run this without inventing core facts?
 - Do important NPCs have interview topics and knowledge boundaries?
 
@@ -444,6 +466,8 @@ Do not present a case as ready for play if:
 
 - player setup is missing;
 - scope budget is missing;
+- canonical asset inventory or runtime budgets are missing from a new package;
+- runtime budgets exceed the selected preset without an explicit reason;
 - the case exceeds the selected preset;
 - the culprit is undecided;
 - the motive is vague or weak;

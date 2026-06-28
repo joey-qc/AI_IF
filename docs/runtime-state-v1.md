@@ -64,6 +64,8 @@ Was a hint already given?
 Has this image already been shown?
 Is this clue visible, discovered, interpreted, or still hidden?
 Has this discovery rule already fired?
+Has this requested asset already counted against a runtime budget?
+Have authored leads been exhausted?
 Has this NPC topic already been asked?
 ```
 
@@ -83,6 +85,7 @@ hintState
 accusationState
 imageState
 caseBoardSummary
+budgetUsage
 outOfGameNotes
 ```
 
@@ -134,7 +137,9 @@ Should include:
 - current location ID;
 - current NPC conversation, if any;
 - current focus object, if any;
-- active mode, such as observing, investigating, interviewing, reviewing, accusing, or out-of-game.
+- active mode, such as observing, investigating, interviewing, reviewing, deduction, accusing, or out-of-game.
+
+Use `deduction` when authored leads are exhausted and the Game Master is helping the player reason from discovered facts instead of expanding the case.
 
 ## discoveredState
 
@@ -318,6 +323,25 @@ Should include:
 - contradictions;
 - working theories.
 
+## budgetUsage
+
+Tracks compact runtime budget usage without duplicating the canonical inventory or full case board.
+
+May include:
+
+- used NPC IDs;
+- used location IDs;
+- used object IDs;
+- used evidence IDs;
+- used document IDs;
+- used discovery rule IDs;
+- used image IDs;
+- exhausted lead IDs;
+- whether deduction mode has been entered;
+- budget warnings.
+
+Use this section to enforce `runtimeBudgets` from the canonical package during play.
+
 ## outOfGameNotes
 
 Tracks playtest or design feedback submitted during gameplay.
@@ -344,6 +368,8 @@ The Game Master should update runtime state when:
 - an area or lead is ruled out;
 - a hint is requested or offered;
 - an image is shown, requested, denied, or deferred;
+- runtime budget usage changes;
+- authored leads are exhausted and deduction mode begins;
 - a theory or accusation is made;
 - the case is solved, paused, abandoned, or moved to postgame.
 
@@ -364,6 +390,7 @@ hintState
 accusationState
 imageState
 caseBoardSummary
+budgetUsage
 ```
 
 The purpose is not bureaucracy.
@@ -389,6 +416,8 @@ Runtime state should also track discovered clue IDs, discovered evidence IDs, in
 
 Do not duplicate the full current case board inside runtime state. Use `case-board-current.json` for structured player-facing board details.
 
+Do not duplicate the full canonical asset inventory inside runtime state. Store only compact usage and exhaustion markers.
+
 ## Failure conditions
 
 Runtime state fails if the Game Master:
@@ -401,6 +430,8 @@ Runtime state fails if the Game Master:
 - treats visible objects as interpreted clues;
 - treats image details as independent evidence;
 - stores player progress in `game-package.json`;
+- exceeds runtime budgets without recording or redirecting;
+- invents assets rather than marking an unsupported request as denied, ruled out, or exhausted;
 - changes canonical truth during play.
 
 ## Relationship to future phases

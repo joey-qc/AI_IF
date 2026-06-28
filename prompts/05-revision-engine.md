@@ -24,6 +24,8 @@ When validator diagnostics are available, use `docs/validator-diagnostics-v1.md`
 
 Use `docs/runtime-fidelity-engine-v1.md` when repairing defects where the Game Master would otherwise need to invent investigative content during play.
 
+Use `docs/canonical-assets-and-runtime-budgets-v1.md` when repairing inventory omissions, budget mismatches, overbroad affordances, or scope violations.
+
 ## Inputs
 
 The user may provide:
@@ -54,6 +56,7 @@ Focus especially on:
 - scope control;
 - Game Master readiness;
 - runtime fidelity.
+- canonical inventory and runtime budget integrity.
 
 ## Revision priorities
 
@@ -184,6 +187,16 @@ If validation or playtesting shows the Game Master would need to invent content 
 
 Do not leave the repair to Game Master improvisation.
 
+### If inventory or budget checks fail
+
+For canonical inventory or runtime budget defects:
+
+- add missing inventory IDs for authored investigative assets;
+- remove inventory IDs that do not correspond to authored assets;
+- tighten runtime budgets to match length preset and difficulty;
+- convert overbroad affordances into negative-investigation guidance or authored assets within scope;
+- remove unauthored investigative paths that would exceed budget.
+
 ## Required output format
 
 Return a revision report and updated content.
@@ -267,6 +280,8 @@ Do not:
 - leave essential clues without fair typed discovery rules;
 - leave important NPCs without bounded interview topics;
 - leave the Game Master dependent on unauthored suspects, witnesses, evidence, clue paths, locations, documents, timeline events, or access routes;
+- leave missing or inconsistent canonical inventory entries;
+- leave runtime budgets inconsistent with package scope;
 - preserve a scene just because it is dramatic if it breaks logic;
 - claim the case is fixed without explaining how.
 
@@ -283,6 +298,7 @@ The revision fails if:
 - NPC interview topics are omniscient, inconsistent, overrevealing, or too brittle to use;
 - the Game Master still needs to invent core facts.
 - the Game Master still needs to invent investigative content or continue with invented leads after authored content is exhausted.
+- canonical inventory or runtime budgets still permit unbounded runtime expansion.
 
 ## Response style
 

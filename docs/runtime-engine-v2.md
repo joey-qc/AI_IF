@@ -68,6 +68,7 @@ docs/playtest-findings.md
 docs/repository-workflow.md
 docs/runtime-engine-v2.md
 docs/runtime-fidelity-engine-v1.md
+docs/canonical-assets-and-runtime-budgets-v1.md
 docs/discovery-rules-v1.md
 docs/npc-interview-model-v1.md
 docs/investigation-model.md
@@ -105,6 +106,8 @@ games/<case-folder>/case-board-current.json
 
 If no current case board exists, initialize it from `case-board-seed.json` or the package's embedded `caseBoardSeed`.
 
+During startup, load `canonicalAssetInventory` and `runtimeBudgets` from `game-package.json` when present. Treat them as runtime constraints.
+
 ## Canon preservation
 
 The Game Master must not change:
@@ -139,6 +142,8 @@ If the player asks about unauthored content, the Game Master should give a natur
 
 When authored leads are exhausted, the Game Master should summarize player-visible facts and transition to deduction mode instead of creating more leads.
 
+Before revealing or accepting an investigative branch, check `canonicalAssetInventory`. Before introducing any NPC, location, object, evidence, document, image, discovery rule, or branch, check both the inventory and `runtimeBudgets`.
+
 ## Runtime loop
 
 For each player message, the Game Master should silently process:
@@ -150,16 +155,18 @@ For each player message, the Game Master should silently process:
 4. What has the player already discovered?
 5. What typed discovery trigger does the action map to?
 6. Is the target authored investigative content or unsupported content?
-7. Which discovery rule, if any, applies?
-8. Are rule prerequisites satisfied?
-9. Has this rule already fired?
-10. What observation layer is being requested?
-11. What can be revealed now?
-12. What remains hidden?
-13. Are authored leads exhausted, requiring deduction mode?
-14. Does the case board change?
-15. Does runtime state change?
-16. What concise response preserves canon and moves play forward?
+7. Is the target listed in `canonicalAssetInventory` when an inventory exists?
+8. Would this exceed a runtime budget?
+9. Which discovery rule, if any, applies?
+10. Are rule prerequisites satisfied?
+11. Has this rule already fired?
+12. What observation layer is being requested?
+13. What can be revealed now?
+14. What remains hidden?
+15. Are authored leads exhausted, requiring deduction mode?
+16. Does the case board change?
+17. Does runtime state change?
+18. What concise response preserves canon and moves play forward?
 ```
 
 The player should not see this checklist unless they ask for process notes out of game.
@@ -214,6 +221,8 @@ If a plausible action does not reveal a clue, use `failureText` when available a
 `case-board-current.json` should receive only player-visible updates from the fired rule.
 
 If no authored clue path, evidence item, NPC topic, object, document, or location supports the action, do not create one. Give a natural negative or redirect response and return to authored leads.
+
+Discovery rules may reveal only authored assets. If a rule references an asset outside the inventory, treat that as a package defect and do not expose the asset during play.
 
 ## Negative investigation
 
@@ -367,6 +376,8 @@ The Game Master should use runtime state to track at minimum:
 - open, pending, closed, and blocked leads;
 - hints requested or offered;
 - theories and accusations;
+- compact runtime budget usage, such as used NPC, location, object, evidence, document, image, and discovery rule IDs;
+- exhausted leads and whether deduction mode has begun;
 - images shown, requested, denied, or deferred;
 - compact case-board continuity;
 - preserved out-of-game notes when relevant.

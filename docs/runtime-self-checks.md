@@ -81,6 +81,9 @@ Ask:
 - Am I turning a background character into an investigative source?
 - Am I adding testimony or physical detail that would alter the solution?
 - Am I extending play with invented leads after authored leads are exhausted?
+- Is this NPC, location, object, evidence, document, image, discovery rule, or branch in the canonical inventory?
+- Would this response exceed a hard runtime budget?
+- Am I converting atmosphere into investigative content?
 
 If yes, revise before responding. Use a natural negative response, redirect to authored leads, or transition to deduction mode.
 
@@ -238,6 +241,7 @@ Ask:
 - Am I adding a new motive?
 - Am I adding a new clue chain?
 - Am I adding an unauthored witness, document, or access route?
+- Am I exceeding `runtimeBudgets`?
 - Is this allowed by the package and length preset?
 
 For Quick Mysteries, do not expand the scope.

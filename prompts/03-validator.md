@@ -24,6 +24,8 @@ Use `docs/validator-diagnostics-v1.md` and `schemas/validation-report.schema.jso
 
 Use `docs/runtime-fidelity-engine-v1.md` to check whether the Game Master can run the case as an interpreter without inventing investigative content.
 
+Use `docs/canonical-assets-and-runtime-budgets-v1.md` to validate canonical inventory completeness and runtime budget consistency.
+
 ## Inputs
 
 The user should provide one or more of:
@@ -55,6 +57,7 @@ The Validator must answer:
 - Can the Game Master run the case without inventing core facts?
 - Can the Game Master handle unauthored player requests without inventing suspects, witnesses, evidence, clue paths, locations, documents, timeline events, or access routes?
 - Does the package support a transition to deduction mode when authored leads are exhausted?
+- Does the package declare a complete canonical asset inventory and reasonable runtime budgets?
 - Does every required clue have a fair typed discovery rule?
 - Do NPC interview topics keep each NPC within believable knowledge boundaries?
 - Can diagnostics cite affected files and canonical IDs clearly enough for revision?
@@ -329,12 +332,28 @@ Check and report:
 - case-board seed/current safety;
 - runtime-state readiness;
 - runtime fidelity;
+- canonical inventory completeness;
+- runtime budget consistency;
 - fair final accusation path;
 - no hidden solution-only facts exposed prematurely.
 
 Distinguish blockers, major issues, minor issues, and advisory recommendations.
 
 Findings should cite affected files, sections, and canonical IDs where possible.
+
+### 17. Canonical inventory and runtime budget integrity
+
+Check `canonicalAssetInventory` and `runtimeBudgets` when present, and flag missing sections in new packages.
+
+Verify:
+
+- inventory IDs match authored package IDs;
+- every discovery rule references authored assets;
+- every NPC interview topic belongs to an authored NPC;
+- case-board seed entries do not expose unauthored or hidden assets;
+- runtime budgets match length preset and difficulty;
+- Quick Mystery packages do not exceed hard scope;
+- background characters remain atmospheric only.
 
 ## Required output format
 
@@ -440,6 +459,8 @@ Do not pass a case if:
 - Game Master must invent core facts during play.
 - Game Master must invent investigative content during play.
 - The case lacks enough authored support for the GM to close unsupported paths or transition to deduction mode.
+- canonical inventory is incomplete or inconsistent with package IDs.
+- runtime budgets exceed hard preset limits or allow scope drift.
 
 ## Response style
 

@@ -70,6 +70,8 @@ A complete `game-package.json` should include:
   "evidence": [],
   "scenes": [],
   "discoveryRules": [],
+  "canonicalAssetInventory": {},
+  "runtimeBudgets": {},
   "caseBoardSeed": {},
   "assetManifest": [],
   "validationTargets": {},
@@ -537,7 +539,56 @@ Design rule:
 
 Every essential clue should have at least one fair discovery rule. Optional clues and red herrings should be marked so the Validator, AI Playtester, Revision Engine, and Game Master can distinguish critical path information from enrichment or misdirection.
 
-## 15. caseBoardSeed
+Discovery rules may reveal only canonical assets. When `canonicalAssetInventory` exists, rule references should point to IDs listed there.
+
+## 15. canonicalAssetInventory
+
+Defines the authored investigative asset allowlist the runtime may expose.
+
+Recommended fields:
+
+- `npcIds`
+- `locationIds`
+- `objectIds`
+- `evidenceIds`
+- `documentIds`
+- `imageIds`
+- `discoveryRuleIds`
+- `interviewTopicIds`
+- `sceneIds`
+- `clueIds`
+- `redHerringIds`
+- `notes`
+
+This section is optional for backward compatibility, but new packages should include it. It should be derived from the canonical package sections, not invented separately.
+
+## 16. runtimeBudgets
+
+Defines maximum runtime scope for the package.
+
+Recommended fields:
+
+- `maxMajorNPCs`
+- `maxInterviewableNPCs`
+- `maxBackgroundCharacters`
+- `maxPrimaryLocations`
+- `maxSecondaryLocations`
+- `maxSearchableObjects`
+- `maxEvidenceItems`
+- `maxDocuments`
+- `maxImages`
+- `maxDiscoveryRules`
+- `maxRedHerrings`
+- `maxInterviewTopics`
+- `maxHints`
+- `maxPlayerFacingBranches`
+- `hardBudgetFields`
+- `softBudgetFields`
+- `notes`
+
+Runtime budgets reinforce the scope budget and are enforced by the Game Master. Hard budgets cannot be exceeded during play; soft budgets guide pacing and atmosphere.
+
+## 17. caseBoardSeed
 
 Defines the starting state for the player's case board.
 
@@ -555,7 +606,7 @@ Required fields:
 
 At game start, most discovered arrays should be empty or limited to opening facts.
 
-## 16. assetManifest
+## 18. assetManifest
 
 Defines images, maps, portraits, documents, and other player-facing assets.
 
@@ -580,7 +631,7 @@ Rules:
 - If an asset depicts evidence, the clue must also be described in text.
 - Assets should be retrievable by label after discovery.
 
-## 17. validationTargets
+## 19. validationTargets
 
 Defines what the Validator must check.
 
@@ -593,7 +644,7 @@ Required fields:
 - `mustSupportAccusationWithClueIds`
 - `knownRiskAreas`
 
-## 18. runtimeState
+## 20. runtimeState
 
 Used only during active play.
 
@@ -610,6 +661,7 @@ Possible fields:
 - `playerTheories`
 - `accusationsMade`
 - `gameStatus`
+- `budgetUsage`, for compact tracking of used IDs, exhausted leads, and whether deduction mode has begun
 
 Runtime state should not replace the canonical solution.
 
@@ -654,6 +706,33 @@ Validation reports should cite canonical IDs instead of duplicating canonical co
     "maxNestedSecrets": 0,
     "expectedPlayTimeMinutesMin": 10,
     "expectedPlayTimeMinutesMax": 25
+  },
+  "canonicalAssetInventory": {
+    "npcIds": [],
+    "locationIds": [],
+    "objectIds": [],
+    "evidenceIds": [],
+    "documentIds": [],
+    "imageIds": [],
+    "discoveryRuleIds": [],
+    "interviewTopicIds": [],
+    "sceneIds": [],
+    "clueIds": []
+  },
+  "runtimeBudgets": {
+    "maxMajorNPCs": 3,
+    "maxInterviewableNPCs": 3,
+    "maxPrimaryLocations": 1,
+    "maxSecondaryLocations": 0,
+    "maxEvidenceItems": 10,
+    "maxRedHerrings": 1,
+    "maxPlayerFacingBranches": 6,
+    "hardBudgetFields": [
+      "maxMajorNPCs",
+      "maxInterviewableNPCs",
+      "maxPrimaryLocations",
+      "maxRedHerrings"
+    ]
   }
 }
 ```
@@ -664,12 +743,13 @@ The Validator must fail a package if:
 
 - player setup is missing;
 - scope budget is missing;
+- canonical inventory or runtime budgets are missing from a new package;
 - the authored game exceeds hard scope limits;
 - solution fields are incomplete;
 - essential clues are not discoverable;
 - major clues lack closure;
 - evidence lacks provenance;
-- the Game Master would need to invent core facts.
+- the Game Master would need to invent core facts or exceed runtime budgets.
 
 ## Authorship implications
 
@@ -684,3 +764,5 @@ For example, if `lengthPreset` is `quick_mystery`, the Story Author must design 
 The Game Master must respect the package constraints during play.
 
 For a Quick Mystery, the Game Master should not add new rooms, new suspects, or a second layer of conspiracy during play. It should deepen the investigation within the defined room.
+
+It should also refuse or redirect attempts to exceed `canonicalAssetInventory` or `runtimeBudgets`, then return to authored leads, case-board review, or deduction mode.
