@@ -1,0 +1,299 @@
+{
+  "metadata": {
+    "caseId": "quick-002",
+    "caseTitle": "The Silent Gavel",
+    "gamePackageVersion": "0.1.0",
+    "runtimeSchemaVersion": "1.0",
+    "createdAt": "2026-06-27T00:00:00-04:00",
+    "lastUpdatedAt": "2026-06-27T00:00:00-04:00",
+    "lastUpdatedTurn": 0,
+    "notes": "Initialized by Game Master from case-board-seed.json at start of human playtest."
+  },
+  "session": {
+    "status": "in_progress",
+    "turnCount": 0,
+    "interactionMode": "text_first",
+    "imageMode": "none",
+    "hintPolicy": "on_request_only",
+    "gameplayStarted": true,
+    "caseSolved": false,
+    "postgameReportRequested": false
+  },
+  "currentPosition": {
+    "currentSceneId": "scene-chambers-opening",
+    "currentLocationId": "loc-judge-chambers",
+    "currentNpcConversationCharacterId": null,
+    "currentFocusObjectId": null,
+    "activeMode": "observing"
+  },
+  "discoveredState": {
+    "knownFacts": [
+      "The ceremonial gavel was reported missing from the locked display niche in Judge Harrow's chambers.",
+      "The loss was discovered during a short courthouse reception.",
+      "Only three regular staff members had practical access to the chambers during the reception.",
+      "The display niche lock appears intact at first glance."
+    ],
+    "discoveredClueIds": [],
+    "interpretedClueIds": [],
+    "discoveredEvidenceIds": [],
+    "recoveredEvidenceIds": [],
+    "knownCharacterIds": [
+      "char-miriam-vale",
+      "char-roland-pierce",
+      "char-elias-quill"
+    ],
+    "knownSuspectIds": [
+      "char-miriam-vale",
+      "char-roland-pierce",
+      "char-elias-quill"
+    ],
+    "clearedOrDeprioritizedSuspectIds": [],
+    "knownLocationIds": [
+      "loc-judge-chambers"
+    ],
+    "visitedLocationIds": [
+      "loc-judge-chambers"
+    ],
+    "firedDiscoveryRuleIds": [
+      "rule-observe-opening"
+    ],
+    "inspectedObjectIds": [],
+    "questionedNpcTopicIds": [],
+    "ruledOutAreaIds": [],
+    "ruledOutLeadIds": [],
+    "discoveredContradictions": []
+  },
+  "objectState": [
+    {
+      "objectId": "object-display-niche",
+      "label": "Display niche",
+      "locationId": "loc-judge-chambers",
+      "state": "visible",
+      "inspectionDepth": "visible_only",
+      "lastResultShown": "The display niche is open and the gavel is missing; the front lock appears intact at first glance.",
+      "associatedClueIds": [],
+      "associatedEvidenceIds": [
+        "evidence-display-niche"
+      ],
+      "ruledOut": false,
+      "closerInspectionAvailable": true,
+      "turnFirstSeen": 0,
+      "turnLastInspected": 0
+    },
+    {
+      "objectId": "object-tea-urn",
+      "label": "Tea urn and sideboard",
+      "locationId": "loc-judge-chambers",
+      "state": "visible",
+      "inspectionDepth": "visible_only",
+      "lastResultShown": "The tea service waits on the sideboard.",
+      "associatedClueIds": [],
+      "associatedEvidenceIds": [
+        "evidence-tea-urn"
+      ],
+      "ruledOut": false,
+      "closerInspectionAvailable": true,
+      "turnFirstSeen": 0,
+      "turnLastInspected": 0
+    },
+    {
+      "objectId": "object-desk-blotter",
+      "label": "Judge's desk and blotter",
+      "locationId": "loc-judge-chambers",
+      "state": "visible",
+      "inspectionDepth": "visible_only",
+      "lastResultShown": "The judge's desk and blotter are available to inspect.",
+      "associatedClueIds": [],
+      "associatedEvidenceIds": [],
+      "ruledOut": false,
+      "closerInspectionAvailable": true,
+      "turnFirstSeen": 0,
+      "turnLastInspected": 0
+    },
+    {
+      "objectId": "object-ledger-shelves",
+      "label": "Ledger shelves",
+      "locationId": "loc-judge-chambers",
+      "state": "visible",
+      "inspectionDepth": "visible_only",
+      "lastResultShown": "Shelves of case ledgers line part of the chambers.",
+      "associatedClueIds": [],
+      "associatedEvidenceIds": [],
+      "ruledOut": false,
+      "closerInspectionAvailable": true,
+      "turnFirstSeen": 0,
+      "turnLastInspected": 0
+    }
+  ],
+  "npcState": [
+    {
+      "characterId": "char-miriam-vale",
+      "met": true,
+      "questioned": false,
+      "topicsAsked": [],
+      "topicIdsAsked": [],
+      "interviewTopics": [],
+      "claimsHeard": [],
+      "liesOrOmissionsRevealed": [],
+      "contradictionsKnown": [],
+      "currentAttitude": "Controlled but brittle.",
+      "turnLastQuestioned": 0
+    },
+    {
+      "characterId": "char-roland-pierce",
+      "met": true,
+      "questioned": false,
+      "topicsAsked": [],
+      "topicIdsAsked": [],
+      "interviewTopics": [],
+      "claimsHeard": [],
+      "liesOrOmissionsRevealed": [],
+      "contradictionsKnown": [],
+      "currentAttitude": "Embarrassed and defensive.",
+      "turnLastQuestioned": 0
+    },
+    {
+      "characterId": "char-elias-quill",
+      "met": true,
+      "questioned": false,
+      "topicsAsked": [],
+      "topicIdsAsked": [],
+      "interviewTopics": [],
+      "claimsHeard": [],
+      "liesOrOmissionsRevealed": [],
+      "contradictionsKnown": [],
+      "currentAttitude": "Dry, cautious, annoyed by ceremony.",
+      "turnLastQuestioned": 0
+    }
+  ],
+  "leadState": {
+    "openLeads": [
+      {
+        "leadId": "lead-display-niche",
+        "description": "Inspect the display niche.",
+        "status": "open",
+        "source": "case-board-seed.json",
+        "reasonOpened": "The gavel vanished from the niche.",
+        "relatedClueIds": [],
+        "relatedEvidenceIds": [
+          "evidence-display-niche"
+        ],
+        "relatedCharacterIds": [],
+        "relatedLocationIds": [
+          "loc-judge-chambers"
+        ],
+        "relatedObjectIds": [
+          "object-display-niche"
+        ]
+      },
+      {
+        "leadId": "lead-sideboard-tea-service",
+        "description": "Inspect the sideboard and tea service.",
+        "status": "open",
+        "source": "case-board-seed.json",
+        "reasonOpened": "The sideboard was active during the reception.",
+        "relatedClueIds": [],
+        "relatedEvidenceIds": [
+          "evidence-tea-urn"
+        ],
+        "relatedCharacterIds": [],
+        "relatedLocationIds": [
+          "loc-judge-chambers"
+        ],
+        "relatedObjectIds": [
+          "object-tea-urn"
+        ]
+      },
+      {
+        "leadId": "lead-desk-blotter",
+        "description": "Inspect the desk and blotter.",
+        "status": "open",
+        "source": "case-board-seed.json",
+        "reasonOpened": "Documents and remarks may explain motive or timing.",
+        "relatedClueIds": [],
+        "relatedEvidenceIds": [],
+        "relatedCharacterIds": [],
+        "relatedLocationIds": [
+          "loc-judge-chambers"
+        ],
+        "relatedObjectIds": [
+          "object-desk-blotter"
+        ]
+      },
+      {
+        "leadId": "lead-question-staff",
+        "description": "Question Miriam Vale, Roland Pierce, and Elias Quill.",
+        "status": "open",
+        "source": "case-board-seed.json",
+        "reasonOpened": "Only three regular staff members had practical access.",
+        "relatedClueIds": [],
+        "relatedEvidenceIds": [],
+        "relatedCharacterIds": [
+          "char-miriam-vale",
+          "char-roland-pierce",
+          "char-elias-quill"
+        ],
+        "relatedLocationIds": [
+          "loc-judge-chambers"
+        ],
+        "relatedObjectIds": []
+      }
+    ],
+    "pendingLeads": [],
+    "closedLeads": [],
+    "blockedLeads": []
+  },
+  "hintState": {
+    "hintsRequestedCount": 0,
+    "proactiveHintsOfferedCount": 0,
+    "highestHintLevelUsed": "none",
+    "playerAppearsStuck": false,
+    "hintHistory": []
+  },
+  "accusationState": {
+    "theoriesProposed": [],
+    "accusationsMade": [],
+    "proofThresholdMet": false
+  },
+  "imageState": {
+    "seenAssetIds": [],
+    "requestedAssetIds": [],
+    "deferredOrDeniedRequests": [],
+    "generatedImageLabels": [],
+    "textFallbacksUsed": []
+  },
+  "caseBoardSummary": {
+    "knownFacts": [
+      "The ceremonial gavel was reported missing from the locked display niche in Judge Harrow's chambers.",
+      "The loss was discovered during a short courthouse reception.",
+      "Only three regular staff members had practical access to the chambers during the reception.",
+      "The display niche lock appears intact at first glance."
+    ],
+    "evidence": [],
+    "suspects": [
+      "Miriam Vale",
+      "Roland Pierce",
+      "Elias Quill"
+    ],
+    "inspectedObjects": [],
+    "ruledOutAreas": [],
+    "openQuestions": [
+      "How was the gavel removed if the niche was locked?",
+      "Where is the gavel now?",
+      "Which staff member had the opportunity to interfere with the display?",
+      "Why does the reception schedule matter?"
+    ],
+    "pendingLeads": [
+      "Inspect the display niche",
+      "Inspect the sideboard and tea service",
+      "Inspect the desk and blotter",
+      "Question Miriam Vale",
+      "Question Roland Pierce",
+      "Question Elias Quill"
+    ],
+    "closedLeads": [],
+    "contradictions": [],
+    "workingTheories": []
+  },
+  "outOfGameNotes": []
+}
