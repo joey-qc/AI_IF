@@ -1,0 +1,1048 @@
+{
+  "caseMetadata": {
+    "caseId": "quick-002",
+    "title": "The Silent Gavel",
+    "slug": "the-silent-gavel",
+    "version": "0.1.0",
+    "status": "draft",
+    "validationStatus": "not_validated",
+    "playtestStatus": "not_playtested",
+    "humanPlayStatus": "not_played"
+  },
+  "playerConfig": {
+    "lengthPreset": "quick_mystery",
+    "difficulty": "medium",
+    "genre": "classic detective",
+    "tone": "quiet courthouse puzzle",
+    "settingSummary": "A judge's chambers during a short courthouse reception.",
+    "playerRole": "A consulting investigator asked to recover a missing ceremonial gavel.",
+    "imageMode": "none",
+    "interactionMode": "text_first",
+    "hintPolicy": "on_request_only"
+  },
+  "scopeBudget": {
+    "maxPrimaryLocations": 1,
+    "maxMajorNpcCount": 3,
+    "maxEssentialClueCount": 10,
+    "maxRedHerringCount": 1,
+    "maxNestedSecrets": 0,
+    "expectedPlayTimeMinutesMin": 15,
+    "expectedPlayTimeMinutesMax": 25
+  },
+  "setting": {
+    "place": "Judge Harrow's chambers, Westbridge Courthouse",
+    "era": "interwar period",
+    "dateOrSeason": "A rainy autumn evening",
+    "socialContext": "Court staff are preserving ceremony around a retiring judge's final public reception.",
+    "technologyLevel": "Paper files, desk telephones, ink blotters, keyed locks, and electric corridor lamps.",
+    "toneNotes": "Contained, fair-play, conversational, with a focus on objects and testimony."
+  },
+  "centralMystery": {
+    "mysteryType": "theft",
+    "openingProblem": "Judge Harrow's ceremonial gavel has vanished from its locked display niche during a reception.",
+    "stakes": "The gavel is a courthouse heirloom scheduled for presentation at the judge's retirement dinner.",
+    "playerObjective": "Identify the thief, explain how the gavel was taken, and recover enough proof for a fair accusation.",
+    "successCondition": "The player names the culprit and supports the accusation with the required discovered clues."
+  },
+  "solution": {
+    "culpritCharacterId": "char-miriam-vale",
+    "motive": "Miriam Vale took the gavel to prevent its presentation because she believed the judge intended to honor Roland Pierce, whose clerical negligence had endangered her late brother's appeal file.",
+    "motiveProportionality": "The motive is personal and symbolic rather than violent: she intended a public embarrassment, not permanent sale or harm.",
+    "method": "Miriam used her staff key before the reception to loosen the display niche backing, later removed the gavel through the rear access panel while pretending to refresh the tea service, and hid it inside the hollow tea urn base.",
+    "opportunity": "She had two short unsupervised intervals near the sideboard and display niche while Roland answered a corridor telephone call and Elias fetched ledger cards.",
+    "means": "Miriam had the cabinet key, knew the service corridor side of the display backing, and had access to the tea urn used for the reception.",
+    "concealmentPlan": "She left the front lock intact, staged a misleading ink smudge near Roland's papers, and expected suspicion to fall on either Roland's ambition or Elias's access to old records.",
+    "culpritMistake": "The tea urn base retained fresh green baize fibers and a smear of cabinet wax matching the loosened display backing.",
+    "proofRequiredForAccusation": {
+      "requiredClueIds": [
+        "clue-loose-backing",
+        "clue-tea-urn-base",
+        "clue-green-baize-fibers",
+        "clue-miriam-key-mark",
+        "clue-reception-interval",
+        "clue-appeal-file-note"
+      ],
+      "deductionRequired": "The player must connect the intact front lock to rear access, the tea urn hiding place to the fibers and wax, Miriam's key access to the mark on the backing, and her motive to the appeal file note.",
+      "insufficientAccusationResponse": "An accusation without the rear-access evidence, tea urn evidence, and motive remains circumstantial and should be rejected by the GM."
+    },
+    "essentialClueIds": [
+      "clue-intact-front-lock",
+      "clue-loose-backing",
+      "clue-tea-urn-base",
+      "clue-green-baize-fibers",
+      "clue-miriam-key-mark",
+      "clue-reception-interval",
+      "clue-appeal-file-note",
+      "clue-roland-phone-call"
+    ],
+    "finalRevealBeats": [
+      "The locked front of the display was misdirection because the backing could be loosened from inside the chambers.",
+      "The gavel was hidden nearby in the tea urn base rather than carried out.",
+      "The fibers, wax, and key mark tie the hiding place and rear access to Miriam's duties and key.",
+      "The appeal file note supplies the motive and explains the attempted framing."
+    ]
+  },
+  "characters": [
+    {
+      "characterId": "char-miriam-vale",
+      "name": "Miriam Vale",
+      "role": "senior clerk",
+      "isMajorNpc": true,
+      "isSuspect": true,
+      "relationshipToMystery": "Managed the chambers schedule, keys, and reception service.",
+      "apparentMotive": "She is visibly angry about the judge's retirement honors and dismissive of Roland.",
+      "trueMotiveOrInnocentExplanation": "She blames Roland and the judge's office culture for mishandling her brother's appeal file and wants to spoil the public ceremony.",
+      "alibiClaim": "She says she spent the whole critical interval arranging cups at the sideboard.",
+      "alibiTruth": "She was at the sideboard, but used that position to access the loosened backing and hide the gavel in the tea urn base.",
+      "knowledge": [
+        "The reception schedule",
+        "The cabinet key routine",
+        "The old appeal file note",
+        "The tea service arrangement"
+      ],
+      "secrets": [
+        "She loosened the display backing before the reception.",
+        "She hid the gavel in the tea urn base."
+      ],
+      "liesOrOmissions": [
+        "She omits that she handled the cabinet backing earlier.",
+        "She pretends the appeal file note is ordinary archive clutter."
+      ],
+      "interviewTopics": [
+        {
+          "topicId": "topic-miriam-alibi",
+          "topicLabel": "Reception interval",
+          "topicType": "alibi",
+          "npcId": "char-miriam-vale",
+          "playerQuestionExamples": [
+            "Where were you when the gavel disappeared?",
+            "Who could see you during the reception?"
+          ],
+          "truthfulAnswer": "I was near the sideboard for most of it, keeping the tea from going cold.",
+          "lieOrOmission": "She does not volunteer that the sideboard put her within reach of the display backing and tea urn base.",
+          "evasiveAnswer": "Everyone was moving in and out. I was doing my work.",
+          "knowledgeBoundary": "She will not confess unless confronted with the required physical evidence and motive clue.",
+          "emotionalState": "Controlled but brittle.",
+          "revealsClueIds": [
+            "clue-reception-interval"
+          ],
+          "revealsEvidenceIds": [],
+          "prerequisiteClueIds": [],
+          "prerequisiteEvidenceIds": [],
+          "contradictionIds": [
+            "contradiction-sideboard-access"
+          ],
+          "followUpTopicIds": [
+            "topic-miriam-appeal-file"
+          ],
+          "repeatAnswer": "I was at the sideboard. That is hardly a crime.",
+          "validationNotes": "This topic gives opportunity but not guilt by itself."
+        },
+        {
+          "topicId": "topic-miriam-keys",
+          "topicLabel": "Cabinet keys",
+          "topicType": "evidence",
+          "npcId": "char-miriam-vale",
+          "playerQuestionExamples": [
+            "Who had keys to the display niche?",
+            "Did you use the display key today?"
+          ],
+          "truthfulAnswer": "I keep the duplicate key for the judge's chambers and display routine.",
+          "lieOrOmission": "She omits her use of the key before the reception.",
+          "evasiveAnswer": "Keys pass through clerks' hands constantly. That is how offices work.",
+          "knowledgeBoundary": "She can explain normal key access but not the fresh key mark unless pressured with the clue.",
+          "emotionalState": "Formal and defensive.",
+          "revealsClueIds": [],
+          "revealsEvidenceIds": [],
+          "prerequisiteClueIds": [
+            "clue-miriam-key-mark"
+          ],
+          "prerequisiteEvidenceIds": [],
+          "contradictionIds": [
+            "contradiction-key-mark"
+          ],
+          "followUpTopicIds": [
+            "topic-miriam-alibi"
+          ],
+          "repeatAnswer": "Yes, I had access, like any senior clerk entrusted with the chambers.",
+          "validationNotes": "Requires physical clue before direct pressure is fair."
+        },
+        {
+          "topicId": "topic-miriam-appeal-file",
+          "topicLabel": "Appeal file note",
+          "topicType": "motive",
+          "npcId": "char-miriam-vale",
+          "playerQuestionExamples": [
+            "Why is this old appeal note in the blotter?",
+            "What does this file mean to you?"
+          ],
+          "truthfulAnswer": "That file should never have been misplaced. My family paid for that mistake.",
+          "lieOrOmission": "She initially frames it as professional irritation rather than personal motive.",
+          "evasiveAnswer": "Old paperwork stirs old tempers. It proves nothing about tonight.",
+          "knowledgeBoundary": "She knows the personal connection but reveals its weight only if the note is discovered.",
+          "emotionalState": "Quietly angry.",
+          "revealsClueIds": [],
+          "revealsEvidenceIds": [],
+          "prerequisiteClueIds": [
+            "clue-appeal-file-note"
+          ],
+          "prerequisiteEvidenceIds": [],
+          "contradictionIds": [],
+          "followUpTopicIds": [
+            "topic-miriam-alibi"
+          ],
+          "repeatAnswer": "The appeal file mattered. That does not make me a thief.",
+          "validationNotes": "Motive clue should not be exposed before the player finds the note."
+        }
+      ],
+      "cluesPointingToward": [
+        "clue-miriam-key-mark",
+        "clue-reception-interval",
+        "clue-appeal-file-note"
+      ],
+      "cluesClearingOrImplicating": [
+        "clue-tea-urn-base",
+        "clue-green-baize-fibers"
+      ],
+      "interrogationGuidance": "Miriam denies guilt until the player combines rear access, tea urn evidence, and the appeal file motive."
+    },
+    {
+      "characterId": "char-roland-pierce",
+      "name": "Roland Pierce",
+      "role": "junior barrister",
+      "isMajorNpc": true,
+      "isSuspect": true,
+      "relationshipToMystery": "Expected public praise from Judge Harrow and handled remarks for the reception.",
+      "apparentMotive": "Ambition and rivalry make him appear eager to control the ceremony.",
+      "trueMotiveOrInnocentExplanation": "He wanted the ceremony to succeed and was distracted by a corridor telephone call.",
+      "alibiClaim": "He says he left the chambers briefly to answer a telephone call from the clerk's corridor.",
+      "alibiTruth": "The call happened and removed him from the room during part of the critical interval.",
+      "knowledge": [
+        "The prepared remarks",
+        "His telephone call",
+        "Miriam's hostility toward him",
+        "The judge's planned presentation"
+      ],
+      "secrets": [
+        "He rehearsed a self-serving thank-you speech."
+      ],
+      "liesOrOmissions": [
+        "He downplays how badly he wanted public recognition."
+      ],
+      "interviewTopics": [
+        {
+          "topicId": "topic-roland-alibi",
+          "topicLabel": "Telephone call",
+          "topicType": "alibi",
+          "npcId": "char-roland-pierce",
+          "playerQuestionExamples": [
+            "Why did you leave the chambers?",
+            "Who called you?"
+          ],
+          "truthfulAnswer": "A clerk waved me to the corridor telephone. By the time I returned, everyone was fussing over the missing gavel.",
+          "lieOrOmission": "He omits that he was relieved to avoid Miriam's glare during the toast.",
+          "evasiveAnswer": "It was an ordinary call. Bad timing, nothing more.",
+          "knowledgeBoundary": "He does not know who removed the gavel while he was out.",
+          "emotionalState": "Embarrassed and defensive.",
+          "revealsClueIds": [
+            "clue-roland-phone-call"
+          ],
+          "revealsEvidenceIds": [],
+          "prerequisiteClueIds": [],
+          "prerequisiteEvidenceIds": [],
+          "contradictionIds": [],
+          "followUpTopicIds": [
+            "topic-roland-speech"
+          ],
+          "repeatAnswer": "I left for the telephone, and I returned when the commotion had already begun.",
+          "validationNotes": "This alibi creates a gap but should not fully clear him alone."
+        },
+        {
+          "topicId": "topic-roland-speech",
+          "topicLabel": "Prepared remarks",
+          "topicType": "motive",
+          "npcId": "char-roland-pierce",
+          "playerQuestionExamples": [
+            "Why were your notes on the judge's desk?",
+            "Were you expecting an honor?"
+          ],
+          "truthfulAnswer": "I drafted remarks because the judge asked me to speak. I hoped it might help my standing.",
+          "lieOrOmission": "He minimizes his ambition.",
+          "evasiveAnswer": "Every young barrister hopes to be noticed.",
+          "knowledgeBoundary": "He does not know the appeal file's personal connection to Miriam.",
+          "emotionalState": "Proud but nervous.",
+          "revealsClueIds": [],
+          "revealsEvidenceIds": [],
+          "prerequisiteClueIds": [],
+          "prerequisiteEvidenceIds": [],
+          "contradictionIds": [],
+          "followUpTopicIds": [
+            "topic-roland-alibi"
+          ],
+          "repeatAnswer": "The remarks were vain, perhaps, but not criminal.",
+          "validationNotes": "This topic supports a plausible but incomplete suspect theory."
+        }
+      ],
+      "cluesPointingToward": [
+        "clue-ink-smudge"
+      ],
+      "cluesClearingOrImplicating": [
+        "clue-roland-phone-call"
+      ],
+      "interrogationGuidance": "Roland can look suspicious because of ambition and the staged ink smudge, but he lacks the physical path to the hiding place."
+    },
+    {
+      "characterId": "char-elias-quill",
+      "name": "Elias Quill",
+      "role": "court archivist",
+      "isMajorNpc": true,
+      "isSuspect": true,
+      "relationshipToMystery": "Maintains the old case ledgers and was asked to bring archive cards for the reception display.",
+      "apparentMotive": "He resents ceremonial objects being valued above records.",
+      "trueMotiveOrInnocentExplanation": "He is protective of records but did not take the gavel; his ledger errand explains his movement.",
+      "alibiClaim": "He says he was at the shelves collecting ledger cards.",
+      "alibiTruth": "He handled the shelves and ledger cards but did not approach the tea urn or display backing.",
+      "knowledge": [
+        "The archive shelves",
+        "The old appeal file reference",
+        "Who requested ledger cards",
+        "General chambers layout"
+      ],
+      "secrets": [
+        "He noticed the appeal file note earlier but did not want to stir a family grievance."
+      ],
+      "liesOrOmissions": [
+        "He withholds that he saw Miriam reading an old appeal reference before the reception."
+      ],
+      "interviewTopics": [
+        {
+          "topicId": "topic-elias-ledgers",
+          "topicLabel": "Ledger errand",
+          "topicType": "alibi",
+          "npcId": "char-elias-quill",
+          "playerQuestionExamples": [
+            "Why were you at the shelves?",
+            "Did you go near the display niche?"
+          ],
+          "truthfulAnswer": "I was pulling the requested ledger cards. I had no reason to touch the gavel.",
+          "lieOrOmission": "He omits that the appeal file note caught his attention earlier.",
+          "evasiveAnswer": "Records explain themselves better than people do.",
+          "knowledgeBoundary": "He cannot account for the tea urn or Miriam's exact movements.",
+          "emotionalState": "Dry, cautious, annoyed by ceremony.",
+          "revealsClueIds": [],
+          "revealsEvidenceIds": [],
+          "prerequisiteClueIds": [],
+          "prerequisiteEvidenceIds": [],
+          "contradictionIds": [],
+          "followUpTopicIds": [
+            "topic-elias-appeal-note"
+          ],
+          "repeatAnswer": "I was at the shelves, as requested.",
+          "validationNotes": "This topic keeps Elias plausible but bounded."
+        },
+        {
+          "topicId": "topic-elias-appeal-note",
+          "topicLabel": "Old appeal reference",
+          "topicType": "clue",
+          "npcId": "char-elias-quill",
+          "playerQuestionExamples": [
+            "Do you recognize this appeal note?",
+            "Who cared about this old file?"
+          ],
+          "truthfulAnswer": "It is an old appeal reference. I saw Miss Vale stiffen at that file once.",
+          "lieOrOmission": "He did not mention it initially because it felt personal.",
+          "evasiveAnswer": "Archives are full of unhappy paper.",
+          "knowledgeBoundary": "He knows the file upset Miriam but not her full plan.",
+          "emotionalState": "Uneasy and apologetic.",
+          "revealsClueIds": [],
+          "revealsEvidenceIds": [],
+          "prerequisiteClueIds": [
+            "clue-appeal-file-note"
+          ],
+          "prerequisiteEvidenceIds": [],
+          "contradictionIds": [],
+          "followUpTopicIds": [],
+          "repeatAnswer": "Miss Vale noticed that file. I should have said so earlier.",
+          "validationNotes": "This topic supports motive only after the physical note is found."
+        }
+      ],
+      "cluesPointingToward": [],
+      "cluesClearingOrImplicating": [
+        "clue-ledger-dust"
+      ],
+      "interrogationGuidance": "Elias can supply context after the player discovers the appeal note, but he should not solve the mystery for the player."
+    }
+  ],
+  "locations": [
+    {
+      "locationId": "loc-judge-chambers",
+      "name": "Judge Harrow's chambers",
+      "isPrimaryLocation": true,
+      "description": "A paneled office with a display niche, judge's desk, sideboard, shelves of ledgers, corridor door, and tea service.",
+      "purpose": "The full playable mystery space; all essential clues can be found here."
+    }
+  ],
+  "timeline": [
+    {
+      "eventId": "event-before-reception",
+      "sequenceOrder": 1,
+      "dateTimeLabel": "Before guests arrive",
+      "locationId": "loc-judge-chambers",
+      "summary": "The display backing is loosened and the duplicate key leaves a fresh mark.",
+      "cause": "Miriam prepares a way to remove the gavel without disturbing the front lock.",
+      "effect": "The later theft can appear impossible from the front of the niche."
+    },
+    {
+      "eventId": "event-reception-begins",
+      "sequenceOrder": 2,
+      "dateTimeLabel": "Reception begins",
+      "locationId": "loc-judge-chambers",
+      "summary": "The gavel is visible in the locked niche while staff gather for tea and remarks.",
+      "cause": "The judge's retirement reception has begun.",
+      "effect": "All suspects have a reason to be present in the chambers."
+    },
+    {
+      "eventId": "event-phone-call",
+      "sequenceOrder": 3,
+      "dateTimeLabel": "During the toast",
+      "locationId": "loc-judge-chambers",
+      "summary": "Roland steps into the corridor to answer a telephone call.",
+      "cause": "A clerk signals that the corridor telephone is for him.",
+      "effect": "Attention shifts away from the sideboard and display niche."
+    },
+    {
+      "eventId": "event-theft",
+      "sequenceOrder": 4,
+      "dateTimeLabel": "Critical interval",
+      "locationId": "loc-judge-chambers",
+      "summary": "Miriam removes the gavel through the loosened backing and hides it inside the tea urn base.",
+      "cause": "She is positioned at the sideboard with access to both the display backing and urn.",
+      "effect": "The gavel vanishes while the front lock appears undisturbed."
+    },
+    {
+      "eventId": "event-discovery",
+      "sequenceOrder": 5,
+      "dateTimeLabel": "Moments later",
+      "locationId": "loc-judge-chambers",
+      "summary": "The missing gavel is noticed before the formal presentation.",
+      "cause": "The niche is opened for the retirement presentation.",
+      "effect": "The player is asked to investigate the staff and chamber objects."
+    }
+  ],
+  "clues": [
+    {
+      "clueId": "clue-intact-front-lock",
+      "title": "Intact front lock",
+      "playerFacingDescription": "The niche lock shows no fresh scratches and opens smoothly with the judge's key.",
+      "trueMeaning": "The gavel was not taken through a forced front opening.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-judge-chambers",
+      "discoveryConditions": "Inspect the display niche lock.",
+      "sourceOrProvenance": "Physical condition of the display niche.",
+      "supportsSolution": true,
+      "resolvedInFinalReveal": true,
+      "textFallback": "The front lock looks intact, making a forced front theft unlikely."
+    },
+    {
+      "clueId": "clue-loose-backing",
+      "title": "Loose display backing",
+      "playerFacingDescription": "The rear panel of the display niche shifts slightly, and its waxed edge looks freshly handled.",
+      "trueMeaning": "The gavel could be removed from the rear without damaging the front lock.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-judge-chambers",
+      "discoveryConditions": "Closely inspect the display niche or compare the intact lock with the panel seam.",
+      "sourceOrProvenance": "Display niche rear panel.",
+      "supportsSolution": true,
+      "resolvedInFinalReveal": true,
+      "textFallback": "The backing can shift enough to create a hidden access path."
+    },
+    {
+      "clueId": "clue-tea-urn-base",
+      "title": "Heavy tea urn base",
+      "playerFacingDescription": "The tea urn feels heavier than expected, and its base gives a dull hollow tap.",
+      "trueMeaning": "The missing gavel is hidden inside the tea urn base.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-judge-chambers",
+      "discoveryConditions": "Closely inspect the sideboard tea service.",
+      "sourceOrProvenance": "Tea urn on the sideboard.",
+      "supportsSolution": true,
+      "resolvedInFinalReveal": true,
+      "textFallback": "The urn base is hollow and heavy enough to conceal the missing object."
+    },
+    {
+      "clueId": "clue-green-baize-fibers",
+      "title": "Green baize fibers",
+      "playerFacingDescription": "Small green fibers cling to the underside of the tea urn and match the display niche lining.",
+      "trueMeaning": "The gavel or urn base contacted the niche lining during the theft.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-judge-chambers",
+      "discoveryConditions": "Compare the tea urn underside with the display niche lining.",
+      "sourceOrProvenance": "Tea urn underside and display niche lining.",
+      "supportsSolution": true,
+      "resolvedInFinalReveal": true,
+      "textFallback": "The same green fibers appear on both the urn base and display lining."
+    },
+    {
+      "clueId": "clue-miriam-key-mark",
+      "title": "Duplicate key mark",
+      "playerFacingDescription": "A fresh narrow nick beside the rear fastener matches the duplicate key's worn tooth.",
+      "trueMeaning": "Miriam's key was used at the rear fastener before the reception.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-judge-chambers",
+      "discoveryConditions": "Inspect the rear fastener and compare it with the duplicate key Miriam controls.",
+      "sourceOrProvenance": "Display backing fastener and duplicate key.",
+      "supportsSolution": true,
+      "resolvedInFinalReveal": true,
+      "textFallback": "The fresh nick matches the duplicate key's worn tooth."
+    },
+    {
+      "clueId": "clue-reception-interval",
+      "title": "Sideboard interval",
+      "playerFacingDescription": "Miriam was alone at the sideboard for several moments while attention shifted to the corridor telephone.",
+      "trueMeaning": "She had the opportunity to access the display backing and tea urn.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-judge-chambers",
+      "discoveryConditions": "Question Miriam and Roland about the reception sequence.",
+      "sourceOrProvenance": "NPC testimony about the reception.",
+      "supportsSolution": true,
+      "resolvedInFinalReveal": true,
+      "textFallback": "The sideboard interval gave Miriam practical access."
+    },
+    {
+      "clueId": "clue-appeal-file-note",
+      "title": "Old appeal file note",
+      "playerFacingDescription": "A folded note in the blotter references an old appeal file and bears Miriam's penciled initials.",
+      "trueMeaning": "The note supplies Miriam's personal motive for disrupting the ceremony.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-judge-chambers",
+      "discoveryConditions": "Inspect the judge's desk blotter.",
+      "sourceOrProvenance": "Desk blotter.",
+      "supportsSolution": true,
+      "resolvedInFinalReveal": true,
+      "textFallback": "The note ties an old appeal file to Miriam's grievance."
+    },
+    {
+      "clueId": "clue-roland-phone-call",
+      "title": "Confirmed phone call",
+      "playerFacingDescription": "Roland's brief corridor telephone call is confirmed by both his testimony and the clerk's call slip.",
+      "trueMeaning": "Roland's movement explains his absence and creates the opening Miriam used.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-judge-chambers",
+      "discoveryConditions": "Question Roland and inspect the call slip near the door.",
+      "sourceOrProvenance": "Roland's statement and call slip.",
+      "supportsSolution": true,
+      "resolvedInFinalReveal": true,
+      "textFallback": "The telephone call is real and helps define the critical interval."
+    },
+    {
+      "clueId": "clue-ink-smudge",
+      "title": "Ink smudge on Roland's notes",
+      "playerFacingDescription": "Roland's speech notes have a dramatic ink smear near the word 'honor.'",
+      "trueMeaning": "The smear is staged misdirection and does not connect him to the missing gavel.",
+      "importance": "red_herring",
+      "discoveryLocationId": "loc-judge-chambers",
+      "discoveryConditions": "Inspect Roland's prepared remarks on the desk.",
+      "sourceOrProvenance": "Roland's notes.",
+      "supportsSolution": false,
+      "resolvedInFinalReveal": true,
+      "textFallback": "The ink smear looks suspicious but does not prove access."
+    },
+    {
+      "clueId": "clue-ledger-dust",
+      "title": "Ledger dust on cuffs",
+      "playerFacingDescription": "Elias has gray ledger dust on his cuffs, matching the archive shelves rather than the display niche.",
+      "trueMeaning": "His claimed shelf errand is credible and does not explain the tea urn evidence.",
+      "importance": "supporting",
+      "discoveryLocationId": "loc-judge-chambers",
+      "discoveryConditions": "Observe Elias or inspect the ledger shelves.",
+      "sourceOrProvenance": "Elias's cuffs and archive shelves.",
+      "supportsSolution": true,
+      "resolvedInFinalReveal": false,
+      "textFallback": "The dust supports Elias's shelf errand."
+    }
+  ],
+  "redHerrings": [
+    {
+      "redHerringId": "rh-roland-ink-smudge",
+      "title": "Roland's ink-smudged remarks",
+      "appearsToSuggest": "Roland angrily spoiled his own remarks while plotting to steal the gavel.",
+      "innocentExplanation": "The smear was placed to draw suspicion toward Roland's ambition, but it does not establish means or hiding place.",
+      "fairnessNotes": "The clue is suspicious only if isolated; comparison with the physical path and tea urn evidence clears it as final proof.",
+      "discoveryConditions": "Inspect the prepared remarks.",
+      "clearanceConditions": "Discover the rear access route and tea urn hiding place.",
+      "relatedClueIds": [
+        "clue-ink-smudge",
+        "clue-loose-backing",
+        "clue-tea-urn-base"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "evidenceId": "evidence-display-niche",
+      "title": "Locked display niche",
+      "type": "fixture",
+      "description": "A wall niche with an intact front lock, green baize lining, and a rear backing panel.",
+      "currentLocationId": "loc-judge-chambers",
+      "chainOfCustody": "Part of Judge Harrow's chambers.",
+      "accessHistory": "Opened for ceremonial display by court staff.",
+      "discoveryConditions": "Available from the opening scene.",
+      "associatedClueIds": [
+        "clue-intact-front-lock",
+        "clue-loose-backing",
+        "clue-green-baize-fibers",
+        "clue-miriam-key-mark"
+      ],
+      "assetIds": []
+    },
+    {
+      "evidenceId": "evidence-tea-urn",
+      "title": "Tea urn",
+      "type": "object",
+      "description": "A heavy urn on the sideboard with a hollow base.",
+      "currentLocationId": "loc-judge-chambers",
+      "chainOfCustody": "Used by Miriam for the reception tea service.",
+      "accessHistory": "Handled during the reception by Miriam and briefly visible to others.",
+      "discoveryConditions": "Inspect the sideboard and tea service.",
+      "associatedClueIds": [
+        "clue-tea-urn-base",
+        "clue-green-baize-fibers"
+      ],
+      "assetIds": []
+    },
+    {
+      "evidenceId": "evidence-appeal-note",
+      "title": "Appeal file note",
+      "type": "document",
+      "description": "A folded note referencing an old appeal file with Miriam's penciled initials.",
+      "currentLocationId": "loc-judge-chambers",
+      "chainOfCustody": "Found in the judge's desk blotter.",
+      "accessHistory": "Likely handled before the reception.",
+      "discoveryConditions": "Inspect the desk blotter.",
+      "associatedClueIds": [
+        "clue-appeal-file-note"
+      ],
+      "assetIds": []
+    },
+    {
+      "evidenceId": "evidence-call-slip",
+      "title": "Corridor call slip",
+      "type": "document",
+      "description": "A brief slip recording the call that took Roland into the corridor.",
+      "currentLocationId": "loc-judge-chambers",
+      "chainOfCustody": "Set near the chamber door by a clerk.",
+      "accessHistory": "Visible after the reception commotion.",
+      "discoveryConditions": "Inspect the chamber door area or ask Roland about the phone call.",
+      "associatedClueIds": [
+        "clue-roland-phone-call"
+      ],
+      "assetIds": []
+    }
+  ],
+  "scenes": [
+    {
+      "sceneId": "scene-chambers-opening",
+      "locationId": "loc-judge-chambers",
+      "entryConditions": "Start of play.",
+      "openingNarration": "Judge Harrow's chambers are still set for the interrupted reception. The display niche stands open, the tea service waits on the sideboard, and three staff members remain close enough to answer questions.",
+      "availableCharacterIds": [
+        "char-miriam-vale",
+        "char-roland-pierce",
+        "char-elias-quill"
+      ],
+      "availableClueIds": [
+        "clue-intact-front-lock",
+        "clue-loose-backing",
+        "clue-tea-urn-base",
+        "clue-green-baize-fibers",
+        "clue-miriam-key-mark",
+        "clue-reception-interval",
+        "clue-appeal-file-note",
+        "clue-roland-phone-call",
+        "clue-ink-smudge",
+        "clue-ledger-dust"
+      ],
+      "availableEvidenceIds": [
+        "evidence-display-niche",
+        "evidence-tea-urn",
+        "evidence-appeal-note",
+        "evidence-call-slip"
+      ],
+      "likelyPlayerQuestions": [
+        "Can I inspect the display niche?",
+        "What is on the sideboard?",
+        "Where was each person during the reception?",
+        "Are there documents on the judge's desk?"
+      ],
+      "safeAnswers": {
+        "where_to_start": "The display niche, sideboard, desk, and three staff members are all fair starting points.",
+        "is_there_another_room": "No other room is required for the solution; the mystery is contained in the chambers.",
+        "can_i_request_images": "Image mode is off by default, so use text descriptions."
+      },
+      "hiddenFactsNotYetRevealed": [
+        "The rear access route through the display backing.",
+        "The hidden gavel inside the tea urn base.",
+        "Miriam's motive and prior preparation."
+      ],
+      "exitLeads": [
+        "Compare the tea urn to the display lining.",
+        "Test each alibi against the corridor telephone interval.",
+        "Use the appeal file note to question Miriam and Elias."
+      ]
+    }
+  ],
+  "discoveryRules": [
+    {
+      "ruleId": "rule-observe-opening",
+      "triggerType": "observe_scene",
+      "description": "Player observes the chambers at the start of play.",
+      "locationId": "loc-judge-chambers",
+      "revealsLocationIds": [
+        "loc-judge-chambers"
+      ],
+      "updatesCaseBoardSections": [
+        "locations",
+        "knownFacts",
+        "pendingLeads"
+      ],
+      "discoveryText": "The chambers offer several immediate leads: the display niche, the sideboard tea service, the desk, and the remaining staff.",
+      "failureText": "",
+      "repeatText": "The same chamber leads remain available.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Opening observation reveals only player-visible starting leads."
+    },
+    {
+      "ruleId": "rule-inspect-front-lock",
+      "triggerType": "inspect_object",
+      "description": "Player inspects the front lock of the display niche.",
+      "locationId": "loc-judge-chambers",
+      "objectId": "object-display-front-lock",
+      "revealsClueIds": [
+        "clue-intact-front-lock"
+      ],
+      "revealsEvidenceIds": [
+        "evidence-display-niche"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "knownFacts",
+        "openQuestions"
+      ],
+      "discoveryText": "The front lock is intact and smooth, which makes a forced front entry unlikely.",
+      "failureText": "",
+      "repeatText": "The front lock still shows no signs of force.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Sets up the locked-object puzzle without exposing the answer."
+    },
+    {
+      "ruleId": "rule-closely-inspect-backing",
+      "triggerType": "closely_inspect_object",
+      "description": "Player closely inspects the display backing.",
+      "locationId": "loc-judge-chambers",
+      "objectId": "object-display-backing",
+      "prerequisiteClueIds": [
+        "clue-intact-front-lock"
+      ],
+      "revealsClueIds": [
+        "clue-loose-backing"
+      ],
+      "revealsEvidenceIds": [
+        "evidence-display-niche"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "knownFacts",
+        "openQuestions"
+      ],
+      "discoveryText": "The display backing shifts slightly, and its waxed edge looks freshly handled.",
+      "failureText": "A general glance at the display shows only that the front lock is intact.",
+      "repeatText": "The loosened backing remains the likely hidden access point.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Requires attention to the intact lock before revealing rear access."
+    },
+    {
+      "ruleId": "rule-inspect-tea-urn",
+      "triggerType": "closely_inspect_object",
+      "description": "Player closely inspects the tea urn on the sideboard.",
+      "locationId": "loc-judge-chambers",
+      "objectId": "object-tea-urn",
+      "revealsClueIds": [
+        "clue-tea-urn-base"
+      ],
+      "revealsEvidenceIds": [
+        "evidence-tea-urn"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "visibleObjects",
+        "openQuestions"
+      ],
+      "discoveryText": "The urn is oddly heavy, and the base gives a hollow tap.",
+      "failureText": "",
+      "repeatText": "The urn base still seems heavier and more hollow than expected.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Supports recovery path without requiring an image."
+    },
+    {
+      "ruleId": "rule-compare-urn-baize",
+      "triggerType": "compare_evidence",
+      "description": "Player compares the tea urn underside with the display niche lining.",
+      "locationId": "loc-judge-chambers",
+      "evidenceId": "evidence-tea-urn",
+      "prerequisiteClueIds": [
+        "clue-loose-backing",
+        "clue-tea-urn-base"
+      ],
+      "revealsClueIds": [
+        "clue-green-baize-fibers"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "knownFacts",
+        "workingTheories"
+      ],
+      "discoveryText": "Green fibers under the urn match the display niche lining.",
+      "failureText": "The comparison is not meaningful until both the urn and display backing have been inspected.",
+      "repeatText": "The matching fibers tie the urn to the display niche.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "A typed comparison rule distinguishes evidence from interpretation."
+    },
+    {
+      "ruleId": "rule-inspect-key-mark",
+      "triggerType": "compare_evidence",
+      "description": "Player compares the rear fastener mark with Miriam's duplicate key.",
+      "locationId": "loc-judge-chambers",
+      "objectId": "object-duplicate-key",
+      "prerequisiteClueIds": [
+        "clue-loose-backing"
+      ],
+      "revealsClueIds": [
+        "clue-miriam-key-mark"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "suspects",
+        "workingTheories"
+      ],
+      "discoveryText": "A fresh nick by the rear fastener matches the worn tooth of Miriam's duplicate key.",
+      "failureText": "The key comparison only matters after the rear backing is noticed.",
+      "repeatText": "The key mark remains a direct link between Miriam's access and the backing.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "This clue is accusatory but still insufficient without motive and hiding-place evidence."
+    },
+    {
+      "ruleId": "rule-read-appeal-note",
+      "triggerType": "read_document",
+      "description": "Player reads the folded appeal file note in the desk blotter.",
+      "locationId": "loc-judge-chambers",
+      "objectId": "object-desk-blotter",
+      "revealsClueIds": [
+        "clue-appeal-file-note"
+      ],
+      "revealsEvidenceIds": [
+        "evidence-appeal-note"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "knownFacts",
+        "openQuestions"
+      ],
+      "discoveryText": "The folded note references an old appeal file and bears Miriam's penciled initials.",
+      "failureText": "",
+      "repeatText": "The note remains a motive lead tied to Miriam.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Reveals motive lead, not the full motive explanation."
+    },
+    {
+      "ruleId": "rule-question-miriam-alibi",
+      "triggerType": "question_npc",
+      "description": "Player asks Miriam about her reception movements.",
+      "locationId": "loc-judge-chambers",
+      "npcId": "char-miriam-vale",
+      "topicId": "topic-miriam-alibi",
+      "revealsClueIds": [
+        "clue-reception-interval"
+      ],
+      "updatesCaseBoardSections": [
+        "knownNPCs",
+        "timelineNotes",
+        "suspects"
+      ],
+      "discoveryText": "Miriam places herself at the sideboard during the critical interval.",
+      "failureText": "",
+      "repeatText": "Miriam repeats that she was tending the tea service.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Her statement is player-visible and should be recorded as claimed movement, not confession."
+    },
+    {
+      "ruleId": "rule-question-roland-phone",
+      "triggerType": "question_npc",
+      "description": "Player asks Roland about his corridor telephone call.",
+      "locationId": "loc-judge-chambers",
+      "npcId": "char-roland-pierce",
+      "topicId": "topic-roland-alibi",
+      "revealsClueIds": [
+        "clue-roland-phone-call"
+      ],
+      "revealsEvidenceIds": [
+        "evidence-call-slip"
+      ],
+      "updatesCaseBoardSections": [
+        "knownNPCs",
+        "timelineNotes",
+        "pendingLeads"
+      ],
+      "discoveryText": "Roland's corridor telephone call is real and helps define the critical interval.",
+      "failureText": "",
+      "repeatText": "Roland maintains that he left only for the telephone call.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Provides timing and opportunity context."
+    },
+    {
+      "ruleId": "rule-inspect-roland-notes",
+      "triggerType": "inspect_object",
+      "description": "Player inspects Roland's prepared remarks.",
+      "locationId": "loc-judge-chambers",
+      "objectId": "object-roland-remarks",
+      "revealsClueIds": [
+        "clue-ink-smudge"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "suspects",
+        "contradictions"
+      ],
+      "discoveryText": "Roland's speech notes carry a theatrical ink smear near the word 'honor.'",
+      "failureText": "",
+      "repeatText": "The ink smear remains suspicious but does not explain access to the gavel.",
+      "isOptional": true,
+      "isRedHerring": true,
+      "validationNotes": "The only red herring; must be clearable through physical evidence."
+    },
+    {
+      "ruleId": "rule-observe-elias-dust",
+      "triggerType": "observe_scene",
+      "description": "Player notices ledger dust on Elias's cuffs or compares it to the shelves.",
+      "locationId": "loc-judge-chambers",
+      "npcId": "char-elias-quill",
+      "revealsClueIds": [
+        "clue-ledger-dust"
+      ],
+      "updatesCaseBoardSections": [
+        "knownNPCs",
+        "clearedSuspects",
+        "timelineNotes"
+      ],
+      "discoveryText": "Elias's cuff dust matches the archive shelves, supporting his ledger errand.",
+      "failureText": "",
+      "repeatText": "The ledger dust still points to the shelves, not the display or urn.",
+      "isOptional": true,
+      "isRedHerring": false,
+      "validationNotes": "Optional supporting clue that can help narrow suspects."
+    },
+    {
+      "ruleId": "rule-accuse",
+      "triggerType": "accuse",
+      "description": "Player makes a final accusation.",
+      "locationId": "loc-judge-chambers",
+      "prerequisiteClueIds": [
+        "clue-loose-backing",
+        "clue-tea-urn-base",
+        "clue-green-baize-fibers",
+        "clue-miriam-key-mark",
+        "clue-reception-interval",
+        "clue-appeal-file-note"
+      ],
+      "updatesCaseBoardSections": [
+        "closedLeads",
+        "workingTheories"
+      ],
+      "discoveryText": "A successful accusation must connect rear access, the tea urn evidence, Miriam's key access, the timing, and the motive note.",
+      "failureText": "The accusation is not yet supported by enough discovered evidence.",
+      "repeatText": "The final accusation turns on the same required evidence chain.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "GM should only reveal the solution after the required proof is player-visible."
+    }
+  ],
+  "caseBoardSeed": {
+    "knownFacts": [
+      "The ceremonial gavel was reported missing from the locked display niche in Judge Harrow's chambers.",
+      "The loss was discovered during a short courthouse reception.",
+      "Only three regular staff members had practical access to the chambers during the reception.",
+      "The display niche lock appears intact at first glance."
+    ],
+    "knownCharacters": [
+      "char-miriam-vale",
+      "char-roland-pierce",
+      "char-elias-quill"
+    ],
+    "knownLocations": [
+      "loc-judge-chambers"
+    ],
+    "openQuestions": [
+      "How was the gavel removed if the niche was locked?",
+      "Where is the gavel now?",
+      "Which staff member had the opportunity to interfere with the display?",
+      "Why does the reception schedule matter?"
+    ],
+    "activeLeads": [
+      "Inspect the display niche",
+      "Inspect the sideboard and tea service",
+      "Inspect the desk and blotter",
+      "Question Miriam Vale",
+      "Question Roland Pierce",
+      "Question Elias Quill"
+    ],
+    "discoveredClueIds": [],
+    "discoveredEvidenceIds": [],
+    "seenAssetIds": [],
+    "playerTheories": []
+  },
+  "assetManifest": [],
+  "validationTargets": {
+    "mustResolveClueIds": [
+      "clue-intact-front-lock",
+      "clue-loose-backing",
+      "clue-tea-urn-base",
+      "clue-green-baize-fibers",
+      "clue-miriam-key-mark",
+      "clue-reception-interval",
+      "clue-appeal-file-note",
+      "clue-roland-phone-call"
+    ],
+    "mustExplainRedHerringIds": [
+      "rh-roland-ink-smudge"
+    ],
+    "mustValidateTimelineEventIds": [
+      "event-before-reception",
+      "event-reception-begins",
+      "event-phone-call",
+      "event-theft",
+      "event-discovery"
+    ],
+    "mustValidateEvidenceIds": [
+      "evidence-display-niche",
+      "evidence-tea-urn",
+      "evidence-appeal-note",
+      "evidence-call-slip"
+    ],
+    "mustSupportAccusationWithClueIds": [
+      "clue-loose-backing",
+      "clue-tea-urn-base",
+      "clue-green-baize-fibers",
+      "clue-miriam-key-mark",
+      "clue-reception-interval",
+      "clue-appeal-file-note"
+    ]
+  }
+}

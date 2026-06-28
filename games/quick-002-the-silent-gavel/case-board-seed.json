@@ -1,0 +1,36 @@
+{
+  "caseId": "quick-002",
+  "title": "The Silent Gavel",
+  "knownFacts": [
+    "The ceremonial gavel was reported missing from the locked display niche in Judge Harrow's chambers.",
+    "The loss was discovered during a short courthouse reception.",
+    "Only three regular staff members had practical access to the chambers during the reception.",
+    "The display niche lock appears intact at first glance."
+  ],
+  "knownCharacters": [
+    "char-miriam-vale",
+    "char-roland-pierce",
+    "char-elias-quill"
+  ],
+  "knownLocations": [
+    "loc-judge-chambers"
+  ],
+  "openQuestions": [
+    "How was the gavel removed if the niche was locked?",
+    "Where is the gavel now?",
+    "Which staff member had the opportunity to interfere with the display?",
+    "Why does the reception schedule matter?"
+  ],
+  "activeLeads": [
+    "Inspect the display niche",
+    "Inspect the sideboard and tea service",
+    "Inspect the desk and blotter",
+    "Question Miriam Vale",
+    "Question Roland Pierce",
+    "Question Elias Quill"
+  ],
+  "discoveredClueIds": [],
+  "discoveredEvidenceIds": [],
+  "seenAssetIds": [],
+  "playerTheories": []
+}

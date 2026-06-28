@@ -16,5 +16,23 @@
     "imageMode": "player_requested_only",
     "interactionMode": "text_first",
     "notes": "Ready for GM."
+  },
+  {
+    "caseId": "quick-002",
+    "title": "The Silent Gavel",
+    "slug": "the-silent-gavel",
+    "folder": "games/quick-002-the-silent-gavel",
+    "lengthPreset": "quick_mystery",
+    "difficulty": "medium",
+    "genre": "classic detective",
+    "tone": "quiet courthouse puzzle",
+    "status": "draft",
+    "validationStatus": "not_validated",
+    "playtestStatus": "not_playtested",
+    "lastUpdatedAt": "2026-06-27",
+    "estimatedPlayTimeMinutes": 20,
+    "imageMode": "none",
+    "interactionMode": "text_first",
+    "notes": "Draft package for validation."
   }
 ]
