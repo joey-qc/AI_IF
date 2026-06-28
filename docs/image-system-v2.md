@@ -265,6 +265,8 @@ The Game Master should:
 - make generated images retrievable by label;
 - treat images as supportive, not canonical.
 
+Image fidelity issues should be captured in a Runtime Fidelity Report when an image adds non-canonical details, reveals hidden information early, exceeds image budgets, contradicts text, or is not recorded consistently.
+
 ## Failure conditions
 
 The image system fails if:

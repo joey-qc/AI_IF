@@ -26,6 +26,8 @@ Use `docs/runtime-fidelity-engine-v1.md` to stress-test whether gameplay can pro
 
 Use `docs/canonical-assets-and-runtime-budgets-v1.md` to stress-test inventory and budget enforcement.
 
+Use `docs/runtime-fidelity-report-v1.md` and `schemas/runtime-fidelity-report.schema.json` to produce or support a Runtime Fidelity Report after playtesting.
+
 ## Inputs
 
 The user should provide:
@@ -82,6 +84,7 @@ You should test:
 - final reveal;
 - runtime fidelity when the player asks about unauthored content;
 - budget enforcement when the player asks for extra witnesses, evidence, documents, images, locations, or branches.
+- post-playtest runtime fidelity reporting.
 
 ## Important constraints
 
@@ -214,6 +217,8 @@ PASS / PASS WITH ISSUES / FAIL
 
 ## Asset and Case Board Assessment
 
+## Runtime Fidelity Report Summary
+
 ## Recommended Revisions
 
 ## Next Step
@@ -268,6 +273,22 @@ Examples:
 Also test whether the Game Master can answer unsupported questions with natural negative or redirect responses instead of inventing new suspects, witnesses, evidence, clue paths, locations, documents, timeline events, or physical access routes.
 
 Test whether the Game Master refuses or redirects attempts to exceed `canonicalAssetInventory` or `runtimeBudgets`.
+
+## Runtime fidelity report expectations
+
+After playtesting, include or produce a Runtime Fidelity Report that covers:
+
+- invented NPCs;
+- invented locations;
+- invented evidence;
+- invented clues;
+- missed authored clues;
+- budget violations;
+- background-character violations;
+- image continuity or canon violations;
+- final solution fidelity.
+
+The report should cite canonical and runtime IDs when available and should feed Revision Engine repairs.
 
 ## Failure conditions
 

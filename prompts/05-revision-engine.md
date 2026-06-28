@@ -26,6 +26,8 @@ Use `docs/runtime-fidelity-engine-v1.md` when repairing defects where the Game M
 
 Use `docs/canonical-assets-and-runtime-budgets-v1.md` when repairing inventory omissions, budget mismatches, overbroad affordances, or scope violations.
 
+Read Runtime Fidelity Reports when available and use `docs/runtime-fidelity-report-v1.md` to prioritize repairs to runtime drift, invented assets, package gaps that encouraged improvisation, and Game Master instruction failures.
+
 ## Inputs
 
 The user may provide:
@@ -57,6 +59,7 @@ Focus especially on:
 - Game Master readiness;
 - runtime fidelity.
 - canonical inventory and runtime budget integrity.
+- runtime fidelity report findings.
 
 ## Revision priorities
 
@@ -197,6 +200,20 @@ For canonical inventory or runtime budget defects:
 - convert overbroad affordances into negative-investigation guidance or authored assets within scope;
 - remove unauthored investigative paths that would exceed budget.
 
+### If a Runtime Fidelity Report identifies drift
+
+Prioritize repairs to:
+
+- invented assets that appeared during runtime;
+- package gaps that encouraged Game Master improvisation;
+- missing or missed authored content;
+- budget violations;
+- background-character violations;
+- case-board or runtime-state drift;
+- image fidelity defects;
+- final solution mismatches;
+- Game Master instruction failures.
+
 ## Required output format
 
 Return a revision report and updated content.
@@ -299,6 +316,7 @@ The revision fails if:
 - the Game Master still needs to invent core facts.
 - the Game Master still needs to invent investigative content or continue with invented leads after authored content is exhausted.
 - canonical inventory or runtime budgets still permit unbounded runtime expansion.
+- Runtime Fidelity Report findings remain unaddressed without explanation.
 
 ## Response style
 

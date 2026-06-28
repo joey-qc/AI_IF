@@ -26,6 +26,8 @@ Use `docs/runtime-fidelity-engine-v1.md` to check whether the Game Master can ru
 
 Use `docs/canonical-assets-and-runtime-budgets-v1.md` to validate canonical inventory completeness and runtime budget consistency.
 
+Use `docs/runtime-fidelity-report-v1.md` to check whether the package is structured well enough to support future Runtime Fidelity Reports.
+
 ## Inputs
 
 The user should provide one or more of:
@@ -58,6 +60,7 @@ The Validator must answer:
 - Can the Game Master handle unauthored player requests without inventing suspects, witnesses, evidence, clue paths, locations, documents, timeline events, or access routes?
 - Does the package support a transition to deduction mode when authored leads are exhausted?
 - Does the package declare a complete canonical asset inventory and reasonable runtime budgets?
+- Does the package provide stable IDs and runtime structure sufficient to audit runtime fidelity after play?
 - Does every required clue have a fair typed discovery rule?
 - Do NPC interview topics keep each NPC within believable knowledge boundaries?
 - Can diagnostics cite affected files and canonical IDs clearly enough for revision?
@@ -355,6 +358,18 @@ Verify:
 - Quick Mystery packages do not exceed hard scope;
 - background characters remain atmospheric only.
 
+### 18. Runtime fidelity report readiness
+
+Check whether the package can support future Runtime Fidelity Reports:
+
+- stable IDs for clues, evidence, NPCs, locations, scenes, discovery rules, assets, and interview topics;
+- canonical inventory;
+- runtime budgets;
+- typed discovery rules;
+- NPC interview topics;
+- case-board seed and current-board structure;
+- asset manifest entries and image fallback labels.
+
 ## Required output format
 
 Return a validation report with these sections:
@@ -461,6 +476,7 @@ Do not pass a case if:
 - The case lacks enough authored support for the GM to close unsupported paths or transition to deduction mode.
 - canonical inventory is incomplete or inconsistent with package IDs.
 - runtime budgets exceed hard preset limits or allow scope drift.
+- package IDs or runtime structures are too unstable to support post-session fidelity reporting.
 
 ## Response style
 

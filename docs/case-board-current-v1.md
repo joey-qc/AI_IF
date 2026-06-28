@@ -142,6 +142,8 @@ These entries should not invent new clues. They record what the player has reaso
 
 The board must not add invented investigative assets. A background character, descriptive object, incidental document, flavor prop, or image request may appear only as a negative or atmospheric note unless it maps to an authored canonical ID.
 
+Case-board drift should be captured in a Runtime Fidelity Report when the board adds unauthored investigative assets, exposes hidden facts prematurely, omits important player-visible discoveries, or contradicts runtime state.
+
 ## Uncertainty and theories
 
 Uncertainty should be explicit.

@@ -144,6 +144,13 @@ When a player attempts to exceed a budget, the Game Master should:
 
 Do not add an investigative asset to satisfy the request.
 
+Budget violations discovered during play should be captured in a Runtime Fidelity Report:
+
+```text
+docs/runtime-fidelity-report-v1.md
+schemas/runtime-fidelity-report.schema.json
+```
+
 ## Background Characters
 
 Background characters count only as atmosphere unless the package authors them as NPCs.

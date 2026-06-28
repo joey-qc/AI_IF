@@ -84,6 +84,7 @@ Ask:
 - Is this NPC, location, object, evidence, document, image, discovery rule, or branch in the canonical inventory?
 - Would this response exceed a hard runtime budget?
 - Am I converting atmosphere into investigative content?
+- If I redirect an unauthored request, can later reporting see that redirect?
 
 If yes, revise before responding. Use a natural negative response, redirect to authored leads, or transition to deduction mode.
 
@@ -162,6 +163,7 @@ Before generating or describing an image, ask:
 - Does per-asset prompt guidance exist?
 - Is text fallback included?
 - Could the image accidentally add a new clue?
+- Is this image decision recorded clearly enough for a later Runtime Fidelity Report?
 
 If unsure, use a safer text description instead.
 
@@ -231,6 +233,23 @@ Before responding, ask:
 - Would repeating the same description feel stale?
 
 Use runtime state to avoid loops and contradictions.
+
+## Reportability check
+
+Ask:
+
+- Did this response introduce or reference an NPC, location, object, evidence item, document, clue, discovery rule, interview topic, image, or branch?
+- Is that item authored or atmospheric?
+- Did the player ask for unauthored content, and did I redirect or deny it?
+- Did a budget limit become relevant?
+- Did case-board-current or runtime-state record the player-visible result?
+
+These details support later Runtime Fidelity Reports governed by:
+
+```text
+docs/runtime-fidelity-report-v1.md
+schemas/runtime-fidelity-report.schema.json
+```
 
 ## Scope check
 

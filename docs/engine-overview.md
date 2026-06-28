@@ -53,12 +53,13 @@ Read in this order:
 7. discovery-rules-v1.md
 8. npc-interview-model-v1.md
 9. validator-diagnostics-v1.md
-10. investigation-model.md
-11. image-system-v2.md
-12. case-board-v2.md
-13. runtime-state-v1.md
-14. case-board-current-v1.md
-15. runtime-self-checks.md
+10. runtime-fidelity-report-v1.md
+11. investigation-model.md
+12. image-system-v2.md
+13. case-board-v2.md
+14. runtime-state-v1.md
+15. case-board-current-v1.md
+16. runtime-self-checks.md
 
 ## Runtime State Contract
 
@@ -178,6 +179,19 @@ Validation reports are not canonical game truth.
 
 They cite affected canonical IDs, summarize schema and mystery-quality checks, and inform Revision Engine work.
 
+## Runtime Fidelity Report Contract
+
+Runtime Fidelity Reports are post-playtest or post-session QA artifacts governed by:
+
+```text
+docs/runtime-fidelity-report-v1.md
+schemas/runtime-fidelity-report.schema.json
+```
+
+They compare the authored package against actual runtime behavior, including introduced NPCs, locations, objects, evidence, documents, clues, discovery rules, NPC topics, case-board updates, runtime-state updates, images, budget use, and final reveal fidelity.
+
+Runtime Fidelity Reports are not canonical game truth. They may contain spoilers and should feed Revision Engine repairs when runtime drift, invented assets, missed authored content, budget violations, or solution mismatches are found.
+
 ## Operational Prompts
 
 Operational prompts implement the specifications. They should reference the documents above rather than duplicate them.
@@ -205,6 +219,7 @@ Completed:
 - Runtime Engine v2 specifications
 - Runtime Fidelity Engine v1
 - Canonical Asset and Runtime Budget Enforcement v1
+- Runtime Fidelity Report v1
 - Discovery Rules v1
 - NPC Interview Model v1
 - Validator Diagnostics v1

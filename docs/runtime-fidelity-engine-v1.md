@@ -271,6 +271,26 @@ Check for:
 
 Any fidelity breach should be recorded as a Game Master runtime defect. If the package lacked necessary authored content, that should become a Validator or Revision Engine finding rather than an in-play invention.
 
+## Runtime Fidelity Report
+
+Post-play or post-playtest fidelity audits should be captured in:
+
+```text
+games/<case-folder>/runtime-fidelity-report.md
+games/<case-folder>/runtime-fidelity-report.json
+```
+
+The report format is governed by:
+
+```text
+docs/runtime-fidelity-report-v1.md
+schemas/runtime-fidelity-report.schema.json
+```
+
+The report should identify drift, invented assets, missed authored assets, budget violations, background-character violations, case-board drift, runtime-state drift, image fidelity issues, and final solution mismatches.
+
+Runtime Fidelity Reports feed Revision Engine work. The Revision Engine should distinguish package gaps that encouraged improvisation from Game Master instruction failures or runtime tracking failures.
+
 ## Role Responsibilities
 
 ### Game Master

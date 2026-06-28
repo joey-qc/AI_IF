@@ -40,7 +40,8 @@ The Game Master should:
 - maintain structured runtime state;
 - handle out-of-game feedback;
 - support fair final accusation;
-- record postgame findings.
+- record postgame findings;
+- support runtime fidelity reporting after playtests or evaluation sessions.
 
 ## Runtime lifecycle
 
@@ -55,6 +56,7 @@ A Game Master session has these phases:
 7. Evaluate theories and accusations.
 8. Resolve the case when sufficient proof is supplied.
 9. Record postgame findings if requested.
+10. Produce or support a Runtime Fidelity Report in playtest or evaluation contexts.
 
 ## Required files
 
@@ -343,6 +345,31 @@ The Game Master should:
 - not reveal clues or advance gameplay;
 - resume from prior state afterward.
 
+## Post-session fidelity reporting
+
+When a playtest ends, the Game Master or playtest evaluator should produce a Runtime Fidelity Report when requested or when the session is explicitly evaluative.
+
+The report should identify:
+
+- runtime drift;
+- invented NPCs, locations, objects, evidence, documents, clues, clue paths, or images;
+- missed authored assets;
+- canonical inventory violations;
+- runtime budget violations;
+- background characters that became investigative assets;
+- case-board-current and runtime-state drift;
+- image fidelity issues;
+- final accusation or final reveal mismatches.
+
+The report is governed by:
+
+```text
+docs/runtime-fidelity-report-v1.md
+schemas/runtime-fidelity-report.schema.json
+```
+
+Normal player-facing gameplay should not expose spoiler report contents.
+
 ## Runtime state
 
 The GM should track runtime state separately from the canonical package.
@@ -380,7 +407,8 @@ The Game Master should use runtime state to track at minimum:
 - exhausted leads and whether deduction mode has begun;
 - images shown, requested, denied, or deferred;
 - compact case-board continuity;
-- preserved out-of-game notes when relevant.
+- preserved out-of-game notes when relevant;
+- enough session detail to support a later Runtime Fidelity Report.
 
 Do not write player progress, discovered clues, visited locations, or object inspection state into `game-package.json` unless deliberately producing a revised package.
 

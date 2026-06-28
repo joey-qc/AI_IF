@@ -205,6 +205,7 @@ schemas/game-package-schema.md
 schemas/game-package.schema.json
 schemas/case-board-current.schema.json
 schemas/validation-report.schema.json
+schemas/runtime-fidelity-report.schema.json
 schemas/character.schema.json
 schemas/clue.schema.json
 schemas/location.schema.json
@@ -237,6 +238,8 @@ games/quick-001-the-clock-in-the-locked-study/
   case-board-current.json
   session-log.md
   postgame-report.md
+  runtime-fidelity-report.md
+  runtime-fidelity-report.json
   assets/
 ```
 
@@ -666,6 +669,39 @@ Purpose:
 - where the Game Master struggled;
 - proposed case-level and project-level lessons.
 
+### runtime-fidelity-report.md / runtime-fidelity-report.json
+
+Created after an AI playtest, human gameplay session, or runtime audit.
+
+Purpose:
+
+- compare authored package contents against actual runtime behavior;
+- identify invented NPCs, locations, objects, evidence, documents, clues, images, or discovery paths;
+- identify missed authored assets or discovery rules;
+- identify runtime budget violations;
+- identify case-board, runtime-state, image, NPC interview, and final reveal drift;
+- feed Revision Engine repairs.
+
+Runtime fidelity reports may be stored as:
+
+```text
+games/<caseId>-<slug>/runtime-fidelity-report.md
+games/<caseId>-<slug>/runtime-fidelity-report.json
+games/<caseId>-<slug>/runtime-fidelity-report-v*.md
+games/<caseId>-<slug>/runtime-fidelity-report-v*.json
+```
+
+Structured reports should follow:
+
+```text
+docs/runtime-fidelity-report-v1.md
+schemas/runtime-fidelity-report.schema.json
+```
+
+Runtime Fidelity Reports are QA artifacts, not canonical truth. They should reference canonical IDs rather than duplicate canonical story content.
+
+They may contain spoilers. A player who wants to remain spoiler-free should not open them before play.
+
 ## Asset management workflow
 
 Each case should maintain an asset manifest.
@@ -701,6 +737,8 @@ games/<caseId>-<slug>/runtime-state.json
 games/<caseId>-<slug>/case-board-current.json
 games/<caseId>-<slug>/session-log.md
 games/<caseId>-<slug>/postgame-report.md
+games/<caseId>-<slug>/runtime-fidelity-report.md
+games/<caseId>-<slug>/runtime-fidelity-report.json
 ```
 
 `runtime-state.json` tracks broader gameplay/session state.

@@ -1,0 +1,353 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/joey-qc/AI_IF/schemas/runtime-fidelity-report.schema.json",
+  "title": "AI_IF Runtime Fidelity Report",
+  "description": "Structured post-playtest or post-session audit report comparing runtime behavior against authored package canon.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reportId",
+    "caseId",
+    "overallFidelityStatus",
+    "summary",
+    "findings"
+  ],
+  "properties": {
+    "reportId": {
+      "$ref": "#/$defs/idString"
+    },
+    "caseId": {
+      "$ref": "#/$defs/idString"
+    },
+    "playSessionId": {
+      "$ref": "#/$defs/idString"
+    },
+    "reportDate": {
+      "type": "string"
+    },
+    "evaluatorRoleVersion": {
+      "type": "string"
+    },
+    "overallFidelityStatus": {
+      "$ref": "#/$defs/status"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authoredPackageSnapshot": {
+      "$ref": "#/$defs/reportSection"
+    },
+    "runtimeSessionSummary": {
+      "$ref": "#/$defs/reportSection"
+    },
+    "canonicalAssetChecks": {
+      "$ref": "#/$defs/reportSection"
+    },
+    "runtimeBudgetChecks": {
+      "$ref": "#/$defs/reportSection"
+    },
+    "inventedContentFindings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      },
+      "default": []
+    },
+    "missedCanonicalContentFindings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      },
+      "default": []
+    },
+    "discoveryRuleExecution": {
+      "$ref": "#/$defs/executionSection"
+    },
+    "npcInterviewExecution": {
+      "$ref": "#/$defs/executionSection"
+    },
+    "caseBoardFidelity": {
+      "$ref": "#/$defs/reportSection"
+    },
+    "runtimeStateFidelity": {
+      "$ref": "#/$defs/reportSection"
+    },
+    "imageFidelity": {
+      "$ref": "#/$defs/reportSection"
+    },
+    "finalSolutionFidelity": {
+      "$ref": "#/$defs/reportSection"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      },
+      "default": []
+    },
+    "recommendedRepairs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/recommendedRepair"
+      },
+      "default": []
+    },
+    "relatedReportIds": {
+      "$ref": "#/$defs/stringArray"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "idString": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$"
+    },
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "pass_with_warnings",
+        "fail",
+        "not_evaluated"
+      ]
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "blocker",
+        "major",
+        "minor",
+        "advisory"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "invented_npc",
+        "invented_location",
+        "invented_object",
+        "invented_evidence",
+        "invented_document",
+        "invented_clue",
+        "invented_discovery_path",
+        "missed_canonical_content",
+        "discovery_rule_mismatch",
+        "npc_interview_mismatch",
+        "case_board_drift",
+        "runtime_state_drift",
+        "image_fidelity_issue",
+        "budget_violation",
+        "canonical_inventory_violation",
+        "background_character_violation",
+        "final_solution_mismatch",
+        "premature_reveal",
+        "other"
+      ]
+    },
+    "referenceIds": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "npcIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "locationIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "objectIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "evidenceIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "documentIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "imageIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "clueIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "discoveryRuleIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "interviewTopicIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "sceneIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "caseBoardFields": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "runtimeStateFields": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "budgetFields": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "reportIds": {
+          "$ref": "#/$defs/stringArray"
+        }
+      }
+    },
+    "reportSection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "checkedIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "missingIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "inventedIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "budgetFieldsChecked": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "relatedFindingIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "executionSection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "authoredIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "runtimeIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "missedIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "inventedIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "relatedFindingIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "findingId",
+        "severity",
+        "category",
+        "title",
+        "description"
+      ],
+      "properties": {
+        "findingId": {
+          "$ref": "#/$defs/idString"
+        },
+        "severity": {
+          "$ref": "#/$defs/severity"
+        },
+        "category": {
+          "$ref": "#/$defs/category"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authoredReferenceIds": {
+          "$ref": "#/$defs/referenceIds"
+        },
+        "runtimeReferenceIds": {
+          "$ref": "#/$defs/referenceIds"
+        },
+        "playerImpact": {
+          "type": "string"
+        },
+        "recommendedFix": {
+          "type": "string"
+        },
+        "blocksReplay": {
+          "type": "boolean"
+        },
+        "relatedFindingIds": {
+          "$ref": "#/$defs/stringArray"
+        }
+      }
+    },
+    "recommendedRepair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repairId",
+        "summary"
+      ],
+      "properties": {
+        "repairId": {
+          "$ref": "#/$defs/idString"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recommendedRole": {
+          "type": "string",
+          "enum": [
+            "revision_engine",
+            "validator",
+            "ai_playtester",
+            "game_master",
+            "engine_architect",
+            "repository_engine",
+            "none"
+          ]
+        },
+        "relatedFindingIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "targetFiles": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

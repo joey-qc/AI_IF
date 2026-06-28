@@ -14,31 +14,88 @@
     "findings"
   ],
   "properties": {
-    "reportId": { "$ref": "#/$defs/idString" },
-    "caseId": { "$ref": "#/$defs/idString" },
-    "validationDate": { "type": "string" },
-    "validatorRoleVersion": { "type": "string" },
+    "reportId": {
+      "$ref": "#/$defs/idString"
+    },
+    "caseId": {
+      "$ref": "#/$defs/idString"
+    },
+    "validationDate": {
+      "type": "string"
+    },
+    "validatorRoleVersion": {
+      "type": "string"
+    },
     "overallStatus": {
       "type": "string",
-      "enum": ["pass", "pass_with_warnings", "fail", "not_evaluated"]
+      "enum": [
+        "pass",
+        "pass_with_warnings",
+        "fail",
+        "not_evaluated"
+      ]
     },
-    "summary": { "type": "string", "minLength": 1 },
-    "checks": { "type": "array", "items": { "$ref": "#/$defs/check" }, "default": [] },
-    "findings": { "type": "array", "items": { "$ref": "#/$defs/finding" }, "default": [] },
-    "clueCoverage": { "$ref": "#/$defs/coverageSection" },
-    "discoveryRuleCoverage": { "$ref": "#/$defs/coverageSection" },
-    "npcInterviewCoverage": { "$ref": "#/$defs/coverageSection" },
-    "timelineCoverage": { "$ref": "#/$defs/coverageSection" },
-    "evidenceProvenanceCoverage": { "$ref": "#/$defs/coverageSection" },
-    "imageSafetyCoverage": { "$ref": "#/$defs/coverageSection" },
-    "runtimeReadinessCoverage": { "$ref": "#/$defs/coverageSection" },
-    "caseBoardSafetyCoverage": { "$ref": "#/$defs/coverageSection" },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/check"
+      },
+      "default": []
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      },
+      "default": []
+    },
+    "clueCoverage": {
+      "$ref": "#/$defs/coverageSection"
+    },
+    "discoveryRuleCoverage": {
+      "$ref": "#/$defs/coverageSection"
+    },
+    "npcInterviewCoverage": {
+      "$ref": "#/$defs/coverageSection"
+    },
+    "timelineCoverage": {
+      "$ref": "#/$defs/coverageSection"
+    },
+    "evidenceProvenanceCoverage": {
+      "$ref": "#/$defs/coverageSection"
+    },
+    "imageSafetyCoverage": {
+      "$ref": "#/$defs/coverageSection"
+    },
+    "runtimeReadinessCoverage": {
+      "$ref": "#/$defs/coverageSection"
+    },
+    "caseBoardSafetyCoverage": {
+      "$ref": "#/$defs/coverageSection"
+    },
     "recommendedRevisionPriority": {
       "type": "string",
-      "enum": ["none", "low", "medium", "high", "urgent"]
+      "enum": [
+        "none",
+        "low",
+        "medium",
+        "high",
+        "urgent"
+      ]
     },
-    "revisionInputs": { "$ref": "#/$defs/revisionInputs" },
-    "notes": { "type": "string" }
+    "revisionInputs": {
+      "$ref": "#/$defs/revisionInputs"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "relatedRuntimeFidelityReportIds": {
+      "$ref": "#/$defs/stringArray"
+    }
   },
   "$defs": {
     "idString": {
@@ -48,16 +105,28 @@
     },
     "stringArray": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "default": []
     },
     "status": {
       "type": "string",
-      "enum": ["pass", "pass_with_warnings", "fail", "not_evaluated"]
+      "enum": [
+        "pass",
+        "pass_with_warnings",
+        "fail",
+        "not_evaluated"
+      ]
     },
     "severity": {
       "type": "string",
-      "enum": ["blocker", "major", "minor", "advisory"]
+      "enum": [
+        "blocker",
+        "major",
+        "minor",
+        "advisory"
+      ]
     },
     "category": {
       "type": "string",
@@ -86,12 +155,23 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
-          "path": { "type": "string", "minLength": 1 },
-          "section": { "type": "string" },
-          "jsonPointer": { "type": "string" },
-          "notes": { "type": "string" }
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "section": {
+            "type": "string"
+          },
+          "jsonPointer": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
         }
       },
       "default": []
@@ -100,73 +180,169 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "clueIds": { "$ref": "#/$defs/stringArray" },
-        "npcIds": { "$ref": "#/$defs/stringArray" },
-        "topicIds": { "$ref": "#/$defs/stringArray" },
-        "discoveryRuleIds": { "$ref": "#/$defs/stringArray" },
-        "evidenceIds": { "$ref": "#/$defs/stringArray" },
-        "imageIds": { "$ref": "#/$defs/stringArray" },
-        "locationIds": { "$ref": "#/$defs/stringArray" },
-        "objectIds": { "$ref": "#/$defs/stringArray" },
-        "timelineEventIds": { "$ref": "#/$defs/stringArray" },
-        "runtimeStateFields": { "$ref": "#/$defs/stringArray" },
-        "caseBoardFields": { "$ref": "#/$defs/stringArray" }
+        "clueIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "npcIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "topicIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "discoveryRuleIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "evidenceIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "imageIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "locationIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "objectIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "timelineEventIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "runtimeStateFields": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "caseBoardFields": {
+          "$ref": "#/$defs/stringArray"
+        }
       }
     },
     "check": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["checkId", "category", "status", "summary"],
+      "required": [
+        "checkId",
+        "category",
+        "status",
+        "summary"
+      ],
       "properties": {
-        "checkId": { "$ref": "#/$defs/idString" },
-        "category": { "$ref": "#/$defs/category" },
-        "status": { "$ref": "#/$defs/status" },
-        "summary": { "type": "string", "minLength": 1 },
-        "relatedFindingIds": { "$ref": "#/$defs/stringArray" }
+        "checkId": {
+          "$ref": "#/$defs/idString"
+        },
+        "category": {
+          "$ref": "#/$defs/category"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relatedFindingIds": {
+          "$ref": "#/$defs/stringArray"
+        }
       }
     },
     "finding": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["findingId", "severity", "category", "title", "description"],
+      "required": [
+        "findingId",
+        "severity",
+        "category",
+        "title",
+        "description"
+      ],
       "properties": {
-        "findingId": { "$ref": "#/$defs/idString" },
-        "severity": { "$ref": "#/$defs/severity" },
-        "category": { "$ref": "#/$defs/category" },
-        "title": { "type": "string", "minLength": 1 },
-        "description": { "type": "string", "minLength": 1 },
-        "affectedFiles": { "$ref": "#/$defs/affectedFiles" },
-        "affectedIds": { "$ref": "#/$defs/affectedIds" },
-        "playerImpact": { "type": "string" },
-        "recommendedFix": { "type": "string" },
-        "blocksGameplay": { "type": "boolean" },
-        "blocksValidation": { "type": "boolean" },
-        "relatedFindingIds": { "$ref": "#/$defs/stringArray" }
+        "findingId": {
+          "$ref": "#/$defs/idString"
+        },
+        "severity": {
+          "$ref": "#/$defs/severity"
+        },
+        "category": {
+          "$ref": "#/$defs/category"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "affectedFiles": {
+          "$ref": "#/$defs/affectedFiles"
+        },
+        "affectedIds": {
+          "$ref": "#/$defs/affectedIds"
+        },
+        "playerImpact": {
+          "type": "string"
+        },
+        "recommendedFix": {
+          "type": "string"
+        },
+        "blocksGameplay": {
+          "type": "boolean"
+        },
+        "blocksValidation": {
+          "type": "boolean"
+        },
+        "relatedFindingIds": {
+          "$ref": "#/$defs/stringArray"
+        }
       }
     },
     "coverageSection": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "status": { "$ref": "#/$defs/status" },
-        "summary": { "type": "string" },
-        "checkedIds": { "$ref": "#/$defs/stringArray" },
-        "missingIds": { "$ref": "#/$defs/stringArray" },
-        "riskIds": { "$ref": "#/$defs/stringArray" },
-        "relatedFindingIds": { "$ref": "#/$defs/stringArray" }
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "checkedIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "missingIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "riskIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "relatedFindingIds": {
+          "$ref": "#/$defs/stringArray"
+        }
       }
     },
     "revisionInputs": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "priorityFindingIds": { "$ref": "#/$defs/stringArray" },
-        "recommendedFilesToReview": { "$ref": "#/$defs/stringArray" },
+        "priorityFindingIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "recommendedFilesToReview": {
+          "$ref": "#/$defs/stringArray"
+        },
         "recommendedNextRole": {
           "type": "string",
-          "enum": ["revision_engine", "story_author", "validator", "ai_playtester", "game_master", "engine_architect", "none"]
+          "enum": [
+            "revision_engine",
+            "story_author",
+            "validator",
+            "ai_playtester",
+            "game_master",
+            "engine_architect",
+            "none"
+          ]
         },
-        "notesForRevisionEngine": { "type": "string" }
+        "notesForRevisionEngine": {
+          "type": "string"
+        }
       }
     }
   }

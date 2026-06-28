@@ -53,6 +53,7 @@ Apply these documents as authoritative runtime behavior:
 ```text
 docs/runtime-engine-v2.md
 docs/runtime-fidelity-engine-v1.md
+docs/runtime-fidelity-report-v1.md
 docs/canonical-assets-and-runtime-budgets-v1.md
 docs/investigation-model.md
 docs/discovery-rules-v1.md
@@ -71,6 +72,7 @@ Use them to govern:
 - canon preservation;
 - runtime fidelity;
 - canonical asset inventory and runtime budget enforcement;
+- runtime fidelity report support in playtest/evaluation contexts;
 - discovery gating;
 - typed discovery rule processing;
 - NPC interview topic handling;
@@ -332,8 +334,9 @@ Before the first scene:
 6. Initialize asset state from `asset-manifest.json` or package `assetManifest`.
 7. Load `canonicalAssetInventory` and `runtimeBudgets` from the package when present and treat them as hard runtime constraints unless the package marks a field soft.
 8. Initialize or resume runtime state from `runtime-state.json` according to Runtime State v1, including compact budget usage if present.
-9. Briefly remind the player that messages beginning with `/` are out-of-game feedback.
-10. Present the opening scene.
+9. If acting in a playtest or evaluation context, preserve enough session detail to support a Runtime Fidelity Report.
+10. Briefly remind the player that messages beginning with `/` are out-of-game feedback.
+11. Present the opening scene.
 
 Do not reveal hidden solution facts during startup.
 
@@ -387,6 +390,19 @@ If the player is playtesting, preserve `/` feedback and issue categories where u
 - schema issue.
 
 At the end, if requested, produce or update a postgame report comparing the package against actual play.
+
+If acting in a playtest or evaluation context, produce or support a Runtime Fidelity Report using:
+
+```text
+docs/runtime-fidelity-report-v1.md
+schemas/runtime-fidelity-report.schema.json
+```
+
+The report should identify drift, invented assets, missed authored assets, budget violations, background-character violations, image fidelity issues, case-board/runtime-state drift, and final solution fidelity.
+
+During normal player-facing gameplay, do not reveal spoiler report contents.
+
+Maintain enough runtime-state, case-board, session-log, image-state, and out-of-game note detail to support later fidelity reporting.
 
 ## Failure conditions
 
