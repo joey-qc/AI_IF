@@ -1,0 +1,362 @@
+{
+  "reportId": "validation-quick-002-v1",
+  "caseId": "quick-002",
+  "validationDate": "2026-06-28",
+  "validatorRoleVersion": "prompts/03-validator.md",
+  "overallStatus": "fail",
+  "summary": "The case has a complete authored solution, coherent suspect set, bounded scope, safe image posture, and generally fair clue logic. It fails validation because the package does not currently conform to the repository schema and because the final accusation path lacks a distinct recovered-target evidence step.",
+  "checks": [
+    {
+      "checkId": "check-schema-structure",
+      "category": "schema_validity",
+      "status": "fail",
+      "summary": "JSON parses, but several field types do not match schemas/game-package.schema.json.",
+      "relatedFindingIds": [
+        "finding-schema-type-mismatch"
+      ]
+    },
+    {
+      "checkId": "check-fair-play-solvability",
+      "category": "final_accusation_issue",
+      "status": "fail",
+      "summary": "The deduction chain is mostly fair, but the recoverable target is not modeled as distinct evidence with a typed recovery/reveal path.",
+      "relatedFindingIds": [
+        "finding-missing-recovered-target-evidence"
+      ]
+    },
+    {
+      "checkId": "check-discovery-rules",
+      "category": "discovery_rule_issue",
+      "status": "pass_with_warnings",
+      "summary": "Required clues have typed discovery paths using standard trigger types; one final recovery step needs stronger modeling.",
+      "relatedFindingIds": [
+        "finding-missing-recovered-target-evidence"
+      ]
+    },
+    {
+      "checkId": "check-npc-interviews",
+      "category": "npc_interview_issue",
+      "status": "pass_with_warnings",
+      "summary": "Major NPCs have structured topics and bounded knowledge, but some contradiction IDs are not backed by explicit discovery-rule or case-board handling.",
+      "relatedFindingIds": [
+        "finding-undefined-contradiction-ids"
+      ]
+    },
+    {
+      "checkId": "check-case-board-seed",
+      "category": "case_board_exposure_issue",
+      "status": "pass",
+      "summary": "The seed board is player-safe and does not expose hidden solution facts.",
+      "relatedFindingIds": []
+    },
+    {
+      "checkId": "check-image-canon",
+      "category": "image_canon_violation",
+      "status": "pass",
+      "summary": "Image mode is none and the asset manifest is empty; no image-only canonical evidence exists.",
+      "relatedFindingIds": []
+    },
+    {
+      "checkId": "check-runtime-readiness",
+      "category": "runtime_state_issue",
+      "status": "pass_with_warnings",
+      "summary": "GM handoff covers case-board-current initialization; no runtime-state artifact exists yet, which is acceptable before active play.",
+      "relatedFindingIds": [
+        "finding-runtime-artifacts-not-started"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "findingId": "finding-schema-type-mismatch",
+      "severity": "blocker",
+      "category": "schema_validity",
+      "title": "Game package has schema type mismatches",
+      "description": "Several fields in game-package.json use values that parse as JSON but do not match schemas/game-package.schema.json. All clue resolvedInFinalReveal values are booleans, while the schema expects strings. Evidence chainOfCustody and accessHistory values are strings, while the schema expects arrays of strings.",
+      "affectedFiles": [
+        {
+          "path": "games/quick-002-the-silent-gavel/game-package.json",
+          "section": "clues, evidence",
+          "jsonPointer": "/clues/*/resolvedInFinalReveal",
+          "notes": "Also affects /evidence/*/chainOfCustody and /evidence/*/accessHistory."
+        },
+        {
+          "path": "schemas/game-package.schema.json",
+          "section": "$defs.clue and $defs.evidence"
+        }
+      ],
+      "affectedIds": {
+        "clueIds": [
+          "clue-intact-front-lock",
+          "clue-loose-backing",
+          "clue-tea-urn-base",
+          "clue-green-baize-fibers",
+          "clue-miriam-key-mark",
+          "clue-reception-interval",
+          "clue-appeal-file-note",
+          "clue-roland-phone-call",
+          "clue-ink-smudge",
+          "clue-ledger-dust"
+        ],
+        "evidenceIds": [
+          "evidence-display-niche",
+          "evidence-tea-urn",
+          "evidence-appeal-note",
+          "evidence-call-slip"
+        ]
+      },
+      "playerImpact": "The Game Master may still read the package, but repository validation cannot approve a schema-invalid canonical package.",
+      "recommendedFix": "Change resolvedInFinalReveal to string explanations, and convert evidence chainOfCustody and accessHistory values into string arrays.",
+      "blocksGameplay": true,
+      "blocksValidation": true,
+      "relatedFindingIds": []
+    },
+    {
+      "findingId": "finding-missing-recovered-target-evidence",
+      "severity": "major",
+      "category": "final_accusation_issue",
+      "title": "Final accusation path needs explicit recovered-target evidence",
+      "description": "The solution requires the missing target and its hiding place to matter, but the package models the hiding-place clue rather than the recovered target as a distinct evidence item. No discovery rule reveals a target evidence ID or updates recoveredEvidence when the player opens or searches the hiding place.",
+      "affectedFiles": [
+        {
+          "path": "games/quick-002-the-silent-gavel/game-package.json",
+          "section": "evidence, discoveryRules, solution.proofRequiredForAccusation"
+        }
+      ],
+      "affectedIds": {
+        "clueIds": [
+          "clue-tea-urn-base",
+          "clue-green-baize-fibers"
+        ],
+        "evidenceIds": [
+          "evidence-tea-urn"
+        ],
+        "discoveryRuleIds": [
+          "rule-inspect-tea-urn",
+          "rule-compare-urn-baize",
+          "rule-accuse"
+        ]
+      },
+      "playerImpact": "A careful player can infer the likely chain, but the GM lacks a clean canonical moment for recovery and proof handling before accusation.",
+      "recommendedFix": "Add a canonical evidence item for the recovered target and a typed discovery rule that reveals it when the player opens/searches the hiding place. Include recoveredEvidence in the case-board update.",
+      "blocksGameplay": true,
+      "blocksValidation": false,
+      "relatedFindingIds": [
+        "finding-schema-type-mismatch"
+      ]
+    },
+    {
+      "findingId": "finding-undefined-contradiction-ids",
+      "severity": "minor",
+      "category": "npc_interview_issue",
+      "title": "NPC contradiction IDs are referenced but not operationalized",
+      "description": "Several interview topics cite contradiction IDs, but the package has no explicit contradiction objects, make_theory rules, compare_evidence rules, or case-board guidance that define when those contradictions become player-visible. The physical clue rules partially cover the same logic, so this is not a blocker.",
+      "affectedFiles": [
+        {
+          "path": "games/quick-002-the-silent-gavel/game-package.json",
+          "section": "characters.interviewTopics"
+        }
+      ],
+      "affectedIds": {
+        "npcIds": [
+          "char-miriam-vale"
+        ],
+        "topicIds": [
+          "topic-miriam-alibi",
+          "topic-miriam-keys"
+        ]
+      },
+      "playerImpact": "The GM may need to infer how to phrase contradiction handling during questioning.",
+      "recommendedFix": "Either remove unused contradictionIds or add explicit discovery/theory/comparison rules that place the contradictions on the current case board after the relevant clues are discovered.",
+      "blocksGameplay": false,
+      "blocksValidation": false,
+      "relatedFindingIds": []
+    },
+    {
+      "findingId": "finding-runtime-artifacts-not-started",
+      "severity": "advisory",
+      "category": "runtime_state_issue",
+      "title": "Runtime artifacts are not yet initialized",
+      "description": "No runtime-state.json or case-board-current.json exists yet. This is acceptable before active play because gm-readme.md correctly instructs the GM to initialize from case-board-seed.json and keep hidden solution facts out of current player state.",
+      "affectedFiles": [
+        {
+          "path": "games/quick-002-the-silent-gavel/gm-readme.md",
+          "section": "Runtime Board"
+        },
+        {
+          "path": "games/quick-002-the-silent-gavel/case-board-seed.json"
+        }
+      ],
+      "affectedIds": {
+        "runtimeStateFields": [
+          "runtime-state.json"
+        ],
+        "caseBoardFields": [
+          "case-board-current.json"
+        ]
+      },
+      "playerImpact": "No player impact before play begins.",
+      "recommendedFix": "When active play begins, create runtime-state.json and case-board-current.json according to the runtime and case-board schemas.",
+      "blocksGameplay": false,
+      "blocksValidation": false,
+      "relatedFindingIds": []
+    }
+  ],
+  "clueCoverage": {
+    "status": "pass_with_warnings",
+    "summary": "All essential clues are present, have player-facing descriptions, true meanings, sources, and typed discovery rules. The target recovery step should be made explicit.",
+    "checkedIds": [
+      "clue-intact-front-lock",
+      "clue-loose-backing",
+      "clue-tea-urn-base",
+      "clue-green-baize-fibers",
+      "clue-miriam-key-mark",
+      "clue-reception-interval",
+      "clue-appeal-file-note",
+      "clue-roland-phone-call",
+      "clue-ink-smudge",
+      "clue-ledger-dust"
+    ],
+    "missingIds": [],
+    "riskIds": [
+      "clue-tea-urn-base"
+    ],
+    "relatedFindingIds": [
+      "finding-missing-recovered-target-evidence",
+      "finding-schema-type-mismatch"
+    ]
+  },
+  "discoveryRuleCoverage": {
+    "status": "pass_with_warnings",
+    "summary": "Discovery rules use standard trigger types and cover required clue IDs. The final recovery/proof moment needs a canonical rule.",
+    "checkedIds": [
+      "rule-observe-opening",
+      "rule-inspect-front-lock",
+      "rule-closely-inspect-backing",
+      "rule-inspect-tea-urn",
+      "rule-compare-urn-baize",
+      "rule-inspect-key-mark",
+      "rule-read-appeal-note",
+      "rule-question-miriam-alibi",
+      "rule-question-roland-phone",
+      "rule-inspect-roland-notes",
+      "rule-observe-elias-dust",
+      "rule-accuse"
+    ],
+    "missingIds": [],
+    "riskIds": [
+      "rule-inspect-tea-urn",
+      "rule-accuse"
+    ],
+    "relatedFindingIds": [
+      "finding-missing-recovered-target-evidence"
+    ]
+  },
+  "npcInterviewCoverage": {
+    "status": "pass_with_warnings",
+    "summary": "All three major NPCs have structured interview topics with knowledge boundaries. Contradiction references need clearer operational handling.",
+    "checkedIds": [
+      "topic-miriam-alibi",
+      "topic-miriam-keys",
+      "topic-miriam-appeal-file",
+      "topic-roland-alibi",
+      "topic-roland-speech",
+      "topic-elias-ledgers",
+      "topic-elias-appeal-note"
+    ],
+    "missingIds": [],
+    "riskIds": [
+      "topic-miriam-alibi",
+      "topic-miriam-keys"
+    ],
+    "relatedFindingIds": [
+      "finding-undefined-contradiction-ids"
+    ]
+  },
+  "timelineCoverage": {
+    "status": "pass",
+    "summary": "The timeline has a coherent sequence, single primary location, plausible access windows, and no detected causal contradiction.",
+    "checkedIds": [
+      "event-before-reception",
+      "event-reception-begins",
+      "event-phone-call",
+      "event-theft",
+      "event-discovery"
+    ],
+    "missingIds": [],
+    "riskIds": [],
+    "relatedFindingIds": []
+  },
+  "evidenceProvenanceCoverage": {
+    "status": "fail",
+    "summary": "Evidence provenance is narratively present, but schema-invalid provenance field types block approval and the recovered target should be modeled directly.",
+    "checkedIds": [
+      "evidence-display-niche",
+      "evidence-tea-urn",
+      "evidence-appeal-note",
+      "evidence-call-slip"
+    ],
+    "missingIds": [],
+    "riskIds": [
+      "evidence-tea-urn"
+    ],
+    "relatedFindingIds": [
+      "finding-schema-type-mismatch",
+      "finding-missing-recovered-target-evidence"
+    ]
+  },
+  "imageSafetyCoverage": {
+    "status": "pass",
+    "summary": "Image mode is none, no images were generated, and asset-manifest.json is an empty array.",
+    "checkedIds": [],
+    "missingIds": [],
+    "riskIds": [],
+    "relatedFindingIds": []
+  },
+  "runtimeReadinessCoverage": {
+    "status": "pass_with_warnings",
+    "summary": "GM runtime instructions are adequate for pre-play, with runtime artifacts to be created only when play begins.",
+    "checkedIds": [
+      "gm-readme.md",
+      "case-board-seed.json"
+    ],
+    "missingIds": [],
+    "riskIds": [
+      "runtime-state.json",
+      "case-board-current.json"
+    ],
+    "relatedFindingIds": [
+      "finding-runtime-artifacts-not-started"
+    ]
+  },
+  "caseBoardSafetyCoverage": {
+    "status": "pass",
+    "summary": "The case-board seed contains only player-visible starting facts, suspects, location, questions, and leads.",
+    "checkedIds": [
+      "knownFacts",
+      "knownCharacters",
+      "knownLocations",
+      "openQuestions",
+      "activeLeads"
+    ],
+    "missingIds": [],
+    "riskIds": [],
+    "relatedFindingIds": []
+  },
+  "recommendedRevisionPriority": "high",
+  "revisionInputs": {
+    "priorityFindingIds": [
+      "finding-schema-type-mismatch",
+      "finding-missing-recovered-target-evidence"
+    ],
+    "recommendedFilesToReview": [
+      "games/quick-002-the-silent-gavel/game-package.json",
+      "schemas/game-package.schema.json",
+      "docs/discovery-rules-v1.md",
+      "docs/npc-interview-model-v1.md"
+    ],
+    "recommendedNextRole": "revision_engine",
+    "notesForRevisionEngine": "Repair schema type mismatches first, then add a distinct recovered-target evidence item and typed discovery rule for the recovery/proof step. Consider operationalizing or removing unused contradiction IDs."
+  },
+  "notes": "This validation report intentionally diagnoses only. It does not revise game-package.json."
+}
