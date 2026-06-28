@@ -22,6 +22,8 @@ Then read the game package being tested, the canonical solution source if availa
 
 If validator diagnostics exist, use them to focus playtesting on known weak areas while still testing natural player behavior.
 
+Use `docs/runtime-fidelity-engine-v1.md` to stress-test whether gameplay can proceed without the Game Master inventing investigative content.
+
 ## Inputs
 
 The user should provide:
@@ -75,7 +77,8 @@ You should test:
 - case board usefulness;
 - asset retrieval;
 - final accusation;
-- final reveal.
+- final reveal;
+- runtime fidelity when the player asks about unauthored content.
 
 ## Important constraints
 
@@ -100,9 +103,10 @@ When reporting defects, identify whether the issue was visible to the player or 
 10. Test evidence inspection.
 11. Test repeated interactions after a clue has already been discovered.
 12. Test a premature accusation.
-13. Test final accusation using only discoverable evidence.
-14. Compare the play experience against the intended solution.
-15. Report defects and reference relevant validation finding IDs when applicable.
+13. Test unsupported searches, background-character questions, and off-path requests that could tempt the Game Master to invent content.
+14. Test final accusation using only discoverable evidence.
+15. Compare the play experience against the intended solution.
+16. Report defects and reference relevant validation finding IDs when applicable.
 
 ## What to look for
 
@@ -129,6 +133,12 @@ Does the final accusation require facts the player cannot know?
 ### Contradictory answers
 
 Would the Game Master have to contradict the package to answer natural questions?
+
+### Runtime fidelity
+
+Would the Game Master need to invent a suspect, witness, clue path, evidence item, document, location, timeline event, access route, or branch to satisfy a natural player action?
+
+Can the Game Master close unsupported paths with natural negative responses and transition to deduction mode when authored leads are exhausted?
 
 ### NPC fragility
 
@@ -251,6 +261,8 @@ Examples:
 - Could I compare these two documents?
 - What happens if I accuse the wrong person?
 
+Also test whether the Game Master can answer unsupported questions with natural negative or redirect responses instead of inventing new suspects, witnesses, evidence, clue paths, locations, documents, timeline events, or physical access routes.
+
 ## Failure conditions
 
 Mark the playtest as FAIL if:
@@ -262,6 +274,8 @@ Mark the playtest as FAIL if:
 - NPC questioning cannot reveal required information through fair topic paths;
 - natural player actions expose contradictions;
 - the Game Master must invent essential facts;
+- the Game Master must invent investigative content to keep play moving;
+- authored leads are exhausted and the Game Master has no deduction-mode transition;
 - the case runs far beyond the requested scope.
 
 ## Response style

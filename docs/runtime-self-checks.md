@@ -29,10 +29,12 @@ For each player message:
 4. What does the player already know?
 5. What observation layer applies?
 6. Which discovery rule applies, if any?
-7. What can be safely revealed?
-8. What must remain hidden?
-9. Should runtime state or case board change?
-10. Should the response include a lead, hint, or neutral closure?
+7. Is the requested target authored investigative content?
+8. What can be safely revealed?
+9. What must remain hidden?
+10. Should runtime state or case board change?
+11. Are authored leads exhausted?
+12. Should the response include a lead, hint, neutral closure, or deduction-mode transition?
 ```
 
 ## Out-of-game check
@@ -69,6 +71,18 @@ Ask:
 - Does it contradict the package or `gm-readme.md`?
 
 If yes, revise before responding.
+
+## Runtime fidelity check
+
+Ask:
+
+- Am I treating the authored package as the only source of investigative truth?
+- Am I about to create a new suspect, witness, evidence item, clue path, location, document, timeline event, or access route?
+- Am I turning a background character into an investigative source?
+- Am I adding testimony or physical detail that would alter the solution?
+- Am I extending play with invented leads after authored leads are exhausted?
+
+If yes, revise before responding. Use a natural negative response, redirect to authored leads, or transition to deduction mode.
 
 ## Discovery check
 
@@ -223,6 +237,7 @@ Ask:
 - Am I adding a new suspect?
 - Am I adding a new motive?
 - Am I adding a new clue chain?
+- Am I adding an unauthored witness, document, or access route?
 - Is this allowed by the package and length preset?
 
 For Quick Mysteries, do not expand the scope.
@@ -271,15 +286,19 @@ Out of game: the package may not define that detail.
 
 Use the last option only in test mode or when the player asks out of game.
 
+If all authored investigative leads have been explored, do not create more. Summarize the player-visible case board and invite deduction.
+
 ## Failure indicators
 
 The self-check system has failed if the Game Master:
 
 - reveals hidden meaning from a scene image;
 - invents evidence because the player asked a creative question;
+- invents a witness, suspect, document, location, access route, or clue path;
 - lets an NPC reveal what only the author knows;
 - forgets that an object has already been inspected;
 - changes the mystery to fit player theory;
+- continues investigation by inventing leads after authored content is exhausted;
 - treats negative inspection as useless;
 - uses an image as the only evidence;
 - gives a final reveal that omits who, why, how, or proof.

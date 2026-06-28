@@ -48,15 +48,16 @@ Read in this order:
 2. design-principles.md
 3. repository-workflow.md
 4. runtime-engine-v2.md
-5. discovery-rules-v1.md
-6. npc-interview-model-v1.md
-7. validator-diagnostics-v1.md
-8. investigation-model.md
-9. image-system-v2.md
-10. case-board-v2.md
-11. runtime-state-v1.md
-12. case-board-current-v1.md
-13. runtime-self-checks.md
+5. runtime-fidelity-engine-v1.md
+6. discovery-rules-v1.md
+7. npc-interview-model-v1.md
+8. validator-diagnostics-v1.md
+9. investigation-model.md
+10. image-system-v2.md
+11. case-board-v2.md
+12. runtime-state-v1.md
+13. case-board-current-v1.md
+14. runtime-self-checks.md
 
 ## Runtime State Contract
 
@@ -78,6 +79,22 @@ games/<case-folder>/runtime-state.json
 ```
 
 Do not store player progress in `game-package.json`.
+
+## Runtime Fidelity Contract
+
+Runtime fidelity is governed by:
+
+```text
+docs/runtime-fidelity-engine-v1.md
+```
+
+The Game Master is an interpreter of the authored package, not a co-author during play.
+
+The Game Master may improvise surface narration, ordinary atmosphere, and natural phrasing. It must not invent suspects, witnesses, evidence, clue paths, locations, documents, solution mechanics, timeline events, physical access routes, motives, alibis, or final proof.
+
+If the player asks about unauthored content, the Game Master should answer with a natural negative or redirect response, update runtime state or case-board state only with player-visible negative investigation when appropriate, and return to authored leads.
+
+When authored investigative content is exhausted, the Game Master should transition to deduction mode rather than inventing additional leads.
 
 ## Case Board Current Contract
 
@@ -168,6 +185,7 @@ Completed:
 - AI playtesting workflow
 - First successful human playthrough
 - Runtime Engine v2 specifications
+- Runtime Fidelity Engine v1
 - Discovery Rules v1
 - NPC Interview Model v1
 - Validator Diagnostics v1
@@ -176,4 +194,4 @@ Completed:
 
 Next milestone:
 
-Review and harden the engine architecture before generating `quick-002`.
+Review and harden the engine architecture before generating additional cases.

@@ -22,6 +22,8 @@ Then read the current game package, canonical solution source if available, vali
 
 When validator diagnostics are available, use `docs/validator-diagnostics-v1.md` and prioritize by severity, player impact, and blocking status.
 
+Use `docs/runtime-fidelity-engine-v1.md` when repairing defects where the Game Master would otherwise need to invent investigative content during play.
+
 ## Inputs
 
 The user may provide:
@@ -50,7 +52,8 @@ Focus especially on:
 - physical plausibility;
 - solvability;
 - scope control;
-- Game Master readiness.
+- Game Master readiness;
+- runtime fidelity.
 
 ## Revision priorities
 
@@ -168,6 +171,19 @@ Cut locations, suspects, or clue chains.
 
 Prefer a tighter solvable case over a larger incoherent one.
 
+### If runtime fidelity would fail
+
+If validation or playtesting shows the Game Master would need to invent content during play:
+
+- add missing authored content if it is essential and within scope;
+- add typed discovery rules for essential clue paths;
+- add bounded NPC interview topics for expected questions;
+- add negative-investigation guidance where unsupported searches are likely;
+- add deduction-mode guidance if authored leads can be exhausted;
+- remove prompts or leads that imply unauthored witnesses, locations, documents, or evidence.
+
+Do not leave the repair to Game Master improvisation.
+
 ## Required output format
 
 Return a revision report and updated content.
@@ -250,6 +266,7 @@ Do not:
 - leave essential evidence unexplained;
 - leave essential clues without fair typed discovery rules;
 - leave important NPCs without bounded interview topics;
+- leave the Game Master dependent on unauthored suspects, witnesses, evidence, clue paths, locations, documents, timeline events, or access routes;
 - preserve a scene just because it is dramatic if it breaks logic;
 - claim the case is fixed without explaining how.
 
@@ -265,6 +282,7 @@ The revision fails if:
 - essential discovery rules are missing, unfair, or impossible to trigger;
 - NPC interview topics are omniscient, inconsistent, overrevealing, or too brittle to use;
 - the Game Master still needs to invent core facts.
+- the Game Master still needs to invent investigative content or continue with invented leads after authored content is exhausted.
 
 ## Response style
 

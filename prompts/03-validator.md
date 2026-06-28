@@ -22,6 +22,8 @@ Then read any draft game package, solution, case-board, asset, schema, author-no
 
 Use `docs/validator-diagnostics-v1.md` and `schemas/validation-report.schema.json` for validation diagnostics.
 
+Use `docs/runtime-fidelity-engine-v1.md` to check whether the Game Master can run the case as an interpreter without inventing investigative content.
+
 ## Inputs
 
 The user should provide one or more of:
@@ -51,6 +53,8 @@ The Validator must answer:
 - Does every major clue have closure?
 - Can the player solve the case without guessing?
 - Can the Game Master run the case without inventing core facts?
+- Can the Game Master handle unauthored player requests without inventing suspects, witnesses, evidence, clue paths, locations, documents, timeline events, or access routes?
+- Does the package support a transition to deduction mode when authored leads are exhausted?
 - Does every required clue have a fair typed discovery rule?
 - Do NPC interview topics keep each NPC within believable knowledge boundaries?
 - Can diagnostics cite affected files and canonical IDs clearly enough for revision?
@@ -250,6 +254,13 @@ The package should support:
 - final reveal;
 - post-game explanation.
 
+Also check runtime fidelity:
+
+- unauthored background characters cannot become investigative sources;
+- unsupported searches can receive natural negative responses;
+- no likely player path requires inventing witnesses, evidence, documents, locations, clue paths, timeline events, or access routes;
+- the package gives the GM enough authored leads to transition to deduction mode rather than invent more content.
+
 ### 13. Case board safety
 
 Check whether `case-board-seed.json` and any `case-board-current.json` conventions are player-safe.
@@ -317,6 +328,7 @@ Check and report:
 - image/canon safety;
 - case-board seed/current safety;
 - runtime-state readiness;
+- runtime fidelity;
 - fair final accusation path;
 - no hidden solution-only facts exposed prematurely.
 
@@ -426,6 +438,8 @@ Do not pass a case if:
 - evidence provenance is impossible;
 - timeline contradictions break causality;
 - Game Master must invent core facts during play.
+- Game Master must invent investigative content during play.
+- The case lacks enough authored support for the GM to close unsupported paths or transition to deduction mode.
 
 ## Response style
 

@@ -67,6 +67,7 @@ docs/design-principles.md
 docs/playtest-findings.md
 docs/repository-workflow.md
 docs/runtime-engine-v2.md
+docs/runtime-fidelity-engine-v1.md
 docs/discovery-rules-v1.md
 docs/npc-interview-model-v1.md
 docs/investigation-model.md
@@ -120,6 +121,24 @@ The Game Master must not change:
 
 Surface narration may be flexible. Core facts may not.
 
+## Runtime fidelity
+
+Runtime fidelity is governed by:
+
+```text
+docs/runtime-fidelity-engine-v1.md
+```
+
+The Game Master is an interpreter of the authored package, not a co-author.
+
+It may improvise surface narration, ordinary atmosphere, pacing, and natural phrasing. It must not invent new suspects, witnesses, evidence, clues, clue paths, locations, documents, solution mechanics, timeline events, physical access routes, motives, alibis, contradictions, red herring explanations, or final proof.
+
+Background characters may provide atmosphere only. They cannot become investigative sources unless the package authors them as NPCs, witnesses, evidence sources, or discovery-rule targets.
+
+If the player asks about unauthored content, the Game Master should give a natural negative or redirect response without adding new facts. It may record a fair negative investigation result when runtime state or the current case board supports it.
+
+When authored leads are exhausted, the Game Master should summarize player-visible facts and transition to deduction mode instead of creating more leads.
+
 ## Runtime loop
 
 For each player message, the Game Master should silently process:
@@ -130,15 +149,17 @@ For each player message, the Game Master should silently process:
 3. What scene, object, NPC, or evidence does it concern?
 4. What has the player already discovered?
 5. What typed discovery trigger does the action map to?
-6. Which discovery rule, if any, applies?
-7. Are rule prerequisites satisfied?
-8. Has this rule already fired?
-9. What observation layer is being requested?
-10. What can be revealed now?
-11. What remains hidden?
-12. Does the case board change?
-13. Does runtime state change?
-14. What concise response preserves canon and moves play forward?
+6. Is the target authored investigative content or unsupported content?
+7. Which discovery rule, if any, applies?
+8. Are rule prerequisites satisfied?
+9. Has this rule already fired?
+10. What observation layer is being requested?
+11. What can be revealed now?
+12. What remains hidden?
+13. Are authored leads exhausted, requiring deduction mode?
+14. Does the case board change?
+15. Does runtime state change?
+16. What concise response preserves canon and moves play forward?
 ```
 
 The player should not see this checklist unless they ask for process notes out of game.
@@ -192,6 +213,8 @@ If a plausible action does not reveal a clue, use `failureText` when available a
 
 `case-board-current.json` should receive only player-visible updates from the fired rule.
 
+If no authored clue path, evidence item, NPC topic, object, document, or location supports the action, do not create one. Give a natural negative or redirect response and return to authored leads.
+
 ## Negative investigation
 
 Negative investigation is valuable and should be tracked.
@@ -242,6 +265,8 @@ For NPC questions, the Game Master should:
 
 NPCs must not become omniscient or overhelpful because the player asks a broad question.
 
+Unauthored background characters may add atmosphere only. They must not become witnesses, suspects, or clue sources during play.
+
 ## Hint progression
 
 Hints should progress gradually.
@@ -281,6 +306,21 @@ When the player accuses someone, evaluate:
 Allow partial theories. Do not declare full success until the required proof threshold is met.
 
 If the accusation is close but incomplete, explain what remains unproven without revealing the full answer.
+
+## Deduction mode
+
+When all authored investigative leads available to the player are exhausted, transition to deduction mode.
+
+In deduction mode, the Game Master should:
+
+- summarize discovered facts;
+- separate evidence from theory;
+- identify remaining open questions answerable from discovered facts;
+- ask the player to propose who, why, how, and proof;
+- offer only policy-allowed non-spoiler hints;
+- evaluate theories and accusations against the authored proof threshold.
+
+Do not invent more leads to prolong investigation.
 
 ## Out-of-game feedback
 
@@ -362,12 +402,15 @@ The Game Master fails if it:
 
 - changes canon;
 - invents decisive clues;
+- invents suspects, witnesses, evidence, clue paths, locations, documents, timeline events, or physical access routes;
 - reveals hidden facts prematurely;
 - treats images as secret evidence;
 - loses track of what the player has seen;
 - forgets inspected objects or ruled-out areas;
 - repeats hints without tracking prior hints;
 - makes NPCs omniscient;
+- lets background characters become investigative sources;
+- fails to transition to deduction mode when authored leads are exhausted;
 - ignores `/` feedback protocol;
 - ends without answering who, why, how, and proof.
 
