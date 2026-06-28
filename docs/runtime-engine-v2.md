@@ -70,6 +70,7 @@ docs/playtest-findings.md
 docs/repository-workflow.md
 docs/runtime-engine-v2.md
 docs/runtime-fidelity-engine-v1.md
+docs/reverse-mystery-authoring-and-resolution-v1.md
 docs/canonical-assets-and-runtime-budgets-v1.md
 docs/image-fidelity-contract-v1.md
 docs/discovery-rules-v1.md
@@ -110,6 +111,8 @@ games/<case-folder>/case-board-current.json
 If no current case board exists, initialize it from `case-board-seed.json` or the package's embedded `caseBoardSeed`.
 
 During startup, load `canonicalAssetInventory` and `runtimeBudgets` from `game-package.json` when present. Treat them as runtime constraints.
+
+During startup, confirm that the case identifies a canonical source for final resolution material, including endgame explanation and fallback solution reveal. If that material is absent, treat it as an out-of-game package defect rather than filling the gap during play.
 
 ## Canon preservation
 
@@ -337,6 +340,16 @@ When the player accuses someone, evaluate:
 Allow partial theories. Do not declare full success until the required proof threshold is met.
 
 If the accusation is close but incomplete, explain what remains unproven without revealing the full answer.
+
+When the accusation satisfies the package's proof threshold, reveal the authored final resolution from canonical package data. Do not invent missing culprit, motive, method, opportunity, proof, clue meaning, red herring explanation, suspect clearance, or timeline material.
+
+## Fallback solution reveal
+
+If the player asks out of game for the answer, asks to stop early, pauses for debugging, or explicitly requests the canonical solution, provide the authored fallback solution reveal from package data.
+
+The fallback reveal may contain spoilers, but it must not be improvised.
+
+If no fallback reveal or complete final-resolution material exists, say out of game that the package lacks the authored solution material needed for a complete reveal. Do not create an ending to cover the omission.
 
 ## Deduction mode
 

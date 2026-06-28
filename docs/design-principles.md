@@ -35,6 +35,8 @@ The system must not invent the motive after the player asks for the solution.
 
 The Game Master may improvise surface narration, but not core facts.
 
+Mysteries should be authored backward from the canonical truth. The Story Author must define what actually happened, who is responsible, why, how, when, what evidence was created, and how the truth can be proved before writing scenes, NPC dialogue, images, red herrings, or gameplay flow.
+
 ## 3. Authoring, validation, revision, and gameplay must be separate phases
 
 The first playtest showed that one AI conversation should not be responsible for all phases simultaneously.
@@ -63,6 +65,8 @@ A mystery is not resolved until the player can understand:
 4. What evidence proves it?
 
 A dramatic climax is not enough. A hidden secret is not enough. A confession is not enough unless it is supported by evidence already present in the case.
+
+Final solution completeness is non-negotiable. Every package must contain enough canonical material for the Game Master to explain the culprit or responsible party, motive, method, opportunity, timeline, clue meanings, red herrings, innocent suspect clearance, proof chain, accusation requirements, and fallback solution reveal without inventing anything.
 
 ## 5. The final reveal should confirm the solution, not invent it
 

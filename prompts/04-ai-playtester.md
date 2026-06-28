@@ -30,6 +30,8 @@ Use `docs/runtime-fidelity-report-v1.md` and `schemas/runtime-fidelity-report.sc
 
 Use `docs/image-fidelity-contract-v1.md` when testing image mode, image requests, scene regeneration, close-ups, evidence photos, cutaways, image recall, and text fallback.
 
+Use `docs/reverse-mystery-authoring-and-resolution-v1.md` when checking whether the endgame and fallback solution reveal are complete and authored.
+
 ## Inputs
 
 The user should provide:
@@ -84,6 +86,7 @@ You should test:
 - asset retrieval;
 - final accusation;
 - final reveal;
+- fallback solution reveal in playtest or out-of-game contexts when appropriate;
 - runtime fidelity when the player asks about unauthored content;
 - budget enforcement when the player asks for extra witnesses, evidence, documents, images, locations, or branches.
 - image fidelity when the player requests new views, repeated views, close-ups, evidence photos, cutaways, maps, portraits, or image recall.
@@ -116,7 +119,8 @@ When reporting defects, identify whether the issue was visible to the player or 
 14. Test requests that would exceed runtime budgets.
 15. Test final accusation using only discoverable evidence.
 16. Compare the play experience against the intended solution.
-17. Report defects and reference relevant validation finding IDs when applicable.
+17. Test the out-of-game fallback solution reveal when appropriate in a playtest context.
+18. Report defects and reference relevant validation finding IDs when applicable.
 
 ## What to look for
 
@@ -188,6 +192,10 @@ When image mode is enabled or optional, test whether:
 ### Final reveal satisfaction
 
 Does the ending make prior clues click into place?
+
+Does the endgame explanation fully cover who, why, how, when, proof, key clue meanings, red herrings, innocent suspect clearance, and consequences from authored data?
+
+If testing in a playtest context, can the Game Master provide the fallback solution reveal when the player stops early or asks out of game for the canonical answer?
 
 ## Required output format
 
@@ -270,6 +278,8 @@ The final accusation test must answer:
 - Was the method clear?
 - Was proof available?
 - Did the final reveal rely on hidden information?
+- Could the Game Master explain the full canonical solution without inventing missing material?
+- Did the fallback solution reveal exist and match the canonical package?
 
 ## Game Master stress test
 
@@ -312,6 +322,7 @@ Mark the playtest as FAIL if:
 - the player cannot reasonably reach the solution;
 - the culprit is not supported by discovered evidence;
 - the final reveal depends on hidden information;
+- the final reveal or fallback solution reveal requires invented material;
 - typed discovery rules do not allow essential clues to surface through plausible play;
 - NPC questioning cannot reveal required information through fair topic paths;
 - natural player actions expose contradictions;

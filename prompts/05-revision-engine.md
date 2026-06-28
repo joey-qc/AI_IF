@@ -30,6 +30,8 @@ Read Runtime Fidelity Reports when available and use `docs/runtime-fidelity-repo
 
 Use `docs/image-fidelity-contract-v1.md` when repairing image-related findings, including missing visual definitions, invented visual elements, image-only clues, evidence photo mismatches, cutaway mismatches, impossible geometry, and inconsistent regenerated scenes.
 
+Use `docs/reverse-mystery-authoring-and-resolution-v1.md` when repairing missing or weak canonical truth, final-resolution material, endgame explanation, or fallback solution reveal.
+
 ## Inputs
 
 The user may provide:
@@ -63,24 +65,26 @@ Focus especially on:
 - canonical inventory and runtime budget integrity.
 - runtime fidelity report findings.
 - image fidelity and visual-definition integrity.
+- final-resolution completeness.
 
 ## Revision priorities
 
 Resolve defects in this order:
 
 1. Blockers.
-2. Major issues.
-3. Solvability defects.
-4. Timeline and causality defects.
-5. Clue closure defects.
-6. Discovery rule defects.
-7. NPC interview defects.
-8. Motive weakness.
-9. Evidence provenance defects.
-10. Physical plausibility defects.
-11. Image fidelity defects.
-12. Pacing and scope problems.
-13. Minor cleanup.
+2. Missing or incomplete final-resolution material.
+3. Major issues.
+4. Solvability defects.
+5. Timeline and causality defects.
+6. Clue closure defects.
+7. Discovery rule defects.
+8. NPC interview defects.
+9. Motive weakness.
+10. Evidence provenance defects.
+11. Physical plausibility defects.
+12. Image fidelity defects.
+13. Pacing and scope problems.
+14. Minor cleanup.
 
 When a structured validation report is available, start with findings where `blocksValidation` or `blocksGameplay` is true.
 
@@ -122,6 +126,27 @@ Possible repairs:
 Choose one culprit and make the evidence converge.
 
 Do not keep all suspects equally suspicious through the ending.
+
+### If final-resolution material is missing or weak
+
+Repair the canonical truth before cosmetic or engagement improvements.
+
+Define or strengthen:
+
+- culprit or responsible party;
+- motive;
+- method;
+- opportunity;
+- exact timeline;
+- required and supporting clues;
+- red herring explanations;
+- innocent suspect clearance;
+- proof chain;
+- final accusation requirements;
+- canonical endgame explanation;
+- fallback solution reveal.
+
+Then revise scenes, discovery rules, NPC topics, images, and case-board seed entries so they derive from that resolved truth.
 
 ### If clues are unresolved
 
@@ -324,6 +349,8 @@ The revision fails if:
 
 - the culprit remains unclear;
 - the motive remains weak;
+- final-resolution material remains missing, vague, or unsupported;
+- fallback solution reveal is missing;
 - any blocker from the validation report remains unresolved;
 - the timeline remains contradictory;
 - major clues remain unexplained;

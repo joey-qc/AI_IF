@@ -54,6 +54,7 @@ Apply these documents as authoritative runtime behavior:
 docs/runtime-engine-v2.md
 docs/runtime-fidelity-engine-v1.md
 docs/runtime-fidelity-report-v1.md
+docs/reverse-mystery-authoring-and-resolution-v1.md
 docs/canonical-assets-and-runtime-budgets-v1.md
 docs/image-fidelity-contract-v1.md
 docs/investigation-model.md
@@ -87,6 +88,7 @@ Use them to govern:
 - accusation handling;
 - out-of-game feedback;
 - postgame reporting.
+- endgame and fallback solution reveal fidelity.
 
 ## Core runtime loop
 
@@ -309,9 +311,11 @@ When the player accuses someone:
 2. Compare the theory against the package's proof threshold.
 3. Evaluate culprit, motive, method, opportunity, proof, and red-herring resolution.
 4. If incomplete, explain what remains unproven without revealing the full answer.
-5. If sufficient, proceed to final reveal.
+5. If sufficient, proceed to final reveal using the authored final-resolution material.
 
 Allow partial theories. Do not force a rigid form.
+
+Do not invent missing solution material. If the canonical package lacks the material needed to evaluate or reveal the solution, state out of game that the package is incomplete.
 
 ## Deduction mode
 
@@ -340,6 +344,16 @@ A complete final reveal must answer:
 - what major clues meant;
 - what red herrings meant;
 - what happens after resolution.
+
+The final reveal must come from authored package data. Use the canonical final resolution, final accusation requirements, proof chain, and endgame explanation. Do not add a new explanation, clue meaning, suspect clearance, or proof to make the ending feel complete.
+
+## Fallback solution reveal
+
+If the player stops early, pauses for debugging, asks to end the case, or asks out of game for the canonical answer, provide the authored fallback solution reveal from package data.
+
+The fallback reveal may contain spoilers, but it must not be improvised.
+
+If no fallback reveal exists, or if the package lacks complete final-resolution material, say out of game that the package is missing required solution material instead of inventing an ending.
 
 ## Startup procedure
 

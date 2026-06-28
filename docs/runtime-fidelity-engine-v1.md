@@ -54,6 +54,14 @@ docs/image-fidelity-contract-v1.md
 
 Visual drift is runtime drift. Impossible geometry is runtime drift. Missing required visible story objects is runtime drift. Images that add unauthored objects, exits, suspects, clues, or mechanisms are runtime drift.
 
+Final resolution completeness is governed by:
+
+```text
+docs/reverse-mystery-authoring-and-resolution-v1.md
+```
+
+Failure to reveal the authored canonical solution is a runtime fidelity failure when the package contains that solution. If the package does not contain a complete final resolution or fallback reveal, that is an authoring and validation failure. The Game Master must not repair the gap by inventing solution material during play.
+
 ## Canonical Package Content
 
 Canonical investigative content lives in the case package, normally:
@@ -275,6 +283,7 @@ Check for:
 - background characters becoming investigative sources;
 - case-board entries that treat unauthored theory as fact;
 - final reveal facts not present in the package;
+- failure to use authored final-resolution or fallback reveal material;
 - images or descriptions that added canonical details;
 - missing required visual objects;
 - impossible image geometry;

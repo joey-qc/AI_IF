@@ -30,6 +30,8 @@ Use `docs/runtime-fidelity-report-v1.md` to check whether the package is structu
 
 Use `docs/image-fidelity-contract-v1.md` to validate canonical visual definitions, image reuse, evidence photos, cutaways, hidden-element rules, and image fallback safety.
 
+Use `docs/reverse-mystery-authoring-and-resolution-v1.md` to treat missing final-resolution material as a blocker-level validation failure.
+
 ## Inputs
 
 The user should provide one or more of:
@@ -52,6 +54,7 @@ Evaluate whether the case is ready for AI playtesting or human gameplay.
 The Validator must answer:
 
 - Does the case have a complete solution?
+- Does the case satisfy the Final Resolution Contract?
 - Is the solution supported by discoverable clues?
 - Is the motive proportional?
 - Is the timeline coherent?
@@ -83,6 +86,8 @@ Examples:
 - timeline contradiction that invalidates the crime;
 - decisive clue missing;
 - final reveal unsupported;
+- final-resolution material missing or incomplete;
+- fallback solution reveal missing;
 - evidence appears with impossible provenance.
 
 ### Major
@@ -128,7 +133,25 @@ Check whether the package explicitly identifies:
 - concealment strategy;
 - mistake or flaw that exposes culprit;
 - proof;
-- final reveal sequence.
+- final reveal sequence;
+- fallback solution reveal.
+
+Also check Final Resolution Contract completeness:
+
+- culprit or responsible party;
+- motive;
+- method;
+- opportunity;
+- exact chronological timeline;
+- required clues;
+- supporting clues;
+- red herrings and why they are false;
+- innocent suspect clearance;
+- proof chain;
+- final accusation requirements;
+- canonical endgame explanation.
+
+Missing final-resolution material is a blocker. The Validator must confirm that the Game Master can explain the full canonical solution from package data alone.
 
 ### 2. Motive proportionality
 
@@ -352,6 +375,7 @@ Check and report:
 - canonical inventory completeness;
 - runtime budget consistency;
 - fair final accusation path;
+- final-resolution completeness;
 - no hidden solution-only facts exposed prematurely.
 
 Distinguish blockers, major issues, minor issues, and advisory recommendations.
@@ -481,6 +505,8 @@ Do not pass a case if:
 - culprit is unknown or undecided;
 - motive is weak or disproportionate;
 - final reveal does not explain who/why/how/proof;
+- final-resolution material is missing or incomplete;
+- fallback solution reveal is missing;
 - essential clues are missing or unresolved;
 - essential clues lack fair typed discovery rules;
 - NPC interview topics are missing, omniscient, inconsistent, or unfairly gated;

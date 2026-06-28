@@ -49,18 +49,19 @@ Read in this order:
 3. repository-workflow.md
 4. runtime-engine-v2.md
 5. runtime-fidelity-engine-v1.md
-6. canonical-assets-and-runtime-budgets-v1.md
-7. image-fidelity-contract-v1.md
-8. discovery-rules-v1.md
-9. npc-interview-model-v1.md
-10. validator-diagnostics-v1.md
-11. runtime-fidelity-report-v1.md
-12. investigation-model.md
-13. image-system-v2.md
-14. case-board-v2.md
-15. runtime-state-v1.md
-16. case-board-current-v1.md
-17. runtime-self-checks.md
+6. reverse-mystery-authoring-and-resolution-v1.md
+7. canonical-assets-and-runtime-budgets-v1.md
+8. image-fidelity-contract-v1.md
+9. discovery-rules-v1.md
+10. npc-interview-model-v1.md
+11. validator-diagnostics-v1.md
+12. runtime-fidelity-report-v1.md
+13. investigation-model.md
+14. image-system-v2.md
+15. case-board-v2.md
+16. runtime-state-v1.md
+17. case-board-current-v1.md
+18. runtime-self-checks.md
 
 ## Runtime State Contract
 
@@ -98,6 +99,18 @@ The Game Master may improvise surface narration, ordinary atmosphere, and natura
 If the player asks about unauthored content, the Game Master should answer with a natural negative or redirect response, update runtime state or case-board state only with player-visible negative investigation when appropriate, and return to authored leads.
 
 When authored investigative content is exhausted, the Game Master should transition to deduction mode rather than inventing additional leads.
+
+## Reverse Authoring and Final Resolution Contract
+
+Reverse mystery authoring and final resolution completeness are governed by:
+
+```text
+docs/reverse-mystery-authoring-and-resolution-v1.md
+```
+
+Canonical truth and a complete final resolution must exist before runtime. The Story Author works from what actually happened, proof, timeline, and suspect clearance outward into scenes, NPC dialogue, images, red herrings, and gameplay flow.
+
+The Game Master must be able to explain the full canonical solution from authored package data. Missing culprit, motive, method, opportunity, timeline, proof chain, red herring explanation, suspect clearance, endgame explanation, or fallback solution reveal is an authoring and validation failure, not a runtime problem to improvise around.
 
 ## Canonical Asset and Budget Contract
 
@@ -234,6 +247,7 @@ Completed:
 - First successful human playthrough
 - Runtime Engine v2 specifications
 - Runtime Fidelity Engine v1
+- Reverse Mystery Authoring and Resolution v1
 - Canonical Asset and Runtime Budget Enforcement v1
 - Image Fidelity Contract v1
 - Runtime Fidelity Report v1

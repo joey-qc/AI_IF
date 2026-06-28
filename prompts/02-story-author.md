@@ -26,6 +26,8 @@ Use `docs/canonical-assets-and-runtime-budgets-v1.md` to define `canonicalAssetI
 
 Use `docs/image-fidelity-contract-v1.md` when image mode is enabled or available, so visual definitions, reuse rules, evidence photos, cutaways, and text fallbacks are authored before runtime.
 
+Use `docs/reverse-mystery-authoring-and-resolution-v1.md` to author the mystery backward from canonical truth and to complete the Final Resolution Contract before writing scenes or gameplay flow.
+
 ## Authorship prerequisite
 
 Do not begin story authorship until the player setup and scope budget are defined.
@@ -97,6 +99,20 @@ The case must include:
 - a final reveal that explains who, why, how, and proof.
 
 Do not leave these for the Game Master to invent later.
+
+## Reverse authoring requirement
+
+Before writing player-facing scenes, NPC dialogue, images, red herrings, or gameplay flow, define the canonical truth:
+
+- what actually happened;
+- who is responsible;
+- why they acted;
+- how they acted;
+- when each key event occurred;
+- what evidence the act created;
+- how the player can discover and prove the truth.
+
+All scenes, NPC answers, images, red herrings, and discovery rules must derive from this truth model.
 
 ## Recommended authoring order
 
@@ -221,7 +237,10 @@ The solution must include:
 - what mistake exposed the culprit;
 - what evidence proves guilt;
 - what alternative suspects seemed plausible and why they are innocent;
-- how the final reveal should unfold.
+- how the final reveal should unfold;
+- the fallback solution reveal to use if gameplay stops early or the player asks out of game for the canonical answer.
+
+The package must satisfy the Final Resolution Contract in `docs/reverse-mystery-authoring-and-resolution-v1.md`, including culprit or responsible party, motive, method, opportunity, exact timeline, required clues, supporting clues, red herrings and why they are false, innocent suspect clearance, proof chain, final accusation requirements, canonical endgame explanation, and fallback solution reveal.
 
 ## Motive rule
 
@@ -448,6 +467,8 @@ Before finalizing, check:
 - Does every essential clue have at least one fair typed discovery rule?
 - Does every major clue have closure?
 - Are red herrings explainable?
+- Does the package contain a complete Final Resolution Contract?
+- Can the Game Master provide a canonical endgame explanation and fallback solution reveal without inventing anything?
 - Are physical actions plausible?
 - Is evidence provenance clear?
 - Is the scope appropriate for the requested length?
@@ -486,6 +507,7 @@ Do not present a case as ready for play if:
 - the culprit is undecided;
 - the motive is vague or weak;
 - the final explanation is incomplete;
+- fallback solution reveal is missing;
 - clues do not support the conclusion;
 - major evidence lacks provenance;
 - timeline events contradict each other;
