@@ -686,6 +686,28 @@
         },
         "textFallbacksUsed": {
           "$ref": "#/$defs/stringArray"
+        },
+        "generatedImageIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "shownImageIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "reusedImageIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "canonicalVisualDefinitionIdsShown": {
+          "$ref": "#/$defs/idArray"
+        },
+        "imageMismatchFlags": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "imageRequestHistory": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/imageRequestEntry"
+          },
+          "default": []
         }
       }
     },

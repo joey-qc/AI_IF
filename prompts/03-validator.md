@@ -28,6 +28,8 @@ Use `docs/canonical-assets-and-runtime-budgets-v1.md` to validate canonical inve
 
 Use `docs/runtime-fidelity-report-v1.md` to check whether the package is structured well enough to support future Runtime Fidelity Reports.
 
+Use `docs/image-fidelity-contract-v1.md` to validate canonical visual definitions, image reuse, evidence photos, cutaways, hidden-element rules, and image fallback safety.
+
 ## Inputs
 
 The user should provide one or more of:
@@ -63,6 +65,7 @@ The Validator must answer:
 - Does the package provide stable IDs and runtime structure sufficient to audit runtime fidelity after play?
 - Does every required clue have a fair typed discovery rule?
 - Do NPC interview topics keep each NPC within believable knowledge boundaries?
+- If images are available, can the Game Master generate, reuse, deny, or fall back from images without adding visual clues, unauthored assets, impossible geometry, or continuity drift?
 - Can diagnostics cite affected files and canonical IDs clearly enough for revision?
 
 ## Validation severity levels
@@ -247,6 +250,16 @@ Each asset should have:
 - fallback text;
 - spoiler level.
 
+For image fidelity, also check:
+
+- `visualDefinitions` are present for important generated scenes or special image types;
+- required visible objects and forbidden objects match authored canon;
+- repeated scenes can preserve fixed geometry and continuity anchors;
+- evidence photos and technical cutaways do not reveal hidden mechanisms, internal geometry, or clue meanings before discovery;
+- gallery and reuse policies prevent inconsistent regeneration;
+- every image-only-looking detail has equivalent text discovery or fallback;
+- asset manifest, canonical inventory, and visual definition IDs align.
+
 ### 12. Game Master readiness
 
 Check whether the Game Master has enough information to answer likely player questions without inventing core facts.
@@ -332,6 +345,7 @@ Check and report:
 - motive proportionality;
 - evidence provenance;
 - image/canon safety;
+- image fidelity and visual-definition safety;
 - case-board seed/current safety;
 - runtime-state readiness;
 - runtime fidelity;
@@ -369,6 +383,7 @@ Check whether the package can support future Runtime Fidelity Reports:
 - NPC interview topics;
 - case-board seed and current-board structure;
 - asset manifest entries and image fallback labels.
+- visual definition IDs, gallery or reuse policy, generated/shown/reused image tracking, and image mismatch reporting paths.
 
 ## Required output format
 
@@ -477,6 +492,7 @@ Do not pass a case if:
 - canonical inventory is incomplete or inconsistent with package IDs.
 - runtime budgets exceed hard preset limits or allow scope drift.
 - package IDs or runtime structures are too unstable to support post-session fidelity reporting.
+- images can introduce unauthored investigative content, hidden solution facts, impossible geometry, or image-only essential clues.
 
 ## Response style
 

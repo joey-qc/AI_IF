@@ -114,6 +114,8 @@ The interview topic defines the NPC's answer model. The discovery rule defines w
 
 Topic expansion must stay within the package's canonical topic inventory when `canonicalAssetInventory.interviewTopicIds` is present.
 
+NPC portraits and other character images must preserve the authored NPC's identity and appearance across generated or recalled images. They must not introduce unauthored NPC identity details or make background characters appear investigative.
+
 ## Revealing clues and evidence
 
 An interview topic may reveal clues or evidence when:

@@ -55,6 +55,7 @@ docs/runtime-engine-v2.md
 docs/runtime-fidelity-engine-v1.md
 docs/runtime-fidelity-report-v1.md
 docs/canonical-assets-and-runtime-budgets-v1.md
+docs/image-fidelity-contract-v1.md
 docs/investigation-model.md
 docs/discovery-rules-v1.md
 docs/npc-interview-model-v1.md
@@ -73,6 +74,7 @@ Use them to govern:
 - runtime fidelity;
 - canonical asset inventory and runtime budget enforcement;
 - runtime fidelity report support in playtest/evaluation contexts;
+- image fidelity and visual continuity;
 - discovery gating;
 - typed discovery rule processing;
 - NPC interview topic handling;
@@ -229,7 +231,7 @@ Do not write current case-board state back into `game-package.json`.
 
 ## Image behavior
 
-Follow `docs/image-system-v2.md`.
+Follow `docs/image-system-v2.md` and `docs/image-fidelity-contract-v1.md`.
 
 Images are optional and supportive only.
 
@@ -237,19 +239,36 @@ Use image classes:
 
 ```text
 Scene Image
-Inspection Image
-Evidence Image
+Inspection Close-up
+Evidence Photo
+Technical Cutaway
+Map
+Memory Recall
+Portrait
 ```
 
 A scene image may show immediately visible room elements.
 
-An inspection image requires inspection of the object or area.
+An inspection close-up requires inspection of the object or area.
 
-An evidence image requires the evidence to be discovered in text first.
+An evidence photo requires the evidence to be discovered in text first.
+
+A technical cutaway may show internal structure only when the package explicitly defines the cutaway and the player has earned that view.
 
 Every image must have a text fallback. If image and text conflict, the game package and text control.
 
 Do not add non-canonical props, suspects, exits, clue markings, diagrams, labels, or hidden clues.
+
+Before generating an image:
+
+1. Confirm image mode and player permission.
+2. Check `visualDefinitions`, `assetManifest`, `imageGalleryPolicy`, and `imageReusePolicy`.
+3. Include required visible objects and exclude forbidden objects.
+4. Preserve fixed geometry, continuity anchors, and prior shown images.
+5. Reuse an existing image when policy requires it.
+6. Record generated, shown, reused, denied, or mismatched image state when maintaining runtime artifacts.
+
+If the requested image would require unauthored visual content, hidden solution facts, impossible geometry, or inconsistent regeneration, provide the text fallback or a natural denial instead.
 
 ## Out-of-game feedback protocol
 
@@ -331,7 +350,7 @@ Before the first scene:
 3. Confirm validation/playtest readiness in one sentence.
 4. Confirm player role, difficulty, image mode, and hint policy from the package.
 5. Read `case-board-current.json` if resuming active play; otherwise initialize the case board from `case-board-seed.json` or package `caseBoardSeed`.
-6. Initialize asset state from `asset-manifest.json` or package `assetManifest`.
+6. Initialize asset and image state from `asset-manifest.json`, package `assetManifest`, visual definitions, gallery policy, reuse policy, and existing runtime image state.
 7. Load `canonicalAssetInventory` and `runtimeBudgets` from the package when present and treat them as hard runtime constraints unless the package marks a field soft.
 8. Initialize or resume runtime state from `runtime-state.json` according to Runtime State v1, including compact budget usage if present.
 9. If acting in a playtest or evaluation context, preserve enough session detail to support a Runtime Fidelity Report.

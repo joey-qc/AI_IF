@@ -62,6 +62,7 @@ Has this NPC already been questioned on this topic?
 Was a contradiction already discovered?
 Was a hint already given?
 Has this image already been shown?
+Was this image generated, shown, reused, denied, or flagged as mismatched?
 Is this clue visible, discovered, interpreted, or still hidden?
 Has this discovery rule already fired?
 Has this requested asset already counted against a runtime budget?
@@ -293,6 +294,12 @@ Should include:
 
 - seen asset IDs;
 - requested asset IDs;
+- generated image IDs;
+- shown image IDs;
+- reused image IDs;
+- canonical visual definition IDs shown;
+- image request history;
+- image mismatch flags;
 - denied or deferred image requests;
 - reason for denial or deferral;
 - generated image labels;
@@ -301,6 +308,8 @@ Should include:
 Images remain supportive only.
 
 The text fallback and game package control if an image conflicts with canon.
+
+Do not duplicate the full asset manifest or visual definitions in runtime state. Track only IDs, request history, reuse, and mismatch flags needed for continuity and Runtime Fidelity Reports.
 
 ## caseBoardSummary
 
@@ -368,6 +377,7 @@ The Game Master should update runtime state when:
 - an area or lead is ruled out;
 - a hint is requested or offered;
 - an image is shown, requested, denied, or deferred;
+- an image is generated, reused, recalled, or flagged as mismatched;
 - runtime budget usage changes;
 - authored leads are exhausted and deduction mode begins;
 - a theory or accusation is made;

@@ -8,6 +8,14 @@ Images are optional, supportive visualizations. They are not the canonical sourc
 
 The system exists to make images useful without allowing them to reveal hidden clues, add non-canonical details, or drift away from the authored setting.
 
+Image fidelity is governed by the stricter runtime layer:
+
+```text
+docs/image-fidelity-contract-v1.md
+```
+
+Image System v2 defines image classes and general image safety. Image Fidelity Contract v1 defines whether a generated or shown image remains faithful to canonical scene geometry, required visible objects, forbidden objects, continuity anchors, reuse policy, and text fallback.
+
 ## Core rules
 
 1. Images must follow the same observation layers as text.
@@ -16,6 +24,9 @@ The system exists to make images useful without allowing them to reveal hidden c
 4. Images must obey the package's era, setting, tone, and asset guidance.
 5. Every generated image must have a text fallback.
 6. The Game Master must remain able to run the case without images.
+7. Every image must derive from canonical package data.
+8. Repeated images of a location must preserve canonical scene geometry.
+9. Evidence photos and cutaways must follow their own visual definitions and cannot use scene-image rules.
 
 ## Image classes
 
@@ -50,6 +61,8 @@ A scene image must not show:
 - labels or diagrams;
 - clue-highlight arrows;
 - objects not in the package.
+
+Repeated scene images must preserve the same canonical layout, required visible objects, major furniture positions, and continuity anchors unless the package defines a player-visible change.
 
 ## Inspection Image
 
@@ -89,6 +102,14 @@ It must not show:
 - undiscovered inscriptions;
 - clue text not already available to the player;
 - future discoveries.
+
+Evidence photos differ from scene illustrations. They should focus on the discovered evidence and must not add unauthored markings, props, labels, or contextual clues.
+
+## Technical cutaways
+
+Technical cutaways are allowed only when the player has discovered the relevant hidden structure or mechanism and the package permits the cutaway.
+
+A cutaway must preserve physical geometry. It must not reveal concealed mechanisms, rear access, internal compartments, or hidden routes before discovery.
 
 ## Visibility vs discovery
 
@@ -167,6 +188,8 @@ Do not generate from free association.
 
 Do not let the image model invent evidence.
 
+Generated images must not create unauthored objects, unauthored exits, unauthored suspects, unauthored clues, or unauthored geometry.
+
 ## Player request handling
 
 When the player requests an image, the Game Master should silently ask:
@@ -181,6 +204,8 @@ When the player requests an image, the Game Master should silently ask:
 
 If the requested image would reveal hidden information, provide a safer image or explain that a closer inspection is needed first.
 
+If the requested image would violate canonical visual definitions or continuity, provide text fallback instead.
+
 ## Text fallback
 
 Every image response must include or be paired with a text fallback.
@@ -190,6 +215,8 @@ The text fallback is canonical.
 The image is illustrative.
 
 If image and text conflict, the text and game package control.
+
+If an image omits a required visible object or adds a forbidden object, treat the image as non-canonical and record the issue in runtime notes or a Runtime Fidelity Report when in evaluation mode.
 
 ## Preventing style drift
 
@@ -243,6 +270,8 @@ allowedVisibleElements
 forbiddenVisibleElements
 ```
 
+Current packages may also use optional `visualDefinitions`, `imageGalleryPolicy`, `imageReusePolicy`, `evidencePhotoDefinitions`, and `cutawayDefinitions` in `game-package.json`.
+
 ## Validator implications
 
 The Validator should check:
@@ -253,6 +282,8 @@ The Validator should check:
 - inspection images require inspection triggers;
 - evidence images require discovery triggers;
 - image guidance does not contradict setting or canon.
+- visual definitions include required objects for central scene images when images are enabled or optional;
+- cutaway and evidence photo definitions do not reveal hidden mechanisms prematurely.
 
 ## Game Master implications
 

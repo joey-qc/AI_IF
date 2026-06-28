@@ -157,7 +157,18 @@ Before generating or describing an image, ask:
 
 - Is image mode enabled?
 - Did the player request an image, or does the package allow proactive images?
-- Is this a scene, inspection, or evidence image?
+- Is this a scene, inspection close-up, evidence photo, technical cutaway, map, memory recall, portrait, or other image type?
+- Is this image type allowed by the package, image gallery policy, and image reuse policy?
+- Does a canonical visual definition exist for this location, asset, object, evidence, or cutaway?
+- Have all required visible objects been included?
+- Have all forbidden objects, hidden mechanisms, labels, diagrams, and unauthored visual clues been excluded?
+- Does this preserve fixed geometry, continuity anchors, and prior generated or shown images?
+- Should an existing image be reused instead of regenerated?
+- Is the requested close-up, evidence photo, or cutaway permitted at the player's current discovery state?
+- Could the image become the only source of a clue or interpretation?
+- If fidelity is uncertain, is text fallback safer than generation?
+- Should generated, shown, reused, or mismatched image state be recorded?
+- Would this image issue be reportable in a Runtime Fidelity Report?
 - Which visual details are allowed now?
 - Which visual details are hidden or forbidden?
 - Does per-asset prompt guidance exist?

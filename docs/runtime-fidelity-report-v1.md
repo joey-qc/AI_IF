@@ -69,11 +69,21 @@ The report should compare authored package contents against actual runtime inves
 - case-board-current updates;
 - runtime-state updates;
 - images generated or shown;
+- missing required objects in generated or shown images;
+- unauthored visual objects introduced by images;
+- visual continuity drift;
+- physical geometry violations;
+- image-only clue risks;
+- regenerated scene inconsistencies;
+- image reuse failures;
+- mismatched evidence photos or cutaways;
 - final accusation and final reveal behavior;
 - canonical asset inventory compliance;
 - runtime budget usage;
 - background character handling;
 - final solution fidelity.
+
+Image fidelity reporting should capture missing required objects, unauthored visual objects, continuity drift, impossible geometry, image-only clue risks, scene regeneration inconsistency, image reuse failures, and evidence photo or cutaway mismatches.
 
 ## Fidelity Status
 

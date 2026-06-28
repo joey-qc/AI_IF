@@ -24,6 +24,8 @@ When authoring or revising package content, use stable canonical IDs and validat
 
 Use `docs/canonical-assets-and-runtime-budgets-v1.md` to define `canonicalAssetInventory` and `runtimeBudgets` for each new case package.
 
+Use `docs/image-fidelity-contract-v1.md` when image mode is enabled or available, so visual definitions, reuse rules, evidence photos, cutaways, and text fallbacks are authored before runtime.
+
 ## Authorship prerequisite
 
 Do not begin story authorship until the player setup and scope budget are defined.
@@ -117,9 +119,10 @@ Follow this order:
 15. Define typed discovery rules.
 16. Define scenes.
 17. Define the final reveal.
-18. Define case-board seed data.
-19. Define asset manifest.
-20. Run a self-check before returning the draft.
+18. Define visual definitions, image gallery policy, image reuse policy, and evidence photo or cutaway definitions if images are available.
+19. Define case-board seed data.
+20. Define asset manifest.
+21. Run a self-check before returning the draft.
 
 ## Player configuration requirements
 
@@ -408,6 +411,16 @@ If images are allowed, identify possible assets such as:
 
 Every asset must include text fallback. No asset may contain essential hidden clues that are absent from text.
 
+When image mode is enabled or optional, define image fidelity data sufficient for runtime:
+
+- canonical visual definitions for important scenes, close-ups, evidence photos, cutaways, maps, memory recalls, or portraits;
+- required visible object IDs and forbidden object IDs;
+- fixed geometry notes and continuity anchors for repeated scene images;
+- hidden-element rules for compartments, mechanisms, marks, labels, and internal geometry;
+- gallery and reuse policy for generated or previously shown images;
+- text fallback for every image-dependent moment;
+- validation notes for any image that could otherwise imply unauthored evidence or a hidden clue.
+
 For a Quick Mystery, keep the asset list small and focused.
 
 ## Case board requirements
@@ -442,6 +455,7 @@ Before finalizing, check:
 - Do discovery rules, NPC topics, scenes, evidence, documents, and assets stay inside the inventory and budgets?
 - Can the Game Master run this without inventing core facts?
 - Do important NPCs have interview topics and knowledge boundaries?
+- If images are available, do visual definitions prevent image-only clues, invented visual assets, continuity drift, and impossible geometry?
 
 If any answer is no, revise before returning the package.
 

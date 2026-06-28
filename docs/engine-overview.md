@@ -50,16 +50,17 @@ Read in this order:
 4. runtime-engine-v2.md
 5. runtime-fidelity-engine-v1.md
 6. canonical-assets-and-runtime-budgets-v1.md
-7. discovery-rules-v1.md
-8. npc-interview-model-v1.md
-9. validator-diagnostics-v1.md
-10. runtime-fidelity-report-v1.md
-11. investigation-model.md
-12. image-system-v2.md
-13. case-board-v2.md
-14. runtime-state-v1.md
-15. case-board-current-v1.md
-16. runtime-self-checks.md
+7. image-fidelity-contract-v1.md
+8. discovery-rules-v1.md
+9. npc-interview-model-v1.md
+10. validator-diagnostics-v1.md
+11. runtime-fidelity-report-v1.md
+12. investigation-model.md
+13. image-system-v2.md
+14. case-board-v2.md
+15. runtime-state-v1.md
+16. case-board-current-v1.md
+17. runtime-self-checks.md
 
 ## Runtime State Contract
 
@@ -114,6 +115,21 @@ schemas/game-package.schema.json
 `runtimeBudgets` define maximum runtime scope. The Game Master cannot exceed those budgets or invent investigative assets during play.
 
 Background atmosphere is allowed only when it remains non-investigative. Background characters, descriptive objects, incidental writing, and flavor props cannot become witnesses, clues, documents, evidence, or branches unless authored in the package.
+
+## Image Fidelity Contract
+
+Image fidelity is governed by:
+
+```text
+docs/image-fidelity-contract-v1.md
+schemas/game-package.schema.json
+schemas/runtime-state.schema.json
+schemas/runtime-fidelity-report.schema.json
+```
+
+Images are optional support for authored content. Generated or reused images must preserve canonical visual definitions, required and forbidden visible objects, physical geometry, continuity anchors, hidden-element rules, and text fallback.
+
+Image output must not invent suspects, witnesses, evidence, clue paths, locations, objects, access routes, documents, hidden mechanisms, or solution facts. If a faithful image cannot be produced, the runtime should use text fallback rather than creating visual drift.
 
 ## Case Board Current Contract
 
@@ -219,6 +235,7 @@ Completed:
 - Runtime Engine v2 specifications
 - Runtime Fidelity Engine v1
 - Canonical Asset and Runtime Budget Enforcement v1
+- Image Fidelity Contract v1
 - Runtime Fidelity Report v1
 - Discovery Rules v1
 - NPC Interview Model v1

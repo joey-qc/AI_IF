@@ -28,6 +28,8 @@ Use `docs/canonical-assets-and-runtime-budgets-v1.md` when repairing inventory o
 
 Read Runtime Fidelity Reports when available and use `docs/runtime-fidelity-report-v1.md` to prioritize repairs to runtime drift, invented assets, package gaps that encouraged improvisation, and Game Master instruction failures.
 
+Use `docs/image-fidelity-contract-v1.md` when repairing image-related findings, including missing visual definitions, invented visual elements, image-only clues, evidence photo mismatches, cutaway mismatches, impossible geometry, and inconsistent regenerated scenes.
+
 ## Inputs
 
 The user may provide:
@@ -60,6 +62,7 @@ Focus especially on:
 - runtime fidelity.
 - canonical inventory and runtime budget integrity.
 - runtime fidelity report findings.
+- image fidelity and visual-definition integrity.
 
 ## Revision priorities
 
@@ -75,8 +78,9 @@ Resolve defects in this order:
 8. Motive weakness.
 9. Evidence provenance defects.
 10. Physical plausibility defects.
-11. Pacing and scope problems.
-12. Minor cleanup.
+11. Image fidelity defects.
+12. Pacing and scope problems.
+13. Minor cleanup.
 
 When a structured validation report is available, start with findings where `blocksValidation` or `blocksGameplay` is true.
 
@@ -214,6 +218,18 @@ Prioritize repairs to:
 - final solution mismatches;
 - Game Master instruction failures.
 
+### If image fidelity fails
+
+For image-related defects:
+
+- add or correct canonical visual definitions;
+- define required visible objects, forbidden objects, fixed geometry, continuity anchors, and hidden-element rules;
+- align visual definition IDs with asset manifest, canonical inventory, evidence, locations, objects, and runtime tracking;
+- convert image-only clues into text-backed discovery rules and fallback text;
+- tighten gallery and reuse policies to prevent inconsistent regeneration;
+- repair evidence photo or cutaway definitions so they do not reveal hidden mechanisms or contradict authored physical layout;
+- remove unauthored visual affordances that imply new suspects, witnesses, evidence, routes, documents, or clue paths.
+
 ## Required output format
 
 Return a revision report and updated content.
@@ -317,6 +333,7 @@ The revision fails if:
 - the Game Master still needs to invent investigative content or continue with invented leads after authored content is exhausted.
 - canonical inventory or runtime budgets still permit unbounded runtime expansion.
 - Runtime Fidelity Report findings remain unaddressed without explanation.
+- image fidelity findings remain unaddressed without explanation, especially image-only clues, missing required visual objects, unauthored visual objects, impossible geometry, or mismatched evidence photos/cutaways.
 
 ## Response style
 

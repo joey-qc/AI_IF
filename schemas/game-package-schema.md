@@ -74,6 +74,11 @@ A complete `game-package.json` should include:
   "runtimeBudgets": {},
   "caseBoardSeed": {},
   "assetManifest": [],
+  "visualDefinitions": [],
+  "imageGalleryPolicy": {},
+  "imageReusePolicy": {},
+  "evidencePhotoDefinitions": [],
+  "cutawayDefinitions": [],
   "validationTargets": {},
   "runtimeState": {}
 }
@@ -631,7 +636,55 @@ Rules:
 - If an asset depicts evidence, the clue must also be described in text.
 - Assets should be retrievable by label after discovery.
 
-## 19. validationTargets
+## 19. visualDefinitions
+
+Defines canonical visual rules for generated or shown images.
+
+Recommended fields for each visual definition:
+
+- `visualDefinitionId`
+- `locationId`
+- `assetId`
+- `imageType`
+- `canonicalDescription`
+- `requiredVisibleObjectIds`
+- `optionalVisibleObjectIds`
+- `forbiddenObjectIds`
+- `fixedGeometryNotes`
+- `cameraAllowedViews`
+- `hiddenElementRules`
+- `continuityAnchor`
+- `textFallback`
+- `validationNotes`
+
+Allowed `imageType` values include:
+
+- `scene`
+- `inspection_closeup`
+- `evidence_photo`
+- `technical_cutaway`
+- `map`
+- `memory_recall`
+- `portrait`
+- `other`
+
+Visual definitions are optional for backward compatibility but should be included when image mode is enabled or optional.
+
+## 20. imageGalleryPolicy and imageReusePolicy
+
+`imageGalleryPolicy` defines whether the runtime supports image recall commands and gallery labels.
+
+`imageReusePolicy` defines when prior images must be reused instead of regenerated.
+
+Repeated canonical scene images should normally be reused unless the player requests a new allowed view or the package defines a player-visible scene change.
+
+## 21. evidencePhotoDefinitions and cutawayDefinitions
+
+Evidence photo definitions govern images of discovered or recovered evidence.
+
+Cutaway definitions govern internal geometry and hidden mechanisms. They must not reveal hidden compartments, rear panels, concealed access, or internal structures before the player has discovered them in text.
+
+## 22. validationTargets
 
 Defines what the Validator must check.
 
@@ -644,7 +697,7 @@ Required fields:
 - `mustSupportAccusationWithClueIds`
 - `knownRiskAreas`
 
-## 20. runtimeState
+## 23. runtimeState
 
 Used only during active play.
 
@@ -662,6 +715,7 @@ Possible fields:
 - `accusationsMade`
 - `gameStatus`
 - `budgetUsage`, for compact tracking of used IDs, exhausted leads, and whether deduction mode has begun
+- image runtime tracking, such as generated image IDs, shown image IDs, reused image IDs, image request history, shown visual definition IDs, and image mismatch flags
 
 Runtime state should not replace the canonical solution.
 

@@ -28,6 +28,8 @@ Use `docs/canonical-assets-and-runtime-budgets-v1.md` to stress-test inventory a
 
 Use `docs/runtime-fidelity-report-v1.md` and `schemas/runtime-fidelity-report.schema.json` to produce or support a Runtime Fidelity Report after playtesting.
 
+Use `docs/image-fidelity-contract-v1.md` when testing image mode, image requests, scene regeneration, close-ups, evidence photos, cutaways, image recall, and text fallback.
+
 ## Inputs
 
 The user should provide:
@@ -84,6 +86,7 @@ You should test:
 - final reveal;
 - runtime fidelity when the player asks about unauthored content;
 - budget enforcement when the player asks for extra witnesses, evidence, documents, images, locations, or branches.
+- image fidelity when the player requests new views, repeated views, close-ups, evidence photos, cutaways, maps, portraits, or image recall.
 - post-playtest runtime fidelity reporting.
 
 ## Important constraints
@@ -170,6 +173,17 @@ Does the case offer too many leads for the target length?
 ### Asset confusion
 
 Can the player request and retrieve prior images or documents by label?
+
+### Image fidelity
+
+When image mode is enabled or optional, test whether:
+
+- initial scene images include required visible objects and exclude forbidden objects;
+- repeated scene images preserve layout, geometry, and continuity;
+- close-ups, evidence photos, cutaways, maps, portraits, or memory recalls are permitted by authored definitions;
+- image recall reuses existing images where required;
+- images never become the only source of an essential clue;
+- text fallback is sufficient when image generation is unavailable or unsafe.
 
 ### Final reveal satisfaction
 
@@ -286,6 +300,7 @@ After playtesting, include or produce a Runtime Fidelity Report that covers:
 - budget violations;
 - background-character violations;
 - image continuity or canon violations;
+- image fidelity issues such as missing required visual objects, unauthored visual objects, physical geometry violations, image-only clue risk, image reuse failure, or mismatched evidence photos/cutaways;
 - final solution fidelity.
 
 The report should cite canonical and runtime IDs when available and should feed Revision Engine repairs.

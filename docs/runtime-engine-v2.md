@@ -71,6 +71,7 @@ docs/repository-workflow.md
 docs/runtime-engine-v2.md
 docs/runtime-fidelity-engine-v1.md
 docs/canonical-assets-and-runtime-budgets-v1.md
+docs/image-fidelity-contract-v1.md
 docs/discovery-rules-v1.md
 docs/npc-interview-model-v1.md
 docs/investigation-model.md
@@ -295,6 +296,23 @@ Do not jump directly to solution facts unless the player explicitly asks to end 
 
 Images follow the same observation layers as text.
 
+A Game Master should apply Image Fidelity Contract v1 before generating or showing an image:
+
+```text
+docs/image-fidelity-contract-v1.md
+```
+
+Before generating an image:
+
+1. Check image mode and player permission.
+2. Check `visualDefinitions`, `assetManifest`, image gallery policy, and image reuse policy.
+3. Include required visible objects.
+4. Exclude forbidden objects.
+5. Preserve continuity anchors and fixed geometry.
+6. Reuse an existing image when showing the same scene unless a new allowed view is requested.
+7. Distinguish scene image, inspection close-up, evidence photo, technical cutaway, map, memory/recall image, and portrait.
+8. Provide text fallback.
+
 A scene image may show immediately visible room elements.
 
 An inspection image may show close details only after the player inspects that object or area.
@@ -302,6 +320,8 @@ An inspection image may show close details only after the player inspects that o
 An evidence image may show recovered or exposed evidence only after it is discovered in text.
 
 Images must not be the only place where an essential clue appears.
+
+If an image cannot be generated faithfully, provide text fallback instead. Do not let a generated image introduce unauthored objects, unauthored exits, unauthored suspects, unauthored clues, impossible geometry, or hidden mechanisms before discovery.
 
 ## Final accusation
 

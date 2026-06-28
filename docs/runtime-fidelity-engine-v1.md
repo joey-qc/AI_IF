@@ -44,6 +44,16 @@ If an NPC, object, location, document, evidence item, image, discovery rule, int
 
 If a runtime budget is exhausted, the Game Master must transition toward deduction, summary, or existing authored leads rather than expanding the case.
 
+Images are runtime outputs, but they must remain inside canonical visual definitions and authored asset constraints.
+
+Image fidelity is governed by:
+
+```text
+docs/image-fidelity-contract-v1.md
+```
+
+Visual drift is runtime drift. Impossible geometry is runtime drift. Missing required visible story objects is runtime drift. Images that add unauthored objects, exits, suspects, clues, or mechanisms are runtime drift.
+
 ## Canonical Package Content
 
 Canonical investigative content lives in the case package, normally:
@@ -265,7 +275,10 @@ Check for:
 - background characters becoming investigative sources;
 - case-board entries that treat unauthored theory as fact;
 - final reveal facts not present in the package;
-- images or descriptions that added canonical details.
+- images or descriptions that added canonical details;
+- missing required visual objects;
+- impossible image geometry;
+- regenerated scene inconsistencies.
 - runtime budget overages;
 - investigative assets not present in `canonicalAssetInventory`.
 
@@ -287,7 +300,7 @@ docs/runtime-fidelity-report-v1.md
 schemas/runtime-fidelity-report.schema.json
 ```
 
-The report should identify drift, invented assets, missed authored assets, budget violations, background-character violations, case-board drift, runtime-state drift, image fidelity issues, and final solution mismatches.
+The report should identify drift, invented assets, missed authored assets, budget violations, background-character violations, case-board drift, runtime-state drift, image fidelity issues, missing required visual objects, impossible image geometry, regenerated scene inconsistencies, and final solution mismatches.
 
 Runtime Fidelity Reports feed Revision Engine work. The Revision Engine should distinguish package gaps that encouraged improvisation from Game Master instruction failures or runtime tracking failures.
 

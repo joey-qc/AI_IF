@@ -34,6 +34,8 @@ Recommended fields:
 
 The inventory does not replace canonical sections such as `characters`, `locations`, `evidence`, `scenes`, or `discoveryRules`. It is an explicit runtime allowlist derived from them.
 
+Image assets and visual definitions are part of canonical asset enforcement. The Game Master may not generate visual content that exceeds authored image inventory, visual definitions, image reuse policy, or image budget.
+
 ## Authored Investigative Assets
 
 An authored investigative asset is any package-defined item that can affect investigation, deduction, accusation, or proof.

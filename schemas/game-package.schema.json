@@ -121,6 +121,33 @@
     },
     "runtimeBudgets": {
       "$ref": "#/$defs/runtimeBudgets"
+    },
+    "visualDefinitions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/visualDefinition"
+      },
+      "default": []
+    },
+    "imageGalleryPolicy": {
+      "$ref": "#/$defs/imageGalleryPolicy"
+    },
+    "imageReusePolicy": {
+      "$ref": "#/$defs/imageReusePolicy"
+    },
+    "evidencePhotoDefinitions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/visualDefinition"
+      },
+      "default": []
+    },
+    "cutawayDefinitions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/visualDefinition"
+      },
+      "default": []
     }
   },
   "$defs": {
@@ -1362,6 +1389,9 @@
         },
         "notes": {
           "type": "string"
+        },
+        "visualDefinitionIds": {
+          "$ref": "#/$defs/idArray"
         }
       }
     },
@@ -1429,6 +1459,114 @@
           "$ref": "#/$defs/stringArray"
         },
         "softBudgetFields": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "visualDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "visualDefinitionId",
+        "imageType",
+        "canonicalDescription",
+        "textFallback"
+      ],
+      "properties": {
+        "visualDefinitionId": {
+          "$ref": "#/$defs/idString"
+        },
+        "locationId": {
+          "$ref": "#/$defs/idString"
+        },
+        "assetId": {
+          "$ref": "#/$defs/idString"
+        },
+        "imageType": {
+          "type": "string",
+          "enum": [
+            "scene",
+            "inspection_closeup",
+            "evidence_photo",
+            "technical_cutaway",
+            "map",
+            "memory_recall",
+            "portrait",
+            "other"
+          ]
+        },
+        "canonicalDescription": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requiredVisibleObjectIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "optionalVisibleObjectIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "forbiddenObjectIds": {
+          "$ref": "#/$defs/idArray"
+        },
+        "fixedGeometryNotes": {
+          "type": "string"
+        },
+        "cameraAllowedViews": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "hiddenElementRules": {
+          "type": "string"
+        },
+        "continuityAnchor": {
+          "type": "string"
+        },
+        "textFallback": {
+          "type": "string",
+          "minLength": 1
+        },
+        "validationNotes": {
+          "type": "string"
+        }
+      }
+    },
+    "imageGalleryPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "recallCommandsSupported": {
+          "type": "boolean"
+        },
+        "reusePriorImagesByDefault": {
+          "type": "boolean"
+        },
+        "galleryLabelsRequired": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "imageReusePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sameSceneReuseRequired": {
+          "type": "boolean"
+        },
+        "newViewRequiresPlayerRequest": {
+          "type": "boolean"
+        },
+        "regenerationAllowedWhen": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "continuityChecksRequired": {
           "$ref": "#/$defs/stringArray"
         },
         "notes": {

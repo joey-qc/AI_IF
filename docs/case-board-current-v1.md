@@ -215,6 +215,8 @@ Images must not introduce essential evidence that is absent from text.
 
 If an image conflicts with text or the game package, the package and text control.
 
+Images are supportive assets. `case-board-current.json` must not add independent facts from images unless those facts are also supported by authored text, discovery rules, or evidence already available to the player.
+
 ## Update timing
 
 The Game Master should update `case-board-current.json` when:

@@ -98,6 +98,9 @@
     },
     "notes": {
       "type": "string"
+    },
+    "imageFidelityDetails": {
+      "$ref": "#/$defs/reportSection"
     }
   },
   "$defs": {
@@ -152,6 +155,15 @@
         "background_character_violation",
         "final_solution_mismatch",
         "premature_reveal",
+        "missing_required_visual_object",
+        "unauthored_visual_object",
+        "visual_continuity_drift",
+        "physical_geometry_violation",
+        "image_only_clue_risk",
+        "scene_regeneration_inconsistency",
+        "image_reuse_failure",
+        "evidence_photo_mismatch",
+        "cutaway_mismatch",
         "other"
       ]
     },
@@ -199,6 +211,9 @@
           "$ref": "#/$defs/stringArray"
         },
         "reportIds": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "visualDefinitionIds": {
           "$ref": "#/$defs/stringArray"
         }
       }

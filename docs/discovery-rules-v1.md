@@ -159,6 +159,8 @@ References should point to canonical IDs, but the player-facing text in `discove
 
 Discovery rules must not create assets by implication. A rule that reveals an NPC, location, object, evidence item, document, image, or clue path should reference an authored ID from the package and, when present, `canonicalAssetInventory`.
 
+Images may support discovery text, but they must not be the sole source of a clue unless an equivalent text discovery exists. Image-only clues fail runtime fidelity.
+
 ## Case-board updates
 
 `updatesCaseBoardSections` identifies which player-facing board sections may change when the rule fires.
