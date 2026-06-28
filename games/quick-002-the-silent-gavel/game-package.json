@@ -129,14 +129,12 @@
           "revealsEvidenceIds": [],
           "prerequisiteClueIds": [],
           "prerequisiteEvidenceIds": [],
-          "contradictionIds": [
-            "contradiction-sideboard-access"
-          ],
+          "contradictionIds": [],
           "followUpTopicIds": [
             "topic-miriam-appeal-file"
           ],
           "repeatAnswer": "I was at the sideboard. That is hardly a crime.",
-          "validationNotes": "This topic gives opportunity but not guilt by itself."
+          "validationNotes": "This topic gives opportunity but not guilt by itself. Contradiction handling is now carried by physical clue and comparison rules rather than undefined contradiction IDs."
         },
         {
           "topicId": "topic-miriam-keys",
@@ -158,14 +156,12 @@
             "clue-miriam-key-mark"
           ],
           "prerequisiteEvidenceIds": [],
-          "contradictionIds": [
-            "contradiction-key-mark"
-          ],
+          "contradictionIds": [],
           "followUpTopicIds": [
             "topic-miriam-alibi"
           ],
           "repeatAnswer": "Yes, I had access, like any senior clerk entrusted with the chambers.",
-          "validationNotes": "Requires physical clue before direct pressure is fair."
+          "validationNotes": "Requires physical clue before direct pressure is fair. Contradiction handling is now carried by physical clue and comparison rules rather than undefined contradiction IDs."
         },
         {
           "topicId": "topic-miriam-appeal-file",
@@ -440,7 +436,7 @@
       "discoveryConditions": "Inspect the display niche lock.",
       "sourceOrProvenance": "Physical condition of the display niche.",
       "supportsSolution": true,
-      "resolvedInFinalReveal": true,
+      "resolvedInFinalReveal": "Resolved in the final reveal through the documented clue chain.",
       "textFallback": "The front lock looks intact, making a forced front theft unlikely."
     },
     {
@@ -453,7 +449,7 @@
       "discoveryConditions": "Closely inspect the display niche or compare the intact lock with the panel seam.",
       "sourceOrProvenance": "Display niche rear panel.",
       "supportsSolution": true,
-      "resolvedInFinalReveal": true,
+      "resolvedInFinalReveal": "Resolved in the final reveal through the documented clue chain.",
       "textFallback": "The backing can shift enough to create a hidden access path."
     },
     {
@@ -466,8 +462,12 @@
       "discoveryConditions": "Closely inspect the sideboard tea service.",
       "sourceOrProvenance": "Tea urn on the sideboard.",
       "supportsSolution": true,
-      "resolvedInFinalReveal": true,
-      "textFallback": "The urn base is hollow and heavy enough to conceal the missing object."
+      "resolvedInFinalReveal": "Resolved in the final reveal through the documented clue chain.",
+      "textFallback": "The urn base is hollow and heavy enough to conceal the missing object.",
+      "associatedEvidenceIds": [
+        "evidence-recovered-gavel",
+        "evidence-tea-urn"
+      ]
     },
     {
       "clueId": "clue-green-baize-fibers",
@@ -479,8 +479,13 @@
       "discoveryConditions": "Compare the tea urn underside with the display niche lining.",
       "sourceOrProvenance": "Tea urn underside and display niche lining.",
       "supportsSolution": true,
-      "resolvedInFinalReveal": true,
-      "textFallback": "The same green fibers appear on both the urn base and display lining."
+      "resolvedInFinalReveal": "Resolved in the final reveal through the documented clue chain.",
+      "textFallback": "The same green fibers appear on both the urn base and display lining.",
+      "associatedEvidenceIds": [
+        "evidence-display-niche",
+        "evidence-recovered-gavel",
+        "evidence-tea-urn"
+      ]
     },
     {
       "clueId": "clue-miriam-key-mark",
@@ -492,7 +497,7 @@
       "discoveryConditions": "Inspect the rear fastener and compare it with the duplicate key Miriam controls.",
       "sourceOrProvenance": "Display backing fastener and duplicate key.",
       "supportsSolution": true,
-      "resolvedInFinalReveal": true,
+      "resolvedInFinalReveal": "Resolved in the final reveal through the documented clue chain.",
       "textFallback": "The fresh nick matches the duplicate key's worn tooth."
     },
     {
@@ -505,7 +510,7 @@
       "discoveryConditions": "Question Miriam and Roland about the reception sequence.",
       "sourceOrProvenance": "NPC testimony about the reception.",
       "supportsSolution": true,
-      "resolvedInFinalReveal": true,
+      "resolvedInFinalReveal": "Resolved in the final reveal through the documented clue chain.",
       "textFallback": "The sideboard interval gave Miriam practical access."
     },
     {
@@ -518,7 +523,7 @@
       "discoveryConditions": "Inspect the judge's desk blotter.",
       "sourceOrProvenance": "Desk blotter.",
       "supportsSolution": true,
-      "resolvedInFinalReveal": true,
+      "resolvedInFinalReveal": "Resolved in the final reveal through the documented clue chain.",
       "textFallback": "The note ties an old appeal file to Miriam's grievance."
     },
     {
@@ -531,7 +536,7 @@
       "discoveryConditions": "Question Roland and inspect the call slip near the door.",
       "sourceOrProvenance": "Roland's statement and call slip.",
       "supportsSolution": true,
-      "resolvedInFinalReveal": true,
+      "resolvedInFinalReveal": "Resolved in the final reveal through the documented clue chain.",
       "textFallback": "The telephone call is real and helps define the critical interval."
     },
     {
@@ -544,7 +549,7 @@
       "discoveryConditions": "Inspect Roland's prepared remarks on the desk.",
       "sourceOrProvenance": "Roland's notes.",
       "supportsSolution": false,
-      "resolvedInFinalReveal": true,
+      "resolvedInFinalReveal": "Resolved in the final reveal through the documented clue chain.",
       "textFallback": "The ink smear looks suspicious but does not prove access."
     },
     {
@@ -557,7 +562,7 @@
       "discoveryConditions": "Observe Elias or inspect the ledger shelves.",
       "sourceOrProvenance": "Elias's cuffs and archive shelves.",
       "supportsSolution": true,
-      "resolvedInFinalReveal": false,
+      "resolvedInFinalReveal": "Supporting context; not required as a final-reveal beat.",
       "textFallback": "The dust supports Elias's shelf errand."
     }
   ],
@@ -584,8 +589,12 @@
       "type": "fixture",
       "description": "A wall niche with an intact front lock, green baize lining, and a rear backing panel.",
       "currentLocationId": "loc-judge-chambers",
-      "chainOfCustody": "Part of Judge Harrow's chambers.",
-      "accessHistory": "Opened for ceremonial display by court staff.",
+      "chainOfCustody": [
+        "Part of Judge Harrow's chambers."
+      ],
+      "accessHistory": [
+        "Opened for ceremonial display by court staff."
+      ],
       "discoveryConditions": "Available from the opening scene.",
       "associatedClueIds": [
         "clue-intact-front-lock",
@@ -601,12 +610,16 @@
       "type": "object",
       "description": "A heavy urn on the sideboard with a hollow base.",
       "currentLocationId": "loc-judge-chambers",
-      "chainOfCustody": "Used by Miriam for the reception tea service.",
-      "accessHistory": "Handled during the reception by Miriam and briefly visible to others.",
+      "chainOfCustody": [
+        "Used by Miriam for the reception tea service."
+      ],
+      "accessHistory": [
+        "Handled during the reception by Miriam and briefly visible to others."
+      ],
       "discoveryConditions": "Inspect the sideboard and tea service.",
       "associatedClueIds": [
-        "clue-tea-urn-base",
-        "clue-green-baize-fibers"
+        "clue-green-baize-fibers",
+        "clue-tea-urn-base"
       ],
       "assetIds": []
     },
@@ -616,8 +629,12 @@
       "type": "document",
       "description": "A folded note referencing an old appeal file with Miriam's penciled initials.",
       "currentLocationId": "loc-judge-chambers",
-      "chainOfCustody": "Found in the judge's desk blotter.",
-      "accessHistory": "Likely handled before the reception.",
+      "chainOfCustody": [
+        "Found in the judge's desk blotter."
+      ],
+      "accessHistory": [
+        "Likely handled before the reception."
+      ],
       "discoveryConditions": "Inspect the desk blotter.",
       "associatedClueIds": [
         "clue-appeal-file-note"
@@ -630,11 +647,38 @@
       "type": "document",
       "description": "A brief slip recording the call that took Roland into the corridor.",
       "currentLocationId": "loc-judge-chambers",
-      "chainOfCustody": "Set near the chamber door by a clerk.",
-      "accessHistory": "Visible after the reception commotion.",
+      "chainOfCustody": [
+        "Set near the chamber door by a clerk."
+      ],
+      "accessHistory": [
+        "Visible after the reception commotion."
+      ],
       "discoveryConditions": "Inspect the chamber door area or ask Roland about the phone call.",
       "associatedClueIds": [
         "clue-roland-phone-call"
+      ],
+      "assetIds": []
+    },
+    {
+      "evidenceId": "evidence-recovered-gavel",
+      "title": "Recovered ceremonial gavel",
+      "type": "object",
+      "description": "The missing ceremonial gavel recovered from the hollow tea urn base, carrying green baize fibers and cabinet wax traces.",
+      "currentLocationId": "loc-judge-chambers",
+      "chainOfCustody": [
+        "Originally displayed in the locked niche for Judge Harrow's retirement reception.",
+        "Removed during the reception and concealed inside the tea urn base.",
+        "Recoverable by the player after closely inspecting or opening the urn base."
+      ],
+      "accessHistory": [
+        "Visible in the display niche at the start of the reception.",
+        "Accessible to the person positioned at the sideboard during the critical interval.",
+        "Recovered from the tea urn base during investigation."
+      ],
+      "discoveryConditions": "Open or search the hollow tea urn base after noticing its unusual weight.",
+      "associatedClueIds": [
+        "clue-tea-urn-base",
+        "clue-green-baize-fibers"
       ],
       "assetIds": []
     }
@@ -663,10 +707,11 @@
         "clue-ledger-dust"
       ],
       "availableEvidenceIds": [
-        "evidence-display-niche",
-        "evidence-tea-urn",
         "evidence-appeal-note",
-        "evidence-call-slip"
+        "evidence-call-slip",
+        "evidence-display-niche",
+        "evidence-recovered-gavel",
+        "evidence-tea-urn"
       ],
       "likelyPlayerQuestions": [
         "Can I inspect the display niche?",
@@ -786,6 +831,31 @@
       "isOptional": false,
       "isRedHerring": false,
       "validationNotes": "Supports recovery path without requiring an image."
+    },
+    {
+      "ruleId": "rule-recover-gavel",
+      "triggerType": "closely_inspect_object",
+      "description": "Player opens or searches the hollow tea urn base after noticing its unusual weight.",
+      "locationId": "loc-judge-chambers",
+      "objectId": "object-tea-urn-base",
+      "prerequisiteClueIds": [
+        "clue-tea-urn-base"
+      ],
+      "revealsEvidenceIds": [
+        "evidence-recovered-gavel"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "recoveredEvidence",
+        "knownFacts",
+        "workingTheories"
+      ],
+      "discoveryText": "Opening the hollow base reveals the missing gavel inside, with fibers and wax traces still clinging to it.",
+      "failureText": "A casual look at the tea service does not open the heavy base; the player needs to inspect or search it closely.",
+      "repeatText": "The recovered gavel remains the key object found inside the urn base.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Addresses the recovered-target evidence path and keeps the recovery player-visible before accusation."
     },
     {
       "ruleId": "rule-compare-urn-baize",
@@ -964,14 +1034,18 @@
       ],
       "updatesCaseBoardSections": [
         "closedLeads",
-        "workingTheories"
+        "workingTheories",
+        "recoveredEvidence"
       ],
       "discoveryText": "A successful accusation must connect rear access, the tea urn evidence, Miriam's key access, the timing, and the motive note.",
       "failureText": "The accusation is not yet supported by enough discovered evidence.",
       "repeatText": "The final accusation turns on the same required evidence chain.",
       "isOptional": false,
       "isRedHerring": false,
-      "validationNotes": "GM should only reveal the solution after the required proof is player-visible."
+      "validationNotes": "GM should only reveal the solution after the required proof and recovered target evidence are player-visible.",
+      "prerequisiteEvidenceIds": [
+        "evidence-recovered-gavel"
+      ]
     }
   ],
   "caseBoardSeed": {
@@ -1031,10 +1105,11 @@
       "event-discovery"
     ],
     "mustValidateEvidenceIds": [
-      "evidence-display-niche",
-      "evidence-tea-urn",
       "evidence-appeal-note",
-      "evidence-call-slip"
+      "evidence-call-slip",
+      "evidence-display-niche",
+      "evidence-recovered-gavel",
+      "evidence-tea-urn"
     ],
     "mustSupportAccusationWithClueIds": [
       "clue-loose-backing",
