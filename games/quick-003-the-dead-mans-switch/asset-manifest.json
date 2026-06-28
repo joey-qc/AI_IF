@@ -1,0 +1,68 @@
+[
+  {
+    "assetId": "asset-war-room-scene",
+    "title": "Secure war room",
+    "assetType": "scene_image",
+    "associatedLocationId": "loc-war-room",
+    "associatedClueIds": [],
+    "discoveryConditions": "Optional on player request; image mode is off by default.",
+    "textFallback": "A secure conference room with a workstation, projector, whiteboard, cable bundle, and folders from the disrupted investor call.",
+    "retrievalLabel": "Secure war room",
+    "spoilerLevel": "low",
+    "isCanonicalEvidence": false,
+    "containsHiddenClues": false,
+    "imagePromptGuidance": "Show only the authored room objects. No hidden culprit action, unlisted NPCs, extra rooms, extra exits, or visual clue absent from text.",
+    "hasBeenShownToPlayer": false
+  },
+  {
+    "assetId": "asset-cable-closeup",
+    "title": "Close-up of the cable bundle",
+    "assetType": "evidence_photo",
+    "associatedLocationId": "loc-war-room",
+    "associatedClueIds": [
+      "clue-cable-storage"
+    ],
+    "discoveryConditions": "Optional after the cable bundle has been closely inspected in text.",
+    "textFallback": "A close-up of several USB-C cables, one slightly heavier and thicker than the others.",
+    "retrievalLabel": "Cable bundle close-up",
+    "spoilerLevel": "medium",
+    "isCanonicalEvidence": false,
+    "containsHiddenClues": false,
+    "imagePromptGuidance": "Support the text discovery only; do not add labels, fingerprints, names, or extra clues.",
+    "hasBeenShownToPlayer": false
+  },
+  {
+    "assetId": "asset-alert-log",
+    "title": "Dead-man alert log",
+    "assetType": "document",
+    "associatedLocationId": "loc-war-room",
+    "associatedClueIds": [
+      "clue-deadman-alert-delay"
+    ],
+    "discoveryConditions": "Optional after the alert log is read in text.",
+    "textFallback": "Alert: protocol package accessed at 5:48 p.m.",
+    "retrievalLabel": "Dead-man alert log",
+    "spoilerLevel": "low",
+    "isCanonicalEvidence": false,
+    "containsHiddenClues": false,
+    "imagePromptGuidance": "Show only the authored timing already revealed in text.",
+    "hasBeenShownToPlayer": false
+  },
+  {
+    "assetId": "asset-whiteboard",
+    "title": "Risk disclosure whiteboard",
+    "assetType": "evidence_photo",
+    "associatedLocationId": "loc-war-room",
+    "associatedClueIds": [
+      "clue-lena-conflict"
+    ],
+    "discoveryConditions": "Optional after Lena's disclosure conflict is established in text.",
+    "textFallback": "A whiteboard with risk-disclosure notes and a circled question: 'Are we telling them enough?'",
+    "retrievalLabel": "Risk disclosure whiteboard",
+    "spoilerLevel": "low",
+    "isCanonicalEvidence": false,
+    "containsHiddenClues": false,
+    "imagePromptGuidance": "Support Lena's ethical conflict without adding hidden facts or extra documents.",
+    "hasBeenShownToPlayer": false
+  }
+]

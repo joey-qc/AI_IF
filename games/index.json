@@ -34,5 +34,23 @@
     "imageMode": "none",
     "interactionMode": "text_first",
     "notes": "Draft package for validation."
+  },
+  {
+    "caseId": "quick-003",
+    "title": "The Dead Man's Switch",
+    "slug": "the-dead-mans-switch",
+    "folder": "games/quick-003-the-dead-mans-switch",
+    "lengthPreset": "quick_mystery",
+    "difficulty": "medium",
+    "genre": "contemporary corporate / cyber-adjacent mystery",
+    "tone": "tense, grounded, urgent, human",
+    "status": "draft",
+    "validationStatus": "not_validated",
+    "playtestStatus": "not_playtested",
+    "lastUpdatedAt": "2026-06-28",
+    "estimatedPlayTimeMinutes": 20,
+    "imageMode": "player_requested_only",
+    "interactionMode": "voice_friendly",
+    "notes": "Draft package for validation."
   }
 ]

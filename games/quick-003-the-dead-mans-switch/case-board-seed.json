@@ -1,0 +1,36 @@
+{
+  "caseId": "quick-003",
+  "title": "The Dead Man's Switch",
+  "knownFacts": [
+    "A confidential recovery protocol may have been copied from the secure workstation.",
+    "A dead-man alert fired minutes before an investor call.",
+    "The incident occurred inside the secure war room.",
+    "Three people were present: Owen, Lena, and Priya."
+  ],
+  "knownCharacters": [
+    "npc-owen-rusk",
+    "npc-lena-ortiz",
+    "npc-priya-shah"
+  ],
+  "knownLocations": [
+    "loc-war-room"
+  ],
+  "openQuestions": [
+    "Was this an outside breach or an internal copy?",
+    "Why did the alert fire after the export window?",
+    "Who had access to the secure workstation during the projector failure?",
+    "Is Lena's opposition to the call motive or misdirection?",
+    "What did Owen handle during the cable scramble?"
+  ],
+  "activeLeads": [
+    "Read the alert log.",
+    "Inspect the cable bundle.",
+    "Question Owen about the projector failure.",
+    "Question Lena about the investor call argument.",
+    "Question Priya about the audit and recovery tablet."
+  ],
+  "discoveredClueIds": [],
+  "discoveredEvidenceIds": [],
+  "seenAssetIds": [],
+  "playerTheories": []
+}

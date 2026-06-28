@@ -1,0 +1,1758 @@
+{
+  "caseMetadata": {
+    "caseId": "quick-003",
+    "title": "The Dead Man's Switch",
+    "slug": "the-dead-mans-switch",
+    "version": "0.1.0",
+    "status": "draft",
+    "createdAt": "2026-06-28",
+    "lastUpdatedAt": "2026-06-28",
+    "authorRole": "Story Author",
+    "validationStatus": "not_validated",
+    "playtestStatus": "not_playtested",
+    "humanPlayStatus": "not_played",
+    "shortDescription": "A contained corporate incident mystery set in a secure medical-device startup war room.",
+    "estimatedPlayTimeMinutes": 20,
+    "repositoryPath": "games/quick-003-the-dead-mans-switch",
+    "notes": "Draft package generated from sealed authoring handoff; ready for validation."
+  },
+  "playerConfig": {
+    "lengthPreset": "quick_mystery",
+    "difficulty": "medium",
+    "genre": "contemporary corporate / cyber-adjacent mystery",
+    "tone": "tense, grounded, urgent, human",
+    "settingSummary": "A secure conference room inside a small medical-device startup.",
+    "playerRole": "An outside incident investigator retained by the company's insurer.",
+    "imageMode": "player_requested_only",
+    "interactionMode": "voice_friendly",
+    "hintPolicy": "on_request_only",
+    "contentBoundaries": [
+      "No graphic violence.",
+      "Corporate financial pressure and patient-access stakes are handled in grounded terms.",
+      "Images are off by default and optional on request."
+    ]
+  },
+  "scopeBudget": {
+    "maxPrimaryLocations": 1,
+    "maxMajorNpcCount": 3,
+    "maxEssentialClueCount": 10,
+    "maxRedHerringCount": 1,
+    "maxNestedSecrets": 0,
+    "expectedPlayTimeMinutesMin": 15,
+    "expectedPlayTimeMinutesMax": 25
+  },
+  "setting": {
+    "place": "Secure war room at a small medical-device startup",
+    "era": "present day",
+    "dateOrSeason": "Early evening before an emergency investor call",
+    "socialContext": "A startup team is trying to protect device approval, investor confidence, and patient access while a possible trade-secret leak threatens the company.",
+    "technologyLevel": "Secure workstation, emergency recovery tablet, conference projector, local logs, USB-C cables, and controlled document access.",
+    "toneNotes": "Contained, high-pressure, fair-play, and human rather than techno-magical.",
+    "sensoryStyle": "Glass walls, dimmed presentation lights, a flashing alert, anxious voices, and a countdown to an investor call.",
+    "languageStyle": "Plainspoken contemporary business and technical language."
+  },
+  "centralMystery": {
+    "mysteryType": "trade_secret_theft",
+    "openingProblem": "A confidential recovery protocol may have been copied from the secure workstation minutes before a crucial investor call.",
+    "victimOrTarget": "The company's confidential firmware recovery protocol and approval process.",
+    "stakes": "If the leak is real, funding and patient access may collapse; if the company ignores a real breach, the approval process may be compromised.",
+    "playerObjective": "Determine whether the incident was an outside breach or an internal copy, identify who is responsible, and support the conclusion with evidence.",
+    "successCondition": "The player names the responsible party and explains motive, method, opportunity, and proof from discovered evidence."
+  },
+  "solution": {
+    "culpritCharacterId": "npc-owen-rusk",
+    "targetId": "target-recovery-protocol",
+    "motive": "Owen Rusk urgently needed money to answer a creditor threat and conceal misuse of company emergency reserves.",
+    "motiveProportionality": "Exposure would end Owen's career, expose financial misconduct, likely trigger criminal investigation, and destroy his standing with the board.",
+    "method": "He used the authorized emergency recovery tablet to initiate a diagnostic export, then copied the encrypted package through a USB-C charging cable with embedded storage while pretending to reconnect the presentation laptop.",
+    "opportunity": "A two-minute projector failure window drew attention away from the secure workstation while Owen handled the cable bundle beside it.",
+    "means": "Owen had physical access to the cable bundle, could handle the disguised cable, and used an emergency export workflow available in the room.",
+    "concealmentPlan": "He made the incident look like a delayed external breach and suggested Lena's opposition to the investor call as a motive.",
+    "culpritMistake": "The export timestamp, cable access, storage cable, and financial pressure converge on him rather than the person he tried to frame.",
+    "proofRequiredForAccusation": {
+      "requiredClueIds": [
+        "clue-diagnostic-export",
+        "clue-export-timestamp",
+        "clue-owen-cable-access",
+        "clue-cable-storage",
+        "clue-owen-pressure"
+      ],
+      "deductionRequired": "The player must connect the authorized export, the projector failure timing, Owen's cable access, the embedded-storage cable, and Owen's financial motive.",
+      "insufficientAccusationResponse": "An accusation without method, timing, access, and motive remains unsupported."
+    },
+    "essentialClueIds": [
+      "clue-deadman-alert-delay",
+      "clue-diagnostic-export",
+      "clue-export-timestamp",
+      "clue-projector-window",
+      "clue-owen-cable-access",
+      "clue-cable-storage",
+      "clue-owen-pressure",
+      "clue-lena-not-leaker"
+    ],
+    "supportingClueIds": [
+      "clue-lena-conflict",
+      "clue-priya-workstation-control",
+      "clue-owen-phone-alert"
+    ],
+    "redHerringIds": [
+      "red-lena-resignation"
+    ],
+    "trueTimelineEventIds": [
+      "evt-001",
+      "evt-002",
+      "evt-003",
+      "evt-004",
+      "evt-005",
+      "evt-006",
+      "evt-007",
+      "evt-008"
+    ],
+    "finalRevealBeats": [
+      "The alert timing shows that the copy could have happened before the visible warning.",
+      "The diagnostic export log shows a legitimate local export during the projector failure.",
+      "Owen had the cable access needed to use the storage-embedded cable.",
+      "The storage cable proves the physical exfiltration method.",
+      "Owen's financial pressure supplies the motive.",
+      "Lena's opposition to the call is ethical conflict rather than theft, and Priya's audit helps narrow the window."
+    ],
+    "postResolutionAnswers": {
+      "canonicalEndgameExplanation": "Owen Rusk stole the recovery protocol by exploiting the emergency diagnostic export workflow during the projector failure and copying the package with a storage-embedded USB-C cable. His financial pressure explains motive; the timing, cable access, and device prove method and opportunity.",
+      "fallbackSolutionReveal": "If gameplay stops early and the player asks for the answer out of game, reveal the authored solution from this package without improvising or adding new facts.",
+      "innocentSuspectClearance": "Lena's conflict was ethical and her position during the export clears her. Priya's audit and distance from the export method clear her."
+    }
+  },
+  "characters": [
+    {
+      "characterId": "npc-owen-rusk",
+      "name": "Owen Rusk",
+      "role": "Finance director / acting CFO",
+      "isMajorNpc": true,
+      "isSuspect": true,
+      "relationshipToMystery": "Handled the cable bundle during the brief projector failure and has pressure connected to the company's finances.",
+      "apparentMotive": "He wants the investor call to proceed and appears focused on saving the company.",
+      "trueMotiveOrInnocentExplanation": "He has urgent private financial pressure and needs to conceal misuse of company reserves.",
+      "alibiClaim": "He says he only helped restore the investor call when the projector failed.",
+      "alibiTruth": "He did help with the cables, but that access enabled the copy.",
+      "knowledge": [
+        "The investor call schedule",
+        "The cable bundle he handled",
+        "His own financial pressure",
+        "The false implication he wants to place on Lena"
+      ],
+      "secrets": [
+        "He used the emergency export workflow.",
+        "He used a disguised storage cable.",
+        "He received a creditor demand."
+      ],
+      "liesOrOmissions": [
+        "He omits exactly which cable he handled.",
+        "He hides the financial pressure.",
+        "He overstates Lena's suspiciousness."
+      ],
+      "interviewTopics": [
+        {
+          "topicId": "topic-owen-timeline",
+          "topicLabel": "Owen's timeline",
+          "topicType": "alibi",
+          "npcId": "npc-owen-rusk",
+          "playerQuestionExamples": [
+            "Where were you during the projector failure?",
+            "What were you doing when the call setup broke?"
+          ],
+          "truthfulAnswer": "I was helping get the call back online when the projector failed. Everyone saw that.",
+          "lieOrOmission": "He omits that helping with the cable bundle gave him access to the secure workstation.",
+          "evasiveAnswer": "It was chaos for two minutes. I was trying to keep the company alive.",
+          "knowledgeBoundary": "He will not volunteer the storage cable or export unless confronted with evidence.",
+          "emotionalState": "Smooth, helpful, and anxious beneath the surface.",
+          "revealsClueIds": [],
+          "revealsEvidenceIds": [],
+          "followUpTopicIds": [
+            "topic-owen-cables"
+          ],
+          "repeatAnswer": "Owen repeats that he was only trying to restore the call.",
+          "validationNotes": "Keeps his statement plausible without confessing."
+        },
+        {
+          "topicId": "topic-owen-cables",
+          "topicLabel": "Cable bundle",
+          "topicType": "evidence",
+          "npcId": "npc-owen-rusk",
+          "playerQuestionExamples": [
+            "Which cables did you handle?",
+            "Did you touch the cable bundle?"
+          ],
+          "truthfulAnswer": "I plugged in what Priya pointed me toward. It was chaos for two minutes.",
+          "lieOrOmission": "He avoids naming the exact cable.",
+          "evasiveAnswer": "Do you want the company saved or a perfect cable inventory?",
+          "knowledgeBoundary": "He knows the suspicious cable is present but will not identify it.",
+          "emotionalState": "Helpful turning defensive.",
+          "revealsClueIds": [
+            "clue-owen-cable-access"
+          ],
+          "revealsEvidenceIds": [],
+          "followUpTopicIds": [
+            "topic-owen-finances"
+          ],
+          "repeatAnswer": "Owen repeats that he only helped reconnect the call.",
+          "validationNotes": "Provides opportunity without motive or method proof."
+        },
+        {
+          "topicId": "topic-owen-finances",
+          "topicLabel": "Financial pressure",
+          "topicType": "motive",
+          "npcId": "npc-owen-rusk",
+          "playerQuestionExamples": [
+            "Why did your phone show an urgent payment message?",
+            "Are you under financial pressure?"
+          ],
+          "truthfulAnswer": "That's private. It has nothing to do with the protocol.",
+          "lieOrOmission": "He hides the gambling debt and reserve misuse.",
+          "evasiveAnswer": "Everyone in a startup is under financial pressure.",
+          "knowledgeBoundary": "He knows the message is incriminating but will not explain it voluntarily.",
+          "emotionalState": "Tense and clipped.",
+          "revealsClueIds": [
+            "clue-owen-pressure"
+          ],
+          "revealsEvidenceIds": [
+            "ev-owen-phone-alert"
+          ],
+          "prerequisiteClueIds": [
+            "clue-owen-phone-alert"
+          ],
+          "repeatAnswer": "He insists the message is private and irrelevant.",
+          "validationNotes": "Motive path should require the phone-alert lead."
+        }
+      ],
+      "cluesPointingToward": [
+        "clue-owen-cable-access",
+        "clue-cable-storage",
+        "clue-owen-pressure"
+      ],
+      "cluesClearingOrImplicating": [
+        "clue-export-timestamp",
+        "clue-diagnostic-export"
+      ],
+      "interrogationGuidance": "He should not confess unless the player connects timing, cable, and motive."
+    },
+    {
+      "characterId": "npc-lena-ortiz",
+      "name": "Lena Ortiz",
+      "role": "Lead firmware engineer",
+      "isMajorNpc": true,
+      "isSuspect": true,
+      "relationshipToMystery": "Designed or understands the recovery protocol and opposed the investor call.",
+      "apparentMotive": "She argued against the call and had an unsent resignation draft.",
+      "trueMotiveOrInnocentExplanation": "She wanted fuller disclosure, not theft or sabotage.",
+      "alibiClaim": "She says she was at the whiteboard during the cable scramble.",
+      "alibiTruth": "She was away from the cable bundle during the export window.",
+      "knowledge": [
+        "The alert design",
+        "The disclosure argument",
+        "Her resignation draft",
+        "Her position during the projector failure"
+      ],
+      "secrets": [
+        "She had drafted a resignation letter."
+      ],
+      "liesOrOmissions": [
+        "She initially downplays how serious her ethical disagreement had become."
+      ],
+      "interviewTopics": [
+        {
+          "topicId": "topic-lena-conflict",
+          "topicLabel": "Argument before the call",
+          "topicType": "motive",
+          "npcId": "npc-lena-ortiz",
+          "playerQuestionExamples": [
+            "Why did you want the call delayed?",
+            "Were you trying to stop the investor call?"
+          ],
+          "truthfulAnswer": "I wanted the call delayed because the risk disclosure was incomplete. That isn't sabotage.",
+          "knowledgeBoundary": "She knows her ethical conflict but not who copied the file.",
+          "emotionalState": "Angry, exhausted, morally rigid.",
+          "revealsClueIds": [
+            "clue-lena-conflict"
+          ],
+          "repeatAnswer": "Lena repeats that disclosure, not sabotage, was her point.",
+          "validationNotes": "Supports the red herring while keeping it fair."
+        },
+        {
+          "topicId": "topic-lena-resignation",
+          "topicLabel": "Resignation draft",
+          "topicType": "red_herring",
+          "npcId": "npc-lena-ortiz",
+          "playerQuestionExamples": [
+            "Why did you draft a resignation?",
+            "Were you planning to leave?"
+          ],
+          "truthfulAnswer": "I wrote it because I was tired of being asked to smooth over risk language. I hadn't sent it.",
+          "knowledgeBoundary": "She can explain the draft but cannot solve the theft.",
+          "emotionalState": "Defensive and wounded.",
+          "revealsClueIds": [
+            "clue-lena-not-leaker"
+          ],
+          "revealsEvidenceIds": [
+            "ev-lena-resignation-draft"
+          ],
+          "repeatAnswer": "The draft was about ethics, not a leak.",
+          "validationNotes": "Clears the red herring when paired with timing."
+        },
+        {
+          "topicId": "topic-lena-timeline",
+          "topicLabel": "Lena's position during projector failure",
+          "topicType": "alibi",
+          "npcId": "npc-lena-ortiz",
+          "playerQuestionExamples": [
+            "Where were you when the projector failed?",
+            "Did you handle the cables?"
+          ],
+          "truthfulAnswer": "I was at the whiteboard arguing with Priya about the alert design when Owen was at the cables.",
+          "knowledgeBoundary": "She observed positions but did not see the full copy action.",
+          "emotionalState": "Impatient and precise.",
+          "revealsClueIds": [
+            "clue-lena-not-leaker"
+          ],
+          "repeatAnswer": "She repeats that she was at the whiteboard, not at the cable bundle.",
+          "validationNotes": "Provides clearance without exposing the full culprit proof."
+        }
+      ],
+      "cluesPointingToward": [
+        "clue-lena-conflict"
+      ],
+      "cluesClearingOrImplicating": [
+        "clue-lena-not-leaker",
+        "clue-export-timestamp"
+      ],
+      "interrogationGuidance": "Lena should remain sharp and suspicious until her ethical motive is separated from the theft."
+    },
+    {
+      "characterId": "npc-priya-shah",
+      "name": "Priya Shah",
+      "role": "Security operations lead",
+      "isMajorNpc": true,
+      "isSuspect": true,
+      "relationshipToMystery": "Owns security procedure, understands logs, and audited containment before the incident.",
+      "apparentMotive": "She controlled workstation access and security procedure.",
+      "trueMotiveOrInnocentExplanation": "She has no motive; her audit narrows the true opportunity window.",
+      "alibiClaim": "She says she was handling call setup and arguing with Lena over the alert design.",
+      "alibiTruth": "Her audit and log knowledge are accurate and helpful.",
+      "knowledge": [
+        "Pre-call audit status",
+        "Emergency recovery tablet workflow",
+        "Dead-man alert behavior",
+        "General security procedure"
+      ],
+      "secrets": [],
+      "liesOrOmissions": [
+        "She initially sounds defensive because the system failed on her watch."
+      ],
+      "interviewTopics": [
+        {
+          "topicId": "topic-priya-audit",
+          "topicLabel": "Pre-call audit",
+          "topicType": "procedure",
+          "npcId": "npc-priya-shah",
+          "playerQuestionExamples": [
+            "Was the protocol contained before the call?",
+            "What did your audit show?"
+          ],
+          "truthfulAnswer": "I confirmed the recovery protocol was contained at 5:32. It had not left the workstation then.",
+          "knowledgeBoundary": "She knows the audit, not the culprit's motive.",
+          "emotionalState": "Precise and defensive.",
+          "revealsClueIds": [
+            "clue-priya-workstation-control"
+          ],
+          "revealsEvidenceIds": [
+            "ev-priya-audit-note"
+          ],
+          "repeatAnswer": "The 5:32 audit showed containment.",
+          "validationNotes": "Narrowing clue, not final proof."
+        },
+        {
+          "topicId": "topic-priya-tablet",
+          "topicLabel": "Emergency recovery tablet",
+          "topicType": "technical",
+          "npcId": "npc-priya-shah",
+          "playerQuestionExamples": [
+            "Can the recovery tablet export the protocol?",
+            "What does the tablet do?"
+          ],
+          "truthfulAnswer": "The tablet can initiate a diagnostic export, but that export is supposed to stay local.",
+          "knowledgeBoundary": "She knows the workflow but not who used it during the scramble until evidence is compared.",
+          "emotionalState": "Technical and frustrated.",
+          "revealsClueIds": [
+            "clue-diagnostic-export"
+          ],
+          "repeatAnswer": "The tablet can start a diagnostic export, but it should not leave the workstation.",
+          "validationNotes": "Explains method possibility."
+        },
+        {
+          "topicId": "topic-priya-alert",
+          "topicLabel": "Dead-man alert delay",
+          "topicType": "technical",
+          "npcId": "npc-priya-shah",
+          "playerQuestionExamples": [
+            "Why did the alert fire later?",
+            "Does the alert time mean the theft happened then?"
+          ],
+          "truthfulAnswer": "The alert fires when a copied package is accessed, not necessarily the instant it is copied.",
+          "knowledgeBoundary": "She can explain the alert behavior but not the culprit's intent.",
+          "emotionalState": "Precise and urgent.",
+          "revealsClueIds": [
+            "clue-deadman-alert-delay"
+          ],
+          "repeatAnswer": "The alert time is access time, not necessarily copy time.",
+          "validationNotes": "Prevents false timing assumptions."
+        }
+      ],
+      "cluesPointingToward": [
+        "clue-priya-workstation-control"
+      ],
+      "cluesClearingOrImplicating": [
+        "clue-priya-workstation-control",
+        "clue-diagnostic-export"
+      ],
+      "interrogationGuidance": "Priya can explain mechanisms but should not know Owen's financial motive."
+    }
+  ],
+  "locations": [
+    {
+      "locationId": "loc-war-room",
+      "name": "Secure War Room",
+      "isPrimaryLocation": true,
+      "description": "A glass-walled conference room converted into a temporary incident room for an emergency investor call. It contains a secure workstation, wall projector, whiteboard, cable bundle, recovery tablet, conference table, and folders from the aborted call.",
+      "purpose": "The only primary location and the full investigation space.",
+      "availableFromStart": true,
+      "entryConditions": "Start of play.",
+      "charactersPresent": [
+        "npc-owen-rusk",
+        "npc-lena-ortiz",
+        "npc-priya-shah"
+      ],
+      "clueIds": [
+        "clue-deadman-alert-delay",
+        "clue-diagnostic-export",
+        "clue-export-timestamp",
+        "clue-projector-window",
+        "clue-owen-cable-access",
+        "clue-cable-storage",
+        "clue-owen-phone-alert",
+        "clue-owen-pressure",
+        "clue-lena-conflict",
+        "clue-lena-not-leaker",
+        "clue-priya-workstation-control"
+      ],
+      "evidenceIds": [
+        "ev-deadman-alert",
+        "ev-diagnostic-export-log",
+        "ev-cable-storage",
+        "ev-owen-phone-alert",
+        "ev-lena-resignation-draft",
+        "ev-priya-audit-note"
+      ],
+      "exitLeads": [
+        "Read the alert and export logs.",
+        "Inspect the cable bundle.",
+        "Question the three people in the room.",
+        "Compare the alert timing with the export timing."
+      ],
+      "assetIds": [
+        "asset-war-room-scene"
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "eventId": "evt-001",
+      "sequenceOrder": 1,
+      "dateTimeLabel": "4:35 p.m.",
+      "locationId": "loc-war-room",
+      "participantCharacterIds": [
+        "npc-owen-rusk"
+      ],
+      "summary": "Owen receives a final demand from his creditor requiring payment by morning.",
+      "cause": "His debt and reserve misuse have reached a crisis point.",
+      "effect": "He has urgent motive to obtain money and avoid exposure.",
+      "clueIdsGenerated": [
+        "clue-owen-phone-alert",
+        "clue-owen-pressure"
+      ],
+      "visibilityToPlayer": "Hidden until the phone-alert lead is discovered."
+    },
+    {
+      "eventId": "evt-002",
+      "sequenceOrder": 2,
+      "dateTimeLabel": "5:05 p.m.",
+      "locationId": "loc-war-room",
+      "participantCharacterIds": [
+        "npc-lena-ortiz"
+      ],
+      "summary": "Lena argues that the investor call should be postponed because the risk disclosure is incomplete.",
+      "cause": "She believes the company is smoothing over risk language.",
+      "effect": "Her ethical conflict becomes a plausible but false motive.",
+      "clueIdsGenerated": [
+        "clue-lena-conflict",
+        "clue-lena-not-leaker"
+      ],
+      "visibilityToPlayer": "Discoverable through questioning and the resignation draft."
+    },
+    {
+      "eventId": "evt-003",
+      "sequenceOrder": 3,
+      "dateTimeLabel": "5:32 p.m.",
+      "locationId": "loc-war-room",
+      "participantCharacterIds": [
+        "npc-priya-shah"
+      ],
+      "summary": "Priya audits the secure workstation and confirms the recovery protocol is still contained.",
+      "cause": "Pre-call security procedure.",
+      "effect": "The theft must occur after the audit.",
+      "clueIdsGenerated": [
+        "clue-priya-workstation-control"
+      ],
+      "visibilityToPlayer": "Discoverable through Priya and the audit note."
+    },
+    {
+      "eventId": "evt-004",
+      "sequenceOrder": 4,
+      "dateTimeLabel": "5:41 p.m.",
+      "locationId": "loc-war-room",
+      "participantCharacterIds": [
+        "npc-owen-rusk",
+        "npc-lena-ortiz",
+        "npc-priya-shah"
+      ],
+      "summary": "The projector fails as the investor call setup begins.",
+      "cause": "A setup disruption in the room.",
+      "effect": "People move around the secure workstation and cable bundle.",
+      "clueIdsGenerated": [
+        "clue-projector-window"
+      ],
+      "visibilityToPlayer": "Visible from the opening situation."
+    },
+    {
+      "eventId": "evt-005",
+      "sequenceOrder": 5,
+      "dateTimeLabel": "5:42 p.m.",
+      "locationId": "loc-war-room",
+      "participantCharacterIds": [
+        "npc-owen-rusk"
+      ],
+      "summary": "Owen volunteers to reconnect the cable bundle near the secure workstation.",
+      "cause": "The projector failure needs quick help.",
+      "effect": "Owen gains physical access to the cable bundle and workstation area.",
+      "clueIdsGenerated": [
+        "clue-owen-cable-access"
+      ],
+      "visibilityToPlayer": "Discoverable through questioning and room reconstruction."
+    },
+    {
+      "eventId": "evt-006",
+      "sequenceOrder": 6,
+      "dateTimeLabel": "5:43 p.m.",
+      "locationId": "loc-war-room",
+      "participantCharacterIds": [
+        "npc-owen-rusk"
+      ],
+      "summary": "Owen initiates a diagnostic export from the emergency recovery tablet and copies the package with the disguised cable.",
+      "cause": "He needs to steal the protocol quickly without obvious network intrusion.",
+      "effect": "The export package is copied to embedded storage.",
+      "clueIdsGenerated": [
+        "clue-diagnostic-export",
+        "clue-cable-storage",
+        "clue-export-timestamp"
+      ],
+      "visibilityToPlayer": "Hidden until logs and cable are examined."
+    },
+    {
+      "eventId": "evt-007",
+      "sequenceOrder": 7,
+      "dateTimeLabel": "5:48 p.m.",
+      "locationId": "loc-war-room",
+      "participantCharacterIds": [],
+      "summary": "The dead-man alert fires when the copied package is accessed by the embedded device controller.",
+      "cause": "The copied encrypted package is opened after the export.",
+      "effect": "The incident appears like an outside intrusion unless timing is compared.",
+      "clueIdsGenerated": [
+        "clue-deadman-alert-delay"
+      ],
+      "visibilityToPlayer": "Visible through alert log."
+    },
+    {
+      "eventId": "evt-008",
+      "sequenceOrder": 8,
+      "dateTimeLabel": "5:52 p.m.",
+      "locationId": "loc-war-room",
+      "participantCharacterIds": [
+        "npc-owen-rusk",
+        "npc-lena-ortiz",
+        "npc-priya-shah"
+      ],
+      "summary": "The player arrives before executives decide whether to report a breach.",
+      "cause": "The company needs immediate incident assessment.",
+      "effect": "The investigation begins with all essential leads in the room.",
+      "clueIdsGenerated": [],
+      "visibilityToPlayer": "Opening scene."
+    }
+  ],
+  "clues": [
+    {
+      "clueId": "clue-deadman-alert-delay",
+      "title": "Delayed dead-man alert",
+      "playerFacingDescription": "The alert fired at 5:48, five minutes after the export window.",
+      "trueMeaning": "The file may have been copied earlier and only accessed later by the device controller.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-war-room",
+      "discoveryConditions": "Read the alert log or question Priya about alert behavior.",
+      "sourceOrProvenance": "Secure workstation alert system.",
+      "associatedTimelineEventId": "evt-007",
+      "associatedEvidenceIds": [
+        "ev-deadman-alert"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It prevents the player from assuming the theft happened exactly at alert time.",
+      "textFallback": "The alert time is later than the export time."
+    },
+    {
+      "clueId": "clue-diagnostic-export",
+      "title": "Diagnostic export capability",
+      "playerFacingDescription": "The recovery tablet can initiate a local diagnostic export.",
+      "trueMeaning": "A legitimate workflow could produce a copy without an outside hack.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-war-room",
+      "discoveryConditions": "Read the export log or question Priya about the tablet.",
+      "sourceOrProvenance": "Emergency recovery tablet and workstation log.",
+      "associatedTimelineEventId": "evt-006",
+      "associatedEvidenceIds": [
+        "ev-diagnostic-export-log"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It explains how the secure file became locally copyable.",
+      "textFallback": "The tablet can start a diagnostic export that stays local unless copied."
+    },
+    {
+      "clueId": "clue-export-timestamp",
+      "title": "Export timestamp",
+      "playerFacingDescription": "The diagnostic export occurred at 5:43, during the projector failure.",
+      "trueMeaning": "The opportunity window is tied to the cable scramble, not Lena's earlier argument.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-war-room",
+      "discoveryConditions": "Read the export log.",
+      "sourceOrProvenance": "Diagnostic export log.",
+      "associatedTimelineEventId": "evt-006",
+      "associatedEvidenceIds": [
+        "ev-diagnostic-export-log"
+      ],
+      "pointsTowardCharacterIds": [
+        "npc-owen-rusk"
+      ],
+      "clearsCharacterIds": [
+        "npc-lena-ortiz"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It narrows opportunity to the cable scramble.",
+      "textFallback": "The export timestamp falls inside the projector failure window."
+    },
+    {
+      "clueId": "clue-projector-window",
+      "title": "Projector failure window",
+      "playerFacingDescription": "The projector failure created a two-minute period when people moved around the workstation.",
+      "trueMeaning": "This is when the physical copy was possible.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-war-room",
+      "discoveryConditions": "Observe the scene or inspect the projector.",
+      "sourceOrProvenance": "Opening scene and room reconstruction.",
+      "associatedTimelineEventId": "evt-004",
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It establishes the opportunity window.",
+      "textFallback": "The failed projector caused a short scramble near the workstation."
+    },
+    {
+      "clueId": "clue-owen-cable-access",
+      "title": "Owen handled the cable bundle",
+      "playerFacingDescription": "Owen was the person reconnecting cables near the secure workstation.",
+      "trueMeaning": "Owen had physical access to use the disguised storage cable.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-war-room",
+      "discoveryConditions": "Question Owen about the cables or reconstruct the projector failure.",
+      "sourceOrProvenance": "Owen's statement and room positioning.",
+      "associatedTimelineEventId": "evt-005",
+      "associatedCharacterIds": [
+        "npc-owen-rusk"
+      ],
+      "pointsTowardCharacterIds": [
+        "npc-owen-rusk"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It links opportunity to the culprit.",
+      "textFallback": "Owen had the relevant cable access."
+    },
+    {
+      "clueId": "clue-cable-storage",
+      "title": "Storage-embedded cable",
+      "playerFacingDescription": "One USB-C cable in the bundle contains a small embedded storage controller.",
+      "trueMeaning": "The cable was the exfiltration device.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-war-room",
+      "discoveryConditions": "Closely inspect the cable bundle after establishing Owen's cable access.",
+      "sourceOrProvenance": "Cable bundle near the presentation laptop.",
+      "associatedTimelineEventId": "evt-006",
+      "associatedEvidenceIds": [
+        "ev-cable-storage"
+      ],
+      "pointsTowardCharacterIds": [
+        "npc-owen-rusk"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It proves the physical exfiltration method.",
+      "assetIds": [
+        "asset-cable-closeup"
+      ],
+      "textFallback": "A close inspection finds embedded storage inside one cable."
+    },
+    {
+      "clueId": "clue-owen-phone-alert",
+      "title": "Creditor message preview",
+      "playerFacingDescription": "Owen receives a visible private message demanding payment by morning.",
+      "trueMeaning": "The message opens the financial motive path.",
+      "importance": "supporting",
+      "discoveryLocationId": "loc-war-room",
+      "discoveryConditions": "Notice Owen's phone buzz or question him after he reacts to it.",
+      "sourceOrProvenance": "Owen's phone notification preview.",
+      "associatedTimelineEventId": "evt-001",
+      "associatedCharacterIds": [
+        "npc-owen-rusk"
+      ],
+      "associatedEvidenceIds": [
+        "ev-owen-phone-alert"
+      ],
+      "pointsTowardCharacterIds": [
+        "npc-owen-rusk"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It starts the motive trail.",
+      "textFallback": "A private payment demand appears on Owen's phone."
+    },
+    {
+      "clueId": "clue-owen-pressure",
+      "title": "Creditor threat",
+      "playerFacingDescription": "Owen received a private message demanding payment by morning.",
+      "trueMeaning": "Owen had urgent financial motive.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-war-room",
+      "discoveryConditions": "Question Owen about the phone-alert lead.",
+      "sourceOrProvenance": "Owen's evasiveness and creditor message preview.",
+      "associatedTimelineEventId": "evt-001",
+      "associatedCharacterIds": [
+        "npc-owen-rusk"
+      ],
+      "associatedEvidenceIds": [
+        "ev-owen-phone-alert"
+      ],
+      "pointsTowardCharacterIds": [
+        "npc-owen-rusk"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It establishes motive.",
+      "textFallback": "Owen has urgent financial pressure."
+    },
+    {
+      "clueId": "clue-lena-conflict",
+      "title": "Lena opposed the call",
+      "playerFacingDescription": "Lena argued for postponement before the incident.",
+      "trueMeaning": "Her conflict is real but not criminal.",
+      "importance": "supporting",
+      "discoveryLocationId": "loc-war-room",
+      "discoveryConditions": "Question Lena about the investor call.",
+      "sourceOrProvenance": "Lena's statement and whiteboard notes.",
+      "associatedTimelineEventId": "evt-002",
+      "associatedCharacterIds": [
+        "npc-lena-ortiz"
+      ],
+      "supportsSolution": false,
+      "resolvedInFinalReveal": "It explains the red herring.",
+      "textFallback": "Lena wanted disclosure, not theft."
+    },
+    {
+      "clueId": "clue-lena-not-leaker",
+      "title": "Lena's ethical conflict",
+      "playerFacingDescription": "Lena's resignation draft concerns disclosure ethics, not selling or leaking files.",
+      "trueMeaning": "Lena is a red herring; she opposed the call but did not steal the file.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-war-room",
+      "discoveryConditions": "Read Lena's resignation draft or question her about her position during the projector failure.",
+      "sourceOrProvenance": "Lena's folder and statement.",
+      "associatedTimelineEventId": "evt-002",
+      "associatedCharacterIds": [
+        "npc-lena-ortiz"
+      ],
+      "associatedEvidenceIds": [
+        "ev-lena-resignation-draft"
+      ],
+      "clearsCharacterIds": [
+        "npc-lena-ortiz"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It clears the apparent suspect and explains the red herring.",
+      "textFallback": "The resignation draft is ethical, not criminal."
+    },
+    {
+      "clueId": "clue-priya-workstation-control",
+      "title": "Priya's pre-call audit",
+      "playerFacingDescription": "Priya's audit note shows the protocol was contained at 5:32.",
+      "trueMeaning": "The theft happened after the audit, narrowing the timeline.",
+      "importance": "supporting",
+      "discoveryLocationId": "loc-war-room",
+      "discoveryConditions": "Question Priya about the audit or read the audit note.",
+      "sourceOrProvenance": "Priya's audit note.",
+      "associatedTimelineEventId": "evt-003",
+      "associatedCharacterIds": [
+        "npc-priya-shah"
+      ],
+      "associatedEvidenceIds": [
+        "ev-priya-audit-note"
+      ],
+      "clearsCharacterIds": [
+        "npc-priya-shah"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It narrows when the theft could have occurred.",
+      "textFallback": "The file was still contained at 5:32."
+    }
+  ],
+  "redHerrings": [
+    {
+      "redHerringId": "red-lena-resignation",
+      "title": "Lena's resignation draft",
+      "appearsToSuggest": "Lena sabotaged the investor call or leaked the protocol because she opposed the launch.",
+      "innocentExplanation": "Lena opposed the call for safety-disclosure reasons. Her resignation draft shows ethical conflict, not theft.",
+      "discoveryConditions": "Read the resignation draft and compare it with the export timing and cable access.",
+      "clearanceConditions": "Discover the draft's actual content, the export timestamp, and Owen's cable access.",
+      "relatedClueIds": [
+        "clue-lena-conflict",
+        "clue-lena-not-leaker",
+        "clue-export-timestamp",
+        "clue-owen-cable-access"
+      ],
+      "fairnessNotes": "The red herring is cleared by player-visible timing and motive evidence."
+    }
+  ],
+  "evidence": [
+    {
+      "evidenceId": "ev-deadman-alert",
+      "title": "Dead-man alert log",
+      "type": "document",
+      "description": "The workstation alert log showing protocol package access at 5:48 p.m.",
+      "currentLocationId": "loc-war-room",
+      "createdDuringTimelineEventId": "evt-007",
+      "chainOfCustody": [
+        "Automatically generated by the secure workstation alert system."
+      ],
+      "accessHistory": [
+        "Visible on the secure workstation after the alert."
+      ],
+      "discoveryConditions": "Read the alert log.",
+      "associatedClueIds": [
+        "clue-deadman-alert-delay"
+      ],
+      "assetIds": [
+        "asset-alert-log"
+      ]
+    },
+    {
+      "evidenceId": "ev-diagnostic-export-log",
+      "title": "Diagnostic export log",
+      "type": "document",
+      "description": "A log showing a diagnostic export initiated by the emergency recovery tablet at 5:43 p.m.",
+      "currentLocationId": "loc-war-room",
+      "createdDuringTimelineEventId": "evt-006",
+      "chainOfCustody": [
+        "Generated by the emergency recovery tablet and secure workstation."
+      ],
+      "accessHistory": [
+        "Stored locally on the secure workstation."
+      ],
+      "discoveryConditions": "Read the export log or ask Priya about the tablet workflow.",
+      "associatedClueIds": [
+        "clue-diagnostic-export",
+        "clue-export-timestamp"
+      ],
+      "assetIds": []
+    },
+    {
+      "evidenceId": "ev-cable-storage",
+      "title": "Storage-embedded USB-C cable",
+      "type": "object",
+      "description": "A USB-C cable that appears ordinary but contains embedded storage hardware.",
+      "currentLocationId": "loc-war-room",
+      "createdDuringTimelineEventId": "evt-006",
+      "chainOfCustody": [
+        "Present in the cable bundle near the presentation laptop."
+      ],
+      "accessHistory": [
+        "Handled during the projector failure.",
+        "Recoverable by close inspection of the cable bundle."
+      ],
+      "discoveryConditions": "Closely inspect the cable bundle after identifying cable access as important.",
+      "associatedClueIds": [
+        "clue-cable-storage"
+      ],
+      "assetIds": [
+        "asset-cable-closeup"
+      ]
+    },
+    {
+      "evidenceId": "ev-owen-phone-alert",
+      "title": "Creditor message preview",
+      "type": "document",
+      "description": "A private message preview on Owen's phone demanding payment by morning.",
+      "currentLocationId": "loc-war-room",
+      "createdDuringTimelineEventId": "evt-001",
+      "chainOfCustody": [
+        "Received on Owen's phone before the investor call."
+      ],
+      "accessHistory": [
+        "Visible only as a notification preview or through careful questioning."
+      ],
+      "discoveryConditions": "Notice the phone alert or question Owen after he reacts to it.",
+      "associatedClueIds": [
+        "clue-owen-phone-alert",
+        "clue-owen-pressure"
+      ],
+      "assetIds": []
+    },
+    {
+      "evidenceId": "ev-lena-resignation-draft",
+      "title": "Unsent resignation draft",
+      "type": "document",
+      "description": "A printed draft in Lena's folder focused on disclosure ethics.",
+      "currentLocationId": "loc-war-room",
+      "createdDuringTimelineEventId": "evt-002",
+      "chainOfCustody": [
+        "Printed by Lena before the call and kept in her folder."
+      ],
+      "accessHistory": [
+        "Available in the war room folder stack."
+      ],
+      "discoveryConditions": "Read Lena's folder.",
+      "associatedClueIds": [
+        "clue-lena-conflict",
+        "clue-lena-not-leaker"
+      ],
+      "assetIds": []
+    },
+    {
+      "evidenceId": "ev-priya-audit-note",
+      "title": "Priya's audit note",
+      "type": "document",
+      "description": "A containment audit note showing the protocol remained inside the workstation at 5:32 p.m.",
+      "currentLocationId": "loc-war-room",
+      "createdDuringTimelineEventId": "evt-003",
+      "chainOfCustody": [
+        "Created by Priya during the pre-call audit."
+      ],
+      "accessHistory": [
+        "Kept beside the secure workstation."
+      ],
+      "discoveryConditions": "Question Priya about the audit or inspect the audit note.",
+      "associatedClueIds": [
+        "clue-priya-workstation-control"
+      ],
+      "assetIds": []
+    }
+  ],
+  "scenes": [
+    {
+      "sceneId": "scene-opening-war-room",
+      "locationId": "loc-war-room",
+      "entryConditions": "Start of play.",
+      "openingNarration": "The investor call is supposed to start in eight minutes. Instead, the secure workstation is flashing a dead-man alert: the recovery protocol may have left the room. Three people are still inside the war room, and each has a reason to want the call stopped or saved.",
+      "availableCharacterIds": [
+        "npc-owen-rusk",
+        "npc-lena-ortiz",
+        "npc-priya-shah"
+      ],
+      "availableClueIds": [
+        "clue-deadman-alert-delay",
+        "clue-diagnostic-export",
+        "clue-export-timestamp",
+        "clue-projector-window",
+        "clue-owen-cable-access",
+        "clue-cable-storage",
+        "clue-owen-phone-alert",
+        "clue-owen-pressure",
+        "clue-lena-conflict",
+        "clue-lena-not-leaker",
+        "clue-priya-workstation-control"
+      ],
+      "availableEvidenceIds": [
+        "ev-deadman-alert",
+        "ev-diagnostic-export-log",
+        "ev-cable-storage",
+        "ev-owen-phone-alert",
+        "ev-lena-resignation-draft",
+        "ev-priya-audit-note"
+      ],
+      "likelyPlayerQuestions": [
+        "Can I read the alert log?",
+        "Who touched the cables?",
+        "What does the recovery tablet do?",
+        "Why was Lena arguing before the call?",
+        "What was Owen doing during the projector failure?"
+      ],
+      "safeAnswers": {
+        "where_to_start": "The alert log, export log, cable bundle, and three NPCs are all fair starting points.",
+        "outside_hacker": "Nothing in the room proves an outside hacker yet; the logs and cable bundle can test that theory.",
+        "more_locations": "The case is contained in the secure war room."
+      },
+      "hiddenFactsNotYetRevealed": [
+        "Who used the diagnostic export.",
+        "The storage-embedded cable's role.",
+        "The financial motive.",
+        "The false frame around Lena."
+      ],
+      "exitLeads": [
+        "Compare the alert time with the export time.",
+        "Inspect the cable bundle closely.",
+        "Question Owen about the cable scramble.",
+        "Question Priya about the tablet and audit.",
+        "Question Lena about the investor call conflict."
+      ]
+    },
+    {
+      "sceneId": "scene-deduction",
+      "locationId": "loc-war-room",
+      "entryConditions": "Authored leads are exhausted or the player asks to summarize and accuse.",
+      "openingNarration": "The available evidence now turns on deduction: timing, export workflow, cable access, motive, and the false lead around Lena.",
+      "availableCharacterIds": [
+        "npc-owen-rusk",
+        "npc-lena-ortiz",
+        "npc-priya-shah"
+      ],
+      "availableClueIds": [
+        "clue-deadman-alert-delay",
+        "clue-diagnostic-export",
+        "clue-export-timestamp",
+        "clue-owen-cable-access",
+        "clue-cable-storage",
+        "clue-owen-pressure",
+        "clue-lena-not-leaker"
+      ],
+      "availableEvidenceIds": [
+        "ev-deadman-alert",
+        "ev-diagnostic-export-log",
+        "ev-cable-storage",
+        "ev-owen-phone-alert"
+      ],
+      "likelyPlayerQuestions": [
+        "Who should I accuse?",
+        "What proof do I need?",
+        "Can I summarize the case board?"
+      ],
+      "safeAnswers": {
+        "deduction_prompt": "Reconcile the alert timing, export log, cable access, physical cable, and motive.",
+        "unsupported_new_lead": "No new investigative source is needed; the remaining task is deduction."
+      },
+      "hiddenFactsNotYetRevealed": [
+        "Full final resolution until accusation or spoiler request."
+      ],
+      "exitLeads": [
+        "Make a final accusation with culprit, motive, method, opportunity, and proof."
+      ]
+    }
+  ],
+  "discoveryRules": [
+    {
+      "ruleId": "dr-opening-observe",
+      "triggerType": "observe_scene",
+      "description": "Player observes the war room at the start of play.",
+      "locationId": "loc-war-room",
+      "revealsClueIds": [
+        "clue-projector-window"
+      ],
+      "revealsLocationIds": [
+        "loc-war-room"
+      ],
+      "updatesCaseBoardSections": [
+        "knownFacts",
+        "pendingLeads"
+      ],
+      "discoveryText": "The failed projector and cable scramble define a short window when people moved around the secure workstation.",
+      "repeatText": "The same war-room leads remain available.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Opening observation reveals only player-visible starting leads."
+    },
+    {
+      "ruleId": "dr-read-alert-log",
+      "triggerType": "read_document",
+      "description": "Player reads the dead-man alert log.",
+      "locationId": "loc-war-room",
+      "documentId": "doc-alert-log",
+      "revealsClueIds": [
+        "clue-deadman-alert-delay"
+      ],
+      "revealsEvidenceIds": [
+        "ev-deadman-alert"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "timelineNotes"
+      ],
+      "discoveryText": "The alert fired at 5:48, after the export window.",
+      "failureText": "Without reading the alert log, the timing remains unclear.",
+      "repeatText": "The alert timing remains 5:48.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Starts the timing puzzle."
+    },
+    {
+      "ruleId": "dr-read-export-log",
+      "triggerType": "read_document",
+      "description": "Player reads the diagnostic export log.",
+      "locationId": "loc-war-room",
+      "documentId": "doc-export-log",
+      "revealsClueIds": [
+        "clue-diagnostic-export",
+        "clue-export-timestamp"
+      ],
+      "revealsEvidenceIds": [
+        "ev-diagnostic-export-log"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "timelineNotes",
+        "openQuestions"
+      ],
+      "discoveryText": "The emergency recovery tablet initiated a diagnostic export at 5:43.",
+      "failureText": "Without the export log, the export method remains unclear.",
+      "repeatText": "The export log still shows 5:43.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Connects method to the opportunity window."
+    },
+    {
+      "ruleId": "dr-inspect-projector",
+      "triggerType": "inspect_object",
+      "description": "Player inspects the failed projector setup.",
+      "locationId": "loc-war-room",
+      "objectId": "obj-projector",
+      "revealsClueIds": [
+        "clue-projector-window"
+      ],
+      "updatesCaseBoardSections": [
+        "knownFacts",
+        "timelineNotes"
+      ],
+      "discoveryText": "The projector failure forced people to move near the cable bundle and workstation.",
+      "repeatText": "The projector failure remains the key disruption.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Confirms the window."
+    },
+    {
+      "ruleId": "dr-question-owen-cables",
+      "triggerType": "question_npc",
+      "description": "Player questions Owen about the cables.",
+      "locationId": "loc-war-room",
+      "npcId": "npc-owen-rusk",
+      "topicId": "topic-owen-cables",
+      "revealsClueIds": [
+        "clue-owen-cable-access"
+      ],
+      "updatesCaseBoardSections": [
+        "suspects",
+        "timelineNotes"
+      ],
+      "discoveryText": "Owen admits he handled the cables, but frames it as helping restore the call.",
+      "repeatText": "Owen still says he was only helping restore the call.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Links opportunity to a specific suspect."
+    },
+    {
+      "ruleId": "dr-inspect-cable-bundle",
+      "triggerType": "closely_inspect_object",
+      "description": "Player closely inspects the cable bundle.",
+      "locationId": "loc-war-room",
+      "objectId": "obj-cable-bundle",
+      "prerequisiteClueIds": [
+        "clue-owen-cable-access"
+      ],
+      "revealsClueIds": [
+        "clue-cable-storage"
+      ],
+      "revealsEvidenceIds": [
+        "ev-cable-storage"
+      ],
+      "revealsAssetIds": [
+        "asset-cable-closeup"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "recoveredEvidence",
+        "openQuestions"
+      ],
+      "discoveryText": "One cable is heavier than expected and contains embedded storage.",
+      "failureText": "At a glance, the cables look ordinary. A closer inspection is needed.",
+      "repeatText": "The suspicious cable remains the physical exfiltration device.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Proves method after opportunity is established."
+    },
+    {
+      "ruleId": "dr-notice-owen-phone",
+      "triggerType": "observe_scene",
+      "description": "Player notices Owen's phone notification or his reaction to it.",
+      "locationId": "loc-war-room",
+      "npcId": "npc-owen-rusk",
+      "revealsClueIds": [
+        "clue-owen-phone-alert"
+      ],
+      "revealsEvidenceIds": [
+        "ev-owen-phone-alert"
+      ],
+      "updatesCaseBoardSections": [
+        "suspects",
+        "openQuestions"
+      ],
+      "discoveryText": "Owen's phone flashes a private payment demand before he turns it face down.",
+      "failureText": "Without noticing the phone, Owen's motive remains less concrete.",
+      "repeatText": "The phone alert remains a motive lead.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Enables fair questioning about financial pressure."
+    },
+    {
+      "ruleId": "dr-question-owen-pressure",
+      "triggerType": "question_npc",
+      "description": "Player questions Owen about financial pressure.",
+      "locationId": "loc-war-room",
+      "npcId": "npc-owen-rusk",
+      "topicId": "topic-owen-finances",
+      "prerequisiteClueIds": [
+        "clue-owen-phone-alert"
+      ],
+      "revealsClueIds": [
+        "clue-owen-pressure"
+      ],
+      "revealsEvidenceIds": [
+        "ev-owen-phone-alert"
+      ],
+      "updatesCaseBoardSections": [
+        "suspects",
+        "evidence"
+      ],
+      "discoveryText": "Owen's evasiveness around the creditor message gives him a concrete financial motive.",
+      "failureText": "Without a visible reason to ask about his finances, the question remains too broad.",
+      "repeatText": "Owen still refuses to explain the payment demand.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Motive path requires prerequisite support."
+    },
+    {
+      "ruleId": "dr-question-lena-conflict",
+      "triggerType": "question_npc",
+      "description": "Player questions Lena about opposing the call.",
+      "locationId": "loc-war-room",
+      "npcId": "npc-lena-ortiz",
+      "topicId": "topic-lena-conflict",
+      "revealsClueIds": [
+        "clue-lena-conflict"
+      ],
+      "updatesCaseBoardSections": [
+        "suspects",
+        "knownFacts"
+      ],
+      "discoveryText": "Lena opposed the call because she believed the disclosure was incomplete.",
+      "repeatText": "Lena repeats that her dispute was about disclosure.",
+      "isOptional": false,
+      "isRedHerring": true,
+      "validationNotes": "Creates a fair apparent motive without proving guilt."
+    },
+    {
+      "ruleId": "dr-read-lena-folder",
+      "triggerType": "read_document",
+      "description": "Player reads Lena's resignation draft.",
+      "locationId": "loc-war-room",
+      "documentId": "doc-resignation-draft",
+      "isRedHerring": true,
+      "revealsClueIds": [
+        "clue-lena-not-leaker"
+      ],
+      "revealsEvidenceIds": [
+        "ev-lena-resignation-draft"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "clearedSuspects",
+        "closedLeads"
+      ],
+      "discoveryText": "The resignation draft is about ethics and disclosure, not leaking or selling files.",
+      "failureText": "Without reading the draft, Lena's motive remains ambiguous.",
+      "repeatText": "The draft still points to ethical conflict, not theft.",
+      "isOptional": false,
+      "validationNotes": "Clears the red herring."
+    },
+    {
+      "ruleId": "dr-question-priya-audit",
+      "triggerType": "question_npc",
+      "description": "Player questions Priya about her pre-call audit.",
+      "locationId": "loc-war-room",
+      "npcId": "npc-priya-shah",
+      "topicId": "topic-priya-audit",
+      "revealsClueIds": [
+        "clue-priya-workstation-control"
+      ],
+      "revealsEvidenceIds": [
+        "ev-priya-audit-note"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "timelineNotes"
+      ],
+      "discoveryText": "Priya's audit places the protocol inside the workstation at 5:32.",
+      "repeatText": "Priya repeats that the file was still contained at 5:32.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Narrows timeline and helps clear Priya."
+    },
+    {
+      "ruleId": "dr-compare-alert-export",
+      "triggerType": "compare_evidence",
+      "description": "Player compares the alert and export times.",
+      "locationId": "loc-war-room",
+      "prerequisiteClueIds": [
+        "clue-deadman-alert-delay",
+        "clue-export-timestamp"
+      ],
+      "revealsClueIds": [],
+      "updatesCaseBoardSections": [
+        "workingTheories",
+        "timelineNotes"
+      ],
+      "discoveryText": "Comparing the export and alert times shows the file was copied before the alert fired.",
+      "failureText": "The comparison is not meaningful until both timings are known.",
+      "repeatText": "The timing comparison still points to a local copy before the alert.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Supports deduction without introducing a new clue ID."
+    },
+    {
+      "ruleId": "dr-final-accuse-owen",
+      "triggerType": "accuse",
+      "description": "Player makes a final accusation against Owen.",
+      "locationId": "loc-war-room",
+      "npcId": "npc-owen-rusk",
+      "prerequisiteClueIds": [
+        "clue-diagnostic-export",
+        "clue-export-timestamp",
+        "clue-owen-cable-access",
+        "clue-cable-storage",
+        "clue-owen-pressure"
+      ],
+      "updatesCaseBoardSections": [
+        "workingTheories"
+      ],
+      "discoveryText": "The accusation is supported by motive, opportunity, method, and timing.",
+      "failureText": "The accusation is not yet supported by enough discovered evidence.",
+      "repeatText": "The accusation turns on the same evidence chain.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "The GM should reveal the canonical final resolution only after the required proof threshold is met."
+    }
+  ],
+  "caseBoardSeed": {
+    "knownFacts": [
+      "A confidential recovery protocol may have been copied from the secure workstation.",
+      "A dead-man alert fired minutes before an investor call.",
+      "The incident occurred inside the secure war room.",
+      "Three people were present: Owen, Lena, and Priya."
+    ],
+    "knownCharacters": [
+      "npc-owen-rusk",
+      "npc-lena-ortiz",
+      "npc-priya-shah"
+    ],
+    "knownLocations": [
+      "loc-war-room"
+    ],
+    "openQuestions": [
+      "Was this an outside breach or an internal copy?",
+      "Why did the alert fire after the export window?",
+      "Who had access to the secure workstation during the projector failure?",
+      "Is Lena's opposition to the call motive or misdirection?",
+      "What did Owen handle during the cable scramble?"
+    ],
+    "activeLeads": [
+      "Read the alert log.",
+      "Inspect the cable bundle.",
+      "Question Owen about the projector failure.",
+      "Question Lena about the investor call argument.",
+      "Question Priya about the audit and recovery tablet."
+    ],
+    "discoveredClueIds": [],
+    "discoveredEvidenceIds": [],
+    "seenAssetIds": [],
+    "playerTheories": []
+  },
+  "assetManifest": [
+    {
+      "assetId": "asset-war-room-scene",
+      "title": "Secure war room",
+      "assetType": "scene_image",
+      "associatedLocationId": "loc-war-room",
+      "associatedClueIds": [],
+      "discoveryConditions": "Optional on player request; image mode is off by default.",
+      "textFallback": "A secure conference room with a workstation, projector, whiteboard, cable bundle, and folders from the disrupted investor call.",
+      "retrievalLabel": "Secure war room",
+      "spoilerLevel": "low",
+      "isCanonicalEvidence": false,
+      "containsHiddenClues": false,
+      "imagePromptGuidance": "Show only the authored room objects. No hidden culprit action, unlisted NPCs, extra rooms, extra exits, or visual clue absent from text.",
+      "hasBeenShownToPlayer": false
+    },
+    {
+      "assetId": "asset-cable-closeup",
+      "title": "Close-up of the cable bundle",
+      "assetType": "evidence_photo",
+      "associatedLocationId": "loc-war-room",
+      "associatedClueIds": [
+        "clue-cable-storage"
+      ],
+      "discoveryConditions": "Optional after the cable bundle has been closely inspected in text.",
+      "textFallback": "A close-up of several USB-C cables, one slightly heavier and thicker than the others.",
+      "retrievalLabel": "Cable bundle close-up",
+      "spoilerLevel": "medium",
+      "isCanonicalEvidence": false,
+      "containsHiddenClues": false,
+      "imagePromptGuidance": "Support the text discovery only; do not add labels, fingerprints, names, or extra clues.",
+      "hasBeenShownToPlayer": false
+    },
+    {
+      "assetId": "asset-alert-log",
+      "title": "Dead-man alert log",
+      "assetType": "document",
+      "associatedLocationId": "loc-war-room",
+      "associatedClueIds": [
+        "clue-deadman-alert-delay"
+      ],
+      "discoveryConditions": "Optional after the alert log is read in text.",
+      "textFallback": "Alert: protocol package accessed at 5:48 p.m.",
+      "retrievalLabel": "Dead-man alert log",
+      "spoilerLevel": "low",
+      "isCanonicalEvidence": false,
+      "containsHiddenClues": false,
+      "imagePromptGuidance": "Show only the authored timing already revealed in text.",
+      "hasBeenShownToPlayer": false
+    },
+    {
+      "assetId": "asset-whiteboard",
+      "title": "Risk disclosure whiteboard",
+      "assetType": "evidence_photo",
+      "associatedLocationId": "loc-war-room",
+      "associatedClueIds": [
+        "clue-lena-conflict"
+      ],
+      "discoveryConditions": "Optional after Lena's disclosure conflict is established in text.",
+      "textFallback": "A whiteboard with risk-disclosure notes and a circled question: 'Are we telling them enough?'",
+      "retrievalLabel": "Risk disclosure whiteboard",
+      "spoilerLevel": "low",
+      "isCanonicalEvidence": false,
+      "containsHiddenClues": false,
+      "imagePromptGuidance": "Support Lena's ethical conflict without adding hidden facts or extra documents.",
+      "hasBeenShownToPlayer": false
+    }
+  ],
+  "validationTargets": {
+    "mustResolveClueIds": [
+      "clue-deadman-alert-delay",
+      "clue-diagnostic-export",
+      "clue-export-timestamp",
+      "clue-projector-window",
+      "clue-owen-cable-access",
+      "clue-cable-storage",
+      "clue-owen-pressure",
+      "clue-lena-not-leaker"
+    ],
+    "mustExplainRedHerringIds": [
+      "red-lena-resignation"
+    ],
+    "mustValidateTimelineEventIds": [
+      "evt-001",
+      "evt-002",
+      "evt-003",
+      "evt-004",
+      "evt-005",
+      "evt-006",
+      "evt-007",
+      "evt-008"
+    ],
+    "mustValidateEvidenceIds": [
+      "ev-deadman-alert",
+      "ev-diagnostic-export-log",
+      "ev-cable-storage",
+      "ev-owen-phone-alert",
+      "ev-lena-resignation-draft",
+      "ev-priya-audit-note"
+    ],
+    "mustSupportAccusationWithClueIds": [
+      "clue-diagnostic-export",
+      "clue-export-timestamp",
+      "clue-owen-cable-access",
+      "clue-cable-storage",
+      "clue-owen-pressure"
+    ],
+    "knownRiskAreas": [
+      "Keep image mode off by default.",
+      "Do not let background executives or hallway staff become investigative sources.",
+      "Do not introduce an outside hacker suspect as a real branch."
+    ]
+  },
+  "canonicalAssetInventory": {
+    "npcIds": [
+      "npc-owen-rusk",
+      "npc-lena-ortiz",
+      "npc-priya-shah"
+    ],
+    "locationIds": [
+      "loc-war-room"
+    ],
+    "objectIds": [
+      "obj-secure-workstation",
+      "obj-emergency-recovery-tablet",
+      "obj-cable-bundle",
+      "obj-projector",
+      "obj-whiteboard",
+      "obj-conference-table",
+      "obj-lena-folder",
+      "obj-owen-phone"
+    ],
+    "evidenceIds": [
+      "ev-deadman-alert",
+      "ev-diagnostic-export-log",
+      "ev-cable-storage",
+      "ev-owen-phone-alert",
+      "ev-lena-resignation-draft",
+      "ev-priya-audit-note"
+    ],
+    "documentIds": [
+      "doc-alert-log",
+      "doc-export-log",
+      "doc-audit-note",
+      "doc-resignation-draft",
+      "doc-creditor-message"
+    ],
+    "imageIds": [
+      "asset-war-room-scene",
+      "asset-cable-closeup",
+      "asset-alert-log",
+      "asset-whiteboard"
+    ],
+    "discoveryRuleIds": [
+      "dr-opening-observe",
+      "dr-read-alert-log",
+      "dr-read-export-log",
+      "dr-inspect-projector",
+      "dr-question-owen-cables",
+      "dr-inspect-cable-bundle",
+      "dr-notice-owen-phone",
+      "dr-question-owen-pressure",
+      "dr-question-lena-conflict",
+      "dr-read-lena-folder",
+      "dr-question-priya-audit",
+      "dr-compare-alert-export",
+      "dr-final-accuse-owen"
+    ],
+    "interviewTopicIds": [
+      "topic-owen-timeline",
+      "topic-owen-cables",
+      "topic-owen-finances",
+      "topic-lena-conflict",
+      "topic-lena-resignation",
+      "topic-lena-timeline",
+      "topic-priya-audit",
+      "topic-priya-tablet",
+      "topic-priya-alert"
+    ],
+    "sceneIds": [
+      "scene-opening-war-room",
+      "scene-deduction"
+    ],
+    "clueIds": [
+      "clue-deadman-alert-delay",
+      "clue-diagnostic-export",
+      "clue-export-timestamp",
+      "clue-projector-window",
+      "clue-owen-cable-access",
+      "clue-cable-storage",
+      "clue-owen-phone-alert",
+      "clue-owen-pressure",
+      "clue-lena-conflict",
+      "clue-lena-not-leaker",
+      "clue-priya-workstation-control"
+    ],
+    "redHerringIds": [
+      "red-lena-resignation"
+    ],
+    "visualDefinitionIds": [
+      "visual-war-room-main",
+      "visual-cable-closeup",
+      "visual-alert-log",
+      "visual-whiteboard"
+    ],
+    "notes": "All investigative content is contained in the secure war room. Background hallway executives are atmospheric only."
+  },
+  "runtimeBudgets": {
+    "maxMajorNPCs": 3,
+    "maxInterviewableNPCs": 3,
+    "maxBackgroundCharacters": 2,
+    "maxPrimaryLocations": 1,
+    "maxSecondaryLocations": 0,
+    "maxSearchableObjects": 8,
+    "maxEvidenceItems": 10,
+    "maxDocuments": 5,
+    "maxImages": 4,
+    "maxDiscoveryRules": 14,
+    "maxRedHerrings": 1,
+    "maxInterviewTopics": 10,
+    "maxHints": 3,
+    "maxPlayerFacingBranches": 6,
+    "hardBudgetFields": [
+      "maxMajorNPCs",
+      "maxInterviewableNPCs",
+      "maxPrimaryLocations",
+      "maxSecondaryLocations",
+      "maxRedHerrings"
+    ],
+    "softBudgetFields": [
+      "maxImages",
+      "maxHints"
+    ],
+    "notes": "Quick Mystery scope: one primary location, three major NPCs, no nested secrets."
+  },
+  "visualDefinitions": [
+    {
+      "visualDefinitionId": "visual-war-room-main",
+      "locationId": "loc-war-room",
+      "assetId": "asset-war-room-scene",
+      "imageType": "scene",
+      "canonicalDescription": "A secure conference room with a workstation, wall projector, cable bundle, whiteboard, conference table, and folders.",
+      "requiredVisibleObjectIds": [
+        "obj-secure-workstation",
+        "obj-projector",
+        "obj-cable-bundle",
+        "obj-whiteboard",
+        "obj-conference-table"
+      ],
+      "forbiddenObjectIds": [],
+      "fixedGeometryNotes": "All gameplay remains in one glass-walled conference room; do not add extra doors, rooms, or hidden spaces.",
+      "cameraAllowedViews": [
+        "wide room view"
+      ],
+      "hiddenElementRules": [
+        "Do not depict culprit action.",
+        "Do not depict storage hardware before textual discovery.",
+        "Do not add unlisted NPCs."
+      ],
+      "continuityAnchor": "Workstation at one end of table, projector wall opposite, cable bundle near laptop.",
+      "textFallback": "A secure conference room with a workstation, projector, whiteboard, cable bundle, and folders from the disrupted investor call.",
+      "validationNotes": "Scene image is optional and supportive only."
+    },
+    {
+      "visualDefinitionId": "visual-cable-closeup",
+      "locationId": "loc-war-room",
+      "assetId": "asset-cable-closeup",
+      "imageType": "evidence_photo",
+      "canonicalDescription": "A close-up of several USB-C cables, one slightly heavier and thicker than the others.",
+      "requiredVisibleObjectIds": [
+        "obj-cable-bundle"
+      ],
+      "forbiddenObjectIds": [],
+      "fixedGeometryNotes": "Do not label the cable with culprit identity.",
+      "cameraAllowedViews": [
+        "close-up"
+      ],
+      "hiddenElementRules": [
+        "Only show details already discovered in text."
+      ],
+      "continuityAnchor": "Cable bundle near presentation laptop.",
+      "textFallback": "A close-up of several USB-C cables, one slightly heavier and thicker than the others.",
+      "validationNotes": "No image-only clue."
+    },
+    {
+      "visualDefinitionId": "visual-alert-log",
+      "locationId": "loc-war-room",
+      "assetId": "asset-alert-log",
+      "imageType": "evidence_photo",
+      "canonicalDescription": "A simple alert log showing package access at 5:48 p.m.",
+      "requiredVisibleObjectIds": [
+        "obj-secure-workstation"
+      ],
+      "forbiddenObjectIds": [],
+      "fixedGeometryNotes": "Do not add extra log entries.",
+      "cameraAllowedViews": [
+        "document close-up"
+      ],
+      "hiddenElementRules": [
+        "Show only timing already revealed in text."
+      ],
+      "continuityAnchor": "Secure workstation alert display.",
+      "textFallback": "Alert: protocol package accessed at 5:48 p.m.",
+      "validationNotes": "Text remains canonical."
+    },
+    {
+      "visualDefinitionId": "visual-whiteboard",
+      "locationId": "loc-war-room",
+      "assetId": "asset-whiteboard",
+      "imageType": "evidence_photo",
+      "canonicalDescription": "A whiteboard with risk-disclosure notes and a circled question about whether the company is telling investors enough.",
+      "requiredVisibleObjectIds": [
+        "obj-whiteboard"
+      ],
+      "forbiddenObjectIds": [],
+      "fixedGeometryNotes": "Do not add new document text or accusations.",
+      "cameraAllowedViews": [
+        "whiteboard view"
+      ],
+      "hiddenElementRules": [
+        "Support Lena's ethical conflict only."
+      ],
+      "continuityAnchor": "Whiteboard near room wall.",
+      "textFallback": "A whiteboard with risk-disclosure notes and a circled question: 'Are we telling them enough?'",
+      "validationNotes": "Red herring support, not hidden solution."
+    }
+  ],
+  "imageGalleryPolicy": {
+    "enabled": true,
+    "recallCommandsSupported": true,
+    "reusePriorImagesByDefault": true,
+    "galleryLabelsRequired": true,
+    "notes": "Assign displayed images a runtime number and reuse prior images on recall instead of regenerating."
+  },
+  "imageReusePolicy": {
+    "sameSceneReuseRequired": true,
+    "newViewRequiresPlayerRequest": true,
+    "regenerationAllowedWhen": "Only when no prior image exists or the player asks for an authored new view.",
+    "continuityChecksRequired": true,
+    "notes": "Text is canonical. If image generation cannot preserve fidelity, provide text fallback."
+  },
+  "evidencePhotoDefinitions": [
+    {
+      "visualDefinitionId": "visual-cable-closeup",
+      "locationId": "loc-war-room",
+      "assetId": "asset-cable-closeup",
+      "imageType": "evidence_photo",
+      "canonicalDescription": "A close-up of the suspicious cable after textual discovery.",
+      "requiredVisibleObjectIds": [
+        "obj-cable-bundle"
+      ],
+      "hiddenElementRules": [
+        "No clue meaning beyond text."
+      ],
+      "textFallback": "A close-up of several USB-C cables, one slightly heavier and thicker than the others."
+    }
+  ],
+  "cutawayDefinitions": []
+}
