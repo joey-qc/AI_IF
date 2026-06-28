@@ -6,8 +6,8 @@
     "caseBoardSchemaVersion": "1.0",
     "sourceSeedFile": "games/quick-002-the-silent-gavel/case-board-seed.json",
     "createdAt": "2026-06-27T00:00:00-04:00",
-    "lastUpdatedAt": "2026-06-27T00:00:00-04:00",
-    "lastUpdatedTurn": 0,
+    "lastUpdatedAt": "2026-06-28T00:00:00-04:00",
+    "lastUpdatedTurn": 1,
     "playerVisibleOnly": true
   },
   "knownFacts": [
@@ -17,18 +17,7 @@
       "source": "opening report",
       "turnDiscovered": 0,
       "confidence": "reported",
-      "refs": {
-        "clueIds": [],
-        "npcIds": [],
-        "locationIds": [
-          "loc-judge-chambers"
-        ],
-        "objectIds": [
-          "object-display-niche"
-        ],
-        "evidenceIds": [],
-        "imageIds": []
-      }
+      "refs": { "clueIds": [], "npcIds": [], "locationIds": ["loc-judge-chambers"], "objectIds": ["object-display-niche"], "evidenceIds": [], "imageIds": [] }
     },
     {
       "factId": "fact-reception-setting",
@@ -36,16 +25,7 @@
       "source": "opening report",
       "turnDiscovered": 0,
       "confidence": "reported",
-      "refs": {
-        "clueIds": [],
-        "npcIds": [],
-        "locationIds": [
-          "loc-judge-chambers"
-        ],
-        "objectIds": [],
-        "evidenceIds": [],
-        "imageIds": []
-      }
+      "refs": { "clueIds": [], "npcIds": [], "locationIds": ["loc-judge-chambers"], "objectIds": [], "evidenceIds": [], "imageIds": [] }
     },
     {
       "factId": "fact-three-staff-access",
@@ -53,44 +33,40 @@
       "source": "opening report",
       "turnDiscovered": 0,
       "confidence": "reported",
-      "refs": {
-        "clueIds": [],
-        "npcIds": [
-          "char-miriam-vale",
-          "char-roland-pierce",
-          "char-elias-quill"
-        ],
-        "locationIds": [
-          "loc-judge-chambers"
-        ],
-        "objectIds": [],
-        "evidenceIds": [],
-        "imageIds": []
-      }
+      "refs": { "clueIds": [], "npcIds": ["char-miriam-vale", "char-roland-pierce", "char-elias-quill"], "locationIds": ["loc-judge-chambers"], "objectIds": [], "evidenceIds": [], "imageIds": [] }
     },
     {
-      "factId": "fact-lock-appears-intact",
-      "summary": "The display niche lock appears intact at first glance.",
-      "source": "opening observation",
-      "turnDiscovered": 0,
+      "factId": "fact-front-lock-intact",
+      "summary": "The front lock is intact and smooth, making a forced front entry unlikely.",
+      "source": "display niche inspection",
+      "turnDiscovered": 1,
       "confidence": "observed",
-      "refs": {
-        "clueIds": [],
-        "npcIds": [],
-        "locationIds": [
-          "loc-judge-chambers"
-        ],
-        "objectIds": [
-          "object-display-niche"
-        ],
-        "evidenceIds": [
-          "evidence-display-niche"
-        ],
-        "imageIds": []
-      }
+      "refs": { "clueIds": ["clue-intact-front-lock"], "npcIds": [], "locationIds": ["loc-judge-chambers"], "objectIds": ["object-display-front-lock"], "evidenceIds": ["evidence-display-niche"], "imageIds": [] }
+    },
+    {
+      "factId": "fact-loose-display-backing",
+      "summary": "The display backing shifts slightly, and its waxed edge looks freshly handled.",
+      "source": "close inspection of display niche",
+      "turnDiscovered": 1,
+      "confidence": "observed",
+      "refs": { "clueIds": ["clue-loose-backing"], "npcIds": [], "locationIds": ["loc-judge-chambers"], "objectIds": ["object-display-backing"], "evidenceIds": ["evidence-display-niche"], "imageIds": [] }
     }
   ],
-  "evidence": [],
+  "evidence": [
+    {
+      "evidenceBoardId": "evidence-display-niche-board",
+      "evidenceId": "evidence-display-niche",
+      "clueId": null,
+      "title": "Locked display niche",
+      "descriptionKnownToPlayer": "The front lock is intact, but the rear backing shifts slightly and its waxed edge looks freshly handled.",
+      "foundAtLocationId": "loc-judge-chambers",
+      "foundAtObjectId": "object-display-niche",
+      "status": "inspected",
+      "interpretationStatus": "partial",
+      "turnDiscovered": 1,
+      "playerNotes": "The gavel likely was not removed by forcing the front lock. The backing may be another access route."
+    }
+  ],
   "knownNPCs": [
     {
       "npcBoardId": "npc-miriam-vale",
@@ -132,75 +108,36 @@
       "npcId": "char-miriam-vale",
       "name": "Miriam Vale",
       "status": "possible",
-      "apparentMotive": "Unknown at the start.",
-      "apparentOpportunity": "Had practical access as senior clerk.",
+      "apparentMotive": "Unknown so far.",
+      "apparentOpportunity": "Had practical access as senior clerk; her exact position during the reception remains untested.",
       "evidenceFor": [],
       "evidenceAgainst": [],
-      "openQuestions": [
-        "Where was she during the reception?"
-      ],
-      "refs": {
-        "clueIds": [],
-        "npcIds": [
-          "char-miriam-vale"
-        ],
-        "locationIds": [
-          "loc-judge-chambers"
-        ],
-        "objectIds": [],
-        "evidenceIds": [],
-        "imageIds": []
-      }
+      "openQuestions": ["Where was she during the reception?", "Did her duties or keys give access to the display backing?"],
+      "refs": { "clueIds": [], "npcIds": ["char-miriam-vale"], "locationIds": ["loc-judge-chambers"], "objectIds": [], "evidenceIds": [], "imageIds": [] }
     },
     {
       "suspectBoardId": "suspect-roland-pierce",
       "npcId": "char-roland-pierce",
       "name": "Roland Pierce",
       "status": "possible",
-      "apparentMotive": "Unknown at the start.",
-      "apparentOpportunity": "Had access during the reception.",
+      "apparentMotive": "Unknown so far.",
+      "apparentOpportunity": "Had access during the reception; his exact movements remain untested.",
       "evidenceFor": [],
       "evidenceAgainst": [],
-      "openQuestions": [
-        "Where was he during the key interval?"
-      ],
-      "refs": {
-        "clueIds": [],
-        "npcIds": [
-          "char-roland-pierce"
-        ],
-        "locationIds": [
-          "loc-judge-chambers"
-        ],
-        "objectIds": [],
-        "evidenceIds": [],
-        "imageIds": []
-      }
+      "openQuestions": ["Where was he during the key interval?"],
+      "refs": { "clueIds": [], "npcIds": ["char-roland-pierce"], "locationIds": ["loc-judge-chambers"], "objectIds": [], "evidenceIds": [], "imageIds": [] }
     },
     {
       "suspectBoardId": "suspect-elias-quill",
       "npcId": "char-elias-quill",
       "name": "Elias Quill",
       "status": "possible",
-      "apparentMotive": "Unknown at the start.",
-      "apparentOpportunity": "Had access during the reception.",
+      "apparentMotive": "Unknown so far.",
+      "apparentOpportunity": "Had access during the reception; his exact movements remain untested.",
       "evidenceFor": [],
       "evidenceAgainst": [],
-      "openQuestions": [
-        "What was he doing at the shelves?"
-      ],
-      "refs": {
-        "clueIds": [],
-        "npcIds": [
-          "char-elias-quill"
-        ],
-        "locationIds": [
-          "loc-judge-chambers"
-        ],
-        "objectIds": [],
-        "evidenceIds": [],
-        "imageIds": []
-      }
+      "openQuestions": ["What was he doing at the shelves?"],
+      "refs": { "clueIds": [], "npcIds": ["char-elias-quill"], "locationIds": ["loc-judge-chambers"], "objectIds": [], "evidenceIds": [], "imageIds": [] }
     }
   ],
   "clearedSuspects": [],
@@ -211,10 +148,7 @@
       "name": "Judge Harrow's chambers",
       "status": "available",
       "descriptionKnownToPlayer": "A paneled office with a display niche, judge's desk, sideboard, shelves of ledgers, corridor door, and tea service.",
-      "openQuestions": [
-        "How was the gavel removed if the niche was locked?",
-        "Where is the gavel now?"
-      ]
+      "openQuestions": ["Where is the gavel now?", "Who could use or reach the display backing?"]
     }
   ],
   "visitedLocations": [
@@ -223,10 +157,11 @@
       "locationId": "loc-judge-chambers",
       "name": "Judge Harrow's chambers",
       "turnFirstVisited": 0,
-      "turnLastVisited": 0,
+      "turnLastVisited": 1,
       "notablePlayerVisibleFindings": [
         "The display niche stands open and the gavel is missing.",
-        "The front lock appears intact at first glance."
+        "The front lock is intact and smooth.",
+        "The rear backing shifts slightly and its waxed edge looks freshly handled."
       ]
     }
   ],
@@ -236,8 +171,8 @@
       "objectId": "object-display-niche",
       "label": "Display niche",
       "locationId": "loc-judge-chambers",
-      "visibleDescription": "Open display niche where the gavel was kept; the lock appears intact at first glance.",
-      "inspectionStatus": "inspection_available",
+      "visibleDescription": "Open display niche where the gavel was kept.",
+      "inspectionStatus": "mentioned",
       "turnFirstSeen": 0
     },
     {
@@ -268,85 +203,82 @@
       "turnFirstSeen": 0
     }
   ],
-  "inspectedObjects": [],
-  "ruledOutAreas": [],
-  "recoveredEvidence": [],
-  "imagesSeen": [],
-  "openQuestions": [
+  "inspectedObjects": [
     {
-      "questionId": "q-how-removed",
-      "question": "How was the gavel removed if the niche was locked?",
-      "status": "open",
-      "relatedRefs": {
-        "clueIds": [],
-        "npcIds": [],
-        "locationIds": [
-          "loc-judge-chambers"
-        ],
-        "objectIds": [
-          "object-display-niche"
-        ],
-        "evidenceIds": [
-          "evidence-display-niche"
-        ],
-        "imageIds": []
-      },
-      "turnOpened": 0
+      "inspectionBoardId": "inspect-front-lock",
+      "objectId": "object-display-front-lock",
+      "label": "Display niche front lock",
+      "locationId": "loc-judge-chambers",
+      "inspectionDepth": "inspected",
+      "resultKnownToPlayer": "The front lock is intact and smooth, with no fresh scratches or forced marks.",
+      "clueIdsDiscovered": ["clue-intact-front-lock"],
+      "evidenceIdsDiscovered": ["evidence-display-niche"],
+      "closerInspectionAvailable": false,
+      "turnInspected": 1
     },
+    {
+      "inspectionBoardId": "inspect-display-backing",
+      "objectId": "object-display-backing",
+      "label": "Display niche backing",
+      "locationId": "loc-judge-chambers",
+      "inspectionDepth": "closely_inspected",
+      "resultKnownToPlayer": "The backing shifts slightly, and its waxed edge looks freshly handled.",
+      "clueIdsDiscovered": ["clue-loose-backing"],
+      "evidenceIdsDiscovered": ["evidence-display-niche"],
+      "closerInspectionAvailable": true,
+      "turnInspected": 1
+    }
+  ],
+  "ruledOutAreas": [
+    {
+      "ruledOutBoardId": "ruled-out-front-forcing",
+      "locationId": "loc-judge-chambers",
+      "objectId": "object-display-front-lock",
+      "leadId": "lead-display-front-forced-entry",
+      "label": "Forced front entry",
+      "reasonKnownToPlayer": "The front lock is intact and smooth, with no fresh scratches or forced marks.",
+      "turnRuledOut": 1
+    }
+  ],
+  "recoveredEvidence": [],
+  "imagesSeen": [
+    {
+      "imageBoardId": "image-chambers-scene",
+      "imageId": null,
+      "label": "Judge Harrow's chambers scene image",
+      "imageClass": "scene",
+      "textFallbackUsed": "The scene image was supportive only; the text description controls the evidence.",
+      "turnShown": 0,
+      "refs": { "clueIds": [], "npcIds": [], "locationIds": ["loc-judge-chambers"], "objectIds": [], "evidenceIds": [], "imageIds": [] }
+    }
+  ],
+  "openQuestions": [
     {
       "questionId": "q-where-now",
       "question": "Where is the gavel now?",
       "status": "open",
-      "relatedRefs": {
-        "clueIds": [],
-        "npcIds": [],
-        "locationIds": [
-          "loc-judge-chambers"
-        ],
-        "objectIds": [],
-        "evidenceIds": [],
-        "imageIds": []
-      },
+      "relatedRefs": { "clueIds": [], "npcIds": [], "locationIds": ["loc-judge-chambers"], "objectIds": [], "evidenceIds": [], "imageIds": [] },
       "turnOpened": 0
+    },
+    {
+      "questionId": "q-who-could-use-backing",
+      "question": "Who could use or reach the display backing?",
+      "status": "open",
+      "relatedRefs": { "clueIds": ["clue-loose-backing"], "npcIds": ["char-miriam-vale", "char-roland-pierce", "char-elias-quill"], "locationIds": ["loc-judge-chambers"], "objectIds": ["object-display-backing"], "evidenceIds": ["evidence-display-niche"], "imageIds": [] },
+      "turnOpened": 1
     },
     {
       "questionId": "q-staff-opportunity",
       "question": "Which staff member had the opportunity to interfere with the display?",
       "status": "open",
-      "relatedRefs": {
-        "clueIds": [],
-        "npcIds": [
-          "char-miriam-vale",
-          "char-roland-pierce",
-          "char-elias-quill"
-        ],
-        "locationIds": [
-          "loc-judge-chambers"
-        ],
-        "objectIds": [],
-        "evidenceIds": [],
-        "imageIds": []
-      },
+      "relatedRefs": { "clueIds": [], "npcIds": ["char-miriam-vale", "char-roland-pierce", "char-elias-quill"], "locationIds": ["loc-judge-chambers"], "objectIds": [], "evidenceIds": [], "imageIds": [] },
       "turnOpened": 0
     },
     {
       "questionId": "q-reception-schedule",
       "question": "Why does the reception schedule matter?",
       "status": "open",
-      "relatedRefs": {
-        "clueIds": [],
-        "npcIds": [
-          "char-miriam-vale",
-          "char-roland-pierce",
-          "char-elias-quill"
-        ],
-        "locationIds": [
-          "loc-judge-chambers"
-        ],
-        "objectIds": [],
-        "evidenceIds": [],
-        "imageIds": []
-      },
+      "relatedRefs": { "clueIds": [], "npcIds": ["char-miriam-vale", "char-roland-pierce", "char-elias-quill"], "locationIds": ["loc-judge-chambers"], "objectIds": [], "evidenceIds": [], "imageIds": [] },
       "turnOpened": 0
     }
   ],
@@ -354,47 +286,12 @@
   "timelineNotes": [],
   "pendingLeads": [
     {
-      "leadId": "lead-display-niche",
-      "summary": "Inspect the display niche.",
-      "reasonOpened": "The gavel vanished from the niche.",
-      "suggestedNextAction": "Examine the display niche and its lock.",
-      "priority": "high",
-      "relatedRefs": {
-        "clueIds": [],
-        "npcIds": [],
-        "locationIds": [
-          "loc-judge-chambers"
-        ],
-        "objectIds": [
-          "object-display-niche"
-        ],
-        "evidenceIds": [
-          "evidence-display-niche"
-        ],
-        "imageIds": []
-      },
-      "turnOpened": 0
-    },
-    {
       "leadId": "lead-sideboard-tea-service",
       "summary": "Inspect the sideboard and tea service.",
-      "reasonOpened": "The sideboard was used during the reception.",
+      "reasonOpened": "The sideboard was used during the reception and may relate to movement near the display backing.",
       "suggestedNextAction": "Examine the tea urn and service items.",
       "priority": "high",
-      "relatedRefs": {
-        "clueIds": [],
-        "npcIds": [],
-        "locationIds": [
-          "loc-judge-chambers"
-        ],
-        "objectIds": [
-          "object-tea-urn"
-        ],
-        "evidenceIds": [
-          "evidence-tea-urn"
-        ],
-        "imageIds": []
-      },
+      "relatedRefs": { "clueIds": ["clue-loose-backing"], "npcIds": [], "locationIds": ["loc-judge-chambers"], "objectIds": ["object-tea-urn"], "evidenceIds": ["evidence-tea-urn"], "imageIds": [] },
       "turnOpened": 0
     },
     {
@@ -403,45 +300,30 @@
       "reasonOpened": "Documents may explain timing or motive.",
       "suggestedNextAction": "Look over the judge's desk and blotter.",
       "priority": "medium",
-      "relatedRefs": {
-        "clueIds": [],
-        "npcIds": [],
-        "locationIds": [
-          "loc-judge-chambers"
-        ],
-        "objectIds": [
-          "object-desk-blotter"
-        ],
-        "evidenceIds": [],
-        "imageIds": []
-      },
+      "relatedRefs": { "clueIds": [], "npcIds": [], "locationIds": ["loc-judge-chambers"], "objectIds": ["object-desk-blotter"], "evidenceIds": [], "imageIds": [] },
       "turnOpened": 0
     },
     {
       "leadId": "lead-question-staff",
       "summary": "Question Miriam Vale, Roland Pierce, and Elias Quill.",
-      "reasonOpened": "They were the three regular staff members with practical access.",
+      "reasonOpened": "Their movements may explain who could reach the backing during the reception.",
       "suggestedNextAction": "Ask each person where they were during the reception.",
       "priority": "medium",
-      "relatedRefs": {
-        "clueIds": [],
-        "npcIds": [
-          "char-miriam-vale",
-          "char-roland-pierce",
-          "char-elias-quill"
-        ],
-        "locationIds": [
-          "loc-judge-chambers"
-        ],
-        "objectIds": [],
-        "evidenceIds": [],
-        "imageIds": []
-      },
+      "relatedRefs": { "clueIds": ["clue-loose-backing"], "npcIds": ["char-miriam-vale", "char-roland-pierce", "char-elias-quill"], "locationIds": ["loc-judge-chambers"], "objectIds": ["object-display-backing"], "evidenceIds": [], "imageIds": [] },
       "turnOpened": 0
     }
   ],
-  "closedLeads": [],
+  "closedLeads": [
+    {
+      "leadId": "lead-display-front-forced-entry",
+      "summary": "Check whether the gavel was taken by forcing the front lock.",
+      "reasonClosedKnownToPlayer": "The front lock is intact and smooth, with no fresh scratches or forced marks.",
+      "closureType": "ruled_out",
+      "turnClosed": 1,
+      "relatedRefs": { "clueIds": ["clue-intact-front-lock"], "npcIds": [], "locationIds": ["loc-judge-chambers"], "objectIds": ["object-display-front-lock"], "evidenceIds": ["evidence-display-niche"], "imageIds": [] }
+    }
+  ],
   "contradictions": [],
-  "summary": "The gavel is missing from Judge Harrow's chambers. The display niche lock appears intact at first glance. Three staff members remain possible suspects, and the main starting leads are the niche, the tea service, the desk, and staff questioning.",
-  "notes": "Initialized from seed. Player-visible only."
+  "summary": "The display niche has now been inspected. The front lock appears intact, making forced entry unlikely. The rear backing shifts slightly and has a freshly handled waxed edge, suggesting another possible access route from within the chambers.",
+  "notes": "Player-visible only. Hidden solution facts remain excluded."
 }
