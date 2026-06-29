@@ -53,19 +53,21 @@ Read in this order:
 7. reverse-mystery-authoring-and-resolution-v1.md
 8. human-engagement-and-playability-v1.md
 9. human-playtest-review-template-v1.md
-10. player-agency-and-fair-evidence-v1.md
-11. canonical-assets-and-runtime-budgets-v1.md
-12. image-fidelity-contract-v1.md
-13. discovery-rules-v1.md
-14. npc-interview-model-v1.md
-15. validator-diagnostics-v1.md
-16. runtime-fidelity-report-v1.md
-17. investigation-model.md
-18. image-system-v2.md
-19. case-board-v2.md
-20. runtime-state-v1.md
-21. case-board-current-v1.md
-22. runtime-self-checks.md
+10. suspect-deception-and-red-herring-discipline-v1.md
+11. classic-whodunit-pattern-v1.md
+12. player-agency-and-fair-evidence-v1.md
+13. canonical-assets-and-runtime-budgets-v1.md
+14. image-fidelity-contract-v1.md
+15. discovery-rules-v1.md
+16. npc-interview-model-v1.md
+17. validator-diagnostics-v1.md
+18. runtime-fidelity-report-v1.md
+19. investigation-model.md
+20. image-system-v2.md
+21. case-board-v2.md
+22. runtime-state-v1.md
+23. case-board-current-v1.md
+24. runtime-self-checks.md
 
 ## Case Readiness
 
@@ -157,6 +159,12 @@ docs/player-agency-and-fair-evidence-v1.md
 Fair play requires stable observable evidence and player inference protection. When the player fairly inspects available evidence, ordinary observable details should appear then, not retroactively after the explanatory fact is known.
 
 The Game Master should distinguish observation, witness claim, document statement, possible meaning, and final proof synthesis. Case-board updates, recaps, spatial summaries, and images must not smuggle interpretation or culprit-pointing analysis into neutral investigation mode.
+
+## Suspect Deception and Whodunit Support
+
+AI_IF allows suspects to lie, omit, evade, and mislead in-character, but deception must be authored and discoverable. The Game Master preserves canonical truth.
+
+Classic contained whodunits are supported as a core pattern. They require concrete motive, understandable method, testable opportunity, red herrings with clearance paths, and final reconstruction.
 
 ## Canonical Asset and Budget Contract
 
@@ -297,6 +305,8 @@ Completed:
 - Human Engagement and Playability v1
 - Workflow and Case Readiness v1
 - Human Playtest Review Template v1
+- Suspect Deception and Red Herring Discipline v1
+- Classic Whodunit Pattern v1
 - Player Agency and Fair Evidence v1
 - Canonical Asset and Runtime Budget Enforcement v1
 - Image Fidelity Contract v1

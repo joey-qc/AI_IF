@@ -134,3 +134,33 @@ This contract works with:
 - `docs/validator-diagnostics-v1.md`, which structures validation findings.
 
 Runtime fidelity depends on authoring completeness. If the package lacks a complete final resolution, runtime cannot repair it.
+
+## Suspect Deception in Reverse Authoring
+
+Reverse authoring must define which suspect statements are true, false, incomplete, mistaken, or misleading before gameplay starts.
+
+For each major suspect, define:
+
+- what they claim;
+- what actually happened;
+- what they know;
+- what they hide;
+- why they hide it;
+- how the player can expose or resolve the deception.
+
+## Classic Whodunit Reverse Structure
+
+For whodunits, reverse authoring must define:
+
+- culprit;
+- victim;
+- motive;
+- method;
+- opportunity;
+- alibi claims;
+- alibi truths;
+- physical proof;
+- testimonial proof;
+- red herrings;
+- innocent clearances;
+- final reconstruction.

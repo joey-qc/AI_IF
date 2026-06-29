@@ -452,3 +452,15 @@ End your response with:
 2. files that should be updated;
 3. remaining risks;
 4. the next recommended AI role to run.
+
+## Deception and Red Herring Revision Rules
+
+Revise the case if:
+
+- a suspect lies without an authored truth;
+- a lie cannot be exposed or resolved;
+- an innocent suspect cannot be cleared;
+- a red herring remains unresolved;
+- the GM must invent a clarification to make the mystery fair;
+- culprit deception is either impossible to detect or too obvious too early;
+- motive, method, opportunity, and alibi do not align.

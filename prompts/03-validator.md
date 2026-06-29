@@ -634,3 +634,28 @@ End your response with:
 2. top three required fixes;
 3. whether the case should proceed to AI playtesting;
 4. whether the Revision Engine should run next.
+
+## Suspect Deception Checks
+
+- Are all suspect lies authored?
+- Does each lie have a hidden truth?
+- Does each lie have a reason?
+- Can the player expose or resolve the lie?
+- Are narrator facts always truthful?
+- Does the GM avoid inventing runtime lies?
+
+## Red Herring and Clearance Checks
+
+- Does each red herring have an innocent explanation?
+- Can each innocent suspect be cleared?
+- Are suspicious behaviors bounded?
+- Does any red herring remain unfairly unresolved?
+- Can the player distinguish motive-only suspicion from proof?
+
+## Whodunit Checks
+
+- Is motive concrete?
+- Is method understandable?
+- Is opportunity testable?
+- Are alibi claims and alibi truths defined?
+- Does the final reconstruction explain innocent suspects?

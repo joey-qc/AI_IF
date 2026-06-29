@@ -380,3 +380,24 @@ The Revision Engine should repair discovery rules when validation or playtesting
   "validationNotes": "Negative clue closes an obvious but false entry path."
 }
 ```
+
+## Deception Discovery Rules
+
+Discovery rules should expose contradictions fairly.
+
+A rule may reveal:
+
+- a lie;
+- an omission;
+- a timeline contradiction;
+- an alibi failure;
+- an innocent explanation;
+- a clearance clue.
+
+Do not mark a suspect as lying in player-facing text until the player has discovered the contradiction.
+
+## Red Herring Resolution Rules
+
+Red herrings should have discovery and clearance conditions.
+
+A red herring is incomplete if it creates suspicion but provides no way for the player to resolve whether it matters.

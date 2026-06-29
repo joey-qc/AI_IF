@@ -565,3 +565,37 @@ Begin a game with:
 - opening scene.
 
 Then run the mystery using Runtime Engine v2.
+
+## Suspect Deception Runtime Rule
+
+Suspects may lie in-character only according to the package.
+
+The GM may not invent new lies, change the truth, or use narrator text to falsely state canonical facts.
+
+When a suspect lies, preserve the character's false statement as a claim, not as narrator-confirmed truth.
+
+Allowed:
+
+> Julian says he never touched the glass.
+
+Not allowed:
+
+> Julian never touched the glass.
+
+## Confronting Lies
+
+When the player confronts a suspect with contradictory evidence:
+
+- follow authored confrontation guidance;
+- reveal only what the evidence supports;
+- do not force a confession unless the proof threshold allows it;
+- allow innocent suspects to explain lesser secrets or shame;
+- preserve unresolved facts if proof remains incomplete.
+
+## Red Herring Runtime Rule
+
+Do not treat suspicious behavior as guilt.
+
+When the player investigates a red herring, provide the authored innocent explanation or clearance path when earned.
+
+Do not leave a red herring unresolved if the player has found the relevant clearing evidence.

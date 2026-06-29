@@ -266,3 +266,30 @@ The Story Author should not leave important NPC behavior for the Game Master to 
   "validationNotes": "Contradiction is available only after the parcel label is found."
 }
 ```
+
+## Suspect Lies and Omissions
+
+NPC interview design must distinguish:
+
+- truthful answer;
+- lie or omission;
+- evasive answer;
+- alibi claim;
+- alibi truth;
+- knowledge boundary;
+- evidence that challenges the statement;
+- response when confronted.
+
+A suspect may lie in-character. The GM must not invent unauthored lies or change the truth at runtime.
+
+## Confrontation Behavior
+
+When confronted with contradictory evidence, an NPC should respond according to authored guidance:
+
+- admit a minor truth;
+- double down;
+- explain innocent deception;
+- reveal shameful but non-culprit motive;
+- become evasive;
+- refuse to answer;
+- confess only if final proof threshold allows it.

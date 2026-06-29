@@ -127,3 +127,21 @@ Revision Engine:
 Game Master:
 
 - preserve neutrality, clarify ambiguous voice input, reveal stable observable evidence on fair inspection, and avoid steering except when the player asks for help.
+
+## Human Deception and Emotional Legibility
+
+Suspect deception should arise from human motives, not arbitrary puzzle needs.
+
+Good deception comes from:
+
+- fear;
+- shame;
+- grief;
+- loyalty;
+- greed;
+- protection;
+- embarrassment;
+- revenge;
+- fear of exposure.
+
+The player should understand why an innocent person lied or behaved suspiciously.

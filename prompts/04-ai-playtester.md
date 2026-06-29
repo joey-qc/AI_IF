@@ -408,3 +408,24 @@ End your response with:
 3. required revisions;
 4. whether the Revision Engine should run next;
 5. whether the case is ready for human play.
+
+## Suspect and Red Herring Playtest Scenarios
+
+The AI playtester must test:
+
+- believing each suspect's initial statement;
+- pressing each suspect after contradictory evidence;
+- accusing each innocent suspect;
+- accusing based only on motive;
+- accusing based only on opportunity;
+- accusing the culprit before exposing their lie;
+- resolving each red herring;
+- clearing each innocent suspect.
+
+The playtester should flag if:
+
+- a lie cannot be exposed;
+- an innocent suspect cannot be cleared;
+- a red herring feels like an unresolved alternate solution;
+- the culprit's lie collapses too easily;
+- the GM reveals that a suspect is lying before the player earns it.

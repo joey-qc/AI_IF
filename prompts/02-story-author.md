@@ -569,3 +569,34 @@ End your response with:
 5. self-check results;
 6. whether the package is ready for validation;
 7. the next recommended AI role to run.
+
+## Suspect Deception Requirements
+
+For every major suspect, define:
+
+- alibi claim;
+- alibi truth;
+- truthful answer;
+- lie or omission;
+- why they lie or omit;
+- what they know;
+- what they do not know;
+- what evidence challenges them;
+- what clears or implicates them.
+
+Do not include a lie unless it is discoverable, challengeable, or clearly irrelevant flavor.
+
+## Whodunit Requirements
+
+If the case is a whodunit, define:
+
+- victim;
+- culprit;
+- motive;
+- method;
+- means;
+- opportunity;
+- alibi claims and truths;
+- red herrings;
+- innocent clearances;
+- final reconstruction.
