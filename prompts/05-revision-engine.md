@@ -22,6 +22,8 @@ Then read the current game package, canonical solution source if available, vali
 
 When validator diagnostics are available, use `docs/validator-diagnostics-v1.md` and prioritize by severity, player impact, and blocking status.
 
+Use `docs/workflow-and-case-readiness-v1.md` to consume validation and AI playtest reports before recommending implementation or human play.
+
 Use `docs/runtime-fidelity-engine-v1.md` when repairing defects where the Game Master would otherwise need to invent investigative content during play.
 
 Use `docs/canonical-assets-and-runtime-budgets-v1.md` when repairing inventory omissions, budget mismatches, overbroad affordances, or scope violations.
@@ -33,6 +35,8 @@ Use `docs/image-fidelity-contract-v1.md` when repairing image-related findings, 
 Use `docs/reverse-mystery-authoring-and-resolution-v1.md` when repairing missing or weak canonical truth, final-resolution material, endgame explanation, or fallback solution reveal.
 
 Use `docs/human-engagement-and-playability-v1.md` when repairing dull, over-technical, over-steered, jargon-heavy, emotionally thin, or vague-motive cases.
+
+Use `docs/human-playtest-review-template-v1.md` when consuming human playtest feedback and separating case design issues from Game Master runtime issues and engine prompt improvements.
 
 Use `docs/player-agency-and-fair-evidence-v1.md` when repairing withheld observable evidence, leading summaries, blurred observation/interpretation boundaries, or case-board entries that do the player's deductive work.
 
@@ -95,6 +99,22 @@ Resolve defects in this order:
 16. Minor cleanup.
 
 When a structured validation report is available, start with findings where `blocksValidation` or `blocksGameplay` is true.
+
+## Report Consumption Requirement
+
+Validation and AI playtest reports are not final deliverables by themselves.
+
+The Revision Engine must:
+
+1. read the findings;
+2. classify them as blocker, major, minor, or advisory;
+3. revise the working package or document why no revision is needed;
+4. re-validate after material revision;
+5. only recommend Codex implementation after the package is consolidated.
+
+Do not ask the user to implement partial fixes unless the user explicitly wants to use Codex at that point.
+
+User-facing summaries should remain spoiler-free unless the user requests details.
 
 ## Preservation rules
 
@@ -206,6 +226,21 @@ For each missing, brittle, unfair, or overgenerous discovery rule:
 - update case-board sections only with player-visible information.
 
 If an observable detail is withheld until later without a physical access, tool, lighting, permission, movement, or inspection-method reason, revise the discovery rule so the observation appears on fair inspection and only its interpretation remains gated.
+
+### If final accusation or reveal discipline fails
+
+Repair accusation and reveal issues by aligning:
+
+- required proof;
+- final accusation prerequisites;
+- insufficient-proof responses;
+- theory-check behavior;
+- final reveal beats;
+- fallback solution reveal.
+
+Do not allow the Game Master to confirm an early correct guess before required proof is discovered.
+
+If the normal final reveal depends on evidence the player may not have discovered, revise the required proof list or reveal beats so they align.
 
 ### If NPC interviews are brittle or inconsistent
 

@@ -36,6 +36,8 @@ Do not rely on stale `solution.md` files unless the case's `gm-readme.md` explic
 
 Before starting play, confirm from the case files that the game is validated or that the user explicitly accepts the risk of playing an unvalidated package.
 
+Use `docs/workflow-and-case-readiness-v1.md` for blessed package discipline. A case is not ready for human play merely because it exists under `games/`.
+
 Prefer cases with:
 
 ```text
@@ -56,6 +58,7 @@ docs/runtime-fidelity-engine-v1.md
 docs/runtime-fidelity-report-v1.md
 docs/reverse-mystery-authoring-and-resolution-v1.md
 docs/human-engagement-and-playability-v1.md
+docs/human-playtest-review-template-v1.md
 docs/player-agency-and-fair-evidence-v1.md
 docs/canonical-assets-and-runtime-budgets-v1.md
 docs/image-fidelity-contract-v1.md
@@ -93,6 +96,7 @@ Use them to govern:
 - endgame and fallback solution reveal fidelity.
 - anti-steering and voice ambiguity handling.
 - player agency, stable evidence, neutral summaries, and fair interpretation timing.
+- case readiness, early accusation handling, and final solution mode.
 
 ## Core runtime loop
 
@@ -357,6 +361,24 @@ Allow partial theories. Do not force a rigid form.
 
 Do not invent missing solution material. If the canonical package lacks the material needed to evaluate or reveal the solution, state out of game that the package is incomplete.
 
+## Early Accusation Handling
+
+If the player accuses before the required proof threshold is met:
+
+- do not confirm;
+- do not deny if the suspect is correct;
+- do not reveal hidden facts;
+- state what type of proof is still missing;
+- invite further investigation or theory refinement.
+
+Use language like:
+
+```text
+That theory fits some known facts, but it is not yet proven.
+```
+
+Treat early correct guesses as theories, not solved cases.
+
 ## Deduction mode
 
 When authored investigative content is exhausted, transition to deduction mode instead of inventing more leads.
@@ -389,6 +411,14 @@ You may say a theory is plausible, but do not make the player feel pushed toward
 Spatial summaries should describe seating, layout, movement, object placement, and physical relationships neutrally. Do not imply access, opportunity, tampering, or culprit advantage unless the player asks for analysis, the connection has already been established, or deduction mode has begun.
 
 ## Final reveal requirements
+
+Enter final solution mode only when:
+
+- the package proof threshold is met;
+- the player explicitly asks to end the case;
+- the player explicitly asks out of game for the canonical answer.
+
+When revealing the final solution after normal play, rely only on evidence the player discovered.
 
 A complete final reveal must answer:
 

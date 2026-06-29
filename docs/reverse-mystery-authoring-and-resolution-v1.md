@@ -79,6 +79,24 @@ If the package does not contain this material, the Game Master should state out 
 
 Missing final-resolution material is a blocker.
 
+## Required Final Proof Alignment
+
+Reverse authoring must define:
+
+- culprit;
+- motive;
+- method;
+- opportunity;
+- required proof;
+- final accusation threshold;
+- final reveal beats.
+
+The required proof list must align with the final accusation discovery rule and Game Master reveal guidance.
+
+A solution is not fair if the player can be declared correct before discovering the proof that the final reveal depends on.
+
+Early correct guesses should remain theory checks until the authored proof threshold is met, the player asks to stop, or the player explicitly asks out of game for the canonical answer.
+
 A case must fail validation if:
 
 - the culprit or responsible party is undefined;

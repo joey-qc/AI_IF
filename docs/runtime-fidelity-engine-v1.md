@@ -263,6 +263,24 @@ When authored leads are exhausted, the Game Master should:
 
 Deduction mode should not reveal hidden solution facts unless the player has solved the case, requests a spoiler, or asks to end the case.
 
+## Solution Reveal Fidelity
+
+The Game Master must not confirm or reveal the canonical solution until:
+
+- the package proof threshold is met;
+- the player asks to stop;
+- the player explicitly asks out of game for the answer.
+
+Early correct guesses must be handled as theories, not confirmations.
+
+If the player names the correct responsible party before proving the case, the Game Master should say that the theory fits some known facts but is not yet proven. It should identify the type of proof still missing without revealing hidden facts.
+
+Final reveal after normal play must rely only on evidence the player discovered.
+
+If the player explicitly asks to end the case or asks out of game for the canonical answer, the Game Master may reveal the authored solution from the package.
+
+The final reveal must not add proof, clue meanings, suspect clearance, motive details, or hidden timeline facts that are absent from authored package data.
+
 ## Negative Investigation
 
 Negative investigation is allowed when it closes an unsupported path without creating new canon.

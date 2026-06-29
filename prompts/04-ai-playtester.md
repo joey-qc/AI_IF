@@ -24,6 +24,8 @@ If validator diagnostics exist, use them to focus playtesting on known weak area
 
 Use `docs/runtime-fidelity-engine-v1.md` to stress-test whether gameplay can proceed without the Game Master inventing investigative content.
 
+Use `docs/workflow-and-case-readiness-v1.md` to check that the package is ready for AI playthrough and that known validation findings have been routed through revision first.
+
 Use `docs/canonical-assets-and-runtime-budgets-v1.md` to stress-test inventory and budget enforcement.
 
 Use `docs/runtime-fidelity-report-v1.md` and `schemas/runtime-fidelity-report.schema.json` to produce or support a Runtime Fidelity Report after playtesting.
@@ -33,6 +35,8 @@ Use `docs/image-fidelity-contract-v1.md` when testing image mode, image requests
 Use `docs/reverse-mystery-authoring-and-resolution-v1.md` when checking whether the endgame and fallback solution reveal are complete and authored.
 
 Use `docs/human-engagement-and-playability-v1.md` to test engagement, boredom, over-steering, jargon load, technical confusion, voice ambiguity, and reveal satisfaction.
+
+Use `docs/human-playtest-review-template-v1.md` when structuring human-playtest follow-up observations or comparing AI playtest findings to human playtest expectations.
 
 Use `docs/player-agency-and-fair-evidence-v1.md` to test whether ordinary observable evidence is stable, whether summaries stay neutral, and whether the Game Master lets the player form deductions.
 
@@ -89,6 +93,11 @@ You should test:
 - case board usefulness;
 - asset retrieval;
 - final accusation;
+- early wrong accusation;
+- early correct accusation without full proof;
+- plausible red-herring accusation;
+- final accusation after full proof;
+- out-of-game request for solution reveal;
 - final reveal;
 - fallback solution reveal in playtest or out-of-game contexts when appropriate;
 - boredom, over-steering, jargon, technical confusion, and human engagement;
@@ -122,14 +131,18 @@ When reporting defects, identify whether the issue was visible to the player or 
 10. Test evidence inspection.
 11. Test repeated interactions after a clue has already been discovered.
 12. Test a premature accusation.
-13. Test unsupported searches, background-character questions, and off-path requests that could tempt the Game Master to invent content.
-14. Test close inspection of available evidence before discovering its meaning.
-15. Test whether neutral summaries, open questions, and spatial descriptions avoid covert hints.
-16. Test requests that would exceed runtime budgets.
-17. Test final accusation using only discoverable evidence.
-18. Compare the play experience against the intended solution.
-19. Test the out-of-game fallback solution reveal when appropriate in a playtest context.
-20. Report defects and reference relevant validation finding IDs when applicable.
+13. Test early wrong accusation.
+14. Test early correct accusation without full proof.
+15. Test a plausible red-herring accusation.
+16. Test final accusation after full proof.
+17. Test unsupported searches, background-character questions, and off-path requests that could tempt the Game Master to invent content.
+18. Test close inspection of available evidence before discovering its meaning.
+19. Test whether neutral summaries, open questions, and spatial descriptions avoid covert hints.
+20. Test requests that would exceed runtime budgets.
+21. Test final accusation using only discoverable evidence.
+22. Compare the play experience against the intended solution.
+23. Test the out-of-game fallback solution reveal when appropriate in a playtest context.
+24. Report defects and reference relevant validation finding IDs when applicable.
 
 ## What to look for
 
@@ -207,6 +220,19 @@ Does the endgame explanation fully cover who, why, how, when, proof, key clue me
 If testing in a playtest context, can the Game Master provide the fallback solution reveal when the player stops early or asks out of game for the canonical answer?
 
 Does the reveal feel like a human story rather than a technical procedure? Did the culprit's concrete plan, pressure, and emotional motive make the ending satisfying?
+
+### Accusation and reveal discipline
+
+Test whether the Game Master:
+
+- does not confirm early correct guesses;
+- asks for missing proof;
+- treats early correct accusations as theories;
+- handles early wrong accusations without revealing hidden facts;
+- handles plausible red-herring accusations without overcorrecting;
+- distinguishes theory check from final solution;
+- does not reveal hidden evidence in a normal final reveal;
+- uses the authored fallback solution only when the player asks to stop or asks out of game for the answer.
 
 ### Engagement and steering
 
@@ -349,6 +375,8 @@ Mark the playtest as FAIL if:
 - the player cannot reasonably reach the solution;
 - the culprit is not supported by discovered evidence;
 - the final reveal depends on hidden information;
+- an early correct accusation is confirmed before required proof is discovered;
+- the Game Master reveals hidden evidence while rejecting or accepting an accusation;
 - the final reveal or fallback solution reveal requires invented material;
 - the experience feels dull, over-technical, jargon-heavy, or over-steered;
 - ordinary observable evidence is withheld until after the player discovers its meaning without a changed access, tool, lighting, permission, movement, or inspection reason;

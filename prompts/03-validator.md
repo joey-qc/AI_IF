@@ -22,6 +22,8 @@ Then read any draft game package, solution, case-board, asset, schema, author-no
 
 Use `docs/validator-diagnostics-v1.md` and `schemas/validation-report.schema.json` for validation diagnostics.
 
+Use `docs/workflow-and-case-readiness-v1.md` to validate lifecycle status, readiness metadata, report consumption, and blessed package discipline.
+
 Use `docs/runtime-fidelity-engine-v1.md` to check whether the Game Master can run the case as an interpreter without inventing investigative content.
 
 Use `docs/canonical-assets-and-runtime-budgets-v1.md` to validate canonical inventory completeness and runtime budget consistency.
@@ -79,6 +81,14 @@ The Validator must answer:
 - If images are available, can the Game Master generate, reuse, deny, or fall back from images without adding visual clues, unauthored assets, impossible geometry, or continuity drift?
 - If images are available, do full-room scene images preserve canonically present major NPCs, required people, required objects, and spatial relationships?
 - Can diagnostics cite affected files and canonical IDs clearly enough for revision?
+- Does metadata accurately reflect status?
+- Is the case only marked ready after validation and AI playtest?
+- Are validation findings routed to revision before AI playtest?
+- Are status fields consistent across the game package, index, and GM README?
+- Does required proof align with final accusation prerequisites?
+- Can the Game Master accept the correct culprit too early?
+- Does final reveal depend on undiscovered evidence?
+- Is there an authored insufficient-proof response?
 
 ## Validation severity levels
 
@@ -450,7 +460,33 @@ Verify:
 - Quick Mystery packages do not exceed hard scope;
 - background characters remain atmospheric only.
 
-### 18. Runtime fidelity report readiness
+### 18. Workflow and readiness integrity
+
+Check workflow and readiness against `docs/workflow-and-case-readiness-v1.md`.
+
+The Validator should verify:
+
+- case metadata does not mark an unvalidated or unplaytested package as ready for human play;
+- status fields are consistent across package metadata, `games/index.json`, and `gm-readme.md` when those files exist;
+- validation findings are routed to Revision Engine before AI playtest unless the playtest is explicitly reproducing a known flaw;
+- validation and AI playtest reports are treated as working artifacts that feed revision;
+- no blocker or major finding remains before `ready_for_human_play`.
+
+### 19. Final accusation threshold integrity
+
+Check accusation and reveal discipline against `docs/reverse-mystery-authoring-and-resolution-v1.md`, `docs/discovery-rules-v1.md`, and `docs/runtime-fidelity-engine-v1.md`.
+
+The Validator should verify:
+
+- required proof aligns with final accusation prerequisites;
+- final accusation discovery rules include all required proof prerequisites;
+- early correct accusations receive an insufficient-proof or theory-check response;
+- the Game Master cannot confirm the correct culprit too early;
+- final reveal after normal play depends only on discovered evidence;
+- final reveal beats do not require undiscovered evidence;
+- an authored insufficient-proof response exists.
+
+### 20. Runtime fidelity report readiness
 
 Check whether the package can support future Runtime Fidelity Reports:
 

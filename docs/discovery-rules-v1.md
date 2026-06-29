@@ -107,6 +107,8 @@ Use when a player proposes an interpretation that can unlock a fair partial conf
 
 Use when accusation handling reveals whether the proof threshold is met or what remains unproven.
 
+Final accusation rules must not confirm the canonical solution before the package proof threshold is met.
+
 ### request_hint
 
 Use when hint policy allows the Game Master to reveal a nudge or next investigative direction.
@@ -255,6 +257,18 @@ Use `isOptional` for clues that enrich the mystery but are not required for a fa
 Use `isRedHerring` for misleading but explainable discoveries.
 
 Red herring rules must not make the real solution impossible to infer. They should include validation notes explaining how the player can eventually clear or reinterpret the misleading path.
+
+## Final Accusation Discovery Rules
+
+Final accusation discovery rules must include all required proof prerequisites.
+
+If the player accuses before prerequisites are met, the rule should return an insufficient-proof response.
+
+Final accusation discovery text must not reveal hidden facts that were not earned through discovered clues.
+
+If the player names the correct culprit without required proof, the Game Master should treat it as a theory check, not a solved case.
+
+The accusation rule should align with the package's required proof list, final accusation threshold, and final reveal beats.
 
 ## Preventing hidden unfair clues
 

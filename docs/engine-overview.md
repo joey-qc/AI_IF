@@ -47,23 +47,45 @@ Read in this order:
 1. project-architecture.md
 2. design-principles.md
 3. repository-workflow.md
-4. runtime-engine-v2.md
-5. runtime-fidelity-engine-v1.md
-6. reverse-mystery-authoring-and-resolution-v1.md
-7. human-engagement-and-playability-v1.md
-8. player-agency-and-fair-evidence-v1.md
-9. canonical-assets-and-runtime-budgets-v1.md
-10. image-fidelity-contract-v1.md
-11. discovery-rules-v1.md
-12. npc-interview-model-v1.md
-13. validator-diagnostics-v1.md
-14. runtime-fidelity-report-v1.md
-15. investigation-model.md
-16. image-system-v2.md
-17. case-board-v2.md
-18. runtime-state-v1.md
-19. case-board-current-v1.md
-20. runtime-self-checks.md
+4. workflow-and-case-readiness-v1.md
+5. runtime-engine-v2.md
+6. runtime-fidelity-engine-v1.md
+7. reverse-mystery-authoring-and-resolution-v1.md
+8. human-engagement-and-playability-v1.md
+9. human-playtest-review-template-v1.md
+10. player-agency-and-fair-evidence-v1.md
+11. canonical-assets-and-runtime-budgets-v1.md
+12. image-fidelity-contract-v1.md
+13. discovery-rules-v1.md
+14. npc-interview-model-v1.md
+15. validator-diagnostics-v1.md
+16. runtime-fidelity-report-v1.md
+17. investigation-model.md
+18. image-system-v2.md
+19. case-board-v2.md
+20. runtime-state-v1.md
+21. case-board-current-v1.md
+22. runtime-self-checks.md
+
+## Case Readiness
+
+AI_IF separates case existence from play readiness. A game package may be implemented under `games/` but still remain draft, unvalidated, or unplaytested.
+
+A case becomes ready for human play only after validation, revision, AI playthrough, final validation, and metadata confirmation.
+
+The engine treats validation, AI playtest, runtime fidelity, and human playtest reports as working artifacts that must feed Revision Engine work.
+
+Case readiness and blessed package discipline are governed by:
+
+```text
+docs/workflow-and-case-readiness-v1.md
+```
+
+Human playtest review is governed by:
+
+```text
+docs/human-playtest-review-template-v1.md
+```
 
 ## Runtime State Contract
 
@@ -273,6 +295,8 @@ Completed:
 - Runtime Fidelity Engine v1
 - Reverse Mystery Authoring and Resolution v1
 - Human Engagement and Playability v1
+- Workflow and Case Readiness v1
+- Human Playtest Review Template v1
 - Player Agency and Fair Evidence v1
 - Canonical Asset and Runtime Budget Enforcement v1
 - Image Fidelity Contract v1
