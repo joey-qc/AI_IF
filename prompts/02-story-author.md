@@ -600,3 +600,26 @@ If the case is a whodunit, define:
 - red herrings;
 - innocent clearances;
 - final reconstruction.
+
+## Image Runtime and Specialized Test Requirements
+
+If images are available, define image assets with:
+
+- text fallback;
+- image type;
+- required visible people, if any;
+- required absent people, if any;
+- required objects;
+- forbidden objects;
+- spoiler level.
+
+If the case uses technical, forensic, medical, financial, mechanical, legal, or other specialized mechanisms, define:
+
+- what the player can safely inspect or test;
+- what cannot be tested during play;
+- why not;
+- what each test proves;
+- what each test does not prove;
+- unsafe actions to refuse;
+- plain-language explanation;
+- authored proof that remains sufficient without external testing.

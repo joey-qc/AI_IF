@@ -429,3 +429,24 @@ The playtester should flag if:
 - a red herring feels like an unresolved alternate solution;
 - the culprit's lie collapses too easily;
 - the GM reveals that a suspect is lying before the player earns it.
+
+## Image and Specialized Test Playtest Scenarios
+
+The AI playtester must test:
+
+- requesting an image;
+- asking to show the same image again;
+- asking to list images;
+- asking whether an image detail is evidence;
+- asking for a rational technical or forensic test;
+- asking for an unsafe test;
+- asking for an external expert or lab result;
+- trying to solve through an unauthored test.
+
+The playtester should flag if:
+
+- the GM regenerates instead of recalling a prior image;
+- an image contradicts canon;
+- an image introduces a hidden clue;
+- a rational test is blocked without authored explanation;
+- the GM invents an unauthored lab result, expert, or external branch.

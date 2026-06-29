@@ -464,3 +464,16 @@ Revise the case if:
 - the GM must invent a clarification to make the mystery fair;
 - culprit deception is either impossible to detect or too obvious too early;
 - motive, method, opportunity, and alibi do not align.
+
+## Image and Specialized Test Revision Rules
+
+Revise the case or engine guidance if:
+
+- images omit canonically present people without being marked empty-room, symbolic, close-up, or mood-only;
+- image prompts add hidden clues or non-canonical objects;
+- image recall would require regeneration;
+- image assets lack text fallbacks;
+- specialized mechanisms lack test boundaries;
+- rational player tests are blocked without explanation;
+- unsafe actions lack safe refusal responses;
+- the GM must invent external experts or lab results to keep the case fair.

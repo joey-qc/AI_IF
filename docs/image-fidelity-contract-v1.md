@@ -277,3 +277,28 @@ Check image mode, player permission, visual definition, required objects, forbid
 ### Revision Engine
 
 Repair missing required visual objects, inconsistent geometry, unauthored visual elements, image-only clues, mismatched evidence photos, unsafe cutaways, and overly broad image prompts.
+
+## Runtime Image Gallery and Recall
+
+Every generated or shown image should be tracked as a runtime image asset with:
+
+- image number;
+- asset ID or retrieval label;
+- scene or location;
+- associated evidence or clue IDs;
+- image type;
+- player request that caused it;
+- text fallback;
+- canon fidelity notes.
+
+If the player asks to see a prior image, reuse the existing image if possible. Do not regenerate a new image unless the player explicitly asks for a new visualization.
+
+If exact reuse is unavailable, provide the stored text fallback.
+
+Images remain visualization only. Text remains canonical.
+
+## Present People and Recall
+
+Full-room scene images should preserve canonically present major NPCs unless the image is explicitly empty-room, symbolic, close-up, or mood-only.
+
+Image recall must not add new hidden facts, new clues, or new interpretations.

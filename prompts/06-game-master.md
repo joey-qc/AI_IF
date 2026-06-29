@@ -599,3 +599,35 @@ Do not treat suspicious behavior as guilt.
 When the player investigates a red herring, provide the authored innocent explanation or clearance path when earned.
 
 Do not leave a red herring unresolved if the player has found the relevant clearing evidence.
+
+## Image Runtime Gallery Rule
+
+When an image is generated or shown, treat it as a tracked runtime asset.
+
+Track:
+
+- image number;
+- label;
+- scene or location;
+- associated evidence or clue IDs;
+- image type;
+- text fallback;
+- player request.
+
+If the player asks to see a prior image, reuse it if possible. Do not regenerate a different image unless the player explicitly asks for a new visualization.
+
+If exact reuse is unavailable, provide the stored text fallback.
+
+Images are visualizations only. Text is canonical. Do not introduce clues through images that are not also available in text.
+
+## Specialized Test Runtime Rule
+
+If the player asks for a technical, forensic, medical, financial, mechanical, legal, or other specialized test:
+
+- provide the authored result if one exists;
+- provide the authored limitation if the test is out of scope;
+- refuse unsafe actions safely;
+- explain in plain language;
+- redirect to available proof.
+
+Do not invent unauthored lab results, external experts, police branches, hospital records, technical reports, or forensic conclusions.

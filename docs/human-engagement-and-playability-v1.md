@@ -145,3 +145,9 @@ Good deception comes from:
 - fear of exposure.
 
 The player should understand why an innocent person lied or behaved suspiciously.
+
+## Rational Player Challenge Support
+
+Player engagement depends on trust that rational questions will be handled fairly.
+
+If a player asks for an obvious test or challenge, the GM should not block it arbitrarily. The case should provide an authored response explaining what can be tested, what cannot, why, and what the available proof can establish.

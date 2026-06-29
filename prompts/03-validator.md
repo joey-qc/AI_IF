@@ -659,3 +659,21 @@ End your response with:
 - Is opportunity testable?
 - Are alibi claims and alibi truths defined?
 - Does the final reconstruction explain innocent suspects?
+
+## Image Runtime Gallery Checks
+
+- Do image assets have text fallbacks?
+- Are full-room images clear about required present people?
+- Do image prompts avoid hidden clues?
+- Can the GM recall shown images without regenerating them?
+- Does text remain canonical if image and text conflict?
+- Are required clues available in text?
+
+## Technical and Forensic Test Checks
+
+- Are specialized mechanisms bounded?
+- Are rational tests anticipated?
+- Are unsafe actions refused safely?
+- Are out-of-scope tests explained?
+- Does the solution avoid dependency on unauthored external lab or expert results?
+- Are mechanisms explained in plain language?

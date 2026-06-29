@@ -373,3 +373,19 @@ Runtime fidelity fails if the Game Master:
 - changes authored facts to satisfy a player theory;
 - extends play after all authored leads are exhausted by inventing leads;
 - resolves the case using facts not present in the authored package.
+
+## Specialized Test Fidelity
+
+When a player requests a technical, forensic, medical, financial, mechanical, legal, or other specialized test, the GM must stay within authored boundaries.
+
+The GM may provide:
+
+- an authored result;
+- an authored limitation;
+- a safe refusal;
+- a plain-language explanation;
+- a redirect to available in-scene proof.
+
+The GM must not invent unauthored lab results, expert witnesses, forensic branches, or technical capabilities.
+
+Unsafe actions must be refused safely.

@@ -513,3 +513,22 @@ The Game Master fails if it:
 This document is the durable specification.
 
 Future versions of Prompt 06 should remain concise and reference this document rather than reimplementing every detail inline.
+
+## Runtime Image State
+
+Runtime state should track shown images when images are used.
+
+A shown image record should include:
+
+- imageNumber;
+- assetId;
+- retrievalLabel;
+- sceneId or locationId;
+- associatedEvidenceIds;
+- associatedClueIds;
+- imageType;
+- textFallback;
+- playerRequest;
+- hasBeenShownToPlayer.
+
+The GM should support image recall requests such as "show image 2," "show last image," "list images," and "show gallery."

@@ -58,16 +58,18 @@ Read in this order:
 12. player-agency-and-fair-evidence-v1.md
 13. canonical-assets-and-runtime-budgets-v1.md
 14. image-fidelity-contract-v1.md
-15. discovery-rules-v1.md
-16. npc-interview-model-v1.md
-17. validator-diagnostics-v1.md
-18. runtime-fidelity-report-v1.md
-19. investigation-model.md
-20. image-system-v2.md
-21. case-board-v2.md
-22. runtime-state-v1.md
-23. case-board-current-v1.md
-24. runtime-self-checks.md
+15. image-runtime-gallery-v1.md
+16. technical-and-forensic-test-support-v1.md
+17. discovery-rules-v1.md
+18. npc-interview-model-v1.md
+19. validator-diagnostics-v1.md
+20. runtime-fidelity-report-v1.md
+21. investigation-model.md
+22. image-system-v2.md
+23. case-board-v2.md
+24. runtime-state-v1.md
+25. case-board-current-v1.md
+26. runtime-self-checks.md
 
 ## Case Readiness
 
@@ -165,6 +167,12 @@ The Game Master should distinguish observation, witness claim, document statemen
 AI_IF allows suspects to lie, omit, evade, and mislead in-character, but deception must be authored and discoverable. The Game Master preserves canonical truth.
 
 Classic contained whodunits are supported as a core pattern. They require concrete motive, understandable method, testable opportunity, red herrings with clearance paths, and final reconstruction.
+
+## Image Recall and Specialized Test Support
+
+AI_IF treats generated images as runtime assets that should be tracked, recalled, and described consistently. Text remains canonical, and no required clue may exist only in an image.
+
+AI_IF also requires authored boundaries for technical, forensic, medical, financial, mechanical, legal, or other specialized tests. The GM should support rational player questions with authored results, authored limitations, or safe redirection to available proof.
 
 ## Canonical Asset and Budget Contract
 
@@ -307,6 +315,8 @@ Completed:
 - Human Playtest Review Template v1
 - Suspect Deception and Red Herring Discipline v1
 - Classic Whodunit Pattern v1
+- Image Runtime Gallery v1
+- Technical and Forensic Test Support v1
 - Player Agency and Fair Evidence v1
 - Canonical Asset and Runtime Budget Enforcement v1
 - Image Fidelity Contract v1
