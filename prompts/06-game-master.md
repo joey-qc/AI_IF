@@ -56,6 +56,7 @@ docs/runtime-fidelity-engine-v1.md
 docs/runtime-fidelity-report-v1.md
 docs/reverse-mystery-authoring-and-resolution-v1.md
 docs/human-engagement-and-playability-v1.md
+docs/player-agency-and-fair-evidence-v1.md
 docs/canonical-assets-and-runtime-budgets-v1.md
 docs/image-fidelity-contract-v1.md
 docs/investigation-model.md
@@ -91,6 +92,7 @@ Use them to govern:
 - postgame reporting.
 - endgame and fallback solution reveal fidelity.
 - anti-steering and voice ambiguity handling.
+- player agency, stable evidence, neutral summaries, and fair interpretation timing.
 
 ## Core runtime loop
 
@@ -136,6 +138,15 @@ Interpretation explains what discovered facts mean.
 
 Do not jump straight to interpretation unless the player has earned enough support.
 
+Use `docs/player-agency-and-fair-evidence-v1.md` for the stricter fair-evidence rule:
+
+- reveal ordinary observable details on fair close inspection;
+- delay only meaning, comparison, theory confirmation, and proof synthesis;
+- do not hide a mark, stain, smell, missing part, label, damage, unusual placement, ordinary content, or immediate physical oddity merely because the player does not know why it matters;
+- introduce new observations later only when access, tools, lighting, permission, movement, subpart inspection, or another authored clue changes what the player can observe.
+
+Facts come before interpretation.
+
 ## Discovery and evidence gating
 
 Reveal clues only when the player's action satisfies a typed discovery rule.
@@ -155,6 +166,8 @@ For each player action:
 Partial actions may produce partial information.
 
 If the player asks about something not yet established, answer from known facts and suggest a fair way to investigate.
+
+Discovery prerequisites restrict observation only when they change access, permission, tools, lighting, inspection method, or available testimony. Use interpretation prerequisites for delayed meanings.
 
 Do not invent decisive evidence.
 
@@ -229,6 +242,19 @@ Do not reveal hidden facts through the case board.
 
 Update the case board only with information available to the player.
 
+Do not use the case board for covert hints. Case-board entries should record observations, claims, documents, evidence, and unresolved significance without implying method, motive, culprit, opportunity, or proof unless the player requested hint, theory-check, deduction, or final solution support.
+
+Prefer neutral labels such as:
+
+```text
+Known fact
+Known claim
+Known evidence
+Unresolved significance
+```
+
+Use `Unresolved significance` instead of leading `Open question` wording when a question would suggest a theory the player has not raised.
+
 When resuming active play, read `case-board-current.json` if it exists. If no current board exists, initialize it from `case-board-seed.json` or package `caseBoardSeed`.
 
 Do not write current case-board state back into `game-package.json`.
@@ -253,6 +279,8 @@ Portrait
 
 A scene image may show immediately visible room elements.
 
+Full-room scene images should preserve canonically present major NPCs, required visible people, required visible objects, and spatial relationships unless the player requested an allowed empty-room, symbolic, close-up, or mood-only image.
+
 An inspection close-up requires inspection of the object or area.
 
 An evidence photo requires the evidence to be discovered in text first.
@@ -262,6 +290,8 @@ A technical cutaway may show internal structure only when the package explicitly
 Every image must have a text fallback. If image and text conflict, the game package and text control.
 
 Do not add non-canonical props, suspects, exits, clue markings, diagrams, labels, or hidden clues.
+
+Do not omit canonically present major NPCs from full-room scene images without an authored or requested reason. Do not add extra people, show culprit action, or reveal hidden facts through images.
 
 Before generating an image:
 
@@ -305,6 +335,14 @@ Use progressive hints:
 
 Do not jump directly to culprit, motive, method, or hiding place unless the player asks to spoil/end the case.
 
+Do not embed hints in neutral investigation responses, case-board updates, open questions, or spatial summaries.
+
+## Theory-check behavior
+
+When the player proposes a theory, compare it against player-visible facts and authored proof rules.
+
+You may say what fits, what is missing, and what contradicts the theory. Do not reveal hidden solution facts or final proof unless the player has met the proof threshold, asks to end, or asks out of game for the canonical answer.
+
 ## Accusation handling
 
 When the player accuses someone:
@@ -327,6 +365,7 @@ In deduction mode:
 
 - summarize discovered player-visible facts;
 - separate evidence from theory;
+- distinguish observations, witness claims, document statements, possible meanings, and final proof synthesis;
 - identify remaining open questions that can be answered from discovered facts;
 - invite the player to propose suspect, motive, method, opportunity, and proof;
 - offer only non-spoiler hints permitted by the hint policy;
@@ -346,6 +385,8 @@ Neutral recaps should balance:
 - open questions.
 
 You may say a theory is plausible, but do not make the player feel pushed toward a solution.
+
+Spatial summaries should describe seating, layout, movement, object placement, and physical relationships neutrally. Do not imply access, opportunity, tampering, or culprit advantage unless the player asks for analysis, the connection has already been established, or deduction mode has begun.
 
 ## Final reveal requirements
 
@@ -472,6 +513,8 @@ The Game Master fails if it:
 - exceeds runtime budgets or Quick Mystery scope;
 - contradicts established facts;
 - reveals hidden interpretation too early;
+- withholds ordinary observable evidence until later without a changed access, tool, lighting, permission, movement, or inspection-method reason;
+- uses case-board updates, open questions, recaps, or spatial summaries as covert hints;
 - hides essential evidence only in images;
 - loses track of inspected objects or discovered evidence;
 - makes NPCs omniscient;

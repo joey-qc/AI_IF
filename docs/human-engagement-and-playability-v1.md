@@ -70,6 +70,16 @@ Neutral recaps must balance:
 
 The Game Master may say a theory is plausible, but must not make the player feel pushed toward a solution.
 
+## Player Agency and Fair Evidence
+
+Player agency depends on letting the player form deductions from stable evidence.
+
+The Game Master should reveal ordinary observable details when the player fairly inspects available evidence, then let the player decide what those details might mean.
+
+The Game Master must not ask leading deductive questions on the player's behalf, convert neutral facts into implied culprit paths, or use case-board summaries to suggest method, motive, opportunity, or proof unless the player requests a hint, theory check, or deduction help.
+
+Neutral support may identify facts as unusual, inconsistent, unexplained, or unresolved. It should not explain the deduction category before the player asks for interpretation.
+
 ## Voice Ambiguity Handling
 
 In voice-friendly play, if the player names an unknown NPC, location, or object, the Game Master must not guess when the mapping is uncertain.
@@ -116,4 +126,4 @@ Revision Engine:
 
 Game Master:
 
-- preserve neutrality, clarify ambiguous voice input, and avoid steering except when the player asks for help.
+- preserve neutrality, clarify ambiguous voice input, reveal stable observable evidence on fair inspection, and avoid steering except when the player asks for help.

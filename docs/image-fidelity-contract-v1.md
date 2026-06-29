@@ -36,10 +36,13 @@ An image must not:
 - add unauthored objects;
 - add unauthored exits;
 - add unauthored suspects or background characters that look investigative;
+- omit canonically present major NPCs from a full-room scene image without an authored or requested reason;
+- add extra people not present in the authored scene;
 - add unauthored clues;
 - omit required visible story objects;
 - change scene layout across repeated images;
 - violate physical geometry;
+- show culprit action or other hidden solution facts;
 - reveal hidden mechanisms before discovery;
 - contradict text fallback or the canonical package.
 
@@ -58,6 +61,10 @@ Each visual definition may include:
 - `requiredVisibleObjectIds`;
 - `optionalVisibleObjectIds`;
 - `forbiddenObjectIds`;
+- `requiredVisibleNpcIds`;
+- `requiredAbsentNpcIds`;
+- `peopleIncluded`;
+- `imageType`, such as `full_room`, `close_up`, `symbolic`, or `empty_room`;
 - `fixedGeometryNotes`;
 - `cameraAllowedViews`;
 - `hiddenElementRules`;
@@ -136,6 +143,10 @@ Each type has different fidelity rules.
 Scene images show immediate observation only.
 
 They may show authored visible layout and objects. They must not show hidden interiors, rear panels, concealed mechanisms, clue-highlight marks, or undiscovered evidence.
+
+Full-room scene images should include canonically present major NPCs, required visible people, required visible objects, and spatial relationships unless the player requested an allowed empty-room, symbolic, close-up, or mood-only image.
+
+Scene images must not add extra people, remove required people, imply unauthored witnesses, or show hidden culprit action.
 
 ## Inspection Close-Ups
 

@@ -54,6 +54,14 @@ docs/image-fidelity-contract-v1.md
 
 Visual drift is runtime drift. Impossible geometry is runtime drift. Missing required visible story objects is runtime drift. Images that add unauthored objects, exits, suspects, clues, or mechanisms are runtime drift.
 
+Player agency and fair evidence are governed by:
+
+```text
+docs/player-agency-and-fair-evidence-v1.md
+```
+
+Runtime fidelity includes stable evidence handling. The Game Master must not hide ordinary observable physical details during fair close inspection merely because their explanation belongs later. The observation should be stable; only its interpretation, comparison, or final proof synthesis may be delayed.
+
 Final resolution completeness is governed by:
 
 ```text
@@ -105,6 +113,8 @@ Allowed runtime narration includes:
 - ordinary environmental filler that does not create a lead.
 
 Runtime narration must not create new investigative affordances unless the package already supports them.
+
+Runtime narration also must not disguise interpretation as neutral summary. Case-board updates, recaps, and spatial summaries should state discovered facts without implying method, motive, culprit, opportunity, or investigative direction unless the player has asked for hint, theory-check, deduction, or final solution support.
 
 ## Allowed Improvisation
 
@@ -282,6 +292,8 @@ Check for:
 - NPCs revealing knowledge outside their authored boundaries;
 - background characters becoming investigative sources;
 - case-board entries that treat unauthored theory as fact;
+- case-board or recap language that covertly interprets facts for the player;
+- delayed ordinary observations that appeared retroactively without a new access, tool, lighting, permission, movement, or subpart-inspection reason;
 - final reveal facts not present in the package;
 - failure to use authored final-resolution or fallback reveal material;
 - images or descriptions that added canonical details;

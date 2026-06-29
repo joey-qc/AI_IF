@@ -26,6 +26,14 @@ When `canonicalAssetInventory` exists in the game package, discovery rules may r
 
 The Game Master should not reveal a clue merely because it exists in the package. A clue should become visible when the player's action satisfies a typed discovery rule and any listed prerequisites.
 
+Discovery rules must also preserve player agency and fair evidence as defined in:
+
+```text
+docs/player-agency-and-fair-evidence-v1.md
+```
+
+If a player closely inspects an available object, ordinary observable details should be revealed then. A discovery prerequisite should not be used merely to suppress an observable mark, stain, smell, missing part, label, damage, unusual placement, ordinary content, or immediate physical oddity.
+
 ## Why typed rules exist
 
 Loose prose discovery notes are hard for the Story Author, Validator, AI Playtester, Revision Engine, and Game Master to apply consistently.
@@ -141,6 +149,23 @@ repeatText
 ```
 
 Not every trigger type needs every field. The structure should be enforceable without making authoring brittle.
+
+## Discovery Prerequisites vs Interpretation Prerequisites
+
+Discovery prerequisites may restrict visibility only when they change:
+
+- physical access;
+- permission;
+- available tools;
+- lighting;
+- inspection method;
+- available testimony.
+
+Interpretation prerequisites may restrict when the Game Master can explain what an observation means, confirm a theory, compare evidence, or synthesize proof.
+
+Do not use a clue, evidence, or theory prerequisite to make stable physical evidence appear late unless the prerequisite also changes how the player can observe the evidence.
+
+If evidence is physically available and closely inspected, reveal the ordinary observation and withhold only the meaning.
 
 ## Relationship to package entities
 

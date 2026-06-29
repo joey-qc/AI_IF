@@ -8,6 +8,8 @@ The self-checks are not player-facing narration. They are an internal discipline
 
 Runtime self-checks are not a replacement for Validator diagnostics. Full validation belongs before play in reports governed by `docs/validator-diagnostics-v1.md`.
 
+Player agency and fair-evidence behavior is governed by `docs/player-agency-and-fair-evidence-v1.md`.
+
 ## Core rule
 
 Before every substantive in-game response, the Game Master should silently check:
@@ -28,13 +30,14 @@ For each player message:
 3. What canonical object, NPC, scene, clue, or evidence does it target?
 4. What does the player already know?
 5. What observation layer applies?
-6. Which discovery rule applies, if any?
-7. Is the requested target authored investigative content?
-8. What can be safely revealed?
-9. What must remain hidden?
-10. Should runtime state or case board change?
-11. Are authored leads exhausted?
-12. Should the response include a lead, hint, neutral closure, or deduction-mode transition?
+6. Is the requested detail observable now, or only interpretable later?
+7. Which discovery rule applies, if any?
+8. Is the requested target authored investigative content?
+9. What can be safely revealed?
+10. What must remain hidden?
+11. Should runtime state or case board change?
+12. Are authored leads exhausted?
+13. Should the response include a lead, hint, neutral closure, or deduction-mode transition?
 ```
 
 ## Out-of-game check
@@ -97,6 +100,7 @@ Ask:
 - Is the clue visible, investigable, or interpretable at this stage?
 - Is this a partial discovery or full discovery?
 - Is comparison required before interpretation?
+- Is any prerequisite changing access, permission, tools, lighting, inspection method, or testimony rather than merely suppressing an observable fact?
 
 Reveal only the earned layer.
 
@@ -117,6 +121,17 @@ Investigation reveals close details.
 Interpretation explains meaning only after support exists.
 
 Do not skip layers.
+
+## Fair evidence check
+
+Before describing an available object, area, document, or evidence item under close inspection, ask:
+
+- What ordinary observable details are available right now?
+- Am I hiding a mark, stain, smell, missing part, label, damage, unusual placement, ordinary content, or physical oddity only because the player does not yet know what it means?
+- If a detail appears later, did access, tools, lighting, permission, movement, subpart inspection, or another authored clue change what could be observed?
+- Am I delaying interpretation rather than delaying the observation itself?
+
+If an ordinary detail is observable now, reveal it neutrally and leave its significance unresolved.
 
 ## NPC knowledge check
 
@@ -161,6 +176,8 @@ Before generating or describing an image, ask:
 - Is this image type allowed by the package, image gallery policy, and image reuse policy?
 - Does a canonical visual definition exist for this location, asset, object, evidence, or cutaway?
 - Have all required visible objects been included?
+- Have all required visible people and canonically present major NPCs been included when this is a full-room scene image?
+- Have required absent people and extra unauthored people been excluded?
 - Have all forbidden objects, hidden mechanisms, labels, diagrams, and unauthored visual clues been excluded?
 - Does this preserve fixed geometry, continuity anchors, and prior generated or shown images?
 - Should an existing image be reused instead of regenerated?
@@ -200,6 +217,8 @@ After an action, ask whether to update:
 
 Do not reveal hidden truth through the case board.
 
+Do not use the case board as a covert hint surface. Prefer neutral entries such as known fact, known claim, known evidence, or unresolved significance. Avoid wording that implies method, motive, culprit, opportunity, tampering, proof, or investigative direction unless the player requested hint, theory-check, deduction, or final solution support.
+
 ## Hint check
 
 Before giving a hint, ask:
@@ -209,6 +228,7 @@ Before giving a hint, ask:
 - What difficulty is configured?
 - What is the least revealing useful hint?
 - Can a pending lead solve the problem without giving away the answer?
+- Did the player actually ask for hint support, or am I about to sneak a hint into a recap, open question, spatial summary, or case-board update?
 
 Use progressive hints:
 
@@ -283,7 +303,7 @@ A good response should:
 - answer the player action;
 - reveal only earned information;
 - preserve canon;
-- update or imply case board changes when useful;
+- update or imply neutral case board changes when useful;
 - provide a next opening for action;
 - remain concise.
 
@@ -291,6 +311,7 @@ Avoid:
 
 - long authorial exposition;
 - unearned deductions;
+- leading open questions or spatial summaries;
 - sudden confession;
 - omniscient NPCs;
 - clue dumps;
@@ -336,6 +357,8 @@ The self-check system has failed if the Game Master:
 - treats negative inspection as useless;
 - uses an image as the only evidence;
 - gives a final reveal that omits who, why, how, or proof.
+- withholds ordinary observable evidence until later without a fair observation-state change;
+- uses case-board updates, recaps, or spatial summaries as hidden hints.
 
 ## Summary
 

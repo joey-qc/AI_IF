@@ -30,6 +30,8 @@ Use `docs/reverse-mystery-authoring-and-resolution-v1.md` to author the mystery 
 
 Use `docs/human-engagement-and-playability-v1.md` to ensure the case passes the Human Engagement Gate and Motive Mechanism Requirement before validation.
 
+Use `docs/player-agency-and-fair-evidence-v1.md` to keep observable evidence stable, separate facts from interpretation, and protect the player's right to form deductions.
+
 ## Authorship prerequisite
 
 Do not begin story authorship until the player setup and scope budget are defined.
@@ -302,6 +304,16 @@ Use stable IDs that can be cited by validation reports.
 
 Each required clue must also have at least one typed discovery rule in `discoveryRules`.
 
+For each key clue or evidence reveal, classify player-facing text as one or more of:
+
+- observation;
+- witness claim;
+- document fact;
+- interpretation;
+- final synthesis.
+
+Ordinary observable evidence must be stable on fair inspection. Do not make an observable mark, stain, smell, missing part, label, damage, unusual placement, ordinary content, or immediate physical oddity appear only after the player discovers its meaning unless access, tools, lighting, permission, movement, or inspection method changed.
+
 Use `docs/discovery-rules-v1.md` and `schemas/game-package.schema.json`.
 
 Do not rely only on prose discovery notes.
@@ -341,9 +353,13 @@ Each rule should identify relevant canonical IDs where useful, such as `location
 
 Use prerequisites when a clue should require prior discovery.
 
+Use discovery prerequisites only when they change physical access, permission, tools, lighting, inspection method, or available testimony. Use interpretation prerequisites for delayed meanings, theory checks, comparisons, or proof synthesis.
+
 Use `discoveryText`, `failureText`, and `repeatText` to help the Game Master reveal, deny, or repeat information fairly.
 
 Use `updatesCaseBoardSections` to identify safe player-facing board updates.
+
+Case-board updates should use neutral language such as known fact, known claim, known evidence, or unresolved significance. Do not author updates that imply method, motive, culprit, opportunity, or investigative direction unless the update belongs to hint, theory-check, deduction, or final solution mode.
 
 Discovery rules must reference authored assets. If `canonicalAssetInventory` is present, every revealed NPC, location, object, evidence item, document, image, discovery rule, interview topic, scene, clue, or red herring should be listed in the inventory.
 
@@ -495,6 +511,9 @@ Before finalizing, check:
 - Can the Game Master run this without inventing core facts?
 - Do important NPCs have interview topics and knowledge boundaries?
 - If images are available, do visual definitions prevent image-only clues, invented visual assets, continuity drift, and impossible geometry?
+- Are clue observations, witness claims, document facts, interpretations, and final synthesis clearly separated?
+- Does fair close inspection reveal stable ordinary evidence without waiting for the player to know its meaning?
+- Do case-board updates avoid leading language that performs deductions for the player?
 
 If any answer is no, revise before returning the package.
 

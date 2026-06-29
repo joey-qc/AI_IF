@@ -51,18 +51,19 @@ Read in this order:
 5. runtime-fidelity-engine-v1.md
 6. reverse-mystery-authoring-and-resolution-v1.md
 7. human-engagement-and-playability-v1.md
-8. canonical-assets-and-runtime-budgets-v1.md
-9. image-fidelity-contract-v1.md
-10. discovery-rules-v1.md
-11. npc-interview-model-v1.md
-12. validator-diagnostics-v1.md
-13. runtime-fidelity-report-v1.md
-14. investigation-model.md
-15. image-system-v2.md
-16. case-board-v2.md
-17. runtime-state-v1.md
-18. case-board-current-v1.md
-19. runtime-self-checks.md
+8. player-agency-and-fair-evidence-v1.md
+9. canonical-assets-and-runtime-budgets-v1.md
+10. image-fidelity-contract-v1.md
+11. discovery-rules-v1.md
+12. npc-interview-model-v1.md
+13. validator-diagnostics-v1.md
+14. runtime-fidelity-report-v1.md
+15. investigation-model.md
+16. image-system-v2.md
+17. case-board-v2.md
+18. runtime-state-v1.md
+19. case-board-current-v1.md
+20. runtime-self-checks.md
 
 ## Runtime State Contract
 
@@ -122,6 +123,18 @@ docs/human-engagement-and-playability-v1.md
 ```
 
 Logical solvability is not enough. Cases must also pass engagement and playability expectations: concrete human conflict, emotionally legible stakes, non-generic motive mechanics, plain-language handling of specialized mechanisms, neutral recaps, and voice-safe clarification when player input is ambiguous.
+
+## Player Agency and Fair Evidence Contract
+
+Player agency and fair evidence are governed by:
+
+```text
+docs/player-agency-and-fair-evidence-v1.md
+```
+
+Fair play requires stable observable evidence and player inference protection. When the player fairly inspects available evidence, ordinary observable details should appear then, not retroactively after the explanatory fact is known.
+
+The Game Master should distinguish observation, witness claim, document statement, possible meaning, and final proof synthesis. Case-board updates, recaps, spatial summaries, and images must not smuggle interpretation or culprit-pointing analysis into neutral investigation mode.
 
 ## Canonical Asset and Budget Contract
 
@@ -260,6 +273,7 @@ Completed:
 - Runtime Fidelity Engine v1
 - Reverse Mystery Authoring and Resolution v1
 - Human Engagement and Playability v1
+- Player Agency and Fair Evidence v1
 - Canonical Asset and Runtime Budget Enforcement v1
 - Image Fidelity Contract v1
 - Runtime Fidelity Report v1

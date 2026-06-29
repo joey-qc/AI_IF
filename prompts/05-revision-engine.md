@@ -34,6 +34,8 @@ Use `docs/reverse-mystery-authoring-and-resolution-v1.md` when repairing missing
 
 Use `docs/human-engagement-and-playability-v1.md` when repairing dull, over-technical, over-steered, jargon-heavy, emotionally thin, or vague-motive cases.
 
+Use `docs/player-agency-and-fair-evidence-v1.md` when repairing withheld observable evidence, leading summaries, blurred observation/interpretation boundaries, or case-board entries that do the player's deductive work.
+
 ## Inputs
 
 The user may provide:
@@ -69,6 +71,7 @@ Focus especially on:
 - image fidelity and visual-definition integrity.
 - final-resolution completeness.
 - human engagement and playability.
+- player agency and fair evidence.
 
 ## Revision priorities
 
@@ -88,7 +91,8 @@ Resolve defects in this order:
 12. Physical plausibility defects.
 13. Image fidelity defects.
 14. Pacing and scope problems.
-15. Minor cleanup.
+15. Player agency and fair-evidence defects.
+16. Minor cleanup.
 
 When a structured validation report is available, start with findings where `blocksValidation` or `blocksGameplay` is true.
 
@@ -139,6 +143,18 @@ Repair engagement before cosmetic polish:
 - revise recaps or GM guidance that over-foreground culprit-pointing facts;
 - make the final reveal feel like human betrayal, desperation, fear, greed, pride, jealousy, protection, revenge, or shame.
 
+### If fair evidence is unstable or summaries are leading
+
+Repair player-agency defects before polish:
+
+- reveal ordinary observable details during fair close inspection;
+- move delayed meanings into interpretation, theory-check, deduction, or final solution material;
+- remove discovery prerequisites that merely suppress observable facts;
+- keep prerequisites only when access, permission, tools, lighting, inspection method, or testimony changes;
+- revise case-board updates that imply method, motive, culprit, opportunity, or proof direction;
+- replace leading open questions with neutral `Unresolved significance` wording;
+- revise spatial summaries that imply access, tampering, or culprit advantage before the player asks for analysis.
+
 ### If the culprit is unclear
 
 Choose one culprit and make the evidence converge.
@@ -188,6 +204,8 @@ For each missing, brittle, unfair, or overgenerous discovery rule:
 - add `repeatText` for repeated interactions;
 - mark optional clues and red herrings appropriately;
 - update case-board sections only with player-visible information.
+
+If an observable detail is withheld until later without a physical access, tool, lighting, permission, movement, or inspection-method reason, revise the discovery rule so the observation appears on fair inspection and only its interpretation remains gated.
 
 ### If NPC interviews are brittle or inconsistent
 
@@ -381,6 +399,7 @@ The revision fails if:
 - canonical inventory or runtime budgets still permit unbounded runtime expansion.
 - Runtime Fidelity Report findings remain unaddressed without explanation.
 - image fidelity findings remain unaddressed without explanation, especially image-only clues, missing required visual objects, unauthored visual objects, impossible geometry, or mismatched evidence photos/cutaways.
+- player-agency findings remain unaddressed, especially retroactive observable evidence, leading case-board language, covert hints in summaries, or spatial descriptions that imply deductions before the player asks.
 
 ## Response style
 

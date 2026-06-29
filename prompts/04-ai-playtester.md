@@ -34,6 +34,8 @@ Use `docs/reverse-mystery-authoring-and-resolution-v1.md` when checking whether 
 
 Use `docs/human-engagement-and-playability-v1.md` to test engagement, boredom, over-steering, jargon load, technical confusion, voice ambiguity, and reveal satisfaction.
 
+Use `docs/player-agency-and-fair-evidence-v1.md` to test whether ordinary observable evidence is stable, whether summaries stay neutral, and whether the Game Master lets the player form deductions.
+
 ## Inputs
 
 The user should provide:
@@ -93,6 +95,8 @@ You should test:
 - runtime fidelity when the player asks about unauthored content;
 - budget enforcement when the player asks for extra witnesses, evidence, documents, images, locations, or branches.
 - image fidelity when the player requests new views, repeated views, close-ups, evidence photos, cutaways, maps, portraits, or image recall.
+- stable evidence handling when the player closely inspects available objects, documents, locations, or evidence.
+- whether case-board updates, open questions, recaps, or spatial summaries lead the player toward method, motive, culprit, opportunity, or proof.
 - post-playtest runtime fidelity reporting.
 
 ## Important constraints
@@ -119,11 +123,13 @@ When reporting defects, identify whether the issue was visible to the player or 
 11. Test repeated interactions after a clue has already been discovered.
 12. Test a premature accusation.
 13. Test unsupported searches, background-character questions, and off-path requests that could tempt the Game Master to invent content.
-14. Test requests that would exceed runtime budgets.
-15. Test final accusation using only discoverable evidence.
-16. Compare the play experience against the intended solution.
-17. Test the out-of-game fallback solution reveal when appropriate in a playtest context.
-18. Report defects and reference relevant validation finding IDs when applicable.
+14. Test close inspection of available evidence before discovering its meaning.
+15. Test whether neutral summaries, open questions, and spatial descriptions avoid covert hints.
+16. Test requests that would exceed runtime budgets.
+17. Test final accusation using only discoverable evidence.
+18. Compare the play experience against the intended solution.
+19. Test the out-of-game fallback solution reveal when appropriate in a playtest context.
+20. Report defects and reference relevant validation finding IDs when applicable.
 
 ## What to look for
 
@@ -207,6 +213,16 @@ Does the reveal feel like a human story rather than a technical procedure? Did t
 Assess whether the player is curious, bored, confused by jargon, or being pushed too obviously toward one answer.
 
 Test whether neutral recaps balance culprit-pointing facts, red herrings, innocent clearances, and open questions. In voice-friendly mode, test at least one ambiguous or misheard name and confirm the GM clarifies instead of guessing.
+
+### Player agency and fair evidence
+
+Test whether the Game Master:
+
+- reveals ordinary observable details during fair close inspection;
+- delays only interpretation, comparison, theory checking, or final synthesis;
+- avoids leading case-board entries such as implied tampering, method, motive, culprit path, or proof direction;
+- uses `Unresolved significance` rather than leading open questions when a question would perform the player's deduction;
+- describes spatial relationships without implying opportunity or culprit advantage unless the player asks for analysis or deduction mode has begun.
 
 ## Required output format
 
@@ -335,6 +351,8 @@ Mark the playtest as FAIL if:
 - the final reveal depends on hidden information;
 - the final reveal or fallback solution reveal requires invented material;
 - the experience feels dull, over-technical, jargon-heavy, or over-steered;
+- ordinary observable evidence is withheld until after the player discovers its meaning without a changed access, tool, lighting, permission, movement, or inspection reason;
+- the Game Master leads through summaries, open questions, spatial descriptions, or case-board updates;
 - technical tests a reasonable player would try are blocked without authored safe responses;
 - voice ambiguity causes the GM to answer about the wrong entity;
 - typed discovery rules do not allow essential clues to surface through plausible play;

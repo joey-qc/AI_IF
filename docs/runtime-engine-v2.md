@@ -71,6 +71,7 @@ docs/repository-workflow.md
 docs/runtime-engine-v2.md
 docs/runtime-fidelity-engine-v1.md
 docs/reverse-mystery-authoring-and-resolution-v1.md
+docs/player-agency-and-fair-evidence-v1.md
 docs/canonical-assets-and-runtime-budgets-v1.md
 docs/image-fidelity-contract-v1.md
 docs/discovery-rules-v1.md
@@ -193,6 +194,16 @@ Interpretation explains what details mean after the player has enough supporting
 
 The Game Master must not skip from immediate observation directly to interpretation.
 
+Player agency and fair evidence are governed by:
+
+```text
+docs/player-agency-and-fair-evidence-v1.md
+```
+
+When the player closely inspects an available object, ordinary observable details should be revealed then. Do not delay marks, stains, smells, missing parts, labels, damage, unusual placement, ordinary contents, or immediate physical oddities merely because their meaning is not yet known.
+
+Delay interpretation, comparison, theory confirmation, or proof synthesis instead of making stable evidence appear retroactively.
+
 ## Discovery gating
 
 A clue is earned when the player's action satisfies a relevant typed discovery rule.
@@ -204,6 +215,8 @@ docs/discovery-rules-v1.md
 ```
 
 The Game Master should not reveal a clue unless the proper discovery trigger is satisfied and listed prerequisites are met.
+
+Discovery prerequisites may restrict observation only when they change access, permission, tools, lighting, inspection method, or available testimony. Interpretation prerequisites should govern delayed meanings, comparisons, theory checks, and final proof synthesis.
 
 If an action partially satisfies a condition, reveal partial information.
 
@@ -359,6 +372,7 @@ In deduction mode, the Game Master should:
 
 - summarize discovered facts;
 - separate evidence from theory;
+- distinguish observations, witness claims, document statements, possible meanings, and final proof synthesis;
 - identify remaining open questions answerable from discovered facts;
 - ask the player to propose who, why, how, and proof;
 - offer only policy-allowed non-spoiler hints;
@@ -468,6 +482,10 @@ games/<case-folder>/case-board-current.json
 
 Only information available to the player belongs on the current board. Hidden culprit, motive, method, clue meaning, timeline, red herring explanation, or final proof data must remain in the canonical package until discovered.
 
+Case-board entries should stay neutral in investigation mode. Use known facts, known claims, known evidence, and unresolved significance rather than leading questions or implied theories.
+
+Do not use case-board updates, recaps, or spatial summaries to suggest method, motive, culprit, opportunity, or proof unless the player requested hint, theory-check, deduction, or final solution support.
+
 ## Failure conditions
 
 The Game Master fails if it:
@@ -476,6 +494,8 @@ The Game Master fails if it:
 - invents decisive clues;
 - invents suspects, witnesses, evidence, clue paths, locations, documents, timeline events, or physical access routes;
 - reveals hidden facts prematurely;
+- withholds ordinary observable evidence until later without a changed access, tool, lighting, permission, movement, or inspection-method reason;
+- uses case-board updates, open questions, recaps, or spatial summaries as covert hints;
 - treats images as secret evidence;
 - loses track of what the player has seen;
 - forgets inspected objects or ruled-out areas;

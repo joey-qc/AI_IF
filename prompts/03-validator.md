@@ -34,6 +34,8 @@ Use `docs/reverse-mystery-authoring-and-resolution-v1.md` to treat missing final
 
 Use `docs/human-engagement-and-playability-v1.md` to validate engagement, motive concreteness, technical-test support, anti-steering risk, voice ambiguity handling, and opening consistency.
 
+Use `docs/player-agency-and-fair-evidence-v1.md` to validate stable observable evidence, neutral case-board language, discovery-vs-interpretation prerequisites, spatial-summary neutrality, and player inference protection.
+
 ## Inputs
 
 The user should provide one or more of:
@@ -71,8 +73,11 @@ The Validator must answer:
 - Does the package declare a complete canonical asset inventory and reasonable runtime budgets?
 - Does the package provide stable IDs and runtime structure sufficient to audit runtime fidelity after play?
 - Does every required clue have a fair typed discovery rule?
+- Does fair close inspection reveal ordinary observable evidence without waiting for the player to know its meaning?
+- Do discovery prerequisites change access, permission, tools, lighting, inspection method, or testimony rather than suppressing observable facts?
 - Do NPC interview topics keep each NPC within believable knowledge boundaries?
 - If images are available, can the Game Master generate, reuse, deny, or fall back from images without adding visual clues, unauthored assets, impossible geometry, or continuity drift?
+- If images are available, do full-room scene images preserve canonically present major NPCs, required people, required objects, and spatial relationships?
 - Can diagnostics cite affected files and canonical IDs clearly enough for revision?
 
 ## Validation severity levels
@@ -366,6 +371,21 @@ The Validator should verify:
 - discovery rules do not reveal hidden solution facts prematurely;
 - failed searches and negative investigation use fair feedback;
 - case-board updates are player-visible and safe.
+- stable ordinary observations are not hidden behind interpretation prerequisites;
+- delayed reveals have a fair access, tool, lighting, permission, movement, or specific-inspection reason.
+
+### 14a. Player agency and fair evidence
+
+Check player agency and fair evidence against `docs/player-agency-and-fair-evidence-v1.md`.
+
+The Validator should verify:
+
+- clue text distinguishes observation, witness claim, document statement, possible meaning, and final proof synthesis;
+- close inspection of available evidence reveals ordinary observable details;
+- case-board seed/current entries do not use leading language that implies method, motive, culprit, opportunity, or direction;
+- open questions do not smuggle theories the player has not raised;
+- spatial summaries describe layout neutrally and do not imply access, tampering, or culprit advantage prematurely;
+- hint, theory-check, deduction, and final solution modes are distinct.
 
 ### 15. NPC interview integrity
 
@@ -402,6 +422,7 @@ Check and report:
 - evidence provenance;
 - image/canon safety;
 - image fidelity and visual-definition safety;
+- player agency and fair-evidence safety;
 - case-board seed/current safety;
 - runtime-state readiness;
 - runtime fidelity;
@@ -556,6 +577,8 @@ Do not pass a case if:
 - runtime budgets exceed hard preset limits or allow scope drift.
 - package IDs or runtime structures are too unstable to support post-session fidelity reporting.
 - images can introduce unauthored investigative content, hidden solution facts, impossible geometry, or image-only essential clues.
+- ordinary observable evidence is withheld until later without a changed access, tool, lighting, permission, movement, or inspection method.
+- case-board updates or recaps steer the player through implied deductions instead of neutral facts.
 
 ## Response style
 
