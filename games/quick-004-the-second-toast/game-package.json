@@ -76,10 +76,11 @@
         "clue-julian-refilled-glass",
         "clue-glass-wrong-side",
         "clue-codicil-removes-julian",
-        "clue-forged-withdrawals"
+        "clue-forged-withdrawals",
+        "clue-cigar-case-stain"
       ],
-      "deductionRequired": "The player must establish that the fatal substance was in the second-toast cordial, that Julian handled the glass during the critical interval, that the wrong-side placement contradicts his denial, and that the codicil and withdrawals give him a concrete reason to act that night.",
-      "insufficientAccusationResponse": "A theory naming Julian is plausible but not proven until glass timing, document motive, physical opportunity, and personal-object evidence are established."
+      "deductionRequired": "The player must establish that the fatal substance was in the second-toast cordial, that the first toast was safe, that Julian handled the glass during the critical interval, that the wrong-side placement contradicts his denial, that the codicil and withdrawals give him a concrete reason to act that night, and that the cigar-case stain provides physical proof from Julian's personal object.",
+      "insufficientAccusationResponse": "That theory fits some facts, but it is not yet proven. The player still needs the full chain: timing, glass handling, placement contradiction, concrete motive, and physical proof from Julian's personal object."
     },
     "essentialClueIds": [
       "clue-poisoned-amber-glass",
@@ -836,7 +837,7 @@
       "trueMeaning": "The case concealed or contacted the dosing vial.",
       "importance": "essential",
       "discoveryLocationId": "loc-dining-room",
-      "discoveryConditions": "Closely inspect Julian's cigar case after establishing he stood at the sideboard.",
+      "discoveryConditions": "Closely inspect Julian's cigar case, open the cigar case, search the sideboard, look for something Julian left near the glasses, or inspect Julian's personal items on the sideboard after establishing he stood at the sideboard.",
       "sourceOrProvenance": "Julian's silver cigar case on the sideboard.",
       "associatedTimelineEventId": "evt-006",
       "associatedCharacterIds": [
@@ -1170,7 +1171,7 @@
       "safeAnswers": {
         "natural_death": "The question is fair. The dining-room evidence can test whether the second toast, rather than the meal or natural collapse, explains the death.",
         "who_benefited": "Several people had pressure: Julian could lose control, Mara could gain authority, Beatrice had family resentment, and Felix knew the document contents.",
-        "lab_tests": "Police and medical testing will follow, but the playable proof turns on timing, glass access, motive, and physical evidence in the room.",
+        "lab_tests": "That is a reasonable question. Police and medical testing will follow, but the immediate playable proof can proceed from in-room facts: timing, glass access, motive, and physical evidence at the table and sideboard.",
         "more_witnesses": "No additional interviewable witnesses are needed; the case is contained in the dining room."
       },
       "hiddenFactsNotYetRevealed": [
@@ -1219,8 +1220,8 @@
         "Can I summarize the case?"
       ],
       "safeAnswers": {
-        "balanced_recap": "A neutral recap should include facts against multiple suspects, facts clearing them, and open questions unless the player asks for a hint.",
-        "early_accusation": "A correct theory may be plausible but not proven until motive, opportunity, glass timing, and physical evidence are established."
+        "balanced_recap": "A neutral recap should not over-foreground any single suspect. Include Beatrice's visible anger and opportunity problems, Mara's codicil benefit and lack of glass handling plus her placement observation, Felix's document knowledge and lack of glass access during the refill, and Julian's strongest combination only if motive, refill access, placement contradiction, and cigar-case physical evidence are all established.",
+        "early_accusation": "A correct theory may be plausible, but do not confirm the solution or narrate the final reconstruction until the full proof chain is discovered: timing, glass handling, placement contradiction, concrete motive, and physical proof from Julian's personal object."
       },
       "hiddenFactsNotYetRevealed": [
         "Full final resolution until accusation or spoiler request."
@@ -1393,7 +1394,7 @@
     {
       "ruleId": "dr-inspect-cigar-case",
       "triggerType": "closely_inspect_object",
-      "description": "Player closely inspects Julian's silver cigar case.",
+      "description": "Player closely inspects Julian's silver cigar case or takes a reasonable equivalent action around Julian's personal item on the sideboard.",
       "locationId": "loc-dining-room",
       "objectId": "obj-silver-cigar-case",
       "prerequisiteClueIds": [
@@ -1414,7 +1415,7 @@
         "workingTheories"
       ],
       "discoveryText": "Inside the case is a sticky amber stain matching the cordial scent; one narrow sleeve is empty.",
-      "failureText": "The case matters once Julian's sideboard access is established.",
+      "failureText": "A casual look at the sideboard does not prove anything yet. Once Julian's sideboard access is established, inspecting or opening his cigar case is a fair next step.",
       "repeatText": "The cigar case still links a personal object to the dosing opportunity.",
       "isOptional": false,
       "isRedHerring": false,
@@ -1501,18 +1502,19 @@
         "clue-julian-refilled-glass",
         "clue-glass-wrong-side",
         "clue-codicil-removes-julian",
-        "clue-forged-withdrawals"
+        "clue-forged-withdrawals",
+        "clue-cigar-case-stain"
       ],
       "updatesCaseBoardSections": [
         "workingTheories",
         "closedLeads"
       ],
-      "discoveryText": "The accusation is supported by glass timing, opportunity, motive, and contradiction. Full proof is strongest with the cigar-case stain.",
-      "failureText": "The theory may be plausible, but it still needs proof of glass timing, concrete motive, physical opportunity, and personal-object evidence.",
+      "discoveryText": "The accusation is supported by the complete proof chain: timing, glass handling, placement contradiction, concrete motive, and physical proof from Julian's personal object.",
+      "failureText": "That theory fits some facts, but it is not yet proven. You still need the full chain: timing, glass handling, placement contradiction, concrete motive, and physical proof from Julian's personal object.",
       "repeatText": "The accusation turns on the same proof chain.",
       "isOptional": false,
       "isRedHerring": false,
-      "validationNotes": "Do not reveal final solution on an unsupported early guess."
+      "validationNotes": "Do not confirm the solution or reveal the full canonical reconstruction unless all prerequisite clues, including clue-cigar-case-stain, have been discovered."
     }
   ],
   "caseBoardSeed": {
@@ -1660,7 +1662,8 @@
       "clue-julian-refilled-glass",
       "clue-glass-wrong-side",
       "clue-codicil-removes-julian",
-      "clue-forged-withdrawals"
+      "clue-forged-withdrawals",
+      "clue-cigar-case-stain"
     ],
     "knownRiskAreas": [
       "Do not open a lab, autopsy, or toxicology branch.",
