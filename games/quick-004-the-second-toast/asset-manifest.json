@@ -1,0 +1,70 @@
+[
+  {
+    "assetId": "asset-dining-room-scene",
+    "title": "Vale House dining room",
+    "assetType": "scene_image",
+    "associatedLocationId": "loc-dining-room",
+    "associatedClueIds": [],
+    "discoveryConditions": "Optional on player request; image mode is off by default.",
+    "textFallback": "A candlelit formal dining room with Eleanor's chair, an amber cordial glass, a sideboard, a decanter, place cards, and a solicitor's folder.",
+    "retrievalLabel": "Vale House dining room",
+    "spoilerLevel": "low",
+    "isCanonicalEvidence": false,
+    "containsHiddenClues": false,
+    "imagePromptGuidance": "Show only authored room objects. Do not depict the culprit action, hidden poison, extra people, extra doors, or visual clues not already available in text.",
+    "hasBeenShownToPlayer": false
+  },
+  {
+    "assetId": "asset-amber-glass-closeup",
+    "title": "Amber cordial glass",
+    "assetType": "evidence_photo",
+    "associatedLocationId": "loc-dining-room",
+    "associatedClueIds": [
+      "clue-poisoned-amber-glass",
+      "clue-glass-wrong-side"
+    ],
+    "discoveryConditions": "Optional after the glass has been inspected in text.",
+    "textFallback": "A small amber cordial glass sits at Eleanor's place, slightly misplaced from where Mara says Eleanor normally kept it.",
+    "retrievalLabel": "Amber cordial glass",
+    "spoilerLevel": "medium",
+    "isCanonicalEvidence": false,
+    "containsHiddenClues": false,
+    "imagePromptGuidance": "Support text discoveries only. Do not add labels, fingerprints, visible poison, or extra hidden markings.",
+    "hasBeenShownToPlayer": false
+  },
+  {
+    "assetId": "asset-solicitor-folder",
+    "title": "Unsigned codicil folder",
+    "assetType": "document",
+    "associatedLocationId": "loc-dining-room",
+    "associatedClueIds": [
+      "clue-codicil-removes-julian",
+      "clue-forged-withdrawals"
+    ],
+    "discoveryConditions": "Optional after the solicitor folder has been read in text.",
+    "textFallback": "The unsigned codicil would remove Julian as estate manager and name Mara as trustee.",
+    "retrievalLabel": "Unsigned codicil folder",
+    "spoilerLevel": "medium",
+    "isCanonicalEvidence": false,
+    "containsHiddenClues": false,
+    "imagePromptGuidance": "Show only document fragments already revealed in text. Do not expose undiscovered solution facts visually.",
+    "hasBeenShownToPlayer": false
+  },
+  {
+    "assetId": "asset-cigar-case",
+    "title": "Silver cigar case",
+    "assetType": "evidence_photo",
+    "associatedLocationId": "loc-dining-room",
+    "associatedClueIds": [
+      "clue-cigar-case-stain"
+    ],
+    "discoveryConditions": "Optional after the cigar case has been closely inspected in text.",
+    "textFallback": "A silver cigar case with a faint amber stain inside and one narrow empty sleeve.",
+    "retrievalLabel": "Silver cigar case",
+    "spoilerLevel": "high",
+    "isCanonicalEvidence": false,
+    "containsHiddenClues": false,
+    "imagePromptGuidance": "Support text discovery only. Do not add labels, names, or visual details that identify the culprit before textual discovery.",
+    "hasBeenShownToPlayer": false
+  }
+]

@@ -1,0 +1,1936 @@
+{
+  "caseMetadata": {
+    "caseId": "quick-004",
+    "title": "The Second Toast",
+    "slug": "the-second-toast",
+    "version": "0.1.0",
+    "status": "draft",
+    "createdAt": "2026-06-28",
+    "lastUpdatedAt": "2026-06-28",
+    "authorRole": "Story Author",
+    "validationStatus": "not_validated",
+    "playtestStatus": "not_playtested",
+    "humanPlayStatus": "not_played",
+    "shortDescription": "A classic contained whodunit about a fatal second toast at a private family dinner.",
+    "estimatedPlayTimeMinutes": 25,
+    "repositoryPath": "games/quick-004-the-second-toast",
+    "notes": "Draft package generated from sealed final implementation handoff; ready for package-level validation."
+  },
+  "playerConfig": {
+    "lengthPreset": "quick_mystery",
+    "difficulty": "medium",
+    "genre": "classic contained whodunit",
+    "tone": "tense, intimate, human, fair-play",
+    "settingSummary": "Vale House dining room after a private birthday dinner turns fatal.",
+    "playerRole": "A private investigator retained by the family solicitor after the sudden death at dinner.",
+    "imageMode": "player_requested_only",
+    "interactionMode": "voice_friendly",
+    "hintPolicy": "on_request_only",
+    "contentBoundaries": [
+      "No gore.",
+      "Poison details remain simple and unnamed during play.",
+      "No external lab or police-procedure branch."
+    ]
+  },
+  "scopeBudget": {
+    "maxPrimaryLocations": 1,
+    "maxMajorNpcCount": 4,
+    "maxEssentialClueCount": 8,
+    "maxRedHerringCount": 3,
+    "maxNestedSecrets": 0,
+    "expectedPlayTimeMinutesMin": 20,
+    "expectedPlayTimeMinutesMax": 30
+  },
+  "setting": {
+    "place": "Vale House dining room",
+    "era": "present day with classic whodunit atmosphere",
+    "dateOrSeason": "A rainy evening birthday dinner",
+    "socialContext": "A wealthy family gathers around an aging matriarch, a pending legal change, and old resentments.",
+    "technologyLevel": "Contemporary household and legal documents; no technical mechanism dominates play.",
+    "toneNotes": "Contained, intimate, emotionally legible, and clue-driven.",
+    "sensoryStyle": "Candlelight, rain at tall windows, polished wood, cordial glasses, and a family room gone quiet.",
+    "languageStyle": "Plain, voice-friendly, classic detective prose."
+  },
+  "centralMystery": {
+    "mysteryType": "murder",
+    "openingProblem": "Eleanor Vale died moments after the second toast at a private family dinner.",
+    "victimOrTarget": "victim-eleanor-vale",
+    "stakes": "The death freezes a family legal decision, exposes competing motives, and threatens to turn grief into accusation.",
+    "playerObjective": "Determine whether Eleanor's death was natural, accidental, suicide, or murder, and if murder identify who made the second toast fatal.",
+    "successCondition": "The player names the responsible party and supports the accusation with motive, method, opportunity, and physical proof."
+  },
+  "solution": {
+    "culpritCharacterId": "npc-julian-vale",
+    "victimCharacterId": "victim-eleanor-vale",
+    "motive": "Eleanor was about to remove Julian from estate control and expose forged foundation withdrawals that would bring disgrace, investigation, and ruin.",
+    "motiveProportionality": "The motive is concrete and severe: loss of inheritance control, exposure of financial misconduct, public disgrace, criminal investigation, and financial ruin.",
+    "method": "Julian poisoned Eleanor's amber cordial glass during the refill interval before the second toast, using a vial hidden in his silver cigar case.",
+    "opportunity": "He stood at the sideboard during the refill, handled Eleanor's amber glass, and returned it before the second toast.",
+    "means": "He had the vial concealed in his cigar case, access to the sideboard, and knowledge that Eleanor used the amber cordial glass.",
+    "concealmentPlan": "He denied touching Eleanor's specific glass, encouraged natural-death and family-conflict explanations, and relied on the private dinner confusion to obscure the refill.",
+    "culpritMistake": "He returned the amber glass to the wrong side of Eleanor's place setting, exposing that someone unfamiliar with her left-side placement habit had handled it.",
+    "proofRequiredForAccusation": {
+      "requiredClueIds": [
+        "clue-poisoned-amber-glass",
+        "clue-first-toast-safe",
+        "clue-julian-refilled-glass",
+        "clue-glass-wrong-side",
+        "clue-codicil-removes-julian",
+        "clue-forged-withdrawals"
+      ],
+      "deductionRequired": "The player must establish that the fatal substance was in the second-toast cordial, that Julian handled the glass during the critical interval, that the wrong-side placement contradicts his denial, and that the codicil and withdrawals give him a concrete reason to act that night.",
+      "insufficientAccusationResponse": "A theory naming Julian is plausible but not proven until glass timing, document motive, physical opportunity, and personal-object evidence are established."
+    },
+    "essentialClueIds": [
+      "clue-poisoned-amber-glass",
+      "clue-first-toast-safe",
+      "clue-julian-refilled-glass",
+      "clue-glass-wrong-side",
+      "clue-codicil-removes-julian",
+      "clue-forged-withdrawals",
+      "clue-cigar-case-stain",
+      "clue-mara-clears-glass-habit"
+    ],
+    "supportingClueIds": [
+      "clue-beatrice-anger",
+      "clue-beatrice-window",
+      "clue-felix-unsigned-document",
+      "clue-place-cards"
+    ],
+    "redHerringIds": [
+      "red-beatrice-inheritance-anger",
+      "red-mara-beneficiary",
+      "red-felix-legal-control"
+    ],
+    "trueTimelineEventIds": [
+      "evt-001",
+      "evt-002",
+      "evt-003",
+      "evt-004",
+      "evt-005",
+      "evt-006",
+      "evt-007",
+      "evt-008"
+    ],
+    "finalRevealBeats": [
+      "The death follows the second toast, not the meal.",
+      "The first toast was safe, narrowing the fatal interval.",
+      "Julian handled the amber glass during the refill interval while claiming he did not.",
+      "The wrong-side placement shows the glass was handled by someone who knew the glass but not Eleanor's placement habit.",
+      "The unsigned codicil and withdrawal note give Julian a concrete motive to act that night.",
+      "The cigar-case stain connects Julian's personal object to the dosing opportunity.",
+      "Beatrice, Mara, and Felix each have suspicion but lack the full combination of motive, method, opportunity, and proof."
+    ],
+    "postResolutionAnswers": {
+      "canonicalEndgameExplanation": "Julian Vale killed Eleanor before she could sign a codicil removing him from estate control and exposing forged withdrawals. He dosed her amber cordial glass during the refill before the second toast, using a vial hidden in his silver cigar case, then returned the glass to the wrong side of her place setting.",
+      "fallbackSolutionReveal": "If gameplay stops early and the player asks out of game for the answer, reveal the authored solution from this package without improvising or adding new facts.",
+      "innocentSuspectClearance": "Beatrice had anger but not glass access. Mara benefited but did not handle the glass and noticed the placement error. Felix knew the codicil but lacked physical opportunity."
+    }
+  },
+  "characters": [
+    {
+      "characterId": "npc-julian-vale",
+      "name": "Julian Vale",
+      "role": "Nephew and estate manager",
+      "isMajorNpc": true,
+      "isSuspect": true,
+      "relationshipToMystery": "He managed the dinner, the estate, and the refill interval at the sideboard.",
+      "apparentMotive": "Preserving the estate and avoiding family scandal.",
+      "trueMotiveOrInnocentExplanation": "He needed to prevent a legal change and conceal forged foundation withdrawals.",
+      "alibiClaim": "He says he only steadied the decanter and never touched Eleanor's specific glass.",
+      "alibiTruth": "He handled Eleanor's amber glass and dosed it during the refill.",
+      "knowledge": [
+        "Eleanor used the short amber cordial glass.",
+        "Eleanor planned a legal change.",
+        "His own withdrawal exposure risk.",
+        "His cigar case concealed the vial."
+      ],
+      "secrets": [
+        "He forged foundation withdrawals.",
+        "He handled the amber glass.",
+        "He used the silver cigar case to conceal the vial."
+      ],
+      "liesOrOmissions": [
+        "He denies touching Eleanor's glass.",
+        "He downplays the codicil.",
+        "He frames Eleanor as frail and emotional."
+      ],
+      "interviewTopics": [
+        {
+          "topicId": "topic-julian-dinner-role",
+          "topicLabel": "Hosting and refills",
+          "topicType": "alibi",
+          "npcId": "npc-julian-vale",
+          "playerQuestionExamples": [
+            "What did you do during the refill?",
+            "Did you touch Eleanor's glass?"
+          ],
+          "truthfulAnswer": "I stood to steady the decanter and keep the evening from becoming a scene.",
+          "lieOrOmission": "He denies touching Eleanor's specific glass.",
+          "evasiveAnswer": "Everyone saw me at the sideboard. That hardly makes me a murderer.",
+          "knowledgeBoundary": "He will not volunteer the vial, cigar case, or forged withdrawals.",
+          "emotionalState": "Polished and protective, with tension beneath.",
+          "revealsClueIds": [
+            "clue-julian-refilled-glass"
+          ],
+          "revealsEvidenceIds": [],
+          "followUpTopicIds": [
+            "topic-julian-codicil",
+            "topic-julian-cigar-case"
+          ],
+          "repeatAnswer": "Julian repeats that he only steadied the decanter.",
+          "validationNotes": "Provides opportunity while preserving denial."
+        },
+        {
+          "topicId": "topic-julian-codicil",
+          "topicLabel": "The codicil",
+          "topicType": "motive",
+          "npcId": "npc-julian-vale",
+          "playerQuestionExamples": [
+            "Did you know what Eleanor planned to sign?",
+            "Were you losing control of the estate?"
+          ],
+          "truthfulAnswer": "I knew Felix brought papers. Aunt Eleanor changed her mind often.",
+          "lieOrOmission": "He claims not to know the document threatened his control.",
+          "evasiveAnswer": "This is not the time to turn grief into paperwork.",
+          "knowledgeBoundary": "He knows the codicil and withdrawals threatened him but hides both.",
+          "emotionalState": "Controlled and increasingly brittle.",
+          "prerequisiteClueIds": [
+            "clue-codicil-removes-julian"
+          ],
+          "revealsClueIds": [],
+          "revealsEvidenceIds": [],
+          "followUpTopicIds": [
+            "topic-julian-cigar-case"
+          ],
+          "repeatAnswer": "He insists the document was not his concern.",
+          "validationNotes": "Motive pressure should be driven by document evidence."
+        },
+        {
+          "topicId": "topic-julian-cigar-case",
+          "topicLabel": "Silver cigar case",
+          "topicType": "evidence",
+          "npcId": "npc-julian-vale",
+          "playerQuestionExamples": [
+            "Why is your cigar case on the sideboard?",
+            "May I inspect the cigar case?"
+          ],
+          "truthfulAnswer": "It is a family keepsake. I put it down after dinner.",
+          "lieOrOmission": "He hides that it held the vial.",
+          "evasiveAnswer": "Surely you are not accusing a cigar case.",
+          "knowledgeBoundary": "He knows the stain and empty sleeve are dangerous to him.",
+          "emotionalState": "Defensive.",
+          "prerequisiteClueIds": [
+            "clue-julian-refilled-glass"
+          ],
+          "revealsClueIds": [
+            "clue-cigar-case-stain"
+          ],
+          "revealsEvidenceIds": [
+            "ev-cigar-case"
+          ],
+          "repeatAnswer": "He says the case is irrelevant.",
+          "validationNotes": "Physical proof path after opportunity is established."
+        }
+      ],
+      "cluesPointingToward": [
+        "clue-julian-refilled-glass",
+        "clue-codicil-removes-julian",
+        "clue-forged-withdrawals",
+        "clue-cigar-case-stain"
+      ],
+      "cluesClearingOrImplicating": [
+        "clue-glass-wrong-side"
+      ],
+      "interrogationGuidance": "Do not have Julian confess unless confronted with timing, glass handling, codicil motive, and cigar-case evidence."
+    },
+    {
+      "characterId": "npc-mara-vale",
+      "name": "Mara Vale",
+      "role": "Niece and proposed foundation trustee",
+      "isMajorNpc": true,
+      "isSuspect": true,
+      "relationshipToMystery": "She was seated beside Eleanor and was named in the planned trustee change.",
+      "apparentMotive": "She would gain foundation authority if the codicil were signed.",
+      "trueMotiveOrInnocentExplanation": "She wanted the foundation cleaned up but did not know the full financial misconduct until that night and did not handle the glass.",
+      "alibiClaim": "She stayed seated beside Eleanor during the refill.",
+      "alibiTruth": "She stayed in place and noticed the glass placement mistake.",
+      "knowledge": [
+        "Eleanor's amber-glass habit.",
+        "Eleanor's left-side placement habit.",
+        "Eleanor planned to change foundation trustees.",
+        "Old family guilt around foundation money."
+      ],
+      "secrets": [
+        "She argued with Eleanor years earlier over family money."
+      ],
+      "liesOrOmissions": [
+        "She is reluctant to talk about old family conflict."
+      ],
+      "interviewTopics": [
+        {
+          "topicId": "topic-mara-glass-habit",
+          "topicLabel": "Eleanor's glass habit",
+          "topicType": "clue",
+          "npcId": "npc-mara-vale",
+          "playerQuestionExamples": [
+            "Did Eleanor always use that glass?",
+            "Was the glass where it normally sat?"
+          ],
+          "truthfulAnswer": "Eleanor used the amber glass because it was easier on her hands, and she usually kept it to her left.",
+          "knowledgeBoundary": "Mara knows the habit and placement, not who dosed the glass.",
+          "emotionalState": "Grieving but observant.",
+          "revealsClueIds": [
+            "clue-glass-wrong-side",
+            "clue-mara-clears-glass-habit"
+          ],
+          "revealsEvidenceIds": [],
+          "repeatAnswer": "Mara repeats that the glass being on the right was wrong.",
+          "validationNotes": "Key observation that also helps clear Mara through lack of handling."
+        },
+        {
+          "topicId": "topic-mara-codicil",
+          "topicLabel": "Foundation trustee change",
+          "topicType": "motive",
+          "npcId": "npc-mara-vale",
+          "playerQuestionExamples": [
+            "Were you going to benefit from the document?",
+            "Did Eleanor plan to name you trustee?"
+          ],
+          "truthfulAnswer": "She wanted me to help clean up the foundation. I did not know how bad it was until tonight.",
+          "knowledgeBoundary": "Mara knows the planned appointment, not every detail of Julian's withdrawals until shown evidence.",
+          "emotionalState": "Uneasy and sincere.",
+          "revealsClueIds": [],
+          "revealsEvidenceIds": [],
+          "repeatAnswer": "Mara says the change was about repair, not a prize.",
+          "validationNotes": "Keeps Mara suspicious but bounded."
+        },
+        {
+          "topicId": "topic-mara-old-argument",
+          "topicLabel": "Old family argument",
+          "topicType": "red_herring",
+          "npcId": "npc-mara-vale",
+          "playerQuestionExamples": [
+            "Did you argue with Eleanor?",
+            "Were you estranged from her?"
+          ],
+          "truthfulAnswer": "We argued years ago about money and the foundation. I regretted how long I stayed away.",
+          "knowledgeBoundary": "Old guilt does not give her method or opportunity.",
+          "emotionalState": "Ashamed and sad.",
+          "revealsClueIds": [],
+          "revealsEvidenceIds": [],
+          "repeatAnswer": "The old argument still hurts her, but it does not explain the glass.",
+          "validationNotes": "Humanizes the red herring."
+        }
+      ],
+      "cluesPointingToward": [
+        "clue-codicil-removes-julian"
+      ],
+      "cluesClearingOrImplicating": [
+        "clue-mara-clears-glass-habit",
+        "clue-glass-wrong-side"
+      ],
+      "interrogationGuidance": "Mara should provide the key glass observation without solving the case for the player."
+    },
+    {
+      "characterId": "npc-beatrice-hale",
+      "name": "Beatrice Hale",
+      "role": "Eleanor's estranged daughter",
+      "isMajorNpc": true,
+      "isSuspect": true,
+      "relationshipToMystery": "She argued with Eleanor over inheritance and family legacy during dinner.",
+      "apparentMotive": "Visible anger over Eleanor giving assets to the foundation.",
+      "trueMotiveOrInnocentExplanation": "She wanted reconciliation and money but lacked the key glass access and habit knowledge.",
+      "alibiClaim": "She moved to the window after the first toast.",
+      "alibiTruth": "She was away from the sideboard during the refill.",
+      "knowledge": [
+        "Her argument with Eleanor.",
+        "Her own torn letter.",
+        "General tension about the foundation."
+      ],
+      "secrets": [
+        "She tore up a reconciliation letter."
+      ],
+      "liesOrOmissions": [
+        "She minimizes the anger of the dinner argument."
+      ],
+      "interviewTopics": [
+        {
+          "topicId": "topic-beatrice-argument",
+          "topicLabel": "Dinner argument",
+          "topicType": "motive",
+          "npcId": "npc-beatrice-hale",
+          "playerQuestionExamples": [
+            "What were you arguing about?",
+            "Did you resent the foundation?"
+          ],
+          "truthfulAnswer": "I said ugly things. I thought she was giving the family away piece by piece.",
+          "knowledgeBoundary": "Beatrice knows her anger but not the method.",
+          "emotionalState": "Raw and defensive.",
+          "revealsClueIds": [
+            "clue-beatrice-anger"
+          ],
+          "repeatAnswer": "She admits the argument but not murder.",
+          "validationNotes": "Real pressure but not proof."
+        },
+        {
+          "topicId": "topic-beatrice-window",
+          "topicLabel": "Window movement",
+          "topicType": "alibi",
+          "npcId": "npc-beatrice-hale",
+          "playerQuestionExamples": [
+            "Where were you during the refill?",
+            "Did you go near the sideboard?"
+          ],
+          "truthfulAnswer": "I went to the window because I was crying and did not want Eleanor to see.",
+          "knowledgeBoundary": "She knows her own movement and little about the sideboard.",
+          "emotionalState": "Embarrassed.",
+          "revealsClueIds": [
+            "clue-beatrice-window"
+          ],
+          "repeatAnswer": "She repeats that she was by the window.",
+          "validationNotes": "Clearance path for opportunity."
+        },
+        {
+          "topicId": "topic-beatrice-letter",
+          "topicLabel": "Torn letter",
+          "topicType": "red_herring",
+          "npcId": "npc-beatrice-hale",
+          "playerQuestionExamples": [
+            "What is the torn letter?",
+            "Were you trying to reconcile?"
+          ],
+          "truthfulAnswer": "It was a stupid attempt to say I was sorry. I tore it up before dinner.",
+          "knowledgeBoundary": "The letter is emotional context, not method.",
+          "emotionalState": "Ashamed.",
+          "revealsClueIds": [],
+          "revealsEvidenceIds": [
+            "ev-torn-letter"
+          ],
+          "repeatAnswer": "She says the letter was apology, not a plan.",
+          "validationNotes": "Supports red herring without adding a new branch."
+        }
+      ],
+      "cluesPointingToward": [
+        "clue-beatrice-anger"
+      ],
+      "cluesClearingOrImplicating": [
+        "clue-beatrice-window"
+      ],
+      "interrogationGuidance": "Beatrice should look emotionally suspicious but not have method or access."
+    },
+    {
+      "characterId": "npc-felix-morrow",
+      "name": "Felix Morrow",
+      "role": "Family solicitor",
+      "isMajorNpc": true,
+      "isSuspect": true,
+      "relationshipToMystery": "He brought the unsigned codicil Eleanor intended to sign.",
+      "apparentMotive": "He knew the document contents and could benefit from legal confusion.",
+      "trueMotiveOrInnocentExplanation": "He is professionally nervous but had no access to the cordial glasses during the refill.",
+      "alibiClaim": "He was retrieving the document folder from his briefcase after the second toast began.",
+      "alibiTruth": "He had the folder but no glass access during the refill.",
+      "knowledge": [
+        "The codicil contents.",
+        "The document was unsigned.",
+        "The legal effect of Eleanor's planned change."
+      ],
+      "secrets": [
+        "He worries about professional liability."
+      ],
+      "liesOrOmissions": [
+        "He initially avoids stating the codicil's full effect in front of the family."
+      ],
+      "interviewTopics": [
+        {
+          "topicId": "topic-felix-codicil",
+          "topicLabel": "Codicil contents",
+          "topicType": "motive",
+          "npcId": "npc-felix-morrow",
+          "playerQuestionExamples": [
+            "What was Eleanor going to sign?",
+            "Who would the document affect?"
+          ],
+          "truthfulAnswer": "The codicil would remove Julian from estate management and name Mara as trustee.",
+          "knowledgeBoundary": "Felix knows the document contents but not the murderer's action.",
+          "emotionalState": "Nervous and professional.",
+          "revealsClueIds": [
+            "clue-codicil-removes-julian"
+          ],
+          "revealsEvidenceIds": [
+            "ev-solicitor-folder"
+          ],
+          "repeatAnswer": "Felix repeats the legal effect of the unsigned codicil.",
+          "validationNotes": "Concrete motive path."
+        },
+        {
+          "topicId": "topic-felix-timing",
+          "topicLabel": "Document timing",
+          "topicType": "timeline",
+          "npcId": "npc-felix-morrow",
+          "playerQuestionExamples": [
+            "Was the document signed?",
+            "When were you going to present it?"
+          ],
+          "truthfulAnswer": "It was not signed. I was about to bring it out after the second toast.",
+          "knowledgeBoundary": "Felix can confirm unsigned status and timing.",
+          "emotionalState": "Shaken.",
+          "revealsClueIds": [
+            "clue-felix-unsigned-document"
+          ],
+          "repeatAnswer": "The document remained unsigned when Eleanor died.",
+          "validationNotes": "Explains why timing matters."
+        },
+        {
+          "topicId": "topic-felix-briefcase",
+          "topicLabel": "Briefcase and access",
+          "topicType": "alibi",
+          "npcId": "npc-felix-morrow",
+          "playerQuestionExamples": [
+            "Where were you during the refill?",
+            "Did you touch the glasses?"
+          ],
+          "truthfulAnswer": "I was at my briefcase, away from the cordial glasses.",
+          "knowledgeBoundary": "Felix can account for his own movement.",
+          "emotionalState": "Precise and anxious.",
+          "revealsClueIds": [
+            "clue-place-cards"
+          ],
+          "repeatAnswer": "He repeats that he was at the briefcase, not the sideboard.",
+          "validationNotes": "Clears glass access."
+        }
+      ],
+      "cluesPointingToward": [
+        "clue-felix-unsigned-document"
+      ],
+      "cluesClearingOrImplicating": [
+        "clue-place-cards"
+      ],
+      "interrogationGuidance": "Felix should disclose legal motive when pressed, but not become a solution narrator."
+    }
+  ],
+  "locations": [
+    {
+      "locationId": "loc-dining-room",
+      "name": "Vale House dining room",
+      "isPrimaryLocation": true,
+      "description": "A formal dining room after a private dinner. Eleanor's chair sits near one end of the table. A sideboard holds a cordial decanter, several glasses, Julian's silver cigar case, and the solicitor's document folder.",
+      "purpose": "The single playable investigation space.",
+      "availableFromStart": true,
+      "entryConditions": "Start of play.",
+      "charactersPresent": [
+        "npc-julian-vale",
+        "npc-mara-vale",
+        "npc-beatrice-hale",
+        "npc-felix-morrow"
+      ],
+      "clueIds": [
+        "clue-poisoned-amber-glass",
+        "clue-first-toast-safe",
+        "clue-julian-refilled-glass",
+        "clue-glass-wrong-side",
+        "clue-codicil-removes-julian",
+        "clue-forged-withdrawals",
+        "clue-cigar-case-stain",
+        "clue-mara-clears-glass-habit",
+        "clue-beatrice-anger",
+        "clue-beatrice-window",
+        "clue-felix-unsigned-document",
+        "clue-place-cards"
+      ],
+      "evidenceIds": [
+        "ev-amber-glass",
+        "ev-solicitor-folder",
+        "ev-eleanor-note",
+        "ev-cigar-case",
+        "ev-torn-letter",
+        "ev-place-cards"
+      ],
+      "exitLeads": [
+        "Inspect Eleanor's amber glass.",
+        "Question suspects about the refill and toasts.",
+        "Read the solicitor's folder.",
+        "Inspect the silver cigar case."
+      ],
+      "assetIds": [
+        "asset-dining-room-scene"
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "eventId": "evt-001",
+      "sequenceOrder": 1,
+      "dateTimeLabel": "6:40 p.m.",
+      "locationId": "loc-dining-room",
+      "participantCharacterIds": [
+        "npc-felix-morrow"
+      ],
+      "summary": "Felix arrives with the unsigned codicil.",
+      "cause": "Eleanor has asked him to bring legal papers for signing.",
+      "effect": "The document becomes available in the dining room but remains unsigned.",
+      "clueIdsGenerated": [
+        "clue-felix-unsigned-document"
+      ],
+      "visibilityToPlayer": "Discoverable through Felix and the folder."
+    },
+    {
+      "eventId": "evt-002",
+      "sequenceOrder": 2,
+      "dateTimeLabel": "6:50 p.m.",
+      "locationId": "loc-dining-room",
+      "participantCharacterIds": [
+        "npc-julian-vale"
+      ],
+      "summary": "Eleanor privately tells Julian his management role will end.",
+      "cause": "She has decided to change control of the foundation.",
+      "effect": "Julian realizes he may be exposed that night.",
+      "clueIdsGenerated": [
+        "clue-codicil-removes-julian",
+        "clue-forged-withdrawals"
+      ],
+      "visibilityToPlayer": "Hidden until document evidence is found."
+    },
+    {
+      "eventId": "evt-003",
+      "sequenceOrder": 3,
+      "dateTimeLabel": "7:05 p.m.",
+      "locationId": "loc-dining-room",
+      "participantCharacterIds": [
+        "npc-beatrice-hale"
+      ],
+      "summary": "Beatrice argues that Eleanor is giving the family away to charity.",
+      "cause": "Long-running family resentment and inheritance pressure.",
+      "effect": "Beatrice becomes visibly suspicious.",
+      "clueIdsGenerated": [
+        "clue-beatrice-anger"
+      ],
+      "visibilityToPlayer": "Discoverable through Beatrice."
+    },
+    {
+      "eventId": "evt-004",
+      "sequenceOrder": 4,
+      "dateTimeLabel": "7:18 p.m.",
+      "locationId": "loc-dining-room",
+      "participantCharacterIds": [
+        "npc-julian-vale",
+        "npc-mara-vale",
+        "npc-beatrice-hale",
+        "npc-felix-morrow"
+      ],
+      "summary": "The first toast occurs and Eleanor drinks safely from the amber cordial glass.",
+      "cause": "Birthday dinner ritual.",
+      "effect": "The fatal dosing must occur later.",
+      "clueIdsGenerated": [
+        "clue-first-toast-safe"
+      ],
+      "visibilityToPlayer": "Discoverable through witness statements."
+    },
+    {
+      "eventId": "evt-005",
+      "sequenceOrder": 5,
+      "dateTimeLabel": "7:21 p.m.",
+      "locationId": "loc-dining-room",
+      "participantCharacterIds": [
+        "npc-julian-vale"
+      ],
+      "summary": "Julian stands at the sideboard to steady the decanter and refill Eleanor's amber glass.",
+      "cause": "A brief refill before the second toast.",
+      "effect": "Julian gains access to the glass.",
+      "clueIdsGenerated": [
+        "clue-julian-refilled-glass"
+      ],
+      "visibilityToPlayer": "Discoverable through questioning."
+    },
+    {
+      "eventId": "evt-006",
+      "sequenceOrder": 6,
+      "dateTimeLabel": "7:22 p.m.",
+      "locationId": "loc-dining-room",
+      "participantCharacterIds": [
+        "npc-julian-vale"
+      ],
+      "summary": "Julian doses the amber glass using a vial hidden in his silver cigar case.",
+      "cause": "He needs Eleanor dead before signing.",
+      "effect": "The second toast becomes fatal and the cigar case retains physical trace.",
+      "clueIdsGenerated": [
+        "clue-cigar-case-stain",
+        "clue-glass-wrong-side"
+      ],
+      "visibilityToPlayer": "Hidden until physical evidence and placement are discovered."
+    },
+    {
+      "eventId": "evt-007",
+      "sequenceOrder": 7,
+      "dateTimeLabel": "7:24 p.m.",
+      "locationId": "loc-dining-room",
+      "participantCharacterIds": [
+        "npc-julian-vale",
+        "npc-mara-vale",
+        "npc-beatrice-hale",
+        "npc-felix-morrow"
+      ],
+      "summary": "The second toast occurs; Eleanor drinks, falters, and collapses.",
+      "cause": "The poisoned cordial is consumed.",
+      "effect": "The central death occurs.",
+      "clueIdsGenerated": [
+        "clue-poisoned-amber-glass"
+      ],
+      "visibilityToPlayer": "Opening fact, with cause discoverable through inspection."
+    },
+    {
+      "eventId": "evt-008",
+      "sequenceOrder": 8,
+      "dateTimeLabel": "7:29 p.m.",
+      "locationId": "loc-dining-room",
+      "participantCharacterIds": [
+        "npc-julian-vale",
+        "npc-mara-vale",
+        "npc-beatrice-hale",
+        "npc-felix-morrow"
+      ],
+      "summary": "The player arrives after Felix calls for outside help before police take over.",
+      "cause": "The family solicitor requests immediate private investigation.",
+      "effect": "The player can inspect the room and question the four suspects.",
+      "clueIdsGenerated": [],
+      "visibilityToPlayer": "Opening scene."
+    }
+  ],
+  "clues": [
+    {
+      "clueId": "clue-poisoned-amber-glass",
+      "title": "Poisoned amber cordial glass",
+      "playerFacingDescription": "The amber glass smells sharper than the untouched cordial on the sideboard.",
+      "trueMeaning": "Death followed the second-toast cordial, not dinner food.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-dining-room",
+      "discoveryConditions": "Inspect Eleanor's amber glass or ask what she drank.",
+      "sourceOrProvenance": "Eleanor's place setting.",
+      "associatedTimelineEventId": "evt-007",
+      "associatedEvidenceIds": [
+        "ev-amber-glass"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It establishes the fatal delivery point.",
+      "assetIds": [
+        "asset-amber-glass-closeup"
+      ],
+      "textFallback": "The amber glass has a sharp scent that differs from the untouched cordial."
+    },
+    {
+      "clueId": "clue-first-toast-safe",
+      "title": "First toast was safe",
+      "playerFacingDescription": "Eleanor drank from the amber glass during the first toast and seemed well afterward.",
+      "trueMeaning": "The glass became dangerous between the first and second toast.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-dining-room",
+      "discoveryConditions": "Question Felix or Mara about the dinner sequence.",
+      "sourceOrProvenance": "Witness statements.",
+      "associatedTimelineEventId": "evt-004",
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It narrows the dosing interval.",
+      "textFallback": "The first toast did not harm Eleanor."
+    },
+    {
+      "clueId": "clue-julian-refilled-glass",
+      "title": "Julian handled Eleanor's glass",
+      "playerFacingDescription": "Julian stood at the sideboard during the refill and handled the amber glass despite later denial.",
+      "trueMeaning": "He had opportunity during the critical interval.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-dining-room",
+      "discoveryConditions": "Question Julian, Mara, or Felix about the refill.",
+      "sourceOrProvenance": "Witness reconstruction of the refill.",
+      "associatedTimelineEventId": "evt-005",
+      "associatedCharacterIds": [
+        "npc-julian-vale"
+      ],
+      "pointsTowardCharacterIds": [
+        "npc-julian-vale"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It connects Julian to the opportunity.",
+      "textFallback": "Julian was the person at the sideboard handling the refill."
+    },
+    {
+      "clueId": "clue-glass-wrong-side",
+      "title": "Amber glass returned to wrong side",
+      "playerFacingDescription": "Eleanor normally kept the amber glass on her left, but after the refill it was on her right.",
+      "trueMeaning": "Someone handled and replaced the glass without knowing her left-side placement habit.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-dining-room",
+      "discoveryConditions": "Ask Mara about Eleanor's habits or inspect the table setting.",
+      "sourceOrProvenance": "Mara's observation and place setting.",
+      "associatedTimelineEventId": "evt-006",
+      "associatedCharacterIds": [
+        "npc-mara-vale"
+      ],
+      "pointsTowardCharacterIds": [
+        "npc-julian-vale"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It contradicts Julian's denial and exposes his mistake.",
+      "assetIds": [
+        "asset-amber-glass-closeup"
+      ],
+      "textFallback": "The glass is on the wrong side for Eleanor's habit."
+    },
+    {
+      "clueId": "clue-codicil-removes-julian",
+      "title": "Codicil would remove Julian from control",
+      "playerFacingDescription": "The unsigned codicil would remove Julian as estate manager and name Mara trustee.",
+      "trueMeaning": "Julian had a concrete reason to stop Eleanor before signing.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-dining-room",
+      "discoveryConditions": "Inspect the solicitor folder or question Felix about the codicil.",
+      "sourceOrProvenance": "Solicitor's folder and Felix's testimony.",
+      "associatedTimelineEventId": "evt-002",
+      "associatedCharacterIds": [
+        "npc-julian-vale",
+        "npc-mara-vale",
+        "npc-felix-morrow"
+      ],
+      "associatedEvidenceIds": [
+        "ev-solicitor-folder"
+      ],
+      "pointsTowardCharacterIds": [
+        "npc-julian-vale"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It establishes why Julian had to act that night.",
+      "assetIds": [
+        "asset-solicitor-folder"
+      ],
+      "textFallback": "The document would remove Julian from estate management."
+    },
+    {
+      "clueId": "clue-forged-withdrawals",
+      "title": "Foundation withdrawals under Julian's control",
+      "playerFacingDescription": "Eleanor's note asks Felix about Julian's withdrawals before signing.",
+      "trueMeaning": "Julian's motive is exposure of misconduct, not vague inheritance pressure.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-dining-room",
+      "discoveryConditions": "Inspect Eleanor's note in the solicitor folder or question Felix after finding the codicil.",
+      "sourceOrProvenance": "Eleanor's note in the solicitor folder.",
+      "associatedTimelineEventId": "evt-002",
+      "associatedCharacterIds": [
+        "npc-julian-vale",
+        "npc-felix-morrow"
+      ],
+      "associatedEvidenceIds": [
+        "ev-eleanor-note"
+      ],
+      "pointsTowardCharacterIds": [
+        "npc-julian-vale"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It makes Julian's motive concrete.",
+      "assetIds": [
+        "asset-solicitor-folder"
+      ],
+      "textFallback": "Eleanor planned to ask Felix about Julian's withdrawals before signing."
+    },
+    {
+      "clueId": "clue-cigar-case-stain",
+      "title": "Cordial stain inside silver cigar case",
+      "playerFacingDescription": "Inside the silver cigar case is a sticky amber stain and one narrow empty sleeve.",
+      "trueMeaning": "The case concealed or contacted the dosing vial.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-dining-room",
+      "discoveryConditions": "Closely inspect Julian's cigar case after establishing he stood at the sideboard.",
+      "sourceOrProvenance": "Julian's silver cigar case on the sideboard.",
+      "associatedTimelineEventId": "evt-006",
+      "associatedCharacterIds": [
+        "npc-julian-vale"
+      ],
+      "associatedEvidenceIds": [
+        "ev-cigar-case"
+      ],
+      "pointsTowardCharacterIds": [
+        "npc-julian-vale"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It supplies the physical proof connecting Julian's object to the dosing opportunity.",
+      "assetIds": [
+        "asset-cigar-case"
+      ],
+      "textFallback": "The cigar case has a faint amber stain and an empty narrow sleeve."
+    },
+    {
+      "clueId": "clue-mara-clears-glass-habit",
+      "title": "Mara knew the glass habit but never handled the glass",
+      "playerFacingDescription": "Mara knew Eleanor's left-side glass habit and stayed seated during the refill.",
+      "trueMeaning": "Mara supplies the observation but lacks the handling opportunity.",
+      "importance": "essential",
+      "discoveryLocationId": "loc-dining-room",
+      "discoveryConditions": "Question Mara about the glass and her position.",
+      "sourceOrProvenance": "Mara's statement and seating.",
+      "associatedTimelineEventId": "evt-006",
+      "associatedCharacterIds": [
+        "npc-mara-vale"
+      ],
+      "clearsCharacterIds": [
+        "npc-mara-vale"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It clears Mara while preserving her useful observation.",
+      "textFallback": "Mara knew the habit but did not handle the glass."
+    },
+    {
+      "clueId": "clue-beatrice-anger",
+      "title": "Beatrice's inheritance anger",
+      "playerFacingDescription": "Beatrice argued that Eleanor was giving the family away to charity.",
+      "trueMeaning": "Beatrice had emotional pressure but not the required method or opportunity.",
+      "importance": "supporting",
+      "discoveryLocationId": "loc-dining-room",
+      "discoveryConditions": "Question Beatrice about the dinner argument.",
+      "sourceOrProvenance": "Beatrice's statement.",
+      "associatedTimelineEventId": "evt-003",
+      "associatedCharacterIds": [
+        "npc-beatrice-hale"
+      ],
+      "pointsTowardCharacterIds": [
+        "npc-beatrice-hale"
+      ],
+      "supportsSolution": false,
+      "resolvedInFinalReveal": "It explains the inheritance red herring.",
+      "textFallback": "Beatrice had anger but not proof of method."
+    },
+    {
+      "clueId": "clue-beatrice-window",
+      "title": "Beatrice moved to the window",
+      "playerFacingDescription": "Beatrice moved away from the table and sideboard during the refill.",
+      "trueMeaning": "She did not have the key glass opportunity.",
+      "importance": "supporting",
+      "discoveryLocationId": "loc-dining-room",
+      "discoveryConditions": "Question Beatrice about her movement.",
+      "sourceOrProvenance": "Beatrice's statement and seating.",
+      "associatedTimelineEventId": "evt-005",
+      "associatedCharacterIds": [
+        "npc-beatrice-hale"
+      ],
+      "clearsCharacterIds": [
+        "npc-beatrice-hale"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It clears Beatrice's opportunity.",
+      "textFallback": "Beatrice was at the window during the refill."
+    },
+    {
+      "clueId": "clue-felix-unsigned-document",
+      "title": "Unsigned document",
+      "playerFacingDescription": "The codicil was not signed before Eleanor died.",
+      "trueMeaning": "The timing of the death preserves the old arrangement long enough to matter.",
+      "importance": "supporting",
+      "discoveryLocationId": "loc-dining-room",
+      "discoveryConditions": "Question Felix about the document timing.",
+      "sourceOrProvenance": "Felix's statement and solicitor folder.",
+      "associatedTimelineEventId": "evt-001",
+      "associatedCharacterIds": [
+        "npc-felix-morrow"
+      ],
+      "associatedEvidenceIds": [
+        "ev-solicitor-folder"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It explains why the death had to happen before signing.",
+      "textFallback": "The document remained unsigned."
+    },
+    {
+      "clueId": "clue-place-cards",
+      "title": "Place cards and sight lines",
+      "playerFacingDescription": "The place cards confirm who sat near Eleanor, the window, sideboard, and briefcase.",
+      "trueMeaning": "The seating helps test opportunity without adding new witnesses.",
+      "importance": "supporting",
+      "discoveryLocationId": "loc-dining-room",
+      "discoveryConditions": "Inspect the table place cards.",
+      "sourceOrProvenance": "Dining table setting.",
+      "associatedEvidenceIds": [
+        "ev-place-cards"
+      ],
+      "supportsSolution": true,
+      "resolvedInFinalReveal": "It supports the opportunity reconstruction.",
+      "textFallback": "The seating shows who could plausibly reach the sideboard and glass."
+    }
+  ],
+  "redHerrings": [
+    {
+      "redHerringId": "red-beatrice-inheritance-anger",
+      "title": "Beatrice's inheritance anger",
+      "appearsToSuggest": "Beatrice killed Eleanor because she resented the family wealth going to the foundation.",
+      "innocentExplanation": "Her anger is real, but she did not know the amber-glass habit, moved away from the sideboard, and did not handle the glass.",
+      "discoveryConditions": "Question Beatrice about the argument and movement.",
+      "clearanceConditions": "Discover Beatrice's window movement and lack of glass access.",
+      "relatedClueIds": [
+        "clue-beatrice-anger",
+        "clue-beatrice-window"
+      ],
+      "fairnessNotes": "Visible emotional pressure remains fair because opportunity clears her."
+    },
+    {
+      "redHerringId": "red-mara-beneficiary",
+      "title": "Mara as beneficiary",
+      "appearsToSuggest": "Mara killed Eleanor because the codicil would give her foundation authority.",
+      "innocentExplanation": "Mara did not handle the glass, and her observation about the wrong-side placement exposes the method rather than concealing it.",
+      "discoveryConditions": "Question Mara and inspect or read the codicil.",
+      "clearanceConditions": "Discover her glass-habit observation and lack of handling opportunity.",
+      "relatedClueIds": [
+        "clue-codicil-removes-julian",
+        "clue-glass-wrong-side",
+        "clue-mara-clears-glass-habit"
+      ],
+      "fairnessNotes": "Benefit alone is not enough without method or opportunity."
+    },
+    {
+      "redHerringId": "red-felix-legal-control",
+      "title": "Felix's legal control",
+      "appearsToSuggest": "Felix manipulated the signing or death to control the legal confusion.",
+      "innocentExplanation": "Felix knew the codicil contents but lacked access to the cordial glasses during the refill, and his testimony points away from himself.",
+      "discoveryConditions": "Question Felix about codicil and briefcase timing.",
+      "clearanceConditions": "Establish he was at the briefcase and did not handle the glasses.",
+      "relatedClueIds": [
+        "clue-felix-unsigned-document",
+        "clue-place-cards"
+      ],
+      "fairnessNotes": "Knowledge is suspicious but not equivalent to physical opportunity."
+    }
+  ],
+  "evidence": [
+    {
+      "evidenceId": "ev-amber-glass",
+      "title": "Amber cordial glass",
+      "type": "object",
+      "description": "The small amber cordial glass at Eleanor's place, with a sharper scent than untouched cordial.",
+      "currentLocationId": "loc-dining-room",
+      "createdDuringTimelineEventId": "evt-007",
+      "chainOfCustody": [
+        "Used by Eleanor during the first and second toasts.",
+        "Handled during the refill interval."
+      ],
+      "accessHistory": [
+        "On the table near Eleanor's place.",
+        "Available for player inspection at start."
+      ],
+      "discoveryConditions": "Inspect Eleanor's glass.",
+      "associatedClueIds": [
+        "clue-poisoned-amber-glass",
+        "clue-glass-wrong-side"
+      ],
+      "assetIds": [
+        "asset-amber-glass-closeup"
+      ]
+    },
+    {
+      "evidenceId": "ev-solicitor-folder",
+      "title": "Unsigned codicil folder",
+      "type": "document",
+      "description": "Felix's folder containing the unsigned codicil.",
+      "currentLocationId": "loc-dining-room",
+      "createdByCharacterId": "npc-felix-morrow",
+      "createdDuringTimelineEventId": "evt-001",
+      "chainOfCustody": [
+        "Brought by Felix for Eleanor to sign.",
+        "Left on or near the sideboard after the collapse."
+      ],
+      "accessHistory": [
+        "Accessible in the dining room."
+      ],
+      "discoveryConditions": "Read the solicitor folder or question Felix.",
+      "associatedClueIds": [
+        "clue-codicil-removes-julian",
+        "clue-felix-unsigned-document"
+      ],
+      "assetIds": [
+        "asset-solicitor-folder"
+      ]
+    },
+    {
+      "evidenceId": "ev-eleanor-note",
+      "title": "Eleanor's withdrawal note",
+      "type": "document",
+      "description": "A note in the solicitor folder about Julian's withdrawals.",
+      "currentLocationId": "loc-dining-room",
+      "createdDuringTimelineEventId": "evt-002",
+      "chainOfCustody": [
+        "Written by Eleanor before the dinner.",
+        "Placed with the papers Felix brought."
+      ],
+      "accessHistory": [
+        "Available inside the solicitor folder."
+      ],
+      "discoveryConditions": "Read Eleanor's note in the solicitor folder.",
+      "associatedClueIds": [
+        "clue-forged-withdrawals"
+      ],
+      "assetIds": [
+        "asset-solicitor-folder"
+      ]
+    },
+    {
+      "evidenceId": "ev-cigar-case",
+      "title": "Silver cigar case",
+      "type": "object",
+      "description": "Julian's silver cigar case, containing a faint amber stain and an empty narrow sleeve.",
+      "currentLocationId": "loc-dining-room",
+      "createdDuringTimelineEventId": "evt-006",
+      "chainOfCustody": [
+        "Julian's personal object.",
+        "Set down on the sideboard during dinner."
+      ],
+      "accessHistory": [
+        "Visible on the sideboard.",
+        "Inspectable after player attention turns to the refill or sideboard."
+      ],
+      "discoveryConditions": "Closely inspect the cigar case after establishing Julian's sideboard access.",
+      "associatedClueIds": [
+        "clue-cigar-case-stain"
+      ],
+      "assetIds": [
+        "asset-cigar-case"
+      ]
+    },
+    {
+      "evidenceId": "ev-torn-letter",
+      "title": "Beatrice's torn letter",
+      "type": "document",
+      "description": "A torn reconciliation letter in Beatrice's possession.",
+      "currentLocationId": "loc-dining-room",
+      "createdByCharacterId": "npc-beatrice-hale",
+      "chainOfCustody": [
+        "Written and torn by Beatrice before dinner."
+      ],
+      "accessHistory": [
+        "Only relevant if Beatrice discusses it or the player asks about her visible distress."
+      ],
+      "discoveryConditions": "Question Beatrice about the torn letter.",
+      "associatedClueIds": [
+        "clue-beatrice-anger"
+      ],
+      "assetIds": []
+    },
+    {
+      "evidenceId": "ev-place-cards",
+      "title": "Dining table place cards",
+      "type": "object",
+      "description": "Place cards showing the dinner seating and sight lines.",
+      "currentLocationId": "loc-dining-room",
+      "chainOfCustody": [
+        "Set before dinner."
+      ],
+      "accessHistory": [
+        "Visible on the dining table."
+      ],
+      "discoveryConditions": "Inspect the place cards and table setting.",
+      "associatedClueIds": [
+        "clue-place-cards"
+      ],
+      "assetIds": []
+    }
+  ],
+  "scenes": [
+    {
+      "sceneId": "scene-opening-dining-room",
+      "locationId": "loc-dining-room",
+      "entryConditions": "Start of play.",
+      "openingNarration": "Eleanor Vale's birthday dinner ended before the second toast could settle. The dining room is still warm with candlelight and rain taps against the tall windows. Eleanor's chair sits slightly pushed back from the table. Beside her plate is a small amber cordial glass, untouched now except for the last sip she managed before whispering, \"No. Not this.\"",
+      "availableCharacterIds": [
+        "npc-julian-vale",
+        "npc-mara-vale",
+        "npc-beatrice-hale",
+        "npc-felix-morrow"
+      ],
+      "availableClueIds": [
+        "clue-poisoned-amber-glass",
+        "clue-first-toast-safe",
+        "clue-julian-refilled-glass",
+        "clue-glass-wrong-side",
+        "clue-codicil-removes-julian",
+        "clue-forged-withdrawals",
+        "clue-cigar-case-stain",
+        "clue-mara-clears-glass-habit",
+        "clue-beatrice-anger",
+        "clue-beatrice-window",
+        "clue-felix-unsigned-document",
+        "clue-place-cards"
+      ],
+      "availableEvidenceIds": [
+        "ev-amber-glass",
+        "ev-solicitor-folder",
+        "ev-eleanor-note",
+        "ev-cigar-case",
+        "ev-torn-letter",
+        "ev-place-cards"
+      ],
+      "likelyPlayerQuestions": [
+        "Can I inspect the glass?",
+        "Who touched the glasses?",
+        "What document did Felix bring?",
+        "Where was everyone during the refill?",
+        "Can I ask about poison testing?"
+      ],
+      "safeAnswers": {
+        "natural_death": "The question is fair. The dining-room evidence can test whether the second toast, rather than the meal or natural collapse, explains the death.",
+        "who_benefited": "Several people had pressure: Julian could lose control, Mara could gain authority, Beatrice had family resentment, and Felix knew the document contents.",
+        "lab_tests": "Police and medical testing will follow, but the playable proof turns on timing, glass access, motive, and physical evidence in the room.",
+        "more_witnesses": "No additional interviewable witnesses are needed; the case is contained in the dining room."
+      },
+      "hiddenFactsNotYetRevealed": [
+        "The full motive mechanism.",
+        "The culprit's handling of the glass.",
+        "The cigar case's role.",
+        "The final reconstruction."
+      ],
+      "exitLeads": [
+        "Inspect Eleanor's amber glass.",
+        "Question Mara about Eleanor's habits.",
+        "Question Julian about the refill.",
+        "Read the solicitor folder.",
+        "Inspect the silver cigar case after establishing the refill."
+      ]
+    },
+    {
+      "sceneId": "scene-deduction",
+      "locationId": "loc-dining-room",
+      "entryConditions": "Authored leads are exhausted or the player asks for deduction help.",
+      "openingNarration": "The remaining task is deduction: reconcile the two toasts, the glass placement, the document, the sideboard access, and the physical object on the sideboard.",
+      "availableCharacterIds": [
+        "npc-julian-vale",
+        "npc-mara-vale",
+        "npc-beatrice-hale",
+        "npc-felix-morrow"
+      ],
+      "availableClueIds": [
+        "clue-poisoned-amber-glass",
+        "clue-first-toast-safe",
+        "clue-julian-refilled-glass",
+        "clue-glass-wrong-side",
+        "clue-codicil-removes-julian",
+        "clue-forged-withdrawals",
+        "clue-cigar-case-stain"
+      ],
+      "availableEvidenceIds": [
+        "ev-amber-glass",
+        "ev-solicitor-folder",
+        "ev-eleanor-note",
+        "ev-cigar-case"
+      ],
+      "likelyPlayerQuestions": [
+        "Who should I accuse?",
+        "What still needs proof?",
+        "Can I summarize the case?"
+      ],
+      "safeAnswers": {
+        "balanced_recap": "A neutral recap should include facts against multiple suspects, facts clearing them, and open questions unless the player asks for a hint.",
+        "early_accusation": "A correct theory may be plausible but not proven until motive, opportunity, glass timing, and physical evidence are established."
+      },
+      "hiddenFactsNotYetRevealed": [
+        "Full final resolution until accusation or spoiler request."
+      ],
+      "exitLeads": [
+        "Make a final accusation with suspect, motive, method, opportunity, and proof."
+      ]
+    }
+  ],
+  "discoveryRules": [
+    {
+      "ruleId": "dr-opening-observe",
+      "triggerType": "observe_scene",
+      "description": "Player observes the dining room at the start of play.",
+      "locationId": "loc-dining-room",
+      "revealsLocationIds": [
+        "loc-dining-room"
+      ],
+      "updatesCaseBoardSections": [
+        "knownFacts",
+        "locations",
+        "pendingLeads"
+      ],
+      "discoveryText": "The room holds the aftermath of a private dinner; no other location is needed to begin.",
+      "repeatText": "The dining room still holds the available leads.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Opening observation should not reveal the cause of death."
+    },
+    {
+      "ruleId": "dr-inspect-amber-glass",
+      "triggerType": "inspect_object",
+      "description": "Player inspects Eleanor's amber cordial glass.",
+      "locationId": "loc-dining-room",
+      "objectId": "obj-amber-cordial-glass",
+      "revealsClueIds": [
+        "clue-poisoned-amber-glass"
+      ],
+      "revealsEvidenceIds": [
+        "ev-amber-glass"
+      ],
+      "revealsAssetIds": [
+        "asset-amber-glass-closeup"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "openQuestions"
+      ],
+      "discoveryText": "The amber glass smells sharper than the untouched cordial on the sideboard.",
+      "failureText": "Do not taste evidence; the glass should be isolated. Odor, residue, placement, and witness timing are safe to inspect.",
+      "repeatText": "The amber glass remains the central physical evidence.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "No named poison or lab branch."
+    },
+    {
+      "ruleId": "dr-question-toast-sequence",
+      "triggerType": "question_npc",
+      "description": "Player asks Felix or Mara about the two toasts.",
+      "locationId": "loc-dining-room",
+      "revealsClueIds": [
+        "clue-first-toast-safe"
+      ],
+      "updatesCaseBoardSections": [
+        "timelineNotes",
+        "knownFacts"
+      ],
+      "discoveryText": "Eleanor drank from the same amber glass during the first toast and seemed well afterward.",
+      "repeatText": "The first toast was safe; the danger appeared before the second.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Narrows poisoning interval."
+    },
+    {
+      "ruleId": "dr-question-julian-refill",
+      "triggerType": "question_npc",
+      "description": "Player questions Julian about the sideboard and refill.",
+      "locationId": "loc-dining-room",
+      "npcId": "npc-julian-vale",
+      "topicId": "topic-julian-dinner-role",
+      "revealsClueIds": [
+        "clue-julian-refilled-glass"
+      ],
+      "updatesCaseBoardSections": [
+        "suspects",
+        "timelineNotes"
+      ],
+      "discoveryText": "Julian admits he stood at the sideboard during the refill but denies touching Eleanor's specific glass.",
+      "repeatText": "Julian continues to deny handling the specific glass.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Opportunity clue, not confession."
+    },
+    {
+      "ruleId": "dr-question-mara-glass",
+      "triggerType": "question_npc",
+      "description": "Player asks Mara about Eleanor's glass habits.",
+      "locationId": "loc-dining-room",
+      "npcId": "npc-mara-vale",
+      "topicId": "topic-mara-glass-habit",
+      "revealsClueIds": [
+        "clue-glass-wrong-side",
+        "clue-mara-clears-glass-habit"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "clearedSuspects",
+        "contradictions"
+      ],
+      "discoveryText": "Eleanor always kept the amber glass on her left; after the refill it was on her right.",
+      "repeatText": "Mara repeats that the glass placement was wrong.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Exposes placement error and helps clear Mara."
+    },
+    {
+      "ruleId": "dr-read-solicitor-folder",
+      "triggerType": "read_document",
+      "description": "Player reads the solicitor folder.",
+      "locationId": "loc-dining-room",
+      "documentId": "doc-codicil",
+      "revealsClueIds": [
+        "clue-codicil-removes-julian",
+        "clue-felix-unsigned-document"
+      ],
+      "revealsEvidenceIds": [
+        "ev-solicitor-folder"
+      ],
+      "revealsAssetIds": [
+        "asset-solicitor-folder"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "suspects",
+        "timelineNotes"
+      ],
+      "discoveryText": "The unsigned codicil would remove Julian and name Mara trustee.",
+      "repeatText": "The codicil remains unsigned and would have changed control.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Concrete motive path."
+    },
+    {
+      "ruleId": "dr-read-eleanor-note",
+      "triggerType": "read_document",
+      "description": "Player reads Eleanor's note in the solicitor folder.",
+      "locationId": "loc-dining-room",
+      "documentId": "doc-eleanor-note",
+      "prerequisiteClueIds": [
+        "clue-codicil-removes-julian"
+      ],
+      "revealsClueIds": [
+        "clue-forged-withdrawals"
+      ],
+      "revealsEvidenceIds": [
+        "ev-eleanor-note"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "suspects",
+        "openQuestions"
+      ],
+      "discoveryText": "Eleanor had written: \"Ask Felix about Julian's withdrawals before I sign. No more delays.\"",
+      "failureText": "The motive is not concrete until the folder and note are examined.",
+      "repeatText": "The note still points to Julian's withdrawals.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Motive mechanism, not generic inheritance."
+    },
+    {
+      "ruleId": "dr-inspect-cigar-case",
+      "triggerType": "closely_inspect_object",
+      "description": "Player closely inspects Julian's silver cigar case.",
+      "locationId": "loc-dining-room",
+      "objectId": "obj-silver-cigar-case",
+      "prerequisiteClueIds": [
+        "clue-julian-refilled-glass"
+      ],
+      "revealsClueIds": [
+        "clue-cigar-case-stain"
+      ],
+      "revealsEvidenceIds": [
+        "ev-cigar-case"
+      ],
+      "revealsAssetIds": [
+        "asset-cigar-case"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "recoveredEvidence",
+        "workingTheories"
+      ],
+      "discoveryText": "Inside the case is a sticky amber stain matching the cordial scent; one narrow sleeve is empty.",
+      "failureText": "The case matters once Julian's sideboard access is established.",
+      "repeatText": "The cigar case still links a personal object to the dosing opportunity.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Full physical proof clue."
+    },
+    {
+      "ruleId": "dr-question-beatrice",
+      "triggerType": "question_npc",
+      "description": "Player questions Beatrice about argument and movement.",
+      "locationId": "loc-dining-room",
+      "npcId": "npc-beatrice-hale",
+      "topicId": "topic-beatrice-argument",
+      "revealsClueIds": [
+        "clue-beatrice-anger",
+        "clue-beatrice-window"
+      ],
+      "updatesCaseBoardSections": [
+        "suspects",
+        "clearedSuspects",
+        "timelineNotes"
+      ],
+      "discoveryText": "Beatrice was angry, but she moved to the window during the refill.",
+      "repeatText": "Beatrice's anger remains real, but her movement pulls her away from the sideboard.",
+      "isOptional": false,
+      "isRedHerring": true,
+      "validationNotes": "Apparent motive plus clearance."
+    },
+    {
+      "ruleId": "dr-question-felix-codicil",
+      "triggerType": "question_npc",
+      "description": "Player questions Felix about the codicil.",
+      "locationId": "loc-dining-room",
+      "npcId": "npc-felix-morrow",
+      "topicId": "topic-felix-codicil",
+      "revealsClueIds": [
+        "clue-codicil-removes-julian",
+        "clue-felix-unsigned-document"
+      ],
+      "revealsEvidenceIds": [
+        "ev-solicitor-folder"
+      ],
+      "updatesCaseBoardSections": [
+        "evidence",
+        "suspects",
+        "timelineNotes"
+      ],
+      "discoveryText": "Felix confirms the codicil would remove Julian from management and was unsigned when Eleanor died.",
+      "repeatText": "Felix repeats the codicil's effect and unsigned status.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Felix supplies motive information but not the solution."
+    },
+    {
+      "ruleId": "dr-inspect-place-cards",
+      "triggerType": "inspect_object",
+      "description": "Player inspects table placement and place cards.",
+      "locationId": "loc-dining-room",
+      "objectId": "obj-place-cards",
+      "revealsClueIds": [
+        "clue-place-cards"
+      ],
+      "revealsEvidenceIds": [
+        "ev-place-cards"
+      ],
+      "updatesCaseBoardSections": [
+        "timelineNotes",
+        "knownFacts"
+      ],
+      "discoveryText": "The place cards confirm who sat near Eleanor, the window, sideboard, and briefcase.",
+      "repeatText": "The seating still helps test opportunity.",
+      "isOptional": true,
+      "isRedHerring": false,
+      "validationNotes": "Supports fair opportunity reconstruction."
+    },
+    {
+      "ruleId": "dr-final-accuse-julian",
+      "triggerType": "accuse",
+      "description": "Player makes a final accusation against Julian.",
+      "locationId": "loc-dining-room",
+      "npcId": "npc-julian-vale",
+      "prerequisiteClueIds": [
+        "clue-poisoned-amber-glass",
+        "clue-first-toast-safe",
+        "clue-julian-refilled-glass",
+        "clue-glass-wrong-side",
+        "clue-codicil-removes-julian",
+        "clue-forged-withdrawals"
+      ],
+      "updatesCaseBoardSections": [
+        "workingTheories",
+        "closedLeads"
+      ],
+      "discoveryText": "The accusation is supported by glass timing, opportunity, motive, and contradiction. Full proof is strongest with the cigar-case stain.",
+      "failureText": "The theory may be plausible, but it still needs proof of glass timing, concrete motive, physical opportunity, and personal-object evidence.",
+      "repeatText": "The accusation turns on the same proof chain.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Do not reveal final solution on an unsupported early guess."
+    }
+  ],
+  "caseBoardSeed": {
+    "knownFacts": [
+      "Eleanor Vale died shortly after the second toast at a private family dinner.",
+      "The death occurred in the Vale House dining room.",
+      "A small amber cordial glass sat beside Eleanor's place.",
+      "Four people were present: Julian, Mara, Beatrice, and Felix."
+    ],
+    "knownCharacters": [
+      "npc-julian-vale",
+      "npc-mara-vale",
+      "npc-beatrice-hale",
+      "npc-felix-morrow"
+    ],
+    "knownLocations": [
+      "loc-dining-room"
+    ],
+    "openQuestions": [
+      "Did Eleanor die naturally, accidentally, or by murder?",
+      "Why did the second toast become fatal if the first toast was safe?",
+      "Who handled Eleanor's amber cordial glass?",
+      "What document did Felix bring for Eleanor to sign?",
+      "Which suspect had motive, method, and opportunity?"
+    ],
+    "activeLeads": [
+      "Inspect Eleanor's amber glass.",
+      "Question the suspects about the two toasts.",
+      "Inspect the sideboard and cordial decanter.",
+      "Ask Felix about the unsigned document.",
+      "Ask Mara about Eleanor's habits."
+    ],
+    "discoveredClueIds": [],
+    "discoveredEvidenceIds": [],
+    "seenAssetIds": [],
+    "playerTheories": []
+  },
+  "assetManifest": [
+    {
+      "assetId": "asset-dining-room-scene",
+      "title": "Vale House dining room",
+      "assetType": "scene_image",
+      "associatedLocationId": "loc-dining-room",
+      "associatedClueIds": [],
+      "discoveryConditions": "Optional on player request; image mode is off by default.",
+      "textFallback": "A candlelit formal dining room with Eleanor's chair, an amber cordial glass, a sideboard, a decanter, place cards, and a solicitor's folder.",
+      "retrievalLabel": "Vale House dining room",
+      "spoilerLevel": "low",
+      "isCanonicalEvidence": false,
+      "containsHiddenClues": false,
+      "imagePromptGuidance": "Show only authored room objects. Do not depict the culprit action, hidden poison, extra people, extra doors, or visual clues not already available in text.",
+      "hasBeenShownToPlayer": false
+    },
+    {
+      "assetId": "asset-amber-glass-closeup",
+      "title": "Amber cordial glass",
+      "assetType": "evidence_photo",
+      "associatedLocationId": "loc-dining-room",
+      "associatedClueIds": [
+        "clue-poisoned-amber-glass",
+        "clue-glass-wrong-side"
+      ],
+      "discoveryConditions": "Optional after the glass has been inspected in text.",
+      "textFallback": "A small amber cordial glass sits at Eleanor's place, slightly misplaced from where Mara says Eleanor normally kept it.",
+      "retrievalLabel": "Amber cordial glass",
+      "spoilerLevel": "medium",
+      "isCanonicalEvidence": false,
+      "containsHiddenClues": false,
+      "imagePromptGuidance": "Support text discoveries only. Do not add labels, fingerprints, visible poison, or extra hidden markings.",
+      "hasBeenShownToPlayer": false
+    },
+    {
+      "assetId": "asset-solicitor-folder",
+      "title": "Unsigned codicil folder",
+      "assetType": "document",
+      "associatedLocationId": "loc-dining-room",
+      "associatedClueIds": [
+        "clue-codicil-removes-julian",
+        "clue-forged-withdrawals"
+      ],
+      "discoveryConditions": "Optional after the solicitor folder has been read in text.",
+      "textFallback": "The unsigned codicil would remove Julian as estate manager and name Mara as trustee.",
+      "retrievalLabel": "Unsigned codicil folder",
+      "spoilerLevel": "medium",
+      "isCanonicalEvidence": false,
+      "containsHiddenClues": false,
+      "imagePromptGuidance": "Show only document fragments already revealed in text. Do not expose undiscovered solution facts visually.",
+      "hasBeenShownToPlayer": false
+    },
+    {
+      "assetId": "asset-cigar-case",
+      "title": "Silver cigar case",
+      "assetType": "evidence_photo",
+      "associatedLocationId": "loc-dining-room",
+      "associatedClueIds": [
+        "clue-cigar-case-stain"
+      ],
+      "discoveryConditions": "Optional after the cigar case has been closely inspected in text.",
+      "textFallback": "A silver cigar case with a faint amber stain inside and one narrow empty sleeve.",
+      "retrievalLabel": "Silver cigar case",
+      "spoilerLevel": "high",
+      "isCanonicalEvidence": false,
+      "containsHiddenClues": false,
+      "imagePromptGuidance": "Support text discovery only. Do not add labels, names, or visual details that identify the culprit before textual discovery.",
+      "hasBeenShownToPlayer": false
+    }
+  ],
+  "validationTargets": {
+    "mustResolveClueIds": [
+      "clue-poisoned-amber-glass",
+      "clue-first-toast-safe",
+      "clue-julian-refilled-glass",
+      "clue-glass-wrong-side",
+      "clue-codicil-removes-julian",
+      "clue-forged-withdrawals",
+      "clue-cigar-case-stain",
+      "clue-mara-clears-glass-habit"
+    ],
+    "mustExplainRedHerringIds": [
+      "red-beatrice-inheritance-anger",
+      "red-mara-beneficiary",
+      "red-felix-legal-control"
+    ],
+    "mustValidateTimelineEventIds": [
+      "evt-001",
+      "evt-002",
+      "evt-003",
+      "evt-004",
+      "evt-005",
+      "evt-006",
+      "evt-007",
+      "evt-008"
+    ],
+    "mustValidateEvidenceIds": [
+      "ev-amber-glass",
+      "ev-solicitor-folder",
+      "ev-eleanor-note",
+      "ev-cigar-case",
+      "ev-torn-letter",
+      "ev-place-cards"
+    ],
+    "mustSupportAccusationWithClueIds": [
+      "clue-poisoned-amber-glass",
+      "clue-first-toast-safe",
+      "clue-julian-refilled-glass",
+      "clue-glass-wrong-side",
+      "clue-codicil-removes-julian",
+      "clue-forged-withdrawals"
+    ],
+    "knownRiskAreas": [
+      "Do not open a lab, autopsy, or toxicology branch.",
+      "Keep recaps balanced unless the player asks for a hint or theory check.",
+      "Treat early correct guesses as plausible but unproven without the required clue chain.",
+      "Clarify ambiguous voice input instead of guessing."
+    ]
+  },
+  "canonicalAssetInventory": {
+    "npcIds": [
+      "npc-julian-vale",
+      "npc-mara-vale",
+      "npc-beatrice-hale",
+      "npc-felix-morrow"
+    ],
+    "locationIds": [
+      "loc-dining-room"
+    ],
+    "objectIds": [
+      "obj-eleanor-chair",
+      "obj-amber-cordial-glass",
+      "obj-sideboard",
+      "obj-cordial-decanter",
+      "obj-silver-cigar-case",
+      "obj-solicitor-folder",
+      "obj-place-cards",
+      "obj-window-seat",
+      "obj-mara-napkin",
+      "obj-beatrice-torn-letter"
+    ],
+    "evidenceIds": [
+      "ev-amber-glass",
+      "ev-solicitor-folder",
+      "ev-eleanor-note",
+      "ev-cigar-case",
+      "ev-torn-letter",
+      "ev-place-cards"
+    ],
+    "documentIds": [
+      "doc-codicil",
+      "doc-eleanor-note",
+      "doc-torn-letter"
+    ],
+    "imageIds": [
+      "asset-dining-room-scene",
+      "asset-amber-glass-closeup",
+      "asset-solicitor-folder",
+      "asset-cigar-case"
+    ],
+    "discoveryRuleIds": [
+      "dr-opening-observe",
+      "dr-inspect-amber-glass",
+      "dr-question-toast-sequence",
+      "dr-question-julian-refill",
+      "dr-question-mara-glass",
+      "dr-read-solicitor-folder",
+      "dr-read-eleanor-note",
+      "dr-inspect-cigar-case",
+      "dr-question-beatrice",
+      "dr-question-felix-codicil",
+      "dr-inspect-place-cards",
+      "dr-final-accuse-julian"
+    ],
+    "interviewTopicIds": [
+      "topic-julian-dinner-role",
+      "topic-julian-codicil",
+      "topic-julian-cigar-case",
+      "topic-mara-glass-habit",
+      "topic-mara-codicil",
+      "topic-mara-old-argument",
+      "topic-beatrice-argument",
+      "topic-beatrice-window",
+      "topic-beatrice-letter",
+      "topic-felix-codicil",
+      "topic-felix-timing",
+      "topic-felix-briefcase"
+    ],
+    "sceneIds": [
+      "scene-opening-dining-room",
+      "scene-deduction"
+    ],
+    "clueIds": [
+      "clue-poisoned-amber-glass",
+      "clue-first-toast-safe",
+      "clue-julian-refilled-glass",
+      "clue-glass-wrong-side",
+      "clue-codicil-removes-julian",
+      "clue-forged-withdrawals",
+      "clue-cigar-case-stain",
+      "clue-mara-clears-glass-habit",
+      "clue-beatrice-anger",
+      "clue-beatrice-window",
+      "clue-felix-unsigned-document",
+      "clue-place-cards"
+    ],
+    "redHerringIds": [
+      "red-beatrice-inheritance-anger",
+      "red-mara-beneficiary",
+      "red-felix-legal-control"
+    ],
+    "visualDefinitionIds": [
+      "visual-dining-room-main",
+      "visual-amber-glass",
+      "visual-solicitor-folder",
+      "visual-cigar-case"
+    ],
+    "notes": "All investigative content is contained in the dining room. Staff, police, and laboratory work are out of scope."
+  },
+  "runtimeBudgets": {
+    "maxMajorNPCs": 4,
+    "maxInterviewableNPCs": 4,
+    "maxBackgroundCharacters": 2,
+    "maxPrimaryLocations": 1,
+    "maxSecondaryLocations": 0,
+    "maxSearchableObjects": 10,
+    "maxEvidenceItems": 6,
+    "maxDocuments": 3,
+    "maxImages": 4,
+    "maxDiscoveryRules": 12,
+    "maxRedHerrings": 3,
+    "maxInterviewTopics": 12,
+    "maxHints": 3,
+    "maxPlayerFacingBranches": 6,
+    "hardBudgetFields": [
+      "maxMajorNPCs",
+      "maxInterviewableNPCs",
+      "maxPrimaryLocations",
+      "maxSecondaryLocations"
+    ],
+    "softBudgetFields": [
+      "maxImages",
+      "maxHints"
+    ],
+    "notes": "Contained Quick Mystery: one primary location, four suspects, no external forensic branch."
+  },
+  "visualDefinitions": [
+    {
+      "visualDefinitionId": "visual-dining-room-main",
+      "locationId": "loc-dining-room",
+      "assetId": "asset-dining-room-scene",
+      "imageType": "scene",
+      "canonicalDescription": "A candlelit formal dining room with Eleanor's chair, an amber cordial glass, a sideboard, a decanter, place cards, and a solicitor's folder.",
+      "requiredVisibleObjectIds": [
+        "obj-eleanor-chair",
+        "obj-amber-cordial-glass",
+        "obj-sideboard",
+        "obj-cordial-decanter",
+        "obj-solicitor-folder"
+      ],
+      "forbiddenObjectIds": [],
+      "fixedGeometryNotes": "Do not add additional rooms, hidden doors, servants, or visible poison.",
+      "cameraAllowedViews": [
+        "wide dining room view"
+      ],
+      "hiddenElementRules": [
+        "Do not depict culprit action.",
+        "Do not reveal solution facts visually.",
+        "Do not add extra witnesses."
+      ],
+      "continuityAnchor": "Eleanor's chair at table, sideboard on wall, amber glass at her place.",
+      "textFallback": "A candlelit formal dining room with Eleanor's chair, an amber cordial glass, a sideboard, a decanter, place cards, and a solicitor's folder.",
+      "validationNotes": "Scene image is optional and supportive only."
+    },
+    {
+      "visualDefinitionId": "visual-amber-glass",
+      "locationId": "loc-dining-room",
+      "assetId": "asset-amber-glass-closeup",
+      "imageType": "evidence_photo",
+      "canonicalDescription": "A small amber cordial glass at Eleanor's place.",
+      "requiredVisibleObjectIds": [
+        "obj-amber-cordial-glass"
+      ],
+      "forbiddenObjectIds": [],
+      "fixedGeometryNotes": "Do not show visible poison, labels, fingerprints, or new marks.",
+      "cameraAllowedViews": [
+        "close-up"
+      ],
+      "hiddenElementRules": [
+        "Only support details already discovered in text."
+      ],
+      "continuityAnchor": "Amber glass near Eleanor's place setting.",
+      "textFallback": "A small amber cordial glass sits at Eleanor's place, slightly misplaced from where Mara says Eleanor normally kept it.",
+      "validationNotes": "No image-only clue."
+    },
+    {
+      "visualDefinitionId": "visual-solicitor-folder",
+      "locationId": "loc-dining-room",
+      "assetId": "asset-solicitor-folder",
+      "imageType": "evidence_photo",
+      "canonicalDescription": "A solicitor's folder with the already-read codicil text summarized in conversation.",
+      "requiredVisibleObjectIds": [
+        "obj-solicitor-folder"
+      ],
+      "forbiddenObjectIds": [],
+      "fixedGeometryNotes": "Do not add undiscovered document text.",
+      "cameraAllowedViews": [
+        "document close-up"
+      ],
+      "hiddenElementRules": [
+        "Show only facts already revealed in text."
+      ],
+      "continuityAnchor": "Folder on or near sideboard.",
+      "textFallback": "The unsigned codicil would remove Julian as estate manager and name Mara as trustee.",
+      "validationNotes": "Text remains canonical."
+    },
+    {
+      "visualDefinitionId": "visual-cigar-case",
+      "locationId": "loc-dining-room",
+      "assetId": "asset-cigar-case",
+      "imageType": "evidence_photo",
+      "canonicalDescription": "A silver cigar case with a faint amber stain and an empty narrow sleeve after textual discovery.",
+      "requiredVisibleObjectIds": [
+        "obj-silver-cigar-case"
+      ],
+      "forbiddenObjectIds": [],
+      "fixedGeometryNotes": "Do not add labels, names, or extra mechanisms.",
+      "cameraAllowedViews": [
+        "close-up"
+      ],
+      "hiddenElementRules": [
+        "Only show after the cigar case has been inspected in text."
+      ],
+      "continuityAnchor": "Silver cigar case from the sideboard.",
+      "textFallback": "A silver cigar case with a faint amber stain inside and one narrow empty sleeve.",
+      "validationNotes": "High spoiler asset; optional only after discovery."
+    }
+  ],
+  "imageGalleryPolicy": {
+    "enabled": true,
+    "recallCommandsSupported": true,
+    "reusePriorImagesByDefault": true,
+    "galleryLabelsRequired": true,
+    "notes": "Assign displayed images a runtime number and reuse prior images on recall instead of regenerating."
+  },
+  "imageReusePolicy": {
+    "sameSceneReuseRequired": true,
+    "newViewRequiresPlayerRequest": true,
+    "regenerationAllowedWhen": "Only when no prior image exists or the player asks for an authored new view.",
+    "continuityChecksRequired": true,
+    "notes": "Text is canonical. If image generation cannot preserve fidelity, provide text fallback."
+  },
+  "evidencePhotoDefinitions": [
+    {
+      "visualDefinitionId": "visual-amber-glass",
+      "locationId": "loc-dining-room",
+      "assetId": "asset-amber-glass-closeup",
+      "imageType": "evidence_photo",
+      "canonicalDescription": "A close-up of the amber cordial glass after textual inspection.",
+      "requiredVisibleObjectIds": [
+        "obj-amber-cordial-glass"
+      ],
+      "hiddenElementRules": [
+        "No clue meaning beyond text."
+      ],
+      "textFallback": "A small amber cordial glass sits at Eleanor's place, slightly misplaced from where Mara says Eleanor normally kept it."
+    },
+    {
+      "visualDefinitionId": "visual-cigar-case",
+      "locationId": "loc-dining-room",
+      "assetId": "asset-cigar-case",
+      "imageType": "evidence_photo",
+      "canonicalDescription": "A close-up of the silver cigar case after textual inspection.",
+      "requiredVisibleObjectIds": [
+        "obj-silver-cigar-case"
+      ],
+      "hiddenElementRules": [
+        "No labels or extra markings."
+      ],
+      "textFallback": "A silver cigar case with a faint amber stain inside and one narrow empty sleeve."
+    }
+  ],
+  "cutawayDefinitions": []
+}

@@ -52,5 +52,23 @@
     "imageMode": "player_requested_only",
     "interactionMode": "voice_friendly",
     "notes": "Draft package for validation."
+  },
+  {
+    "caseId": "quick-004",
+    "title": "The Second Toast",
+    "slug": "the-second-toast",
+    "folder": "games/quick-004-the-second-toast",
+    "lengthPreset": "quick_mystery",
+    "difficulty": "medium",
+    "genre": "classic contained whodunit",
+    "tone": "tense, intimate, human, fair-play",
+    "status": "draft",
+    "validationStatus": "not_validated",
+    "playtestStatus": "not_playtested",
+    "lastUpdatedAt": "2026-06-28",
+    "estimatedPlayTimeMinutes": 25,
+    "imageMode": "player_requested_only",
+    "interactionMode": "voice_friendly",
+    "notes": "Draft package for validation."
   }
 ]

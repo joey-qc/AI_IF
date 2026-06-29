@@ -1,0 +1,37 @@
+{
+  "caseId": "quick-004",
+  "title": "The Second Toast",
+  "knownFacts": [
+    "Eleanor Vale died shortly after the second toast at a private family dinner.",
+    "The death occurred in the Vale House dining room.",
+    "A small amber cordial glass sat beside Eleanor's place.",
+    "Four people were present: Julian, Mara, Beatrice, and Felix."
+  ],
+  "knownCharacters": [
+    "npc-julian-vale",
+    "npc-mara-vale",
+    "npc-beatrice-hale",
+    "npc-felix-morrow"
+  ],
+  "knownLocations": [
+    "loc-dining-room"
+  ],
+  "openQuestions": [
+    "Did Eleanor die naturally, accidentally, or by murder?",
+    "Why did the second toast become fatal if the first toast was safe?",
+    "Who handled Eleanor's amber cordial glass?",
+    "What document did Felix bring for Eleanor to sign?",
+    "Which suspect had motive, method, and opportunity?"
+  ],
+  "activeLeads": [
+    "Inspect Eleanor's amber glass.",
+    "Question the suspects about the two toasts.",
+    "Inspect the sideboard and cordial decanter.",
+    "Ask Felix about the unsigned document.",
+    "Ask Mara about Eleanor's habits."
+  ],
+  "discoveredClueIds": [],
+  "discoveredEvidenceIds": [],
+  "seenAssetIds": [],
+  "playerTheories": []
+}
