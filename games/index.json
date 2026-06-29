@@ -62,13 +62,13 @@
     "difficulty": "medium",
     "genre": "classic contained whodunit",
     "tone": "tense, intimate, human, fair-play",
-    "status": "draft",
-    "validationStatus": "not_validated",
-    "playtestStatus": "not_playtested",
+    "status": "approved_for_human_play",
+    "validationStatus": "passed",
+    "playtestStatus": "passed",
     "lastUpdatedAt": "2026-06-28",
     "estimatedPlayTimeMinutes": 25,
     "imageMode": "player_requested_only",
     "interactionMode": "voice_friendly",
-    "notes": "Draft package for validation."
+    "notes": "Proof-gating finalized; package validation and AI playthrough passed. Ready for human play."
   }
 ]

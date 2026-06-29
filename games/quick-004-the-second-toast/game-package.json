@@ -4,17 +4,17 @@
     "title": "The Second Toast",
     "slug": "the-second-toast",
     "version": "0.1.0",
-    "status": "draft",
+    "status": "approved_for_human_play",
     "createdAt": "2026-06-28",
     "lastUpdatedAt": "2026-06-28",
     "authorRole": "Story Author",
-    "validationStatus": "not_validated",
-    "playtestStatus": "not_playtested",
+    "validationStatus": "passed",
+    "playtestStatus": "passed",
     "humanPlayStatus": "not_played",
     "shortDescription": "A classic contained whodunit about a fatal second toast at a private family dinner.",
     "estimatedPlayTimeMinutes": 25,
     "repositoryPath": "games/quick-004-the-second-toast",
-    "notes": "Draft package generated from sealed final implementation handoff; ready for package-level validation."
+    "notes": "Proof-gating finalized; package validation and AI playthrough passed. Ready for human play."
   },
   "playerConfig": {
     "lengthPreset": "quick_mystery",

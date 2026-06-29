@@ -4,9 +4,11 @@
 
 - Case ID: `quick-004`
 - Title: `The Second Toast`
-- Status: draft
-- Validation status: not_validated
-- Playtest status: not_playtested
+- Status: approved_for_human_play
+- Validation status: passed
+- Playtest status: passed
+- Human play status: not_played
+- Notes: Proof-gating finalized; package validation and AI playthrough passed.
 
 ## Canonical Source
 
