@@ -1,0 +1,1144 @@
+{
+  "caseMetadata": {
+    "caseId": "quick-005",
+    "title": "The Third Knock",
+    "slug": "the-third-knock",
+    "version": "0.1.0",
+    "status": "ready_for_human_play",
+    "createdAt": "2026-06-30",
+    "lastUpdatedAt": "2026-06-30",
+    "authorRole": "Story Author",
+    "validationStatus": "passed",
+    "playtestStatus": "passed",
+    "humanPlayStatus": "not_played",
+    "shortDescription": "A classic contained rational seance whodunit in a locked parlor.",
+    "estimatedPlayTimeMinutes": 25,
+    "repositoryPath": "games/quick-005-the-third-knock",
+    "notes": "Validation and AI playthrough passed. Ready for human play. Images are not required."
+  },
+  "playerConfig": {
+    "lengthPreset": "quick_mystery",
+    "difficulty": "medium",
+    "genre": "classic contained whodunit / rational seance mystery",
+    "tone": "tense, intimate, rational, fair-play",
+    "settingSummary": "The locked seance parlor at Harrowmere House immediately after a fatal private seance.",
+    "playerRole": "Detective.",
+    "imageMode": "off_by_default",
+    "interactionMode": "voice_friendly",
+    "hintPolicy": "on_request_only",
+    "contentBoundaries": [
+      "No gore.",
+      "No graphic death description.",
+      "Supernatural elements are atmosphere only.",
+      "No external forensic, medical, police, or off-screen witness branch."
+    ]
+  },
+  "scopeBudget": {
+    "maxPrimaryLocations": 1,
+    "maxMajorNpcCount": 3,
+    "maxEssentialClueCount": 7,
+    "maxRedHerringCount": 3,
+    "maxNestedSecrets": 0,
+    "expectedPlayTimeMinutesMin": 20,
+    "expectedPlayTimeMinutesMax": 30
+  },
+  "setting": {
+    "settingId": "setting-harrowmere-parlor",
+    "name": "Harrowmere House seance parlor",
+    "era": "Classic country-house mystery",
+    "description": "A locked, candlelit parlor with drawn curtains, a round seance table, a shaded oil lamp, and three suspects present with the victim.",
+    "singleLocationRule": "All playable investigation occurs in the locked seance parlor. No other playable locations exist.",
+    "forbiddenExpansions": [
+      "No off-screen witnesses.",
+      "No police lab branch.",
+      "No servants, doctors, neighbors, relatives, or outsiders.",
+      "No secret passage.",
+      "No supernatural solution."
+    ]
+  },
+  "centralMystery": {
+    "victim": "Beatrice Hallow",
+    "incident": "During a private seance in a locked parlor, three knocks are heard. After the third knock, Beatrice collapses in her chair.",
+    "centralQuestion": "Who caused Beatrice Hallow's death, and how was the apparent supernatural event staged?",
+    "playerFacingPremise": "The parlor was locked from inside, the group was gathered around the seance table, and three knocks preceded the collapse.",
+    "supernaturalSolution": false,
+    "technicalOrForensicDependency": false
+  },
+  "solution": {
+    "culpritId": "npc-lydia-harrow",
+    "culpritName": "Lydia Harrow",
+    "victimOrTarget": "Beatrice Hallow",
+    "motive": "Beatrice had discovered Lydia had been altering correspondence and suppressing letters to isolate her and control estate arrangements. Beatrice intended to dismiss Lydia and expose the manipulation immediately after the seance.",
+    "method": "During the darkened interval, Lydia used her position near Beatrice and the curtains to use the weighted curtain cord in a short, forceful physical act, then let the cord fall back among the folds before the lamp was raised.",
+    "opportunity": "Lydia sat closest to Beatrice and the curtain. Under cover of the second disturbance, she briefly released hands, moved or leaned toward Beatrice and the cord, then resumed position before the lamp was raised.",
+    "concealmentStrategy": "She used the staged seance knocks and table disturbance as misdirection, making the death appear connected to the supernatural third knock.",
+    "mistakeOrFlaw": "The curtain cord, chair position, wax smear, Beatrice's note, and Lydia's movement claim do not fit her account.",
+    "proofChain": [
+      "Beatrice did not simply collapse from fright.",
+      "The third knock was misdirection, not the cause.",
+      "Clara's trick explains only the knocking and table effects.",
+      "Edmund's suspicious behavior concerns the cabinet and inheritance pressure.",
+      "The curtain cord and tassel show recent use inconsistent with ordinary arrangement.",
+      "Lydia's claim that she never left her seat is contradicted by physical traces and timing.",
+      "Beatrice had discovered Lydia's manipulation and intended to expose her."
+    ],
+    "finalAccusationRequirements": [
+      "Identify Lydia Harrow as responsible.",
+      "Explain Lydia's motive involving Beatrice's correspondence and planned exposure.",
+      "Explain the curtain cord method without relying on supernatural cause.",
+      "Show Lydia's opportunity during the dark interval.",
+      "Use the disturbed cord, chair position, wax smear, and Beatrice note as proof.",
+      "Clear Clara's trick as fraud but not the fatal act.",
+      "Clear Edmund's cabinet behavior as a lesser secret."
+    ],
+    "fallbackSolutionReveal": "The seance was not supernatural. Clara's knocks were staged, but they were only theatrical fraud. Edmund's debt and cabinet behavior made him suspicious, but his secret concerned inheritance documents. Lydia killed Beatrice during the darkened interval by using the curtain cord near Beatrice's chair, then returned to position before the lamp was raised. The disturbed cord, the shifted chair, the wax smear contradicting Lydia's claim, and Beatrice's note about Lydia answering letters in her name prove motive, method, opportunity, and deception.",
+    "finalReveal": "The correct solution is Lydia Harrow. Beatrice was about to expose Lydia for controlling and suppressing correspondence in Beatrice's name. Lydia's position near Beatrice and the curtain gave her the only practical opportunity during the dark interval. Clara's trick created the knocks and the confusion, but it did not kill Beatrice. Edmund's debt explained his evasiveness around the cabinet, but not the fatal mechanism. The decisive proof is the combination of the disturbed curtain cord and tassel, Beatrice's chair placement near the cord, the wax smear showing Lydia moved despite claiming she did not, Beatrice's note identifying Lydia's manipulation, Clara's trick apparatus explaining the false seance effects without explaining the death, and Edmund's cabinet evidence explaining his lesser secret. Therefore Lydia had motive, method, opportunity, and a contradicted alibi."
+  },
+  "characters": [
+    {
+      "characterId": "npc-clara-vane",
+      "name": "Clara Vane",
+      "role": "Professional medium hired to conduct the seance",
+      "isMajorNpc": true,
+      "isSuspect": true,
+      "relationshipToMystery": "She conducted the seance and produced some apparent phenomena.",
+      "apparentMotive": "Protecting her reputation and hiding stagecraft.",
+      "trueMotiveOrInnocentExplanation": "She used minor seance tricks to impress clients, but she did not kill Beatrice.",
+      "alibiClaim": "I conducted the seance from my seat. The phenomena came through the room, not through me.",
+      "alibiTruth": "She stayed near her seat but used trick apparatus to fake knocks.",
+      "knowledge": [
+        "Her own trick apparatus can explain some knocks and table effects.",
+        "Her trick cannot explain Beatrice's death.",
+        "She does not know who moved during the dark interval."
+      ],
+      "secrets": [
+        "She rigged harmless sound effects in the parlor."
+      ],
+      "liesOrOmissions": [
+        "She initially omits that she rigged harmless sound effects."
+      ],
+      "interviewTopics": [
+        {
+          "topicId": "topic-clara-phenomena",
+          "topicLabel": "Seance phenomena",
+          "topicType": "evidence",
+          "npcId": "npc-clara-vane",
+          "playerQuestionExamples": [
+            "Were the knocks genuine?",
+            "How did the table move?"
+          ],
+          "truthfulAnswer": "The room was prepared for a convincing sitting.",
+          "lieOrOmission": "She avoids admitting the trick until evidence is found.",
+          "evasiveAnswer": "People hear what the room permits them to hear.",
+          "knowledgeBoundary": "She knows the trick apparatus but not the fatal act.",
+          "emotionalState": "Theatrical and controlled.",
+          "revealsClueIds": [],
+          "revealsEvidenceIds": [],
+          "followUpTopicIds": [
+            "topic-clara-apparatus"
+          ],
+          "repeatAnswer": "Clara insists the seance effects do not prove murder.",
+          "validationNotes": "Supports red herring without making Clara the culprit."
+        },
+        {
+          "topicId": "topic-clara-apparatus",
+          "topicLabel": "Trick apparatus",
+          "topicType": "contradiction",
+          "npcId": "npc-clara-vane",
+          "playerQuestionExamples": [
+            "What is this thread?",
+            "Did you fake the knocks?"
+          ],
+          "truthfulAnswer": "Yes. The knocks were staged to make the seance convincing. That does not explain Beatrice's death.",
+          "lieOrOmission": "None after confrontation.",
+          "evasiveAnswer": "I gave them theater, not murder.",
+          "knowledgeBoundary": "She can explain her stagecraft only.",
+          "emotionalState": "Defensive but relieved to distinguish fraud from murder.",
+          "prerequisiteClueIds": [
+            "clue-clara-trick"
+          ],
+          "revealsClueIds": [
+            "clue-clara-fraud-not-murder"
+          ],
+          "revealsEvidenceIds": [
+            "ev-trick-device"
+          ],
+          "repeatAnswer": "Clara repeats that the trick produced knocks, not death.",
+          "validationNotes": "Clears the supernatural red herring and bounds Clara's deception."
+        }
+      ],
+      "cluesPointingToward": [
+        "clue-clara-trick"
+      ],
+      "cluesClearingOrImplicating": [
+        "clue-clara-fraud-not-murder"
+      ],
+      "interrogationGuidance": "Do not let Clara confess to murder. She may admit professional fraud only when confronted with the apparatus."
+    },
+    {
+      "characterId": "npc-edmund-hallow",
+      "name": "Edmund Hallow",
+      "role": "Nephew of Beatrice Hallow and financially pressured heir",
+      "isMajorNpc": true,
+      "isSuspect": true,
+      "relationshipToMystery": "He argued with Beatrice and had a financial reason to fear estate changes.",
+      "apparentMotive": "Debt, inheritance pressure, and family resentment.",
+      "trueMotiveOrInnocentExplanation": "He wanted to inspect estate documents and feared exposure of his debts, but he did not have the decisive physical connection to the fatal act.",
+      "alibiClaim": "I barely moved. I wanted the whole thing over.",
+      "alibiTruth": "He handled or tried to inspect the cabinet or will area before or during confusion, but did not approach Beatrice or the curtain.",
+      "knowledge": [
+        "He argued with Beatrice earlier.",
+        "He wanted access to family money.",
+        "He handled the cabinet area."
+      ],
+      "secrets": [
+        "He is more financially desperate than he admits.",
+        "He wanted to know whether Beatrice had changed her will."
+      ],
+      "liesOrOmissions": [
+        "He minimizes his debt.",
+        "He minimizes the earlier argument.",
+        "He minimizes his interest in the cabinet."
+      ],
+      "interviewTopics": [
+        {
+          "topicId": "topic-edmund-money",
+          "topicLabel": "Debt and inheritance",
+          "topicType": "motive",
+          "npcId": "npc-edmund-hallow",
+          "playerQuestionExamples": [
+            "Were you in debt?",
+            "Did Beatrice threaten your inheritance?"
+          ],
+          "truthfulAnswer": "My finances are private, and Aunt Beatrice was fond of dramatic threats.",
+          "lieOrOmission": "He minimizes the severity of his financial desperation.",
+          "evasiveAnswer": "Debt is not murder.",
+          "knowledgeBoundary": "He knows his own debt and argument but not Lydia's correspondence secret.",
+          "emotionalState": "Tense and proud.",
+          "revealsClueIds": [],
+          "revealsEvidenceIds": [],
+          "followUpTopicIds": [
+            "topic-edmund-cabinet"
+          ],
+          "repeatAnswer": "He repeats that money pressure does not prove murder.",
+          "validationNotes": "Creates motive-only suspicion."
+        },
+        {
+          "topicId": "topic-edmund-cabinet",
+          "topicLabel": "Document cabinet",
+          "topicType": "red_herring",
+          "npcId": "npc-edmund-hallow",
+          "playerQuestionExamples": [
+            "Why was the cabinet handled?",
+            "Were you looking for the will?"
+          ],
+          "truthfulAnswer": "I wanted to know whether she had changed the papers. I did not touch Beatrice.",
+          "lieOrOmission": "He initially conceals that he tried to inspect the cabinet.",
+          "evasiveAnswer": "Everyone in this family has worried about papers at some point.",
+          "knowledgeBoundary": "He can explain cabinet handling only.",
+          "emotionalState": "Ashamed and defensive.",
+          "prerequisiteClueIds": [
+            "clue-edmund-cabinet"
+          ],
+          "revealsClueIds": [
+            "clue-edmund-lesser-secret"
+          ],
+          "revealsEvidenceIds": [
+            "ev-cabinet"
+          ],
+          "repeatAnswer": "Edmund repeats that his secret concerned papers, not Beatrice's death.",
+          "validationNotes": "Clears Edmund as a red herring by bounding his suspicious action."
+        }
+      ],
+      "cluesPointingToward": [
+        "clue-edmund-cabinet"
+      ],
+      "cluesClearingOrImplicating": [
+        "clue-edmund-lesser-secret"
+      ],
+      "interrogationGuidance": "Do not let motive alone prove Edmund's guilt. His cabinet behavior is a lesser secret."
+    },
+    {
+      "characterId": "npc-lydia-harrow",
+      "name": "Lydia Harrow",
+      "role": "Companion and secretary to Beatrice Hallow",
+      "isMajorNpc": true,
+      "isSuspect": true,
+      "relationshipToMystery": "She managed Beatrice's correspondence and sat near Beatrice and the curtains.",
+      "apparentMotive": "Loyalty to Beatrice and fear of disruption.",
+      "trueMotiveOrInnocentExplanation": "Beatrice was about to expose Lydia's manipulation of correspondence and dismiss her.",
+      "alibiClaim": "I never left my chair until the lamp was raised.",
+      "alibiTruth": "She moved or leaned during the dark interval and used the curtain cord.",
+      "knowledge": [
+        "She knows Beatrice discovered the correspondence manipulation.",
+        "She knows she moved during the dark interval.",
+        "She knows the curtain cord was used."
+      ],
+      "secrets": [
+        "She altered and suppressed Beatrice's correspondence.",
+        "She moved during the darkness."
+      ],
+      "liesOrOmissions": [
+        "She claims she never left her seat.",
+        "She presents herself as a loyal companion."
+      ],
+      "interviewTopics": [
+        {
+          "topicId": "topic-lydia-movement",
+          "topicLabel": "Movement during darkness",
+          "topicType": "alibi",
+          "npcId": "npc-lydia-harrow",
+          "playerQuestionExamples": [
+            "Did you leave your chair?",
+            "Could you reach Beatrice?"
+          ],
+          "truthfulAnswer": "I was frightened and stayed where I was until the lamp came up.",
+          "lieOrOmission": "She falsely claims she never moved.",
+          "evasiveAnswer": "In that darkness, no one can be certain what anyone else imagined.",
+          "knowledgeBoundary": "She will not admit movement before full proof.",
+          "emotionalState": "Quiet, attentive, controlled.",
+          "revealsClueIds": [],
+          "revealsEvidenceIds": [],
+          "followUpTopicIds": [
+            "topic-lydia-correspondence"
+          ],
+          "repeatAnswer": "Lydia repeats that she did not move before the lamp was raised.",
+          "validationNotes": "Central alibi lie; must be contradicted by physical traces."
+        },
+        {
+          "topicId": "topic-lydia-correspondence",
+          "topicLabel": "Beatrice's correspondence",
+          "topicType": "motive",
+          "npcId": "npc-lydia-harrow",
+          "playerQuestionExamples": [
+            "What did Beatrice mean by letters?",
+            "Did you answer letters in her name?"
+          ],
+          "truthfulAnswer": "Mrs. Hallow depended on me for correspondence. I helped where she asked.",
+          "lieOrOmission": "She minimizes her control and suppression of letters.",
+          "evasiveAnswer": "An old woman often asks a companion to manage paper.",
+          "knowledgeBoundary": "She hides the manipulation unless confronted with Beatrice's note.",
+          "emotionalState": "Wounded and defensive.",
+          "prerequisiteClueIds": [
+            "clue-beatrice-note"
+          ],
+          "revealsClueIds": [],
+          "revealsEvidenceIds": [],
+          "repeatAnswer": "Lydia insists she acted as a loyal secretary.",
+          "validationNotes": "Motive path after note discovery."
+        },
+        {
+          "topicId": "topic-lydia-full-proof",
+          "topicLabel": "Full proof confrontation",
+          "topicType": "accusation",
+          "npcId": "npc-lydia-harrow",
+          "playerQuestionExamples": [
+            "The note, wax, chair, and cord prove you moved.",
+            "You used the seance as cover."
+          ],
+          "truthfulAnswer": "Lydia's control breaks or hardens when the note, cord, chair placement, and wax smear are connected.",
+          "lieOrOmission": "Before full proof she remains controlled.",
+          "evasiveAnswer": "You are arranging room dust into a gallows.",
+          "knowledgeBoundary": "Only full proof should trigger final confrontation behavior.",
+          "emotionalState": "Coldly defensive after proof.",
+          "prerequisiteClueIds": [
+            "clue-curtain-cord-disturbed",
+            "clue-chair-position",
+            "clue-lydia-wax-smear",
+            "clue-beatrice-note"
+          ],
+          "revealsClueIds": [],
+          "revealsEvidenceIds": [],
+          "repeatAnswer": "Lydia no longer has a plausible innocent explanation for all the facts together.",
+          "validationNotes": "Do not use before final proof threshold."
+        }
+      ],
+      "cluesPointingToward": [
+        "clue-curtain-cord-disturbed",
+        "clue-chair-position",
+        "clue-lydia-wax-smear",
+        "clue-beatrice-note"
+      ],
+      "cluesClearingOrImplicating": [
+        "clue-lydia-wax-smear"
+      ],
+      "interrogationGuidance": "Do not confirm Lydia on early accusation. Require motive, method, physical evidence, opportunity, and contradicted movement claim."
+    }
+  ],
+  "locations": [
+    {
+      "locationId": "loc-seance-parlor",
+      "name": "Locked seance parlor",
+      "description": "A narrow candlelit parlor with a round seance table, four chairs, a shaded oil lamp, heavy velvet curtains, a curtain cord with weighted tassel, a mantel clock, a locked document cabinet, a spirit bell, a planchette board, Clara's seance bag, a fireplace, carpet, spilled candle wax near Lydia's chair, and Beatrice's chair.",
+      "purpose": "The only playable investigation location.",
+      "availableNpcIds": [
+        "npc-clara-vane",
+        "npc-edmund-hallow",
+        "npc-lydia-harrow"
+      ],
+      "availableObjectIds": [
+        "obj-seance-table",
+        "obj-four-chairs",
+        "obj-oil-lamp",
+        "obj-velvet-curtains",
+        "obj-curtain-cord",
+        "obj-mantel-clock",
+        "obj-document-cabinet",
+        "obj-spirit-bell",
+        "obj-planchette-board",
+        "obj-beatrice-note",
+        "obj-clara-bag",
+        "obj-knock-device",
+        "obj-fireplace",
+        "obj-carpet",
+        "obj-candle-wax",
+        "obj-beatrice-chair"
+      ],
+      "isPrimary": true,
+      "imageOpportunities": [
+        "asset-seance-parlor-scene",
+        "asset-curtain-cord-closeup",
+        "asset-beatrice-note"
+      ],
+      "validationNotes": "No clue requires leaving this room."
+    }
+  ],
+  "timeline": [
+    {
+      "time": "7:45 PM",
+      "event": "Beatrice admits Clara, Edmund, and Lydia into the seance parlor. The door is locked from inside for the seance."
+    },
+    {
+      "time": "7:50 PM",
+      "event": "Beatrice says the seance is partly a test and hints that the dead are not the only ones who have been speaking for her."
+    },
+    {
+      "time": "7:55 PM",
+      "event": "Clara arranges the table, bell, lamp, and planchette, and secretly prepares a harmless trick that can produce knocks."
+    },
+    {
+      "time": "8:00 PM",
+      "event": "The seance begins. Beatrice sits nearest the curtain. Lydia sits nearest Beatrice and the curtain side. Edmund sits opposite the document cabinet. Clara sits nearest her seance bag and the table device."
+    },
+    {
+      "time": "8:04 PM",
+      "event": "First knock. Clara's trick produces it."
+    },
+    {
+      "time": "8:06 PM",
+      "event": "Second knock. The table shifts slightly. Clara's trick again explains this effect."
+    },
+    {
+      "time": "8:07 PM",
+      "event": "Under cover of the second disturbance, Lydia releases hands briefly and moves or leans toward Beatrice and the curtain cord."
+    },
+    {
+      "time": "8:08 PM",
+      "event": "Third knock. Lydia has used the weighted curtain cord and returned to position. Beatrice collapses."
+    },
+    {
+      "time": "8:09 PM",
+      "event": "The lamp is raised. Beatrice is dead or beyond help. The door remains locked from inside. No outsider is possible."
+    },
+    {
+      "time": "8:10 PM",
+      "event": "The detective begins investigation."
+    }
+  ],
+  "clues": [
+    {
+      "clueId": "clue-curtain-cord-disturbed",
+      "title": "The curtain cord was recently disturbed",
+      "playerFacingDescription": "The curtain cord hangs slightly twisted, and the weighted tassel rests lower than its matching tieback. A narrow line in the dust on the wall shows the cord was recently pulled out of its usual resting path.",
+      "trueMeaning": "The curtain cord was used during the fatal interval.",
+      "discoveryLocationId": "loc-seance-parlor",
+      "discoveryConditions": "Examine the curtains, cord, tassel, or area near Beatrice's chair.",
+      "sourceOrProvenance": "Physical state of curtain cord and wall dust.",
+      "associatedTimelineEvent": "8:07 PM to 8:08 PM",
+      "associatedSuspectOrObject": "npc-lydia-harrow / obj-curtain-cord",
+      "importance": "essential",
+      "proofRole": "Supports method and shows a physical mechanism near Beatrice.",
+      "finalExplanation": "The cord disturbance is part of the physical proof against Lydia."
+    },
+    {
+      "clueId": "clue-chair-position",
+      "title": "Beatrice's chair position",
+      "playerFacingDescription": "Beatrice's chair is angled slightly toward the curtain rather than square to the table. Her hand is still near the tabletop, but the chair has been nudged backward just enough to place her within reach of the curtain cord.",
+      "trueMeaning": "The position links Beatrice to the curtain and makes an ordinary collapse insufficient.",
+      "discoveryLocationId": "loc-seance-parlor",
+      "discoveryConditions": "Examine Beatrice's chair, body position, or immediate area.",
+      "sourceOrProvenance": "Physical position of chair and table.",
+      "associatedTimelineEvent": "8:08 PM",
+      "associatedSuspectOrObject": "obj-beatrice-chair",
+      "importance": "essential",
+      "proofRole": "Shows death is tied to position and staging, not simply fright.",
+      "finalExplanation": "The chair position helped make the curtain cord method possible."
+    },
+    {
+      "clueId": "clue-clara-trick",
+      "title": "Clara's trick explains the knocks",
+      "playerFacingDescription": "A fine thread, a small tapping device, and a waxed guide point explain how a knock could be produced from Clara's side of the table.",
+      "trueMeaning": "The seance effects were staged but not fatal.",
+      "discoveryLocationId": "loc-seance-parlor",
+      "discoveryConditions": "Examine Clara's seance bag, bell, underside of table, or question Clara after trick evidence.",
+      "sourceOrProvenance": "Clara's trick apparatus.",
+      "associatedTimelineEvent": "8:04 PM and 8:06 PM",
+      "associatedSuspectOrObject": "npc-clara-vane / obj-knock-device",
+      "importance": "essential",
+      "proofRole": "Clears supernatural explanation and partially clears Clara.",
+      "finalExplanation": "Clara faked effects, but her device could not kill Beatrice."
+    },
+    {
+      "clueId": "clue-lydia-wax-smear",
+      "title": "Lydia's movement contradiction",
+      "playerFacingDescription": "A smear of fresh candle wax near Lydia's chair is drawn toward Beatrice's side of the room, as if a hem or shoe brushed it while moving away from the chair during the dark interval.",
+      "trueMeaning": "Lydia moved during the darkness despite claiming she did not.",
+      "discoveryLocationId": "loc-seance-parlor",
+      "discoveryConditions": "Examine floor, carpet, or candle wax near Lydia's chair after asking about positions or movement.",
+      "sourceOrProvenance": "Fresh candle wax and carpet direction.",
+      "associatedTimelineEvent": "8:07 PM",
+      "associatedSuspectOrObject": "npc-lydia-harrow / obj-candle-wax",
+      "importance": "essential",
+      "proofRole": "Contradicts Lydia's alibi claim.",
+      "finalExplanation": "The wax smear shows Lydia's statement about remaining seated is false."
+    },
+    {
+      "clueId": "clue-beatrice-note",
+      "title": "Beatrice had discovered Lydia's manipulation",
+      "playerFacingDescription": "A folded note in Beatrice's hand or near her chair reads in substance: \"Lydia - after tonight, no more letters answered in my name. Edmund is to see everything. I will not be managed from my own desk.\"",
+      "trueMeaning": "Beatrice was about to expose Lydia's manipulation.",
+      "discoveryLocationId": "loc-seance-parlor",
+      "discoveryConditions": "Examine Beatrice's folded note, the papers near her chair, or the cabinet contents once fairly inspected.",
+      "sourceOrProvenance": "Beatrice's own note.",
+      "associatedTimelineEvent": "7:50 PM",
+      "associatedSuspectOrObject": "npc-lydia-harrow / obj-beatrice-note",
+      "importance": "essential",
+      "proofRole": "Establishes Lydia's concrete motive.",
+      "finalExplanation": "The note proves Beatrice was about to expose Lydia."
+    },
+    {
+      "clueId": "clue-edmund-cabinet",
+      "title": "Edmund's suspicious cabinet behavior",
+      "playerFacingDescription": "The cabinet lock shows recent handling, and Edmund eventually admits he wanted to see whether Beatrice had changed her will.",
+      "trueMeaning": "Edmund has a lesser secret, but it does not connect him to the fatal mechanism.",
+      "discoveryLocationId": "loc-seance-parlor",
+      "discoveryConditions": "Examine locked cabinet, ask Edmund about debts, or compare cabinet disturbance to Beatrice's statement.",
+      "sourceOrProvenance": "Cabinet lock and Edmund's admission.",
+      "associatedTimelineEvent": "Before or during the confusion",
+      "associatedSuspectOrObject": "npc-edmund-hallow / obj-document-cabinet",
+      "importance": "essential",
+      "proofRole": "Red herring clearance for Edmund.",
+      "finalExplanation": "The cabinet explains Edmund's shame and fear without satisfying method or opportunity."
+    },
+    {
+      "clueId": "clue-clara-fraud-not-murder",
+      "title": "Clara's deception is professional fraud",
+      "playerFacingDescription": "Clara admits the knocks were staged to make the seance convincing. Her trick works at the table and bell; it does not require her to leave her seat or approach Beatrice.",
+      "trueMeaning": "Clara lied, but her lie is professional fraud rather than murder proof.",
+      "discoveryLocationId": "loc-seance-parlor",
+      "discoveryConditions": "Confront Clara with trick apparatus.",
+      "sourceOrProvenance": "Clara's admission and apparatus limits.",
+      "associatedTimelineEvent": "8:04 PM and 8:06 PM",
+      "associatedSuspectOrObject": "npc-clara-vane / obj-knock-device",
+      "importance": "essential",
+      "proofRole": "Red herring clearance for Clara.",
+      "finalExplanation": "Her trick explains false supernatural effects but not Beatrice's death."
+    }
+  ],
+  "redHerrings": [
+    {
+      "redHerringId": "rh-clara-fraud",
+      "title": "Clara Vane as fraudulent medium",
+      "appearsToSuggest": "Clara staged the seance and therefore may have caused the death.",
+      "whyMisleading": "Her apparatus explains knocks and table effects only.",
+      "innocentExplanation": "She committed professional fraud, not murder.",
+      "clearanceClueIds": [
+        "clue-clara-trick",
+        "clue-clara-fraud-not-murder"
+      ],
+      "validationNotes": "Bounded fraud; not a full proof chain."
+    },
+    {
+      "redHerringId": "rh-edmund-heir",
+      "title": "Edmund Hallow as desperate heir",
+      "appearsToSuggest": "Edmund's debt, argument, and cabinet behavior make him the obvious murderer.",
+      "whyMisleading": "His suspicious action concerns inheritance documents and does not connect him to the curtain cord.",
+      "innocentExplanation": "He lied from shame and fear of looking guilty.",
+      "clearanceClueIds": [
+        "clue-edmund-cabinet"
+      ],
+      "validationNotes": "Motive alone is not proof."
+    },
+    {
+      "redHerringId": "rh-supernatural",
+      "title": "Supernatural event",
+      "appearsToSuggest": "The third knock caused the death.",
+      "whyMisleading": "The knocks are physically explained and the fatal mechanism is ordinary and in-room.",
+      "innocentExplanation": "The supernatural effect was staged atmosphere and misdirection.",
+      "clearanceClueIds": [
+        "clue-clara-trick",
+        "clue-curtain-cord-disturbed"
+      ],
+      "validationNotes": "Restores rational solution."
+    }
+  ],
+  "evidence": [
+    {
+      "evidenceId": "ev-curtain-cord",
+      "title": "Disturbed curtain cord",
+      "type": "physical",
+      "locationId": "loc-seance-parlor",
+      "associatedClueIds": [
+        "clue-curtain-cord-disturbed"
+      ],
+      "playerFacingDescription": "A twisted cord, low tassel, and fresh dust line show recent movement.",
+      "provenance": "Found at the curtains beside Beatrice's chair.",
+      "spoilerLevel": "medium"
+    },
+    {
+      "evidenceId": "ev-chair-position",
+      "title": "Beatrice's chair position",
+      "type": "physical",
+      "locationId": "loc-seance-parlor",
+      "associatedClueIds": [
+        "clue-chair-position"
+      ],
+      "playerFacingDescription": "The chair is angled and nudged near the curtain path.",
+      "provenance": "Observed in the parlor after the lamp is raised.",
+      "spoilerLevel": "medium"
+    },
+    {
+      "evidenceId": "ev-trick-device",
+      "title": "Seance trick apparatus",
+      "type": "physical",
+      "locationId": "loc-seance-parlor",
+      "associatedClueIds": [
+        "clue-clara-trick",
+        "clue-clara-fraud-not-murder"
+      ],
+      "playerFacingDescription": "Thread, tapping device, and waxed guide explain the knock effects.",
+      "provenance": "Found through Clara's bag, table underside, bell, or related inspection.",
+      "spoilerLevel": "medium"
+    },
+    {
+      "evidenceId": "ev-wax-smear",
+      "title": "Fresh wax smear",
+      "type": "physical",
+      "locationId": "loc-seance-parlor",
+      "associatedClueIds": [
+        "clue-lydia-wax-smear"
+      ],
+      "playerFacingDescription": "Fresh wax near Lydia's chair is smeared toward Beatrice's side of the room.",
+      "provenance": "Observed near Lydia's chair on the carpet.",
+      "spoilerLevel": "high"
+    },
+    {
+      "evidenceId": "ev-beatrice-note",
+      "title": "Beatrice's folded note",
+      "type": "document",
+      "locationId": "loc-seance-parlor",
+      "associatedClueIds": [
+        "clue-beatrice-note"
+      ],
+      "playerFacingDescription": "Beatrice's note says Lydia must stop answering letters in her name and that Edmund is to see everything.",
+      "provenance": "Found in Beatrice's hand, near her chair, or with cabinet papers.",
+      "spoilerLevel": "high"
+    },
+    {
+      "evidenceId": "ev-cabinet",
+      "title": "Handled document cabinet",
+      "type": "physical",
+      "locationId": "loc-seance-parlor",
+      "associatedClueIds": [
+        "clue-edmund-cabinet"
+      ],
+      "playerFacingDescription": "The cabinet lock shows recent handling.",
+      "provenance": "Observed on the locked document cabinet.",
+      "spoilerLevel": "medium"
+    }
+  ],
+  "scenes": [
+    {
+      "sceneId": "scene-opening",
+      "locationId": "loc-seance-parlor",
+      "entryConditions": "Start of game.",
+      "defaultNarration": "The seance parlor at Harrowmere House is narrow, candlelit, and over-furnished, its velvet curtains drawn tight against the night. A round table sits at the center beneath a shaded oil lamp. On it rest a spirit bell, a planchette board, and four pairs of nervous hands. Beatrice Hallow sits nearest the curtains, pale but composed. Around her are Clara Vane, Edmund Hallow, and Lydia Harrow. The door is locked from the inside at Beatrice's insistence. Beatrice says, \"The dead are not the only ones who have spoken for me.\" The lamp is lowered. The first knock sounds. Then a second. On the third, Beatrice gives a strained gasp and slumps in her chair. When the lamp is raised, no one has entered. No one has left. The three suspects stare at one another across the seance table. The case begins.",
+      "availableNpcIds": [
+        "npc-clara-vane",
+        "npc-edmund-hallow",
+        "npc-lydia-harrow"
+      ],
+      "availableClueIds": [
+        "clue-curtain-cord-disturbed",
+        "clue-chair-position",
+        "clue-clara-trick",
+        "clue-lydia-wax-smear",
+        "clue-beatrice-note",
+        "clue-edmund-cabinet"
+      ],
+      "safeAnswers": [
+        "The door remains locked from inside.",
+        "No outsider is available as a solution.",
+        "All playable evidence is in the parlor."
+      ],
+      "hiddenFactsNotYetRevealed": [
+        "The culprit.",
+        "The exact method.",
+        "The meaning of the curtain cord until evidence is connected."
+      ],
+      "exitLeads": []
+    }
+  ],
+  "discoveryRules": [
+    {
+      "ruleId": "dr-opening-observe",
+      "triggerType": "observe_scene",
+      "description": "Player observes the seance parlor at the start of play.",
+      "locationId": "loc-seance-parlor",
+      "revealsLocationIds": [
+        "loc-seance-parlor"
+      ],
+      "updatesCaseBoardSections": [
+        "knownFacts",
+        "locations",
+        "pendingLeads"
+      ],
+      "discoveryText": "The locked parlor holds the complete playable investigation. The seance table, bell, curtains, cabinet, chairs, lamp, and nearby floor all remain available for inspection.",
+      "repeatText": "The parlor still holds the available leads.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Opening observation should not reveal culprit or method."
+    },
+    {
+      "ruleId": "dr-inspect-curtain-cord",
+      "triggerType": "inspect_object",
+      "description": "Inspect curtains, cord, tassel, or area near Beatrice's chair.",
+      "locationId": "loc-seance-parlor",
+      "objectId": "obj-curtain-cord",
+      "revealsClueIds": [
+        "clue-curtain-cord-disturbed"
+      ],
+      "revealsEvidenceIds": [
+        "ev-curtain-cord"
+      ],
+      "updatesCaseBoardSections": [
+        "knownFacts",
+        "evidence",
+        "inspectedObjects",
+        "unresolvedSignificance"
+      ],
+      "discoveryText": "The curtain cord hangs slightly twisted, and the weighted tassel rests lower than its matching tieback. A narrow line in the dust on the wall shows the cord was recently pulled out of its usual resting path.",
+      "repeatText": "The cord remains twisted, with the lower tassel and fresh dust line.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Stable evidence: reveal physical facts neutrally on inspection."
+    },
+    {
+      "ruleId": "dr-inspect-beatrice-chair",
+      "triggerType": "inspect_object",
+      "description": "Inspect Beatrice's chair, body position, or immediate area.",
+      "locationId": "loc-seance-parlor",
+      "objectId": "obj-beatrice-chair",
+      "revealsClueIds": [
+        "clue-chair-position"
+      ],
+      "revealsEvidenceIds": [
+        "ev-chair-position"
+      ],
+      "updatesCaseBoardSections": [
+        "knownFacts",
+        "evidence",
+        "inspectedObjects"
+      ],
+      "discoveryText": "Beatrice's chair is angled slightly toward the curtain rather than square to the table. Her hand is still near the tabletop, but the chair has been nudged backward just enough to place her within reach of the curtain cord.",
+      "repeatText": "The chair remains slightly angled toward the curtain and close enough to the cord to matter.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Supports method without naming culprit."
+    },
+    {
+      "ruleId": "dr-find-clara-trick",
+      "triggerType": "inspect_object",
+      "description": "Inspect Clara's bag, the bell, underside of table, or related seance apparatus.",
+      "locationId": "loc-seance-parlor",
+      "objectId": "obj-clara-bag",
+      "revealsClueIds": [
+        "clue-clara-trick"
+      ],
+      "revealsEvidenceIds": [
+        "ev-trick-device"
+      ],
+      "updatesCaseBoardSections": [
+        "knownFacts",
+        "evidence",
+        "inspectedObjects",
+        "contradictions"
+      ],
+      "discoveryText": "A fine thread, a small tapping device, and a waxed guide point explain how a knock could be produced from Clara's side of the table.",
+      "repeatText": "The apparatus still explains the knock effects, not the death.",
+      "isOptional": false,
+      "isRedHerring": true,
+      "validationNotes": "Bounded red herring and rational explanation for seance effects."
+    },
+    {
+      "ruleId": "dr-inspect-lydia-wax",
+      "triggerType": "inspect_object",
+      "description": "Inspect floor, carpet, or candle wax near Lydia's chair.",
+      "locationId": "loc-seance-parlor",
+      "objectId": "obj-candle-wax",
+      "revealsClueIds": [
+        "clue-lydia-wax-smear"
+      ],
+      "revealsEvidenceIds": [
+        "ev-wax-smear"
+      ],
+      "updatesCaseBoardSections": [
+        "knownFacts",
+        "evidence",
+        "inspectedObjects",
+        "contradictions"
+      ],
+      "discoveryText": "A smear of fresh candle wax near Lydia's chair is drawn toward Beatrice's side of the room, as if a hem or shoe brushed it while moving away from the chair during the dark interval.",
+      "repeatText": "The wax smear still runs from Lydia's chair toward Beatrice's side of the room.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Contradicts Lydia's alibi claim when compared to her statement."
+    },
+    {
+      "ruleId": "dr-read-beatrice-note",
+      "triggerType": "read_document",
+      "description": "Read Beatrice's folded note or relevant cabinet paper.",
+      "locationId": "loc-seance-parlor",
+      "documentId": "obj-beatrice-note",
+      "revealsClueIds": [
+        "clue-beatrice-note"
+      ],
+      "revealsEvidenceIds": [
+        "ev-beatrice-note"
+      ],
+      "updatesCaseBoardSections": [
+        "knownFacts",
+        "evidence",
+        "timelineNotes",
+        "pendingLeads"
+      ],
+      "discoveryText": "A folded note reads in substance: \"Lydia - after tonight, no more letters answered in my name. Edmund is to see everything. I will not be managed from my own desk.\"",
+      "repeatText": "The note still identifies Beatrice's concern about letters answered in her name.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Essential motive clue."
+    },
+    {
+      "ruleId": "dr-inspect-cabinet",
+      "triggerType": "inspect_object",
+      "description": "Inspect locked document cabinet or ask Edmund about cabinet handling.",
+      "locationId": "loc-seance-parlor",
+      "objectId": "obj-document-cabinet",
+      "revealsClueIds": [
+        "clue-edmund-cabinet"
+      ],
+      "revealsEvidenceIds": [
+        "ev-cabinet"
+      ],
+      "updatesCaseBoardSections": [
+        "knownFacts",
+        "evidence",
+        "inspectedObjects",
+        "closedLeads"
+      ],
+      "discoveryText": "The cabinet lock shows recent handling. Edmund eventually admits he wanted to see whether Beatrice had changed her will.",
+      "repeatText": "The cabinet evidence still explains Edmund's evasiveness without tying him to the curtain or Beatrice's chair.",
+      "isOptional": false,
+      "isRedHerring": true,
+      "validationNotes": "Clears Edmund's red herring by bounding his suspicious behavior."
+    },
+    {
+      "ruleId": "dr-confront-clara",
+      "triggerType": "question_npc",
+      "description": "Confront Clara with trick apparatus.",
+      "npcId": "npc-clara-vane",
+      "topicId": "topic-clara-apparatus",
+      "prerequisiteClueIds": [
+        "clue-clara-trick"
+      ],
+      "revealsClueIds": [
+        "clue-clara-fraud-not-murder"
+      ],
+      "revealsEvidenceIds": [
+        "ev-trick-device"
+      ],
+      "updatesCaseBoardSections": [
+        "knownClaims",
+        "contradictions",
+        "closedLeads"
+      ],
+      "discoveryText": "Clara admits the knocks were staged to make the seance convincing. Her trick works at the table and bell; it does not require her to leave her seat or approach Beatrice.",
+      "repeatText": "Clara repeats that she staged effects, not the death.",
+      "isOptional": false,
+      "isRedHerring": true,
+      "validationNotes": "Clears Clara without treating her fraud as harmless before discovered."
+    },
+    {
+      "ruleId": "dr-accuse-insufficient",
+      "triggerType": "accuse",
+      "description": "Handle accusations before proof threshold is met.",
+      "updatesCaseBoardSections": [
+        "workingTheories",
+        "pendingLeads"
+      ],
+      "failureText": "That theory may fit some known facts, but it is not yet proven. You still need proof of motive, physical method, opportunity, and a contradiction or mistake that ties the suspect to the act.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Do not confirm early correct accusations."
+    },
+    {
+      "ruleId": "dr-final-accusation",
+      "triggerType": "accuse",
+      "description": "Resolve a fully proven final accusation.",
+      "prerequisiteClueIds": [
+        "clue-curtain-cord-disturbed",
+        "clue-chair-position",
+        "clue-clara-trick",
+        "clue-lydia-wax-smear",
+        "clue-beatrice-note",
+        "clue-edmund-cabinet",
+        "clue-clara-fraud-not-murder"
+      ],
+      "updatesCaseBoardSections": [
+        "knownFacts",
+        "closedLeads",
+        "contradictions"
+      ],
+      "discoveryText": "The proof threshold is met when the player identifies the responsible suspect and connects motive, method, opportunity, physical evidence, and contradicted alibi while clearing the major red herrings.",
+      "isOptional": false,
+      "isRedHerring": false,
+      "validationNotes": "Use authored final reveal only after proof threshold or explicit stop/spoiler request."
+    }
+  ],
+  "caseBoardSeed": {
+    "knownFacts": [
+      "Beatrice Hallow collapsed during a private seance in the locked parlor at Harrowmere House.",
+      "Three knocks were heard before the collapse.",
+      "The parlor door was locked from inside.",
+      "Three people were present with Beatrice: Clara Vane, Edmund Hallow, and Lydia Harrow."
+    ],
+    "suspects": [
+      "npc-clara-vane",
+      "npc-edmund-hallow",
+      "npc-lydia-harrow"
+    ],
+    "locations": [
+      "loc-seance-parlor"
+    ],
+    "openQuestions": [
+      "What caused the three knocks?",
+      "What can the room itself prove?",
+      "Which suspect had motive, method, and opportunity?"
+    ],
+    "pendingLeads": [
+      "Inspect the seance table and spirit bell.",
+      "Inspect the curtains and area near Beatrice's chair.",
+      "Question the suspects about the dark interval."
+    ]
+  },
+  "assetManifest": [
+    {
+      "assetId": "asset-seance-parlor-scene",
+      "title": "Harrowmere seance parlor",
+      "assetType": "scene_image",
+      "textFallback": "A locked candlelit parlor with a round seance table, four chairs, a shaded oil lamp, heavy velvet curtains, a spirit bell, a planchette board, a mantel clock, and a locked document cabinet.",
+      "containsHiddenClues": false,
+      "isCanonicalEvidence": false
+    },
+    {
+      "assetId": "asset-curtain-cord-closeup",
+      "title": "Curtain cord and weighted tassel",
+      "assetType": "evidence_photo",
+      "textFallback": "A curtain cord hangs slightly twisted, with a weighted tassel resting lower than its matching tieback and a narrow dust line where the cord was recently pulled from its resting path.",
+      "containsHiddenClues": false,
+      "isCanonicalEvidence": false
+    },
+    {
+      "assetId": "asset-beatrice-note",
+      "title": "Folded note",
+      "assetType": "document",
+      "textFallback": "A folded note from Beatrice says Lydia must stop answering letters in Beatrice's name and that Edmund is to see everything.",
+      "containsHiddenClues": false,
+      "isCanonicalEvidence": false
+    }
+  ],
+  "validationTargets": {
+    "singleLocation": true,
+    "exactlyThreeSuspects": true,
+    "noOutsiderSolution": true,
+    "culpritMotiveMethodOpportunityAuthored": true,
+    "requiredProofChainAuthored": true,
+    "suspectDeceptionAuthoredAndBounded": true,
+    "innocentSuspectClearancePathsAuthored": true,
+    "redHerringsBoundedAndResolvable": true,
+    "stableEvidenceRuleSupported": true,
+    "earlyAccusationHandlingAuthored": true,
+    "finalRevealThresholdAuthored": true,
+    "noImageOnlyClueDependency": true,
+    "noTechnicalOrForensicTestDependency": true,
+    "noExternalLabExpertOrOffscreenBranch": true,
+    "fallbackRevealAuthored": true
+  },
+  "canonicalAssetInventory": {
+    "npcIds": [
+      "npc-clara-vane",
+      "npc-edmund-hallow",
+      "npc-lydia-harrow"
+    ],
+    "locationIds": [
+      "loc-seance-parlor"
+    ],
+    "objectIds": [
+      "obj-seance-table",
+      "obj-four-chairs",
+      "obj-oil-lamp",
+      "obj-velvet-curtains",
+      "obj-curtain-cord",
+      "obj-mantel-clock",
+      "obj-document-cabinet",
+      "obj-spirit-bell",
+      "obj-planchette-board",
+      "obj-beatrice-note",
+      "obj-clara-bag",
+      "obj-knock-device",
+      "obj-fireplace",
+      "obj-carpet",
+      "obj-candle-wax",
+      "obj-beatrice-chair"
+    ],
+    "evidenceIds": [
+      "ev-curtain-cord",
+      "ev-chair-position",
+      "ev-trick-device",
+      "ev-wax-smear",
+      "ev-beatrice-note",
+      "ev-cabinet"
+    ],
+    "documentIds": [
+      "obj-beatrice-note"
+    ],
+    "imageIds": [
+      "asset-seance-parlor-scene",
+      "asset-curtain-cord-closeup",
+      "asset-beatrice-note"
+    ],
+    "discoveryRuleIds": [
+      "dr-opening-observe",
+      "dr-inspect-curtain-cord",
+      "dr-inspect-beatrice-chair",
+      "dr-find-clara-trick",
+      "dr-inspect-lydia-wax",
+      "dr-read-beatrice-note",
+      "dr-inspect-cabinet",
+      "dr-confront-clara",
+      "dr-accuse-insufficient",
+      "dr-final-accusation"
+    ],
+    "interviewTopicIds": [
+      "topic-clara-phenomena",
+      "topic-clara-apparatus",
+      "topic-edmund-money",
+      "topic-edmund-cabinet",
+      "topic-lydia-movement",
+      "topic-lydia-correspondence",
+      "topic-lydia-full-proof"
+    ],
+    "sceneIds": [
+      "scene-opening"
+    ],
+    "clueIds": [
+      "clue-curtain-cord-disturbed",
+      "clue-chair-position",
+      "clue-clara-trick",
+      "clue-lydia-wax-smear",
+      "clue-beatrice-note",
+      "clue-edmund-cabinet",
+      "clue-clara-fraud-not-murder"
+    ],
+    "redHerringIds": [
+      "rh-clara-fraud",
+      "rh-edmund-heir",
+      "rh-supernatural"
+    ]
+  },
+  "runtimeBudgets": {
+    "maxMajorNPCs": 3,
+    "maxInterviewableNPCs": 3,
+    "maxBackgroundCharacters": 0,
+    "maxPrimaryLocations": 1,
+    "maxSecondaryLocations": 0,
+    "maxSearchableObjects": 16,
+    "maxEvidenceItems": 6,
+    "maxDocuments": 1,
+    "maxImages": 3,
+    "maxDiscoveryRules": 10,
+    "maxRedHerrings": 3,
+    "maxInterviewTopics": 7,
+    "maxHints": 3,
+    "maxPlayerFacingBranches": 6,
+    "hardBudgetFields": [
+      "maxMajorNPCs",
+      "maxInterviewableNPCs",
+      "maxPrimaryLocations",
+      "maxSecondaryLocations",
+      "maxBackgroundCharacters"
+    ],
+    "softBudgetFields": [
+      "maxImages",
+      "maxHints"
+    ],
+    "notes": "Contained Quick Mystery: one room, three suspects, no external forensic branch, no off-screen witnesses."
+  },
+  "visualDefinitions": [
+    {
+      "visualDefinitionId": "vis-seance-parlor",
+      "locationId": "loc-seance-parlor",
+      "imageType": "full_room",
+      "canonicalDescription": "A locked candlelit seance parlor with round table, four chairs, shaded oil lamp, heavy curtains, spirit bell, planchette, mantel clock, document cabinet, and fireplace.",
+      "requiredVisibleObjectIds": [
+        "obj-seance-table",
+        "obj-four-chairs",
+        "obj-oil-lamp",
+        "obj-velvet-curtains",
+        "obj-spirit-bell",
+        "obj-planchette-board",
+        "obj-document-cabinet"
+      ],
+      "forbiddenObjectIds": [
+        "extra-door",
+        "secret-passage",
+        "police-equipment",
+        "supernatural-figure"
+      ],
+      "peopleIncluded": false,
+      "requiredVisibleNpcIds": [],
+      "requiredAbsentNpcIds": [],
+      "fixedGeometryNotes": "The room has one locked door, one curtain side, and a central table.",
+      "hiddenElementRules": "Do not reveal culprit action, hidden interpretation, or clue meanings visually.",
+      "continuityAnchor": "Round table centered; curtains on Beatrice's side; cabinet opposite.",
+      "textFallback": "A locked candlelit parlor with the authored objects visible. Text remains canonical.",
+      "validationNotes": "Images are optional and not required for clue discovery."
+    }
+  ],
+  "imageGalleryPolicy": {
+    "imageModeDefault": "off_by_default",
+    "imagesRequired": false,
+    "playerMayRequestImages": true,
+    "noImageOnlyClues": true,
+    "textIsCanonical": true,
+    "notes": "Images are optional visualizations. Do not require image inspection to solve."
+  },
+  "imageReusePolicy": {
+    "reusePriorImagesWhenPossible": true,
+    "doNotRegeneratePriorImagesForRecall": true,
+    "fallbackToTextDescription": true,
+    "notes": "If image recall is unavailable, provide stored text fallback."
+  },
+  "evidencePhotoDefinitions": [],
+  "cutawayDefinitions": []
+}

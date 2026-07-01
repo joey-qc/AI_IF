@@ -70,5 +70,24 @@
     "imageMode": "player_requested_only",
     "interactionMode": "voice_friendly",
     "notes": "Proof-gating finalized; package validation and AI playthrough passed. Ready for human play."
+  },
+  {
+    "caseId": "quick-005",
+    "title": "The Third Knock",
+    "slug": "the-third-knock",
+    "folder": "games/quick-005-the-third-knock",
+    "lengthPreset": "quick_mystery",
+    "difficulty": "medium",
+    "genre": "classic contained whodunit",
+    "tone": "rational seance mystery",
+    "status": "ready_for_human_play",
+    "validationStatus": "passed",
+    "playtestStatus": "passed",
+    "humanPlayStatus": "not_played",
+    "lastUpdatedAt": "2026-06-30",
+    "estimatedPlayTimeMinutes": 25,
+    "imageMode": "off_by_default",
+    "interactionMode": "voice_friendly",
+    "notes": "Rational seance mystery; images not required. Ready for human play."
   }
 ]

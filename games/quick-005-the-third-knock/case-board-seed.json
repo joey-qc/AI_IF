@@ -1,0 +1,36 @@
+{
+  "caseId": "quick-005",
+  "title": "The Third Knock",
+  "knownFacts": [
+    "Beatrice Hallow collapsed during a private seance in the locked parlor at Harrowmere House.",
+    "Three knocks were heard before the collapse.",
+    "The parlor door was locked from inside.",
+    "Three people were present with Beatrice: Clara Vane, Edmund Hallow, and Lydia Harrow.",
+    "The case has no required image evidence and no required external forensic branch."
+  ],
+  "knownCharacters": [
+    "npc-clara-vane",
+    "npc-edmund-hallow",
+    "npc-lydia-harrow"
+  ],
+  "knownLocations": [
+    "loc-seance-parlor"
+  ],
+  "openQuestions": [
+    "Did Beatrice die from fright, accident, or deliberate action?",
+    "What caused the three knocks?",
+    "What can the room itself prove?",
+    "Which suspect had motive, method, and opportunity?"
+  ],
+  "activeLeads": [
+    "Inspect the seance table and spirit bell.",
+    "Inspect the curtains and area near Beatrice's chair.",
+    "Question Clara about the seance phenomena.",
+    "Question Edmund about family money and the cabinet.",
+    "Question Lydia about Beatrice's correspondence and her movement during the darkness."
+  ],
+  "discoveredClueIds": [],
+  "discoveredEvidenceIds": [],
+  "seenAssetIds": [],
+  "playerTheories": []
+}

@@ -1,0 +1,51 @@
+[
+  {
+    "assetId": "asset-seance-parlor-scene",
+    "title": "Harrowmere seance parlor",
+    "assetType": "scene_image",
+    "associatedLocationId": "loc-seance-parlor",
+    "associatedClueIds": [],
+    "discoveryConditions": "Optional on player request; image mode is off by default.",
+    "textFallback": "A locked candlelit parlor with a round seance table, four chairs, a shaded oil lamp, heavy velvet curtains, a spirit bell, a planchette board, a mantel clock, and a locked document cabinet.",
+    "retrievalLabel": "Seance parlor",
+    "spoilerLevel": "low",
+    "isCanonicalEvidence": false,
+    "containsHiddenClues": false,
+    "imagePromptGuidance": "Show only authored room objects. Do not depict the culprit action, hidden facts, extra people, extra doors, supernatural figures, or visual clues not already available in text.",
+    "hasBeenShownToPlayer": false
+  },
+  {
+    "assetId": "asset-curtain-cord-closeup",
+    "title": "Curtain cord and weighted tassel",
+    "assetType": "evidence_photo",
+    "associatedLocationId": "loc-seance-parlor",
+    "associatedClueIds": [
+      "clue-curtain-cord-disturbed"
+    ],
+    "discoveryConditions": "Optional after the curtains or cord have been inspected in text.",
+    "textFallback": "A curtain cord hangs slightly twisted, with a weighted tassel resting lower than its matching tieback and a narrow dust line where the cord was recently pulled from its resting path.",
+    "retrievalLabel": "Curtain cord",
+    "spoilerLevel": "medium",
+    "isCanonicalEvidence": false,
+    "containsHiddenClues": false,
+    "imagePromptGuidance": "Support text discovery only. Do not add labels, arrows, handprints, culprit identifiers, or visual details not already revealed in text.",
+    "hasBeenShownToPlayer": false
+  },
+  {
+    "assetId": "asset-beatrice-note",
+    "title": "Folded note",
+    "assetType": "document",
+    "associatedLocationId": "loc-seance-parlor",
+    "associatedClueIds": [
+      "clue-beatrice-note"
+    ],
+    "discoveryConditions": "Available when the folded note or document cabinet contents are inspected in text.",
+    "textFallback": "A folded note from Beatrice says Lydia must stop answering letters in Beatrice's name and that Edmund is to see everything.",
+    "retrievalLabel": "Beatrice's note",
+    "spoilerLevel": "high",
+    "isCanonicalEvidence": false,
+    "containsHiddenClues": false,
+    "imagePromptGuidance": "Show only document text already revealed in text. Do not add undiscovered names, annotations, or solution labels.",
+    "hasBeenShownToPlayer": false
+  }
+]
