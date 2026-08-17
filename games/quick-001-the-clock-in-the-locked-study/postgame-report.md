@@ -110,8 +110,8 @@ During startup, the repository had conflicting status signals:
 
 Fix applied:
 
-- `gm-readme.md` now states the case is approved for human play.
-- `game-package.json` metadata now uses `status: approved_for_human_play`, validation/playtest pass statuses, and `humanPlayStatus: completed_once`.
+- `gm-readme.md` now states the case is ready for human play.
+- `game-package.json` metadata now uses `status: ready_for_human_play`, validation/playtest pass statuses, and `humanPlayStatus: completed_once`.
 
 ## Remaining Notes
 

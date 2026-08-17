@@ -4,7 +4,7 @@
     "title": "The Clock in the Locked Study",
     "slug": "the-clock-in-the-locked-study",
     "version": "0.2.1",
-    "status": "approved_for_human_play",
+    "status": "ready_for_human_play",
     "createdAt": "2026-06-27",
     "lastUpdatedAt": "2026-06-27",
     "authorRole": "Revision Engine",
@@ -14,7 +14,7 @@
     "shortDescription": "A compact one-room theft mystery for the first end-to-end engine test.",
     "estimatedPlayTimeMinutes": 20,
     "repositoryPath": "games/quick-001-the-clock-in-the-locked-study",
-    "notes": "Approved for human play after validation v2, AI playtest, handoff preparation, and one completed human play-through. game-package.json is canonical; solution.md remains non-canonical unless explicitly restored."
+    "notes": "Ready for human play after validation v2, AI playtest, handoff preparation, and one completed human play-through. game-package.json is canonical; solution.md remains non-canonical unless explicitly restored."
   },
   "playerConfig": {
     "lengthPreset": "quick_mystery",

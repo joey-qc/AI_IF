@@ -762,7 +762,7 @@ draft
   -> validated
   -> playtest_failed
   -> playtested
-  -> approved_for_human_play
+  -> ready_for_human_play
   -> in_play
   -> completed
   -> archived

@@ -19,7 +19,7 @@ Do not rely on `solution.md` for the current version. It was created during the 
 ## Current Status
 
 ```text
-Approved for human play.
+Ready for human play.
 Validated: pass with minor repository issue.
 AI playtested: pass with minor runtime guidance.
 Human playtest: completed once; see postgame-report.md.

@@ -43,7 +43,7 @@ Prefer cases with:
 ```text
 validationStatus: passed / passed_with_minor_issues / passed_with_minor_repository_issue
 playtestStatus: passed / passed_with_issues / passed_with_minor_runtime_guidance
-status: approved_for_human_play / playtested / validated
+status: ready_for_human_play / playtested / validated
 ```
 
 If metadata conflicts, follow the most recent case-specific handoff, `gm-readme.md`, postgame report, or user instruction, while avoiding spoilers.

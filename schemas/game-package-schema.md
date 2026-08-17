@@ -29,7 +29,7 @@ A game package should move through these statuses:
 3. `validated`
 4. `playtest_failed`
 5. `playtested`
-6. `approved_for_human_play`
+6. `ready_for_human_play`
 7. `in_play`
 8. `completed`
 9. `archived`

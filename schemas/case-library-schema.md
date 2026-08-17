@@ -185,7 +185,7 @@ Update `games/index.json` when:
 - a case status changes;
 - validation status changes;
 - playtest status changes;
-- a case is approved for human play;
+- a case is ready for human play;
 - a case is completed or archived;
 - a folder path changes by explicit user request.
 
