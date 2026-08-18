@@ -46,6 +46,7 @@ Instructions for AI execution of specific roles:
 - `prompts/04-ai-playtester.md` - AI Playtester role.
 - `prompts/05-revision-engine.md` - Revision Engine role.
 - `prompts/06-game-master.md` - Game Master role.
+- `prompts/07-if-engine-manager.md` - IF Engine Manager / project architecture and pass-fail review role.
 
 ### 4. Case Data (`games/<caseId>-<slug>/`)
 Case packages and session state:
@@ -81,6 +82,10 @@ python tools/validate.py games/<case>/game-package.json
 ## Minimal Role Startup Routing
 
 Roles operate under a **minimum necessary context** model. Once invoked with an operational prompt, a role loads only its designated startup contract:
+
+### IF Engine Manager
+- **Conversational Reads**: `prompts/07-if-engine-manager.md`
+- **Conditional**: `docs/repository-workflow.md` (repository governance, lifecycle, file ownership, handoffs, or implementation workflow), `docs/design-principles.md` (mystery-design architecture), `docs/runtime-engine-v2.md` (runtime or Game Master architecture), applicable role prompts, schemas, repository files, diffs, commits, reports, or case artifacts only when directly relevant to the current task.
 
 ### Player Setup
 - **Conversational Reads**: `prompts/00-player-setup.md`, `docs/repository-workflow.md`, `docs/design-principles.md`
