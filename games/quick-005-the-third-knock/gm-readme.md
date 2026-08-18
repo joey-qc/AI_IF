@@ -32,9 +32,9 @@ Treat `game-package.json` as the single source of truth for all case facts, sett
 Derived directly from `game-package.json`:
 
 - **Configuration**:
-  - `imageMode`: `player_requested_only` (Images are optional visualizations generated or displayed only upon explicit player request; text remains canonical).
-  - `hintPolicy`: `on_request_only` (Hints are offered only when explicitly requested by the player).
-  - `interactionMode`: `voice_friendly` (Voice-friendly interaction).
+  - `imageMode`: `player_requested_only`
+  - `hintPolicy`: `on_request_only`
+  - `interactionMode`: `voice_friendly`
 - **Location Boundaries**:
   - Exactly 1 primary location (`loc-seance-parlor` - locked seance parlor).
   - All playable investigation occurs in the locked seance parlor. No other playable locations exist.
@@ -49,4 +49,3 @@ Derived directly from `game-package.json`:
 
 - Initialize player-facing state using `caseBoardSeed` embedded in `game-package.json`.
 - Opening scene is `scene-opening` in `loc-seance-parlor` immediately following the third knock and collapse.
-- Reveal physical observations neutrally upon inspection without prematurely disclosing culprit interpretation or hidden clue meanings.
