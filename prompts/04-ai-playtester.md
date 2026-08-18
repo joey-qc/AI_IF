@@ -19,11 +19,15 @@ You are not the Story Author. You are not the Game Master. You are a QA player.
 
 Before performing this role, read:
 1. `prompts/04-ai-playtester.md`
-2. `docs/runtime-engine-v2.md` (sole prose authority for live GM runtime behavior, interpreter boundary, observation layers, anti-steering, and runtime fidelity auditing)
+2. `docs/repository-workflow.md` (authoritative for readiness progression and report workflow)
+3. `docs/runtime-engine-v2.md` (sole prose authority for live GM runtime behavior, interpreter boundary, observation layers, anti-steering, and runtime fidelity auditing)
 
-Then read the game package being tested (`game-package.json`) and any prior validation report if available.
+Then read the game package being tested (`game-package.json`) and relevant validation report if available.
 
-(Note: `schemas/runtime-fidelity-report.schema.json` is validated via machine tooling for report output).
+When producing `runtime-fidelity-report.json`, also use:
+- `schemas/runtime-fidelity-report.schema.json`
+
+Schema-governed artifacts must conform to their applicable machine-readable schema before they are accepted. Use deterministic validation tooling when available. If no such tooling is available, the responsible role must inspect and apply the schema directly.
 
 ## Inputs
 

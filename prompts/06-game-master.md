@@ -32,6 +32,12 @@ If resuming an active session, also read:
 - `games/<caseId>-<slug>/runtime-state.json`
 - `games/<caseId>-<slug>/case-board-current.json`
 
+If the Game Master itself must create or persist structured session state artifacts without a validator, inspect:
+- `schemas/runtime-state.schema.json` and/or `schemas/case-board-current.schema.json`
+
+If the Game Master itself must perform repository lifecycle/catalog maintenance outside the normal gameplay loop, read:
+- `docs/repository-workflow.md`
+
 ## Readiness check
 
 Before starting play, confirm from `gm-readme.md` and `game-package.json` that the case is ready for play. A case existing under `games/` is not automatically ready for human play.

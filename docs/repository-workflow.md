@@ -218,27 +218,27 @@ Each case folder must maintain a concise handoff file at `games/<caseId>-<slug>/
 ## File ownership by AI role
 
 ### Player Setup role (`prompts/00-player-setup.md`)
-- **Reads**: `prompts/00-player-setup.md`, `docs/design-principles.md`, `games/index.json` (conditionally).
+- **Reads**: `prompts/00-player-setup.md`, `docs/repository-workflow.md`, `docs/design-principles.md`; `games/index.json` (conditionally).
 - **Writes**: `games/<caseId>-<slug>/setup.md`, `games/<caseId>-<slug>/player-config.json`, updates `games/index.json`.
 
 ### Story Author role (`prompts/02-story-author.md`)
-- **Reads**: `prompts/02-story-author.md`, `docs/design-principles.md`, `games/<caseId>-<slug>/player-config.json`.
+- **Reads**: `prompts/02-story-author.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `schemas/game-package.schema.json`, case setup / user constraints (`games/<caseId>-<slug>/player-config.json`).
 - **Writes**: `games/<caseId>-<slug>/game-package.json`, `games/<caseId>-<slug>/case-board-seed.json`, `games/<caseId>-<slug>/asset-manifest.json`, `games/<caseId>-<slug>/author-notes.md`, updates `games/index.json`.
 
 ### Validator role (`prompts/03-validator.md`)
-- **Reads**: `prompts/03-validator.md`, `docs/design-principles.md`, `docs/repository-workflow.md` (conditionally), draft case files (`game-package.json`, etc.).
+- **Reads**: `prompts/03-validator.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `schemas/game-package.schema.json`, `schemas/validation-report.schema.json`, target case files (`game-package.json`, etc.).
 - **Writes**: `games/<caseId>-<slug>/validation-report.json`, `games/<caseId>-<slug>/validation-report.md`, updates `games/index.json`.
 
 ### AI Playtester role (`prompts/04-ai-playtester.md`)
-- **Reads**: `prompts/04-ai-playtester.md`, `docs/runtime-engine-v2.md`, target case files (`game-package.json`, validation report).
+- **Reads**: `prompts/04-ai-playtester.md`, `docs/repository-workflow.md`, `docs/runtime-engine-v2.md`, target case package and validation report; `schemas/runtime-fidelity-report.schema.json` (conditionally when producing fidelity report).
 - **Writes**: `games/<caseId>-<slug>/playtest-report.md`, `games/<caseId>-<slug>/runtime-fidelity-report.json`, updates `games/index.json`.
 
 ### Revision Engine role (`prompts/05-revision-engine.md`)
-- **Reads**: `prompts/05-revision-engine.md`, `docs/design-principles.md`, `docs/runtime-engine-v2.md` (conditionally), target case files, validation/playtest reports.
+- **Reads**: `prompts/05-revision-engine.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `schemas/game-package.schema.json`, target package and defect reports; `docs/runtime-engine-v2.md` (conditionally).
 - **Writes**: `games/<caseId>-<slug>/game-package.json`, `games/<caseId>-<slug>/case-board-seed.json`, `games/<caseId>-<slug>/asset-manifest.json`, `games/<caseId>-<slug>/revision-notes.md`, updates `games/index.json`.
 
 ### Game Master role (`prompts/06-game-master.md`)
-- **Reads**: `prompts/06-game-master.md`, `docs/runtime-engine-v2.md`, `games/<caseId>-<slug>/gm-readme.md`, `games/<caseId>-<slug>/game-package.json`, and active session files if resuming (`runtime-state.json`, `case-board-current.json`).
+- **Reads**: `prompts/06-game-master.md`, `docs/runtime-engine-v2.md`, `games/<caseId>-<slug>/gm-readme.md`, `games/<caseId>-<slug>/game-package.json`; active session files if resuming (`runtime-state.json`, `case-board-current.json`); state schemas conditionally if creating/persisting structured state without a validator; `docs/repository-workflow.md` conditionally if performing repo maintenance.
 - **Writes**: `games/<caseId>-<slug>/runtime-state.json`, `games/<caseId>-<slug>/case-board-current.json`, `games/<caseId>-<slug>/session-log.md`, `games/<caseId>-<slug>/postgame-report.md`, updates `games/index.json`.
 
 ---

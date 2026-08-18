@@ -4,7 +4,7 @@ Welcome to the **AI Interactive Fiction (AI_IF)** repository.
 
 This repository contains the durable architecture specifications, machine JSON schemas, operational role prompts, and case package data for a repository-backed interactive mystery system.
 
-`README.md` is the authoritative bootstrap router for the project. When starting a session without an assigned role prompt, start here to navigate to your role. Once an AI role is explicitly invoked with its operational prompt, it loads only its minimal startup contract and does not reread `README.md`.
+`README.md` is the authoritative bootstrap router for the project. When starting a session without an assigned role prompt, start here to navigate to your role. Once an AI role is explicitly invoked with its operational prompt, it loads only its designated minimal startup contract and does not reread `README.md`.
 
 ---
 
@@ -37,7 +37,7 @@ Sole structural authority for JSON validation:
 - **`schemas/validation-report.schema.json`**: Structural authority for `validation-report.json`.
 - **`schemas/runtime-fidelity-report.schema.json`**: Structural authority for `runtime-fidelity-report.json`.
 
-> Note: Machine schemas are validated via tooling and are not loaded as conversational prose reading during role startup.
+> Note: Schema-governed artifacts must conform to their applicable machine-readable schema before they are accepted. Use deterministic validation tooling when available. If no such tooling is available, the responsible role must inspect and apply the schema directly.
 
 ### 3. Operational Prompts (`prompts/`)
 Instructions for AI execution of specific roles:
@@ -63,49 +63,30 @@ Case packages and session state:
 
 ## Minimal Role Startup Routing
 
-Roles operate under a **minimum necessary context** model. Once invoked with an operational prompt, a role loads only its designated minimal startup contract:
-
-### Repository Engineer / Local Developer
-- **Operational Prompt**: `prompts/01-repository-engineer.md`
-- **Always Required Spec**: `docs/repository-workflow.md`
-- **Conditionally Required**: `docs/design-principles.md` (authoring rules), `docs/runtime-engine-v2.md` (runtime rules)
-- **Machine Checks**: `schemas/*.schema.json` (when maintaining schemas/tooling)
+Roles operate under a **minimum necessary context** model. Once invoked with an operational prompt, a role loads only its designated startup contract:
 
 ### Player Setup
-- **Operational Prompt**: `prompts/00-player-setup.md`
-- **Always Required Spec**: `docs/design-principles.md`
-- **Conditionally Required**: `games/index.json` (to verify case ID uniqueness or select case)
-- **Machine Checks**: `schemas/game-package.schema.json`
+- **Normal Startup**: `prompts/00-player-setup.md`, `docs/repository-workflow.md`, `docs/design-principles.md`
+- **Conditional**: `games/index.json` (when assigning/verifying case identity or working with the catalog)
+
+### Repository Engineer / Local Developer
+- **Normal Startup**: `prompts/01-repository-engineer.md`, `docs/repository-workflow.md`, files explicitly involved in the requested task
+- **Conditional**: `docs/design-principles.md` (design-authority changes), `docs/runtime-engine-v2.md` (runtime-authority changes), applicable `schemas/*.schema.json` (schema/tooling work)
 
 ### Story Author
-- **Operational Prompt**: `prompts/02-story-author.md`
-- **Always Required Spec**: `docs/design-principles.md`
-- **Case-Specific Inputs**: `games/<case>/player-config.json` or setup constraints
-- **Machine Checks**: `schemas/game-package.schema.json`
+- **Normal Startup**: `prompts/02-story-author.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `schemas/game-package.schema.json`, case setup / user constraints
 
 ### Validator
-- **Operational Prompt**: `prompts/03-validator.md`
-- **Always Required Spec**: `docs/design-principles.md`
-- **Conditionally Required**: `docs/repository-workflow.md` (catalog/readiness metadata)
-- **Case-Specific Inputs**: Target draft case files (`game-package.json`, `solution.md`, etc.)
-- **Machine Checks**: `schemas/game-package.schema.json`, `schemas/validation-report.schema.json`
+- **Normal Startup**: `prompts/03-validator.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `schemas/game-package.schema.json`, `schemas/validation-report.schema.json`, target case files
 
 ### AI Playtester
-- **Operational Prompt**: `prompts/04-ai-playtester.md`
-- **Always Required Spec**: `docs/runtime-engine-v2.md`
-- **Case-Specific Inputs**: Target case package (`game-package.json`), validation report if available
-- **Machine Checks**: `schemas/runtime-fidelity-report.schema.json`
+- **Normal Startup**: `prompts/04-ai-playtester.md`, `docs/repository-workflow.md`, `docs/runtime-engine-v2.md`, target case package and relevant validation report
+- **Conditional**: `schemas/runtime-fidelity-report.schema.json` (when producing `runtime-fidelity-report.json`)
 
 ### Revision Engine
-- **Operational Prompt**: `prompts/05-revision-engine.md`
-- **Always Required Spec**: `docs/design-principles.md`
-- **Conditionally Required**: `docs/runtime-engine-v2.md` (if repairing GM execution flaws)
-- **Case-Specific Inputs**: Target case package (`game-package.json`), defect report (`validation-report.md`, `playtest-report.md`)
-- **Machine Checks**: `schemas/game-package.schema.json`
+- **Normal Startup**: `prompts/05-revision-engine.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `schemas/game-package.schema.json`, target package and defect reports
+- **Conditional**: `docs/runtime-engine-v2.md` (when repairing runtime/GM behavior)
 
 ### Game Master
-- **Operational Prompt**: `prompts/06-game-master.md`
-- **Always Required Spec**: `docs/runtime-engine-v2.md`
-- **Case-Specific Inputs**: `games/<caseId>-<slug>/gm-readme.md`, `game-package.json`
-- **Conditionally Required**: `runtime-state.json`, `case-board-current.json` (when resuming active play)
-- **Machine Checks**: None (interprets authored case package)
+- **Normal Startup**: `prompts/06-game-master.md`, `docs/runtime-engine-v2.md`, `games/<caseId>-<slug>/gm-readme.md`, `games/<caseId>-<slug>/game-package.json`
+- **Conditional**: `runtime-state.json` and `case-board-current.json` (when resuming active play); `schemas/runtime-state.schema.json` and/or `schemas/case-board-current.schema.json` (only when GM itself must create/persist structured state and no deterministic validator is available); `docs/repository-workflow.md` (only when GM itself must perform repository lifecycle/catalog maintenance outside normal gameplay)

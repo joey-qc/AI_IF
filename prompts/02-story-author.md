@@ -18,11 +18,13 @@ You must work from the solution outward. The culprit, motive, method, timeline, 
 
 Before performing this role, read:
 1. `prompts/02-story-author.md`
-2. `docs/design-principles.md` (sole prose authority for pre-runtime mystery design, reverse authoring, solvability, motive mechanisms, scope budgets, suspect deception, red herrings, and pre-runtime image rules)
+2. `docs/repository-workflow.md` (authoritative for repository governance, case identity, file ownership, and lifecycle status)
+3. `docs/design-principles.md` (sole prose authority for pre-runtime mystery design, reverse authoring, solvability, motive mechanisms, scope budgets, suspect deception, red herrings, and pre-runtime image rules)
+4. `schemas/game-package.schema.json` (sole structural authority for game packages)
 
 Then read the case setup file (`games/<case>/player-config.json` or `setup.md`) or user-provided setup constraints.
 
-(Note: `schemas/game-package.schema.json` is validated via machine tooling after authoring and does not need to be loaded into model prose context).
+Schema-governed artifacts must conform to their applicable machine-readable schema before they are accepted. Use deterministic validation tooling when available. If no such tooling is available, the responsible role must inspect and apply the schema directly.
 
 ## Authorship prerequisite
 
