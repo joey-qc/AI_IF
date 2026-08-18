@@ -4,21 +4,24 @@
 **Case ID**: `quick-005`  
 **Validation Date**: 2026-08-18  
 **Validator Role Version**: `v2.0-simplified`  
-**Overall Verdict**: **FAIL** (`fail`)  
+**Overall Verdict**: **PASS** (`pass`)  
 
 ---
 
 ## Executive Summary
 
-Independent revalidation of case `quick-005-the-third-knock` under the simplified AI_IF Validator workflow (`prompts/03-validator.md`).
+Independent revalidation of case `quick-005-the-third-knock` under the simplified AI_IF Validator workflow (`prompts/03-validator.md`) following Revision Engine scope/preset repair.
 
 The case package:
 1. **Passes deterministic structural schema validation** via `tools/validate.py` against `schemas/game-package.schema.json`.
-2. **Fails semantic validation against `docs/design-principles.md` Section 5** due to 1 Major scope-budget finding (`find-001-red-herring-count-exceeds-quick-preset-limit`):
-   - The package contains 3 red herrings under the `quick_mystery` preset, which specifies Max 1 red herring (`docs/design-principles.md` Section 5).
-   - Under `prompts/03-validator.md`, exceeding a hard preset maximum is a Major pacing/scope issue requiring overall verdict **FAIL**.
+2. **Satisfies pre-runtime mystery design principles** in `docs/design-principles.md`:
+   - Complete Final Resolution Contract (culprit Lydia Harrow, motive, method, opportunity, means, culprit mistake, proof chain).
+   - Solvability and fair evidence provenance across all essential clues, including discoverable motive evidence (`clue-beatrice-note`, `ev-beatrice-note`).
+   - Proportional motive involving correspondence manipulation and imminent exposure.
+   - Bounded red herring (`rh-clara-fraud`) clearable via discovery rules and NPC questioning.
+   - Quick mystery scope budget strictly observed (1 location, 3 suspects, 7 essential clues, 1 red herring, 20-25 min play time).
 
-Handoff recommended to `revision_engine`.
+Zero Blocker, Major, Minor, or Advisory defects exist.
 
 ---
 
@@ -29,29 +32,15 @@ Handoff recommended to `revision_engine`.
 | `chk-schema-validity` | `schema_validity` | **PASS** | `game-package.json` passes deterministic structural validation via `tools/validate.py`. |
 | `chk-solvability-contract` | `missing_clue_path` | **PASS** | Final Resolution Contract proof clues are complete and reachable via typed discovery rules. |
 | `chk-motive-proportionality` | `weak_motive` | **PASS** | Culprit Lydia Harrow has a clear, proportional motive supported by discoverable evidence. |
-| `chk-red-herring-discipline` | `unfair_discovery_path` | **PASS** | All three red herrings are bounded and clearable via questioning and evidence. |
-| `chk-scope-budget` | `scope_pacing_issue` | **FAIL** | Quick mystery scope budget contains 3 red herrings, exceeding the `quick_mystery` preset maximum of 1 (`docs/design-principles.md` Section 5). |
+| `chk-red-herring-discipline` | `unfair_discovery_path` | **PASS** | The single formal red herring is bounded and clearable via questioning and evidence. |
+| `chk-scope-budget` | `scope_pacing_issue` | **PASS** | Quick mystery scope budget strictly observed (1 location, 3 suspects, 7 essential clues, 1 red herring, 20-25 min play time). |
 | `chk-metadata-consistency` | `runtime_state_issue` | **PASS** | Case metadata status values are valid current enum values in `schemas/game-package.schema.json`. |
 
 ---
 
 ## Findings
 
-### Major Findings
-
-- **`find-001-red-herring-count-exceeds-quick-preset-limit`**: Red herring count exceeds `quick_mystery` preset maximum.
-  - **Severity**: `major`
-  - **Category**: `scope_pacing_issue`
-  - **Description**: `scopeBudget` and case package author 3 red herrings (`rh-clara-fraud`, `rh-edmund-heir`, `rh-supernatural`). Under `docs/design-principles.md` Section 5, `quick_mystery` preset specifies Max 1 red herring. This is a Major scope/pacing contract violation.
-  - **Affected File**: `games/quick-005-the-third-knock/game-package.json` (`/scopeBudget/maxRedHerringCount`)
-
-### Advisory Findings
-
-- **`find-002-play-time-range-exceeds-quick-preset-max`**: Max expected play time exceeds `quick_mystery` upper bound.
-  - **Severity**: `advisory`
-  - **Category**: `scope_pacing_issue`
-  - **Description**: `expectedPlayTimeMinutesMax` is set to 30 minutes, whereas `docs/design-principles.md` Section 5 specifies 10-25 minutes for `quick_mystery` preset.
-  - **Affected File**: `games/quick-005-the-third-knock/game-package.json` (`/scopeBudget/expectedPlayTimeMinutesMax`)
+No defects found. Zero Blocker, Major, Minor, or Advisory findings recorded.
 
 ---
 
@@ -70,5 +59,5 @@ Handoff recommended to `revision_engine`.
 
 ## Recommendation & Next Steps
 
-- **Recommended Next Role**: `revision_engine` (Revision Engine)
-- **Revision Priority**: High (1 Major scope defect must be resolved before progression to AI Playtester).
+- **Recommended Next Role**: `ai_playtester` (AI Playtester)
+- **Revision Priority**: None (Zero defects remaining; case is ready for AI Playtester execution).
