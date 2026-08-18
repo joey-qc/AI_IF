@@ -37,10 +37,10 @@
     "maxPrimaryLocations": 1,
     "maxMajorNpcCount": 3,
     "maxEssentialClueCount": 7,
-    "maxRedHerringCount": 3,
+    "maxRedHerringCount": 1,
     "maxNestedSecrets": 0,
     "expectedPlayTimeMinutesMin": 20,
-    "expectedPlayTimeMinutesMax": 30
+    "expectedPlayTimeMinutesMax": 25
   },
   "setting": {
     "place": "Harrowmere House seance parlor",
@@ -91,9 +91,7 @@
     ],
     "supportingClueIds": [],
     "redHerringIds": [
-      "rh-clara-fraud",
-      "rh-edmund-heir",
-      "rh-supernatural"
+      "rh-clara-fraud"
     ],
     "trueTimelineEventIds": [
       "event-parlor-locked",
@@ -647,27 +645,6 @@
         "clue-clara-fraud-not-murder"
       ],
       "fairnessNotes": "Her apparatus explains knocks and table effects only. Bounded fraud; not a full proof chain."
-    },
-    {
-      "redHerringId": "rh-edmund-heir",
-      "title": "Edmund Hallow as desperate heir",
-      "appearsToSuggest": "Edmund's debt, argument, and cabinet behavior make him the obvious murderer.",
-      "innocentExplanation": "He lied from shame and fear of looking guilty.",
-      "relatedClueIds": [
-        "clue-edmund-cabinet"
-      ],
-      "fairnessNotes": "His suspicious action concerns inheritance documents and does not connect him to the curtain cord. Motive alone is not proof."
-    },
-    {
-      "redHerringId": "rh-supernatural",
-      "title": "Supernatural event",
-      "appearsToSuggest": "The third knock caused the death.",
-      "innocentExplanation": "The supernatural effect was staged atmosphere and misdirection.",
-      "relatedClueIds": [
-        "clue-clara-trick",
-        "clue-curtain-cord-disturbed"
-      ],
-      "fairnessNotes": "The knocks are physically explained and the fatal mechanism is ordinary and in-room. Restores rational solution."
     }
   ],
   "evidence": [
@@ -955,8 +932,8 @@
       "discoveryText": "The cabinet lock shows recent handling. Edmund eventually admits he wanted to see whether Beatrice had changed her will.",
       "repeatText": "The cabinet evidence still explains Edmund's evasiveness without tying him to the curtain or Beatrice's chair.",
       "isOptional": false,
-      "isRedHerring": true,
-      "validationNotes": "Clears Edmund's red herring by bounding his suspicious behavior."
+      "isRedHerring": false,
+      "validationNotes": "Clears Edmund's lesser secret by bounding his suspicious behavior."
     },
     {
       "ruleId": "dr-confront-clara",
@@ -1090,9 +1067,7 @@
       "clue-clara-fraud-not-murder"
     ],
     "mustExplainRedHerringIds": [
-      "rh-clara-fraud",
-      "rh-edmund-heir",
-      "rh-supernatural"
+      "rh-clara-fraud"
     ],
     "mustValidateTimelineEventIds": [
       "event-parlor-locked",
@@ -1211,9 +1186,7 @@
       "clue-clara-fraud-not-murder"
     ],
     "redHerringIds": [
-      "rh-clara-fraud",
-      "rh-edmund-heir",
-      "rh-supernatural"
+      "rh-clara-fraud"
     ]
   },
   "runtimeBudgets": {
@@ -1227,7 +1200,7 @@
     "maxDocuments": 1,
     "maxImages": 3,
     "maxDiscoveryRules": 10,
-    "maxRedHerrings": 3,
+    "maxRedHerrings": 1,
     "maxInterviewTopics": 7,
     "maxHints": 3,
     "maxPlayerFacingBranches": 6,
