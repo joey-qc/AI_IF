@@ -152,12 +152,12 @@ draft -> validation_failed / validated -> playtest_failed / playtested -> ready_
 
 ### Standardized metadata status fields
 
-Every `game-package.json` (`caseMetadata`) and `games/index.json` entry must use these standardized fields:
+`schemas/game-package.schema.json` is the sole structural authority for exact allowed enum values across all case metadata fields. Every `game-package.json` (`caseMetadata`) and `games/index.json` entry uses these standardized fields:
 
-- **`status`**: Overall lifecycle state (`draft`, `validated`, `playtested`, `ready_for_human_play`, `in_play`, `completed`, `archived`).
-- **`validationStatus`**: Diagnostic verdict (`not_validated`, `passed`, `passed_with_minor_issues`, `failed`).
-- **`playtestStatus`**: Playtest verdict (`not_playtested`, `passed`, `passed_with_issues`, `failed`).
-- **`humanPlayStatus`**: Human session state (`not_played`, `in_play`, `completed`).
+- **`status`**: Overall lifecycle state. Governed structurally by `schemas/game-package.schema.json` (`draft`, `validation_failed`, `validated`, `playtest_failed`, `playtested`, `ready_for_human_play`, `in_play`, `completed`, `archived`).
+- **`validationStatus`**: Diagnostic verdict representing validation progress. Structurally governed by `schemas/game-package.schema.json`.
+- **`playtestStatus`**: Playtest verdict representing AI playthrough progress. Structurally governed by `schemas/game-package.schema.json`.
+- **`humanPlayStatus`**: Human session state representing human play progress. Structurally governed by `schemas/game-package.schema.json`.
 
 ---
 
@@ -174,8 +174,8 @@ If a case has `status: draft`, `validationStatus: not_validated`, or `playtestSt
 A case package is considered **blessed** and ready for human play only when all of the following criteria are satisfied:
 
 1. The package files exist in the repository under `games/<caseId>-<slug>/`.
-2. Package validation has passed (`validationStatus: passed` or `passed_with_minor_issues`).
-3. AI playthrough has passed (`playtestStatus: passed` or `passed_with_issues`).
+2. Package validation has passed (`validationStatus`: `passed`, `passed_with_minor_issues`, or `passed_with_minor_repository_issue`).
+3. AI playthrough has passed (`playtestStatus`: `passed`, `passed_with_issues`, or `passed_with_minor_runtime_guidance`).
 4. All blocker and major findings from validation and playtesting have been resolved.
 5. Case metadata (`caseMetadata.status`) explicitly states `ready_for_human_play`.
 6. Case `gm-readme.md` explicitly reflects readiness and identifies `game-package.json` as canonical truth.

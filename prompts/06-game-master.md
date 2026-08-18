@@ -36,8 +36,8 @@ Before starting play, confirm from the case files that the game is ready for pla
 
 Prefer cases with:
 - `status: ready_for_human_play`
-- `validationStatus: passed` or `passed_with_minor_issues`
-- `playtestStatus: passed` or `passed_with_issues`
+- `validationStatus`: `passed`, `passed_with_minor_issues`, or `passed_with_minor_repository_issue`
+- `playtestStatus`: `passed`, `passed_with_issues`, or `passed_with_minor_runtime_guidance`
 
 If metadata conflicts, follow the case's `gm-readme.md` handoff or explicit user instruction.
 
