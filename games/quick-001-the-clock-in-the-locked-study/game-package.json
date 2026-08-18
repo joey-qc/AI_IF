@@ -1105,7 +1105,7 @@
   "discoveryRules": [
     {
       "ruleId": "rule-case-inspection",
-      "triggerType": "inspect object",
+      "triggerType": "inspect_object",
       "triggerDescription": "Inspect rear panel of display case.",
       "revealsClueIds": [
         "clue-loose-service-panel",
@@ -1127,7 +1127,7 @@
     },
     {
       "ruleId": "rule-clock-inspection",
-      "triggerType": "inspect object",
+      "triggerType": "inspect_object",
       "triggerDescription": "Inspect, listen to, or open the tallcase clock.",
       "revealsClueIds": [
         "clue-stopped-clock",
@@ -1149,7 +1149,7 @@
     },
     {
       "ruleId": "rule-motive-discovery",
-      "triggerType": "inspect object",
+      "triggerType": "inspect_object",
       "triggerDescription": "Search service area or ask about recent money request.",
       "revealsClueIds": [
         "clue-thomas-money-note"
@@ -1165,7 +1165,7 @@
     },
     {
       "ruleId": "rule-red-herring",
-      "triggerType": "ask NPC",
+      "triggerType": "question_npc",
       "triggerDescription": "Ask Celia about the private envelope.",
       "revealsClueIds": [
         "clue-celia-pawn-envelope"
@@ -1181,7 +1181,7 @@
     },
     {
       "ruleId": "rule-thomas-contradiction",
-      "triggerType": "ask NPC",
+      "triggerType": "question_npc",
       "triggerDescription": "Ask Thomas about movements without first raising the clock.",
       "revealsClueIds": [
         "clue-thomas-contradiction"
@@ -1195,7 +1195,7 @@
     },
     {
       "ruleId": "rule-final-accusation",
-      "triggerType": "accuse suspect",
+      "triggerType": "accuse",
       "triggerDescription": "Accuse with method, motive, opportunity, and proof.",
       "revealsClueIds": [],
       "revealsEvidenceIds": [],
