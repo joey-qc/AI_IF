@@ -3,8 +3,8 @@
   "caseId": "quick-005",
   "validationDate": "2026-08-18",
   "validatorRoleVersion": "v2.0-simplified",
-  "overallStatus": "pass_with_warnings",
-  "summary": "Independent revalidation of quick-005-the-third-knock under the simplified AI_IF Validator workflow. The case package passes structural JSON schema validation deterministically via tools/validate.py and satisfies all core mystery design principles in docs/design-principles.md (solvability, Final Resolution Contract, evidence provenance, suspect deception, red herring discipline). No Blocker or Major defects remain. Two scope-budget findings were recorded: a Minor finding noting that the declared 3 red herrings exceed the quick_mystery preset maximum of 1, and an Advisory finding noting that the maximum expected play time (30 min) slightly exceeds the 25 min quick_mystery limit.",
+  "overallStatus": "fail",
+  "summary": "Independent revalidation of quick-005-the-third-knock under the simplified AI_IF Validator workflow. The case package passes structural JSON schema validation deterministically via tools/validate.py, but fails semantic validation against docs/design-principles.md Section 5 due to 1 Major scope-budget finding: the package authors 3 red herrings under the quick_mystery preset (preset max 1). Handing off to revision_engine to resolve the preset scope violation.",
   "checks": [
     {
       "checkId": "chk-schema-validity",
@@ -33,8 +33,8 @@
     {
       "checkId": "chk-scope-budget",
       "category": "scope_pacing_issue",
-      "status": "pass_with_warnings",
-      "summary": "Quick mystery scope budget is observed for locations (1) and suspects (3), but contains 3 red herrings (preset max 1) and 30 min max play time (preset max 25 min).",
+      "status": "fail",
+      "summary": "Quick mystery scope budget contains 3 red herrings, exceeding the quick_mystery preset maximum of 1 specified in docs/design-principles.md Section 5.",
       "relatedFindingIds": [
         "find-001-red-herring-count-exceeds-quick-preset-limit",
         "find-002-play-time-range-exceeds-quick-preset-max"
@@ -50,10 +50,10 @@
   "findings": [
     {
       "findingId": "find-001-red-herring-count-exceeds-quick-preset-limit",
-      "severity": "minor",
+      "severity": "major",
       "category": "scope_pacing_issue",
       "title": "Red herring count exceeds quick_mystery preset maximum",
-      "description": "scopeBudget and case package author 3 red herrings (rh-clara-fraud, rh-edmund-heir, rh-supernatural). Under docs/design-principles.md Section 5, quick_mystery preset specifies Max 1 red herring. All 3 red herrings are fully bounded and clearable, so this does not block playability or solvability.",
+      "description": "scopeBudget and case package author 3 red herrings (rh-clara-fraud, rh-edmund-heir, rh-supernatural). Under docs/design-principles.md Section 5, quick_mystery preset specifies Max 1 red herring. This is a Major scope/pacing contract violation.",
       "affectedFiles": [
         {
           "path": "games/quick-005-the-third-knock/game-package.json",
@@ -61,10 +61,10 @@
         }
       ],
       "affectedIds": {},
-      "playerImpact": "Provides additional false leads beyond the standard quick_mystery preset limit without breaking solvability.",
-      "recommendedFix": "Optionally evaluate whether to adjust lengthPreset to one_sitting or keep 3 red herrings in future package revisions.",
+      "playerImpact": "Exceeds standard quick_mystery preset scope and pacing budget.",
+      "recommendedFix": "Revision Engine must evaluate and resolve the scope contract violation.",
       "blocksGameplay": false,
-      "blocksValidation": false,
+      "blocksValidation": true,
       "relatedFindingIds": []
     },
     {
@@ -194,7 +194,7 @@
     "riskIds": [],
     "relatedFindingIds": []
   },
-  "recommendedRevisionPriority": "low",
+  "recommendedRevisionPriority": "high",
   "revisionInputs": {
     "priorityFindingIds": [
       "find-001-red-herring-count-exceeds-quick-preset-limit"
@@ -202,8 +202,8 @@
     "recommendedFilesToReview": [
       "games/quick-005-the-third-knock/game-package.json"
     ],
-    "recommendedNextRole": "ai_playtester",
-    "notesForRevisionEngine": "Case is structurally and semantically valid for playtesting. Revision Engine may optionally evaluate whether to align scopeBudget declared preset with one_sitting or keep 3 red herrings."
+    "recommendedNextRole": "revision_engine",
+    "notesForRevisionEngine": "Case failed semantic validation due to 1 Major scope-budget defect (3 red herrings under quick_mystery preset). Revision Engine must resolve this scope contract violation before re-validation."
   },
   "notes": "Validated in Step 6D using simplified AI_IF Validator role and tools/validate.py."
 }
