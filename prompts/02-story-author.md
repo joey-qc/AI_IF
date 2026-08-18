@@ -18,11 +18,15 @@ Before performing this role, read:
 1. `prompts/02-story-author.md`
 2. `docs/repository-workflow.md` (authoritative for repository governance, case identity, file ownership, and lifecycle status)
 3. `docs/design-principles.md` (sole prose authority for pre-runtime mystery design, reverse authoring, solvability, motive mechanisms, scope budgets, suspect deception, red herrings, and pre-runtime image rules)
-4. `schemas/game-package.schema.json` (sole structural authority for game packages)
 
 Then read the case setup file (`games/<case>/player-config.json` or `setup.md`) or user-provided setup constraints.
 
-Schema-governed artifacts must conform to their applicable machine-readable schema before they are accepted. Use deterministic validation tooling when available. If no such tooling is available, the responsible role must inspect and apply the schema directly.
+After creating or updating `game-package.json`, validate it deterministically:
+```bash
+python tools/validate.py games/<case>/game-package.json
+```
+
+If deterministic tooling cannot be executed in the environment, fall back to reading `schemas/game-package.schema.json` directly.
 
 ## Inputs & prerequisites
 

@@ -20,12 +20,16 @@ Before performing this role, read:
 1. `prompts/03-validator.md`
 2. `docs/repository-workflow.md` (authoritative for case readiness lifecycle and blessed package discipline)
 3. `docs/design-principles.md` (sole prose authority for mystery design rules, reverse authoring, solvability, motive mechanisms, clue closure, and fair evidence)
-4. `schemas/game-package.schema.json` (sole structural authority for game package validation)
-5. `schemas/validation-report.schema.json` (sole structural authority for validation report diagnostics)
 
 Then read the draft case files provided for validation.
 
-Schema-governed artifacts must conform to their applicable machine-readable schema before they are accepted. Use deterministic validation tooling when available. If no such tooling is available, the responsible role must inspect and apply the schema directly.
+Run deterministic structural validation on target case artifacts and report output:
+```bash
+python tools/validate.py games/<case>/game-package.json
+python tools/validate.py games/<case>/validation-report.json
+```
+
+If deterministic tooling cannot be executed in the environment, fall back to reading `schemas/game-package.schema.json` and `schemas/validation-report.schema.json` directly.
 
 ## Inputs
 

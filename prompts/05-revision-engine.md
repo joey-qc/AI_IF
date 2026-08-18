@@ -20,14 +20,18 @@ Before performing this role, read:
 1. `prompts/05-revision-engine.md`
 2. `docs/repository-workflow.md` (authoritative for case readiness progression and report consumption workflow)
 3. `docs/design-principles.md` (sole prose authority for pre-runtime mystery design rules, reverse authoring, solvability, motive mechanisms, scope, and fair evidence)
-4. `schemas/game-package.schema.json` (sole structural authority for game packages)
 
 If repairing live GM execution flaws or runtime fidelity findings, also read:
 - `docs/runtime-engine-v2.md`
 
 Then read the current game package (`game-package.json`) and relevant defect reports (`validation-report.json`, `playtest-report.md`, or `runtime-fidelity-report.json`).
 
-Schema-governed artifacts must conform to their applicable machine-readable schema before they are accepted. Use deterministic validation tooling when available. If no such tooling is available, the responsible role must inspect and apply the schema directly.
+After modifying `game-package.json`, validate it deterministically:
+```bash
+python tools/validate.py games/<case>/game-package.json
+```
+
+If deterministic tooling cannot be executed in the environment, fall back to reading `schemas/game-package.schema.json` directly.
 
 ## Inputs
 

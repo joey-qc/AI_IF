@@ -23,10 +23,12 @@ Before performing this role, read:
 
 Then read the game package being tested (`game-package.json`) and relevant validation report if available.
 
-When producing `runtime-fidelity-report.json`, also use:
-- `schemas/runtime-fidelity-report.schema.json`
+When producing `runtime-fidelity-report.json`, validate it deterministically:
+```bash
+python tools/validate.py games/<case>/runtime-fidelity-report.json
+```
 
-Schema-governed artifacts must conform to their applicable machine-readable schema before they are accepted. Use deterministic validation tooling when available. If no such tooling is available, the responsible role must inspect and apply the schema directly.
+If deterministic tooling cannot be executed in the environment, fall back to reading `schemas/runtime-fidelity-report.schema.json` directly.
 
 ## Inputs
 

@@ -4,7 +4,7 @@ Welcome to the **AI Interactive Fiction (AI_IF)** repository.
 
 This repository contains the durable architecture specifications, machine JSON schemas, operational role prompts, and case package data for a repository-backed interactive mystery system.
 
-`README.md` is the authoritative bootstrap router for the project. When starting a session without an assigned role prompt, start here to navigate to your role. Once an AI role is explicitly invoked with its operational prompt, it loads only its designated minimal startup contract and does not reread `README.md`.
+`README.md` is the authoritative bootstrap router for the project. When starting a session without an assigned role prompt, start here to navigate to your role. Once an AI role is explicitly invoked with its operational prompt, it loads only its designated startup contract and does not reread `README.md`.
 
 ---
 
@@ -37,8 +37,6 @@ Sole structural authority for JSON validation:
 - **`schemas/validation-report.schema.json`**: Structural authority for `validation-report.json`.
 - **`schemas/runtime-fidelity-report.schema.json`**: Structural authority for `runtime-fidelity-report.json`.
 
-> Note: Schema-governed artifacts must conform to their applicable machine-readable schema before they are accepted. Use deterministic validation tooling when available. If no such tooling is available, the responsible role must inspect and apply the schema directly.
-
 ### 3. Operational Prompts (`prompts/`)
 Instructions for AI execution of specific roles:
 - `prompts/00-player-setup.md` - Player Setup role.
@@ -59,32 +57,61 @@ Case packages and session state:
 
 ---
 
+## Deterministic Validation Tooling
+
+Structural JSON validation is performed mechanically by `tools/validate.py`:
+
+```bash
+# Install development dependency
+python -m pip install -r requirements-dev.txt
+
+# Validate all supported artifacts in games/ and check repository index consistency
+python tools/validate.py --all
+
+# Validate a single supported JSON file
+python tools/validate.py games/<case>/game-package.json
+```
+
+- **JSON Schemas** define machine-readable structural constraints.
+- **`tools/validate.py`** mechanically checks JSON syntax, schema conformance, and catalog index consistency.
+- **AI Roles** evaluate semantic mystery quality, story solvability, and player engagement.
+
+---
+
 ## Minimal Role Startup Routing
 
 Roles operate under a **minimum necessary context** model. Once invoked with an operational prompt, a role loads only its designated startup contract:
 
 ### Player Setup
-- **Normal Startup**: `prompts/00-player-setup.md`, `docs/repository-workflow.md`, `docs/design-principles.md`
+- **Conversational Reads**: `prompts/00-player-setup.md`, `docs/repository-workflow.md`, `docs/design-principles.md`
 - **Conditional**: `games/index.json` (when assigning/verifying case identity or working with the catalog)
 
 ### Repository Engineer / Local Developer
-- **Normal Startup**: `prompts/01-repository-engineer.md`, `docs/repository-workflow.md`, files explicitly involved in the requested task
+- **Conversational Reads**: `prompts/01-repository-engineer.md`, `docs/repository-workflow.md`, files explicitly involved in the requested task
 - **Conditional**: `docs/design-principles.md` (design-authority changes), `docs/runtime-engine-v2.md` (runtime-authority changes), applicable `schemas/*.schema.json` (schema/tooling work)
 
 ### Story Author
-- **Normal Startup**: `prompts/02-story-author.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `schemas/game-package.schema.json`, case setup / user constraints
+- **Conversational Reads**: `prompts/02-story-author.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, case setup / user constraints
+- **Deterministic Check**: `python tools/validate.py games/<case>/game-package.json`
+- **Raw Schema Fallback**: Read `schemas/game-package.schema.json` directly only if deterministic tooling cannot execute.
 
 ### Validator
-- **Normal Startup**: `prompts/03-validator.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `schemas/game-package.schema.json`, `schemas/validation-report.schema.json`, target case files
+- **Conversational Reads**: `prompts/03-validator.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, target case files
+- **Deterministic Check**: `python tools/validate.py` on `game-package.json` and `validation-report.json`
+- **Raw Schema Fallback**: Read raw schemas directly only if deterministic tooling cannot execute.
 
 ### AI Playtester
-- **Normal Startup**: `prompts/04-ai-playtester.md`, `docs/repository-workflow.md`, `docs/runtime-engine-v2.md`, target case package and relevant validation report
-- **Conditional**: `schemas/runtime-fidelity-report.schema.json` (when producing `runtime-fidelity-report.json`)
+- **Conversational Reads**: `prompts/04-ai-playtester.md`, `docs/repository-workflow.md`, `docs/runtime-engine-v2.md`, target case package and validation report
+- **Deterministic Check**: `python tools/validate.py` on `runtime-fidelity-report.json` when produced
+- **Raw Schema Fallback**: Read `schemas/runtime-fidelity-report.schema.json` directly only if deterministic tooling cannot execute.
 
 ### Revision Engine
-- **Normal Startup**: `prompts/05-revision-engine.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `schemas/game-package.schema.json`, target package and defect reports
+- **Conversational Reads**: `prompts/05-revision-engine.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, target package and defect reports
 - **Conditional**: `docs/runtime-engine-v2.md` (when repairing runtime/GM behavior)
+- **Deterministic Check**: `python tools/validate.py games/<case>/game-package.json`
+- **Raw Schema Fallback**: Read `schemas/game-package.schema.json` directly only if deterministic tooling cannot execute.
 
 ### Game Master
-- **Normal Startup**: `prompts/06-game-master.md`, `docs/runtime-engine-v2.md`, `games/<caseId>-<slug>/gm-readme.md`, `games/<caseId>-<slug>/game-package.json`
-- **Conditional**: `runtime-state.json` and `case-board-current.json` (when resuming active play); `schemas/runtime-state.schema.json` and/or `schemas/case-board-current.schema.json` (only when GM itself must create/persist structured state and no deterministic validator is available); `docs/repository-workflow.md` (only when GM itself must perform repository lifecycle/catalog maintenance outside normal gameplay)
+- **Conversational Reads**: 4-file normal runtime startup: `prompts/06-game-master.md`, `docs/runtime-engine-v2.md`, `games/<caseId>-<slug>/gm-readme.md`, `games/<caseId>-<slug>/game-package.json`
+- **Conditional**: `runtime-state.json` and `case-board-current.json` (when resuming active play)
+- **Deterministic Check**: None during normal gameplay.

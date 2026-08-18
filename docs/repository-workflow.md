@@ -213,32 +213,45 @@ Each case folder must maintain a concise handoff file at `games/<caseId>-<slug>/
 
 `gm-readme.md` must NOT contain general engine rules, schema definitions, or duplicated repository governance prose.
 
+## Deterministic Validation Tooling
+
+JSON schema conformance is a mechanical, deterministic check.
+
+- **Primary Tooling**: `tools/validate.py` is the authoritative repository tool for structural JSON validation and basic repository index consistency checks.
+- **Tooling vs Semantic Authority**: `tools/validate.py` verifies JSON syntax, schema conformance, and index consistency. Semantic mystery design, solvability, motive plausibility, clue fairness, and story quality remain the responsibility of the AI Validator role (`prompts/03-validator.md`) governed by `docs/design-principles.md`.
+- **Raw Schema Fallback**: If an execution environment cannot run `tools/validate.py`, AI roles fall back to inspecting raw schemas under `schemas/*.schema.json` directly.
+- **Validation Authority Rule**: A case must not be treated as structurally valid merely because an AI states that it appears valid. Supported JSON artifacts must pass deterministic validation via `tools/validate.py` or direct schema inspection.
+
 ---
 
-## File ownership by AI role
+## File ownership and startup contracts by AI role
 
 ### Player Setup role (`prompts/00-player-setup.md`)
-- **Reads**: `prompts/00-player-setup.md`, `docs/repository-workflow.md`, `docs/design-principles.md`; `games/index.json` (conditionally).
+- **Conversational Reads**: `prompts/00-player-setup.md`, `docs/repository-workflow.md`, `docs/design-principles.md`; `games/index.json` (conditionally).
 - **Writes**: `games/<caseId>-<slug>/setup.md`, `games/<caseId>-<slug>/player-config.json`, updates `games/index.json`.
 
 ### Story Author role (`prompts/02-story-author.md`)
-- **Reads**: `prompts/02-story-author.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `schemas/game-package.schema.json`, case setup / user constraints (`games/<caseId>-<slug>/player-config.json`).
+- **Conversational Reads**: `prompts/02-story-author.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, case setup / user constraints (`games/<caseId>-<slug>/player-config.json`).
+- **Deterministic Check**: Runs `python tools/validate.py games/<case>/game-package.json`. Falls back to reading `schemas/game-package.schema.json` directly only if tooling cannot execute.
 - **Writes**: `games/<caseId>-<slug>/game-package.json`, `games/<caseId>-<slug>/case-board-seed.json`, `games/<caseId>-<slug>/asset-manifest.json`, `games/<caseId>-<slug>/author-notes.md`, updates `games/index.json`.
 
 ### Validator role (`prompts/03-validator.md`)
-- **Reads**: `prompts/03-validator.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `schemas/game-package.schema.json`, `schemas/validation-report.schema.json`, target case files (`game-package.json`, etc.).
+- **Conversational Reads**: `prompts/03-validator.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, target case files (`game-package.json`, etc.).
+- **Deterministic Check**: Runs `python tools/validate.py` on `game-package.json` and `validation-report.json`. Falls back to reading raw schemas directly only if tooling cannot execute.
 - **Writes**: `games/<caseId>-<slug>/validation-report.json`, `games/<caseId>-<slug>/validation-report.md`, updates `games/index.json`.
 
 ### AI Playtester role (`prompts/04-ai-playtester.md`)
-- **Reads**: `prompts/04-ai-playtester.md`, `docs/repository-workflow.md`, `docs/runtime-engine-v2.md`, target case package and validation report; `schemas/runtime-fidelity-report.schema.json` (conditionally when producing fidelity report).
+- **Conversational Reads**: `prompts/04-ai-playtester.md`, `docs/repository-workflow.md`, `docs/runtime-engine-v2.md`, target case package and validation report.
+- **Deterministic Check**: Runs `python tools/validate.py` on `runtime-fidelity-report.json` when produced. Falls back to reading `schemas/runtime-fidelity-report.schema.json` directly only if tooling cannot execute.
 - **Writes**: `games/<caseId>-<slug>/playtest-report.md`, `games/<caseId>-<slug>/runtime-fidelity-report.json`, updates `games/index.json`.
 
 ### Revision Engine role (`prompts/05-revision-engine.md`)
-- **Reads**: `prompts/05-revision-engine.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `schemas/game-package.schema.json`, target package and defect reports; `docs/runtime-engine-v2.md` (conditionally).
+- **Conversational Reads**: `prompts/05-revision-engine.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, target package and defect reports; `docs/runtime-engine-v2.md` (conditionally).
+- **Deterministic Check**: Runs `python tools/validate.py games/<case>/game-package.json`. Falls back to reading `schemas/game-package.schema.json` directly only if tooling cannot execute.
 - **Writes**: `games/<caseId>-<slug>/game-package.json`, `games/<caseId>-<slug>/case-board-seed.json`, `games/<caseId>-<slug>/asset-manifest.json`, `games/<caseId>-<slug>/revision-notes.md`, updates `games/index.json`.
 
 ### Game Master role (`prompts/06-game-master.md`)
-- **Reads**: `prompts/06-game-master.md`, `docs/runtime-engine-v2.md`, `games/<caseId>-<slug>/gm-readme.md`, `games/<caseId>-<slug>/game-package.json`; active session files if resuming (`runtime-state.json`, `case-board-current.json`); state schemas conditionally if creating/persisting structured state without a validator; `docs/repository-workflow.md` conditionally if performing repo maintenance.
+- **Conversational Reads**: 4-file normal runtime startup: `prompts/06-game-master.md`, `docs/runtime-engine-v2.md`, `games/<caseId>-<slug>/gm-readme.md`, `games/<caseId>-<slug>/game-package.json`; active session files if resuming (`runtime-state.json`, `case-board-current.json`). Does not load validation tooling during normal play.
 - **Writes**: `games/<caseId>-<slug>/runtime-state.json`, `games/<caseId>-<slug>/case-board-current.json`, `games/<caseId>-<slug>/session-log.md`, `games/<caseId>-<slug>/postgame-report.md`, updates `games/index.json`.
 
 ---
