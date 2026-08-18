@@ -1,0 +1,209 @@
+{
+  "reportId": "valrep-quick-005-2026-08-18",
+  "caseId": "quick-005",
+  "validationDate": "2026-08-18",
+  "validatorRoleVersion": "v2.0-simplified",
+  "overallStatus": "pass_with_warnings",
+  "summary": "Independent revalidation of quick-005-the-third-knock under the simplified AI_IF Validator workflow. The case package passes structural JSON schema validation deterministically via tools/validate.py and satisfies all core mystery design principles in docs/design-principles.md (solvability, Final Resolution Contract, evidence provenance, suspect deception, red herring discipline). No Blocker or Major defects remain. Two scope-budget findings were recorded: a Minor finding noting that the declared 3 red herrings exceed the quick_mystery preset maximum of 1, and an Advisory finding noting that the maximum expected play time (30 min) slightly exceeds the 25 min quick_mystery limit.",
+  "checks": [
+    {
+      "checkId": "chk-schema-validity",
+      "category": "schema_validity",
+      "status": "pass",
+      "summary": "game-package.json passes deterministic structural validation against schemas/game-package.schema.json via tools/validate.py."
+    },
+    {
+      "checkId": "chk-solvability-contract",
+      "category": "missing_clue_path",
+      "status": "pass",
+      "summary": "Final Resolution Contract is complete. All required proof clues are reachable through valid discovery rules."
+    },
+    {
+      "checkId": "chk-motive-proportionality",
+      "category": "weak_motive",
+      "status": "pass",
+      "summary": "Culprit motive is clear, proportional, and supported by discoverable evidence."
+    },
+    {
+      "checkId": "chk-red-herring-discipline",
+      "category": "unfair_discovery_path",
+      "status": "pass",
+      "summary": "All three authored red herrings are bounded and clearable through explicit discovery rules and interview topics."
+    },
+    {
+      "checkId": "chk-scope-budget",
+      "category": "scope_pacing_issue",
+      "status": "pass_with_warnings",
+      "summary": "Quick mystery scope budget is observed for locations (1) and suspects (3), but contains 3 red herrings (preset max 1) and 30 min max play time (preset max 25 min).",
+      "relatedFindingIds": [
+        "find-001-red-herring-count-exceeds-quick-preset-limit",
+        "find-002-play-time-range-exceeds-quick-preset-max"
+      ]
+    },
+    {
+      "checkId": "chk-metadata-consistency",
+      "category": "runtime_state_issue",
+      "status": "pass",
+      "summary": "Case metadata status values are valid current enum values in schemas/game-package.schema.json."
+    }
+  ],
+  "findings": [
+    {
+      "findingId": "find-001-red-herring-count-exceeds-quick-preset-limit",
+      "severity": "minor",
+      "category": "scope_pacing_issue",
+      "title": "Red herring count exceeds quick_mystery preset maximum",
+      "description": "scopeBudget and case package author 3 red herrings (rh-clara-fraud, rh-edmund-heir, rh-supernatural). Under docs/design-principles.md Section 5, quick_mystery preset specifies Max 1 red herring. All 3 red herrings are fully bounded and clearable, so this does not block playability or solvability.",
+      "affectedFiles": [
+        {
+          "path": "games/quick-005-the-third-knock/game-package.json",
+          "jsonPointer": "/scopeBudget/maxRedHerringCount"
+        }
+      ],
+      "affectedIds": {},
+      "playerImpact": "Provides additional false leads beyond the standard quick_mystery preset limit without breaking solvability.",
+      "recommendedFix": "Optionally evaluate whether to adjust lengthPreset to one_sitting or keep 3 red herrings in future package revisions.",
+      "blocksGameplay": false,
+      "blocksValidation": false,
+      "relatedFindingIds": []
+    },
+    {
+      "findingId": "find-002-play-time-range-exceeds-quick-preset-max",
+      "severity": "advisory",
+      "category": "scope_pacing_issue",
+      "title": "Max expected play time exceeds quick_mystery upper bound",
+      "description": "expectedPlayTimeMinutesMax is set to 30 minutes, whereas docs/design-principles.md Section 5 specifies 10-25 minutes for quick_mystery preset.",
+      "affectedFiles": [
+        {
+          "path": "games/quick-005-the-third-knock/game-package.json",
+          "jsonPointer": "/scopeBudget/expectedPlayTimeMinutesMax"
+        }
+      ],
+      "affectedIds": {},
+      "playerImpact": "Slightly longer expected play duration.",
+      "recommendedFix": "None required.",
+      "blocksGameplay": false,
+      "blocksValidation": false,
+      "relatedFindingIds": []
+    }
+  ],
+  "clueCoverage": {
+    "status": "pass",
+    "summary": "All 7 essential clues are discoverable through valid discovery rules.",
+    "checkedIds": [
+      "clue-curtain-cord-disturbed",
+      "clue-chair-position",
+      "clue-clara-trick",
+      "clue-lydia-wax-smear",
+      "clue-beatrice-note",
+      "clue-edmund-cabinet",
+      "clue-clara-fraud-not-murder"
+    ],
+    "missingIds": [],
+    "riskIds": [],
+    "relatedFindingIds": []
+  },
+  "discoveryRuleCoverage": {
+    "status": "pass",
+    "summary": "All 10 discovery rules use normalized schema triggerTypes.",
+    "checkedIds": [
+      "dr-opening-observe",
+      "dr-inspect-curtain-cord",
+      "dr-inspect-beatrice-chair",
+      "dr-find-clara-trick",
+      "dr-inspect-lydia-wax",
+      "dr-read-beatrice-note",
+      "dr-inspect-cabinet",
+      "dr-confront-clara",
+      "dr-accuse-insufficient",
+      "dr-final-accusation"
+    ],
+    "missingIds": [],
+    "riskIds": [],
+    "relatedFindingIds": []
+  },
+  "npcInterviewCoverage": {
+    "status": "pass",
+    "summary": "All 3 suspects have bounded interview topics, knowledge boundaries, and alibis.",
+    "checkedIds": [
+      "npc-clara-vane",
+      "npc-edmund-hallow",
+      "npc-lydia-harrow"
+    ],
+    "missingIds": [],
+    "riskIds": [],
+    "relatedFindingIds": []
+  },
+  "timelineCoverage": {
+    "status": "pass",
+    "summary": "Timeline sequence of 10 events is coherent without physical contradictions.",
+    "checkedIds": [
+      "event-parlor-locked",
+      "event-beatrice-warning",
+      "event-clara-prepares-trick",
+      "event-seance-begins",
+      "event-first-knock",
+      "event-second-knock",
+      "event-lydia-moves",
+      "event-fatal-third-knock",
+      "event-lamp-raised",
+      "event-investigation-begins"
+    ],
+    "missingIds": [],
+    "riskIds": [],
+    "relatedFindingIds": []
+  },
+  "evidenceProvenanceCoverage": {
+    "status": "pass",
+    "summary": "All 6 physical evidence items are tied to valid discovery nodes and chain of custody statements.",
+    "checkedIds": [
+      "ev-curtain-cord",
+      "ev-chair-position",
+      "ev-trick-device",
+      "ev-wax-smear",
+      "ev-beatrice-note",
+      "ev-cabinet"
+    ],
+    "missingIds": [],
+    "riskIds": [],
+    "relatedFindingIds": []
+  },
+  "imageSafetyCoverage": {
+    "status": "pass",
+    "summary": "Visual definition vis-seance-parlor complies with image safety rules and includes text fallback.",
+    "checkedIds": [
+      "vis-seance-parlor"
+    ],
+    "missingIds": [],
+    "riskIds": [],
+    "relatedFindingIds": []
+  },
+  "runtimeReadinessCoverage": {
+    "status": "pass",
+    "summary": "Canonical case package contains all data needed for GM execution.",
+    "checkedIds": [],
+    "missingIds": [],
+    "riskIds": [],
+    "relatedFindingIds": []
+  },
+  "caseBoardSafetyCoverage": {
+    "status": "pass",
+    "summary": "Initial case board seed uses neutral labels without solution spoilers.",
+    "checkedIds": [],
+    "missingIds": [],
+    "riskIds": [],
+    "relatedFindingIds": []
+  },
+  "recommendedRevisionPriority": "low",
+  "revisionInputs": {
+    "priorityFindingIds": [
+      "find-001-red-herring-count-exceeds-quick-preset-limit"
+    ],
+    "recommendedFilesToReview": [
+      "games/quick-005-the-third-knock/game-package.json"
+    ],
+    "recommendedNextRole": "ai_playtester",
+    "notesForRevisionEngine": "Case is structurally and semantically valid for playtesting. Revision Engine may optionally evaluate whether to align scopeBudget declared preset with one_sitting or keep 3 red herrings."
+  },
+  "notes": "Validated in Step 6D using simplified AI_IF Validator role and tools/validate.py."
+}
