@@ -1,4 +1,3 @@
-
 # Prompt 05: Revision Engine
 
 ## Purpose
@@ -33,436 +32,81 @@ Schema-governed artifacts must conform to their applicable machine-readable sche
 ## Inputs
 
 The user may provide:
-- current game package;
-- current solution file;
-- validation report;
-- playtest report;
+- current game package (`game-package.json`);
+- validation report (`validation-report.md` / `validation-report.json`);
+- playtest report (`playtest-report.md` / `runtime-fidelity-report.json`);
 - list of required fixes;
-- design constraints that must remain unchanged;
-- files to update.
+- design constraints that must remain unchanged.
 
-## Core task
-
-Revise the case so that it better satisfies the project design principles.
-
-Focus especially on:
-
-- fixed culprit;
-- motive proportionality;
-- timeline coherence;
-- clue closure;
-- typed discovery rule fairness;
-- NPC interview consistency;
-- evidence provenance;
-- physical plausibility;
-- solvability;
-- scope control;
-- Game Master readiness;
-- runtime fidelity.
-- canonical inventory and runtime budget integrity.
-- runtime fidelity report findings.
-- image fidelity and visual-definition integrity.
-- final-resolution completeness.
-- human engagement and playability.
-- player agency and fair evidence.
-
-## Revision priorities
+## Revision priorities & workflow
 
 Resolve defects in this order:
+1. **Blockers** (missing culprit, weak motive, broken timeline, missing clue closure, unsupported final reveal, missing fallback reveal).
+2. **Missing or incomplete final-resolution material** (`docs/design-principles.md`).
+3. **Human engagement, over-steering, or vague motive-mechanism defects**.
+4. **Major issues** (unclear alibi, excessive scope, misleading red herrings).
+5. **Solvability, timeline, and clue-closure defects**.
+6. **Typed discovery rule & NPC interview defects**.
+7. **Image fidelity & visual definition defects**.
+8. **Minor cleanup and style formatting**.
 
-1. Blockers.
-2. Missing or incomplete final-resolution material.
-3. Human engagement, over-steering, or vague motive-mechanism defects.
-4. Major issues.
-5. Solvability defects.
-6. Timeline and causality defects.
-7. Clue closure defects.
-8. Discovery rule defects.
-9. NPC interview defects.
-10. Motive weakness.
-11. Evidence provenance defects.
-12. Physical plausibility defects.
-13. Image fidelity defects.
-14. Pacing and scope problems.
-15. Player agency and fair-evidence defects.
-16. Minor cleanup.
-
-When a structured validation report is available, start with findings where `blocksValidation` or `blocksGameplay` is true.
-
-## Report Consumption Requirement
-
-Validation and AI playtest reports are not final deliverables by themselves.
-
-The Revision Engine must:
-
-1. read the findings;
-2. classify them as blocker, major, minor, or advisory;
-3. revise the working package or document why no revision is needed;
-4. re-validate after material revision;
-5. only recommend Codex implementation after the package is consolidated.
-
-Do not ask the user to implement partial fixes unless the user explicitly wants to use Codex at that point.
-
-User-facing summaries should remain spoiler-free unless the user requests details.
-
-## Preservation rules
-
-Preserve the following unless the user instructs otherwise:
-
-- requested genre;
-- requested tone;
-- requested setting;
-- target difficulty;
-- target game length;
-- player role;
-- core premise, if still viable;
-- names and characters that are not causing defects;
-- strong clues or scenes that worked well;
-- player-facing strengths from previous playtests.
+### Report consumption requirement
+1. Read findings from `validation-report.md` or `playtest-report.md`.
+2. Address findings marked as blockers or major issues first.
+3. Consolidate revisions directly into `game-package.json` (and companion files).
+4. Re-validate after material revision.
 
 ## Core repair strategies
 
-### If the motive is weak
-
-Strengthen the consequence of the secret.
-
-Possible repairs:
-
-- financial ruin;
-- inheritance loss;
-- exposure of fraud;
-- exposure of prior crime;
-- institutional disgrace;
-- blackmail;
-- professional destruction;
-- loss of control over a valuable object;
-- threat to a family name or legal claim.
-
-Also strengthen the motive mechanism: what the culprit wants, why now, what benefit they expect, how the crime solves the problem, what happens if they fail, and why they chose this method.
-
-### If the case is dull, over-technical, or over-steered
-
-Repair engagement before cosmetic polish:
-
-- add or clarify central human conflict;
-- make stakes emotionally legible;
-- reduce jargon or explain mechanisms in plain language;
-- add authored support for reasonable technical tests;
-- balance suspect pressures and red herrings;
-- revise recaps or GM guidance that over-foreground culprit-pointing facts;
-- make the final reveal feel like human betrayal, desperation, fear, greed, pride, jealousy, protection, revenge, or shame.
-
-### If fair evidence is unstable or summaries are leading
-
-Repair player-agency defects before polish:
-
-- reveal ordinary observable details during fair close inspection;
-- move delayed meanings into interpretation, theory-check, deduction, or final solution material;
-- remove discovery prerequisites that merely suppress observable facts;
-- keep prerequisites only when access, permission, tools, lighting, inspection method, or testimony changes;
-- revise case-board updates that imply method, motive, culprit, opportunity, or proof direction;
-- replace leading open questions with neutral `Unresolved significance` wording;
-- revise spatial summaries that imply access, tampering, or culprit advantage before the player asks for analysis.
-
-### If the culprit is unclear
-
-Choose one culprit and make the evidence converge.
-
-Do not keep all suspects equally suspicious through the ending.
-
-### If final-resolution material is missing or weak
-
-Repair the canonical truth before cosmetic or engagement improvements.
-
-Define or strengthen:
-
-- culprit or responsible party;
-- motive;
-- method;
-- opportunity;
-- exact timeline;
-- required and supporting clues;
-- red herring explanations;
-- innocent suspect clearance;
-- proof chain;
-- final accusation requirements;
-- canonical endgame explanation;
-- fallback solution reveal.
-
-Then revise scenes, discovery rules, NPC topics, images, and case-board seed entries so they derive from that resolved truth.
-
-### If clues are unresolved
-
-For each unresolved clue:
-
-- connect it to the culprit;
-- connect it to an innocent explanation;
-- delete it;
-- demote it to atmosphere;
-- or replace it with a clue that supports the solution.
-
-### If discovery rules are missing or brittle
-
-For each missing, brittle, unfair, or overgenerous discovery rule:
-
-- add or revise a typed discovery rule;
-- use a standard trigger type;
-- connect the rule to valid canonical IDs;
-- add fair prerequisites where needed;
-- add `failureText` for plausible failed searches;
-- add `repeatText` for repeated interactions;
-- mark optional clues and red herrings appropriately;
-- update case-board sections only with player-visible information.
-
-If an observable detail is withheld until later without a physical access, tool, lighting, permission, movement, or inspection-method reason, revise the discovery rule so the observation appears on fair inspection and only its interpretation remains gated.
-
-### If final accusation or reveal discipline fails
-
-Repair accusation and reveal issues by aligning:
-
-- required proof;
-- final accusation prerequisites;
-- insufficient-proof responses;
-- theory-check behavior;
-- final reveal beats;
-- fallback solution reveal.
-
-Do not allow the Game Master to confirm an early correct guess before required proof is discovered.
-
-If the normal final reveal depends on evidence the player may not have discovered, revise the required proof list or reveal beats so they align.
-
-### If NPC interviews are brittle or inconsistent
-
-For each missing, inconsistent, overrevealing, or underrevealing NPC topic:
-
-- add or revise structured interview topics;
-- define the NPC's knowledge boundary;
-- separate truthful answers from lies, omissions, evasions, and ignorance;
-- connect topic reveals to clue and evidence IDs;
-- add fair prerequisites and follow-up topics;
-- add repeat answers;
-- make contradictions discoverable without requiring exact phrasing;
-- keep NPC answers consistent with timeline, motive, and evidence provenance.
-
-### If chronology breaks
-
-Build a corrected true timeline first, then revise clues and witness statements to match.
-
-### If physical plausibility breaks
-
-Add necessary preconditions or change the event.
-
-Examples:
-
-- establish an ignition source before burning a paper;
-- explain how a locked room was accessed;
-- explain how an object was moved;
-- remove impossible concealment;
-- replace a dramatic but impossible scene with a simpler plausible one.
-
-### If the case sprawls
-
-Cut locations, suspects, or clue chains.
-
-Prefer a tighter solvable case over a larger incoherent one.
-
-### If runtime fidelity would fail
-
-If validation or playtesting shows the Game Master would need to invent content during play:
-
-- add missing authored content if it is essential and within scope;
-- add typed discovery rules for essential clue paths;
-- add bounded NPC interview topics for expected questions;
-- add negative-investigation guidance where unsupported searches are likely;
-- add deduction-mode guidance if authored leads can be exhausted;
-- remove prompts or leads that imply unauthored witnesses, locations, documents, or evidence.
-
-Do not leave the repair to Game Master improvisation.
-
-### If inventory or budget checks fail
-
-For canonical inventory or runtime budget defects:
-
-- add missing inventory IDs for authored investigative assets;
-- remove inventory IDs that do not correspond to authored assets;
-- tighten runtime budgets to match length preset and difficulty;
-- convert overbroad affordances into negative-investigation guidance or authored assets within scope;
-- remove unauthored investigative paths that would exceed budget.
-
-### If a Runtime Fidelity Report identifies drift
-
-Prioritize repairs to:
-
-- invented assets that appeared during runtime;
-- package gaps that encouraged Game Master improvisation;
-- missing or missed authored content;
-- budget violations;
-- background-character violations;
-- case-board or runtime-state drift;
-- image fidelity defects;
-- final solution mismatches;
-- Game Master instruction failures.
-
-### If image fidelity fails
-
-For image-related defects:
-
-- add or correct canonical visual definitions;
-- define required visible objects, forbidden objects, fixed geometry, continuity anchors, and hidden-element rules;
-- align visual definition IDs with asset manifest, canonical inventory, evidence, locations, objects, and runtime tracking;
-- convert image-only clues into text-backed discovery rules and fallback text;
-- tighten gallery and reuse policies to prevent inconsistent regeneration;
-- repair evidence photo or cutaway definitions so they do not reveal hidden mechanisms or contradict authored physical layout;
-- remove unauthored visual affordances that imply new suspects, witnesses, evidence, routes, documents, or clue paths.
+Apply `docs/design-principles.md` for repair standards:
+- **Weak Motive**: Strengthen consequences (loss of inheritance, ruin, criminal exposure, disgrace) and clarify the concrete action mechanism (what they want, why now, expected benefit, risk of failure).
+- **Broken Solvability / Unclear Culprit**: Make evidence converge on a single culprit; clear innocent suspects with explainable alibis and red herrings.
+- **Unresolved Clues & Discovery Rules**: Add typed discovery rules (`observe_scene`, `inspect_object`, `question_npc`, etc.), valid canonical references, and fair closure for every required clue.
+- **Brittle NPC Interviews**: Add structured topics, knowledge boundaries, lies/omissions, and contradiction resolution paths.
+- **Image & Asset Defects**: Add text fallbacks, canonical visual definitions, required/forbidden objects, and gallery recall policies.
+- **Physical Plausibility & Fair Evidence**: Ensure observations appear on fair close inspection without requiring delayed interpretation prerequisites.
 
 ## Required output format
 
-Return a revision report and updated content.
+Return a revision report and updated package files (`games/<caseId>-<slug>/`):
 
-Use this structure:
-
-```text
+```markdown
 # Revision Report: <case title>
 
-## Revision Goal
+## Revision Goal & Inputs Reviewed
 
-## Inputs Reviewed
+## Summary of Changes Made
+(Categorized by defect IDs addressed)
 
-## Summary of Changes
-
-## Defects Addressed
-
-## Validator Diagnostics Addressed
-
-## Updated Solution
-
-## Updated Timeline
+## Updated Solution & Timeline
 
 ## Updated Clue Closure Matrix
 
-## Updated Discovery Rules
+## Updated Discovery Rules & NPC Topics
 
-## Updated NPC Interview Topics
-
-## Updated Evidence Provenance
-
-## Updated Scene or NPC Changes
-
-## Remaining Risks
-
-## Files to Update
+## Affected Files to Update
+(e.g., `game-package.json`, `case-board-seed.json`, `asset-manifest.json`)
 
 ## Revalidation Recommendation
 ```
 
-If the user asks for actual file output, provide replacement content for the affected files.
+## Preservation rules & failure conditions
 
-## Required revision discipline
+**Preserve**: Genre, tone, setting, difficulty, length preset, player role, and non-defective characters/clues.
 
-For each significant change, explain:
+**Fail if**:
+- the culprit remains unclear or motive remains generic/weak;
+- any blocker from validation remains unresolved;
+- new contradictions are introduced in timeline or evidence;
+- Game Master is still forced to invent core facts or investigative content during play;
+- canonical inventory or runtime budgets remain inconsistent.
 
-- what changed;
-- why it changed;
-- what defect it fixes;
-- what other files or sections are affected.
+## Response style & final instruction
 
-When repairing from validator diagnostics, cite the finding IDs addressed and note any remaining findings.
-
-## Clue closure matrix
-
-After revision, include or update a clue closure matrix:
-
-| Clue | Role | True meaning | Final explanation | Status |
-| --- | --- | --- | --- | --- |
-
-## Timeline discipline
-
-After revision, include or update the true timeline.
-
-Every major event should be chronologically compatible with:
-
-- witness knowledge;
-- object movement;
-- clue creation;
-- suspect alibis;
-- final proof.
-
-## Do not do this
-
-Do not:
-
-- introduce a new decisive clue only at the ending;
-- change the culprit without updating every affected clue;
-- add complexity to hide a contradiction;
-- leave essential evidence unexplained;
-- leave essential clues without fair typed discovery rules;
-- leave important NPCs without bounded interview topics;
-- leave the Game Master dependent on unauthored suspects, witnesses, evidence, clue paths, locations, documents, timeline events, or access routes;
-- leave missing or inconsistent canonical inventory entries;
-- leave runtime budgets inconsistent with package scope;
-- preserve a scene just because it is dramatic if it breaks logic;
-- claim the case is fixed without explaining how.
-
-## Failure conditions
-
-The revision fails if:
-
-- the culprit remains unclear;
-- the motive remains weak;
-- the motive mechanism remains vague or generic;
-- the case remains dull, over-technical, jargon-heavy, or over-steered;
-- final-resolution material remains missing, vague, or unsupported;
-- fallback solution reveal is missing;
-- any blocker from the validation report remains unresolved;
-- the timeline remains contradictory;
-- major clues remain unexplained;
-- essential discovery rules are missing, unfair, or impossible to trigger;
-- NPC interview topics are omniscient, inconsistent, overrevealing, or too brittle to use;
-- the Game Master still needs to invent core facts.
-- the Game Master still needs to invent investigative content or continue with invented leads after authored content is exhausted.
-- canonical inventory or runtime budgets still permit unbounded runtime expansion.
-- Runtime Fidelity Report findings remain unaddressed without explanation.
-- image fidelity findings remain unaddressed without explanation, especially image-only clues, missing required visual objects, unauthored visual objects, impossible geometry, or mismatched evidence photos/cutaways.
-- player-agency findings remain unaddressed, especially retroactive observable evidence, leading case-board language, covert hints in summaries, or spatial descriptions that imply deductions before the player asks.
-
-## Response style
-
-Be corrective and specific.
-
-Prefer concrete revisions over abstract advice.
-
-When there are multiple repair options, choose the simplest option that preserves the intended experience.
-
-## Final instruction
+Be corrective, specific, and usable by downstream AI roles.
 
 End your response with:
-
-1. whether the revised case is ready for revalidation;
-2. files that should be updated;
-3. remaining risks;
-4. the next recommended AI role to run.
-
-## Deception and Red Herring Revision Rules
-
-Revise the case if:
-
-- a suspect lies without an authored truth;
-- a lie cannot be exposed or resolved;
-- an innocent suspect cannot be cleared;
-- a red herring remains unresolved;
-- the GM must invent a clarification to make the mystery fair;
-- culprit deception is either impossible to detect or too obvious too early;
-- motive, method, opportunity, and alibi do not align.
-
-## Image and Specialized Test Revision Rules
-
-Revise the case or engine guidance if:
-
-- images omit canonically present people without being marked empty-room, symbolic, close-up, or mood-only;
-- image prompts add hidden clues or non-canonical objects;
-- image recall would require regeneration;
-- image assets lack text fallbacks;
-- specialized mechanisms lack test boundaries;
-- rational player tests are blocked without explanation;
-- unsafe actions lack safe refusal responses;
-- the GM must invent external experts or lab results to keep the case fair.
+1. Whether the revised case is ready for revalidation;
+2. Files updated (`game-package.json`, etc.);
+3. Remaining risks;
+4. Recommended next role: `prompts/03-validator.md` (for revalidation) or `prompts/04-ai-playtester.md`.

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Use this prompt when you want the AI to generate a complete draft mystery from an approved template or schema.
+Use this prompt when you want the AI to generate a complete draft mystery package from an approved setup or setup configuration.
 
 The Story Author writes the case, but does not approve it for play.
 
@@ -28,592 +28,92 @@ Schema-governed artifacts must conform to their applicable machine-readable sche
 
 ## Authorship prerequisite
 
-Do not begin story authorship until the player setup and scope budget are defined.
+Do not begin story authorship until player setup and scope budget are defined.
 
 At minimum, the package must know:
-
 - length preset;
 - difficulty;
-- genre;
-- tone;
+- genre and tone;
 - setting and era;
 - player role;
-- image mode;
-- interaction mode;
-- hint policy.
+- image mode, interaction mode, and hint policy.
 
-These choices are inputs to authorship, not runtime-only preferences.
+These choices are inputs to authorship, not runtime-only preferences. If details are missing, use sensible defaults and record assumptions.
 
-If the user has not provided setup decisions, either:
+## Core task & reverse authoring
 
-1. ask the minimum required setup questions; or
-2. create explicit defaults and record them as assumptions.
+Create a complete draft game package (`game-package.json`) for a mystery that can be solved through investigation. Apply the reverse authoring methodology in `docs/design-principles.md`: define the canonical truth (culprit, motive, method, timeline, proof) before writing player-facing scenes, NPC dialogue, or discovery rules.
 
-Once the case is authored, these settings are locked for validation. If the player changes them later, the case should be regenerated or revalidated.
-
-## Inputs
-
-The user may provide:
-
-- length preset;
-- difficulty;
-- genre;
-- tone;
-- setting;
-- era;
-- image preference;
-- interaction preference;
-- player role;
-- hint policy;
-- themes to include or avoid;
-- required locations, characters, or motifs;
-- an existing game package template;
-- a previous validation report to repair.
-
-If details are missing, use sensible defaults and record assumptions.
-
-## Core task
-
-Create a complete draft game package for a mystery that can be solved through investigation.
-
-The package must include both:
-
-1. player-facing content; and
-2. hidden solution data for the validator and Game Master.
-
-## Non-negotiable requirements
-
-The case must include:
-
-- a definite culprit or answer;
-- a motive proportional to the crime;
-- a plausible method;
-- opportunity;
-- a true timeline;
-- discoverable clues;
-- red herrings with explanations;
-- evidence provenance;
-- final proof;
-- a final reveal that explains who, why, how, and proof.
-
-Do not leave these for the Game Master to invent later.
-
-The case must also pass the Human Engagement Gate. Logical solvability is not enough: include central human conflict, emotionally legible stakes, at least two plausible suspect pressures, a concrete culprit motive, minimal dependence on jargon, and a final reveal grounded in human betrayal, desperation, fear, greed, pride, jealousy, protection, revenge, or shame.
-
-## Reverse authoring requirement
-
-Before writing player-facing scenes, NPC dialogue, images, red herrings, or gameplay flow, define the canonical truth:
-
-- what actually happened;
-- who is responsible;
-- why they acted;
-- how they acted;
-- when each key event occurred;
-- what evidence the act created;
-- how the player can discover and prove the truth.
-
-All scenes, NPC answers, images, red herrings, and discovery rules must derive from this truth model.
+The package must satisfy the pre-runtime design semantics, Human Engagement Gate, Final Resolution Contract, motive mechanism rules, clue closure requirements, and scope limits specified in `docs/design-principles.md`.
 
 ## Recommended authoring order
 
-Follow this order:
-
-1. Define player configuration.
-2. Define scope budget.
-3. Define runtime budgets.
-4. Define canonical asset inventory.
-5. Define case metadata.
-6. Define the central mystery.
-7. Define the final solution.
-8. Define the culprit's motive, method, opportunity, and proof.
-9. Define the true chronological timeline.
-10. Define suspects and their relationships to the case.
-11. Define NPC interview topics and knowledge boundaries.
-12. Define locations.
-13. Define evidence and clue chains.
-14. Define red herrings.
-15. Define typed discovery rules.
-16. Define scenes.
-17. Define the final reveal.
-18. Define visual definitions, image gallery policy, image reuse policy, and evidence photo or cutaway definitions if images are available.
-19. Define case-board seed data.
-20. Define asset manifest.
-21. Run a self-check before returning the draft.
-
-## Player configuration requirements
-
-Include:
-
-- length preset;
-- difficulty;
-- genre;
-- tone;
-- setting summary;
-- player role;
-- image mode;
-- interaction mode;
-- hint policy;
-- content boundaries, if any.
-
-Allowed length presets:
-
-- `quick_mystery`
-- `one_sitting`
-- `standard_case`
-- `extended_case`
-
-## Scope budget requirements
-
-The authored case must fit the selected length preset.
-
-### Quick Mystery
-
-A Quick Mystery is a compact case in one location or room.
-
-Hard limits:
-
-- primary locations: exactly 1;
-- major NPCs/characters: no more than 3;
-- interviewable NPCs: no more than 3 unless explicitly allowed;
-- essential clues: no more than 10;
-- red herrings: no more than 1;
-- nested secrets: 0;
-- expected play time: 10 to 25 minutes.
-
-Do not turn a Quick Mystery into a multi-location investigation.
-
-Keep searchable objects, evidence items, documents, images, and player-facing branches tightly limited.
-
-### One Sitting
-
-A One Sitting case is a fuller case intended for roughly 30 to 60 minutes.
-
-Recommended limits:
-
-- primary locations: 4 to 6;
-- major NPCs/suspects: 3 to 5;
-- essential clues: 6 to 12;
-- red herrings: 1 to 3;
-- nested secrets: 0 to 1.
-
-### Standard Case
-
-A Standard Case may run longer and include more locations, suspects, and clue chains.
-
-### Extended Case
-
-An Extended Case is campaign-style and should not be used until smaller case formats are reliable.
-
-## Case metadata requirements
-
-Include:
-
-- case ID;
-- title;
-- genre;
-- tone;
-- setting;
-- date or era;
-- player role;
-- difficulty;
-- length preset;
-- image setting;
-- estimated number of suspects;
-- estimated number of locations;
-- estimated number of essential clues;
-- package status.
-
-## Solution requirements
-
-The solution must include:
-
-- culprit ID;
-- victim or target;
-- what the culprit wanted;
-- why the culprit acted now;
-- why the motive is strong enough;
-- what the culprit did;
-- how the culprit tried to conceal it;
-- what mistake exposed the culprit;
-- what evidence proves guilt;
-- what alternative suspects seemed plausible and why they are innocent;
-- how the final reveal should unfold;
-- the fallback solution reveal to use if gameplay stops early or the player asks out of game for the canonical answer.
-
-The package must satisfy the Final Resolution Contract in `docs/design-principles.md`, including culprit or responsible party, motive, method, opportunity, exact timeline, required clues, supporting clues, red herrings and why they are false, innocent suspect clearance, proof chain, final accusation requirements, canonical endgame explanation, and fallback solution reveal.
-
-## Motive rule
-
-The motive must be proportional to the crime.
-
-For murder, kidnapping, blackmail, arson, or other serious crimes, the motive must involve serious consequences.
-
-Do not use a weak secret unless the crime is minor.
-
-The motive must also explain its mechanism:
-
-- what the culprit wants;
-- why now;
-- what specific benefit they expect;
-- how the crime solves their problem;
-- what happens if they fail;
-- why they chose this method.
-
-Generic motives such as financial pressure, jealousy, career trouble, or revenge are insufficient without the concrete action plan.
-
-## Timeline requirements
-
-Create a true timeline that includes:
-
-- setup events before the game begins;
-- the central crime;
-- clue creation;
-- clue movement;
-- witness observations;
-- suspect alibis;
-- misleading events;
-- the opening scene;
-- likely endgame sequence.
-
-Every clue must connect to at least one timeline event.
-
-## Clue requirements
-
-Each clue must include:
-
-- clue ID;
-- title;
-- player-facing description;
-- true meaning;
-- discovery location;
-- discovery conditions;
-- source/provenance;
-- associated timeline event;
-- associated suspect or object;
-- importance level;
-- how it helps solve the case;
-- how it is resolved in the final explanation.
-
-Use stable IDs that can be cited by validation reports.
-
-Each required clue must also have at least one typed discovery rule in `discoveryRules`.
-
-For each key clue or evidence reveal, classify player-facing text as one or more of:
-
-- observation;
-- witness claim;
-- document fact;
-- interpretation;
-- final synthesis.
-
-Ordinary observable evidence must be stable on fair inspection. Do not make an observable mark, stain, smell, missing part, label, damage, unusual placement, ordinary content, or immediate physical oddity appear only after the player discovers its meaning unless access, tools, lighting, permission, movement, or inspection method changed.
-
-Use `docs/design-principles.md` and `schemas/game-package.schema.json`.
-
-Do not rely only on prose discovery notes.
-
-## Red herring requirements
-
-Each red herring must include:
-
-- what it appears to suggest;
-- why it is misleading;
-- the innocent explanation;
-- when or how the player can clear it;
-- why it does not unfairly block the solution.
-
-Red herring discovery rules should set `isRedHerring` and include validation notes explaining how the misleading path remains fair.
-
-## Discovery rule requirements
-
-Author typed discovery rules for clues and evidence.
-
-Use standard trigger types:
-
-```text
-observe_scene
-inspect_object
-closely_inspect_object
-question_npc
-compare_evidence
-read_document
-revisit_location
-make_theory
-accuse
-request_hint
-```
-
-Each rule should identify relevant canonical IDs where useful, such as `locationId`, `objectId`, `npcId`, `topicId`, `clueId`, `evidenceId`, or `documentId`.
-
-Use prerequisites when a clue should require prior discovery.
-
-Use discovery prerequisites only when they change physical access, permission, tools, lighting, inspection method, or available testimony. Use interpretation prerequisites for delayed meanings, theory checks, comparisons, or proof synthesis.
-
-Use `discoveryText`, `failureText`, and `repeatText` to help the Game Master reveal, deny, or repeat information fairly.
-
-Use `updatesCaseBoardSections` to identify safe player-facing board updates.
-
-Case-board updates should use neutral language such as known fact, known claim, known evidence, or unresolved significance. Do not author updates that imply method, motive, culprit, opportunity, or investigative direction unless the update belongs to hint, theory-check, deduction, or final solution mode.
-
-Discovery rules must reference authored assets. If `canonicalAssetInventory` is present, every revealed NPC, location, object, evidence item, document, image, discovery rule, interview topic, scene, clue, or red herring should be listed in the inventory.
-
-## Canonical inventory and runtime budget requirements
-
-New packages should define:
-
-- `canonicalAssetInventory`;
-- `runtimeBudgets`.
-
-The inventory should list stable IDs for authored investigative assets. Runtime budgets should declare hard and soft limits for NPCs, locations, searchable objects, evidence, documents, images, discovery rules, interview topics, hints, red herrings, and player-facing branches.
-
-Do not imply additional witnesses, locations, documents, evidence, objects, images, or branches that the Game Master would need to invent during play.
-
-## Suspect requirements
-
-Each major suspect must include:
-
-- character ID;
-- name;
-- role;
-- relationship to victim or mystery;
-- apparent motive;
-- true motive or lack of motive;
-- alibi;
-- secrets;
-- what they know;
-- what they lie about;
-- what clues point toward them;
-- what clues clear them.
-
-## NPC interview requirements
-
-Important NPCs must include structured interview topics and knowledge boundaries.
-
-Use `docs/design-principles.md` and `schemas/game-package.schema.json`.
-
-For each important NPC, define topics that cover expected questioning:
-
-- alibi;
-- motive or apparent motive;
-- relationship to the mystery;
-- timeline claims;
-- relevant evidence or clues;
-- lies, omissions, evasions, and ignorance;
-- contradictions;
-- follow-up topics;
-- repeat answers.
-
-Each topic should define what the NPC knows, what they do not know, what they will not say yet, and what clues or evidence can be revealed when eligible.
-
-Do not leave important NPC answers for the Game Master to invent during play.
-
-Add validation notes where a clue path, NPC lie, red herring, image, or timeline dependency may need special Validator attention.
-
-## Location requirements
-
-Each major location must include:
-
-- location ID;
-- name;
-- description;
-- purpose in the investigation;
-- clues available there;
-- NPCs available there;
-- locked or gated information;
-- image opportunities;
-- whether it is essential or optional.
-
-For a Quick Mystery, all essential gameplay must occur in one primary location. The case may reference outside events, but the player should not need to travel elsewhere to solve the mystery.
-
-## Scene requirements
-
-Scenes should be flexible enough for conversational play.
-
-For each scene, include:
-
-- scene ID;
-- location;
-- entry conditions;
-- default narration;
-- available NPCs;
-- available clues;
-- likely player questions;
-- safe answers;
-- hidden facts not yet revealed;
-- exit leads.
-
-## Asset requirements
-
-If images are allowed, identify possible assets such as:
-
-- suspect portraits;
-- maps;
-- photographs;
-- documents;
-- evidence closeups;
-- location views.
-
-Every asset must include text fallback. No asset may contain essential hidden clues that are absent from text.
-
-When image mode is enabled or optional, define image fidelity data sufficient for runtime:
-
-- canonical visual definitions for important scenes, close-ups, evidence photos, cutaways, maps, memory recalls, or portraits;
-- required visible object IDs and forbidden object IDs;
-- fixed geometry notes and continuity anchors for repeated scene images;
-- hidden-element rules for compartments, mechanisms, marks, labels, and internal geometry;
-- gallery and reuse policy for generated or previously shown images;
-- text fallback for every image-dependent moment;
-- validation notes for any image that could otherwise imply unauthored evidence or a hidden clue.
-
-For a Quick Mystery, keep the asset list small and focused.
-
-## Case board requirements
-
-Create seed data for:
-
-- suspects;
-- known facts at start;
-- initial open questions;
-- starting location;
-- evidence list;
-- locations list;
-- unresolved leads.
+1. Confirm player configuration and scope budget (`docs/design-principles.md`).
+2. Define canonical asset inventory and runtime budgets.
+3. Define case metadata.
+4. Define central mystery, solution, culprit, motive, method, opportunity, and final proof.
+5. Define true chronological timeline.
+6. Define suspects, alibis, secrets, and deception rules.
+7. Define NPC interview topics and knowledge boundaries.
+8. Define locations, evidence items, and clue chains.
+9. Define red herrings and innocent clearances.
+10. Define typed discovery rules, scenes, and case-board seed data.
+11. Define visual definitions, image gallery policy, and text fallbacks if images are enabled.
+12. Define fallback solution reveal for out-of-game request or early termination.
+13. Perform self-check before returning draft.
+
+## Authoring standards compliance
+
+Apply `docs/design-principles.md` for all detailed pre-runtime design rules:
+- **Scope Limits**: Constrain locations, NPCs, clues, and red herrings to the selected `lengthPreset`.
+- **Motive & Solvability**: Motives must be proportional and include concrete action mechanisms.
+- **Clues & Discovery**: Clues must have stable observations, fair provenance, typed discovery rules, and closure.
+- **Red Herrings & Suspects**: Red herrings must have innocent explanations and clearable paths.
+- **NPC Interviews**: Define structured topics, knowledge boundaries, and lies/omissions.
+- **Images & Assets**: Every visual asset must have a complete text fallback; no image-only clues.
+- **Specialized Tests**: Technical, forensic, or legal tests must include authored proof boundaries and plain-language explanations.
 
 ## Self-check before output
 
-Before finalizing, check:
-
-- Are player configuration and scope budget defined?
-- Is the case within the selected length preset?
-- Is the culprit fixed?
-- Is the motive strong enough?
-- Is the timeline coherent?
-- Does every essential clue connect to the solution?
-- Does every essential clue have at least one fair typed discovery rule?
-- Does every major clue have closure?
-- Are red herrings explainable?
-- Does the package contain a complete Final Resolution Contract?
-- Can the Game Master provide a canonical endgame explanation and fallback solution reveal without inventing anything?
-- Does the case pass the Human Engagement Gate?
-- Is the motive mechanism concrete rather than generic?
-- If the case uses specialized technical, forensic, medical, mechanical, or financial mechanisms, are player tests, limits, proof value, and plain-language explanations authored?
-- Are physical actions plausible?
-- Is evidence provenance clear?
-- Is the scope appropriate for the requested length?
-- Are canonical asset inventory and runtime budgets defined?
-- Do discovery rules, NPC topics, scenes, evidence, documents, and assets stay inside the inventory and budgets?
-- Can the Game Master run this without inventing core facts?
+Before finalizing, confirm:
+- Are player configuration and scope budget defined per `docs/design-principles.md`?
+- Is the culprit fixed, motive proportional, and timeline coherent?
+- Does every essential clue connect to the solution and have a fair typed discovery rule?
+- Are red herrings explainable and suspects cleared fairly?
+- Does the package contain a complete Final Resolution Contract and fallback reveal?
+- Are canonical asset inventory and runtime budgets defined without unauthored assets?
 - Do important NPCs have interview topics and knowledge boundaries?
-- If images are available, do visual definitions prevent image-only clues, invented visual assets, continuity drift, and impossible geometry?
-- Are clue observations, witness claims, document facts, interpretations, and final synthesis clearly separated?
-- Does fair close inspection reveal stable ordinary evidence without waiting for the player to know its meaning?
-- Do case-board updates avoid leading language that performs deductions for the player?
-
-If any answer is no, revise before returning the package.
+- If images are used, do visual definitions include text fallbacks and prevent image-only clues?
+- Can the Game Master run this case as an interpreter without inventing facts?
 
 ## Expected outputs
 
-Return one or more of the following depending on the user's request:
+Return the created or updated files under `games/<caseId>-<slug>/`:
+- `game-package.json` (canonical draft package conforming to `schemas/game-package.schema.json`)
+- `case-board-seed.json` (initial player-facing board seed)
+- `asset-manifest.json` (manifest of visual/text assets)
+- `author-notes.md` (authoring summary, assumptions, and open questions)
 
-- `game-package.json` draft;
-- `solution.md` draft;
-- `case-board-seed.json` draft;
-- `asset-manifest.json` draft;
-- author notes;
-- assumptions and open questions.
-
-Use `schemas/game-package.schema.json` as the target structure when possible.
-
-For early project work, Markdown representations are acceptable if JSON schemas are still being revised.
+Also update `games/index.json` status to `draft` (or `ready_for_validation`).
 
 ## Failure conditions
 
-Do not present a case as ready for play if:
-
-- player setup is missing;
-- scope budget is missing;
-- canonical asset inventory or runtime budgets are missing from a new package;
-- runtime budgets exceed the selected preset without an explicit reason;
-- the case exceeds the selected preset;
-- the culprit is undecided;
-- the motive is vague or weak;
-- the motive mechanism is generic or lacks a concrete action plan;
-- the case is logically solvable but likely dull, over-technical, jargon-heavy, or emotionally thin;
-- the final explanation is incomplete;
-- fallback solution reveal is missing;
-- clues do not support the conclusion;
-- major evidence lacks provenance;
+Do not present a case as ready for validation if:
+- player setup or scope budget is missing;
+- culprit is undecided or motive is generic/weak;
+- essential clues lack provenance, discovery rules, or closure;
 - timeline events contradict each other;
-- the mystery depends on the Game Master improvising the solution.
+- canonical asset inventory or runtime budgets are missing;
+- mystery relies on the Game Master improvising investigative facts during play.
 
-## Response style
+## Response style & final instruction
 
 Be precise, structured, and usable by downstream AI roles.
 
-Write flavorful story content where appropriate, but prioritize internal coherence over prose style.
-
-## Final instruction
-
 End your response with:
-
-1. generated files or file sections;
-2. player configuration used;
-3. scope budget used;
-4. assumptions made;
-5. self-check results;
-6. whether the package is ready for validation;
-7. the next recommended AI role to run.
-
-## Suspect Deception Requirements
-
-For every major suspect, define:
-
-- alibi claim;
-- alibi truth;
-- truthful answer;
-- lie or omission;
-- why they lie or omit;
-- what they know;
-- what they do not know;
-- what evidence challenges them;
-- what clears or implicates them.
-
-Do not include a lie unless it is discoverable, challengeable, or clearly irrelevant flavor.
-
-## Whodunit Requirements
-
-If the case is a whodunit, define:
-
-- victim;
-- culprit;
-- motive;
-- method;
-- means;
-- opportunity;
-- alibi claims and truths;
-- red herrings;
-- innocent clearances;
-- final reconstruction.
-
-## Image Runtime and Specialized Test Requirements
-
-If images are available, define image assets with:
-
-- text fallback;
-- image type;
-- required visible people, if any;
-- required absent people, if any;
-- required objects;
-- forbidden objects;
-- spoiler level.
-
-If the case uses technical, forensic, medical, financial, mechanical, legal, or other specialized mechanisms, define:
-
-- what the player can safely inspect or test;
-- what cannot be tested during play;
-- why not;
-- what each test proves;
-- what each test does not prove;
-- unsafe actions to refuse;
-- plain-language explanation;
-- authored proof that remains sufficient without external testing.
+1. summary of generated files and paths created;
+2. player configuration and scope budget used;
+3. assumptions made;
+4. self-check results;
+5. confirmation that the package is ready for Validator;
+6. next recommended role: `prompts/03-validator.md`.

@@ -49,8 +49,6 @@ Instructions for AI execution of specific roles:
 - `prompts/05-revision-engine.md` - Revision Engine role.
 - `prompts/06-game-master.md` - Game Master role.
 
-> Note: `prompts/01-template-designer.md` is deprecated and non-operational.
-
 ### 4. Case Data (`games/<caseId>-<slug>/`)
 Case packages and session state:
 - `games/index.json` - Master catalog of all cases.
