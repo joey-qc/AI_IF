@@ -3,8 +3,8 @@
   "caseId": "quick-001",
   "validationDate": "2026-08-18",
   "validatorRoleVersion": "v2.0-simplified",
-  "overallStatus": "pass_with_warnings",
-  "summary": "Independent revalidation of quick-001-the-clock-in-the-locked-study under the simplified AI_IF Validator workflow. The case package passes structural JSON schema validation deterministically and satisfies all pre-runtime mystery design principles in docs/design-principles.md (solvability, Final Resolution Contract, motive proportionality, red herring discipline, and scope limits). No Blocker or Major defects remain.",
+  "overallStatus": "pass",
+  "summary": "Independent revalidation of quick-001-the-clock-in-the-locked-study under the simplified AI_IF Validator workflow. The case package passes structural JSON schema validation deterministically and satisfies all pre-runtime mystery design principles in docs/design-principles.md (solvability, Final Resolution Contract, motive proportionality, red herring discipline, and scope limits). Zero Blocker, Major, Minor, or Advisory defects exist.",
   "checks": [
     {
       "checkId": "chk-schema-validity",
@@ -22,7 +22,7 @@
       "checkId": "chk-motive-proportionality",
       "category": "weak_motive",
       "status": "pass",
-      "summary": "Culprit Thomas Greer has a clear, proportional financial debt motive for stealing the watch."
+      "summary": "Culprit Thomas Greer has a clear, proportional financial debt motive for stealing the watch, supported by discoverable evidence (clue-thomas-money-note, evidence-thomas-note)."
     },
     {
       "checkId": "chk-red-herring-discipline",
@@ -39,58 +39,11 @@
     {
       "checkId": "chk-metadata-consistency",
       "category": "runtime_state_issue",
-      "status": "pass_with_warnings",
-      "summary": "Case metadata contains historical validation/playtest status fields from prior workflow iterations.",
-      "relatedFindingIds": [
-        "find-001-historical-metadata-labels"
-      ]
+      "status": "pass",
+      "summary": "Case metadata status values (passed_with_minor_repository_issue, passed_with_minor_runtime_guidance) are valid current enum values in schemas/game-package.schema.json."
     }
   ],
-  "findings": [
-    {
-      "findingId": "find-001-historical-metadata-labels",
-      "severity": "minor",
-      "category": "runtime_state_issue",
-      "title": "Historical metadata status labels",
-      "description": "caseMetadata retains historical status strings ('passed_with_minor_repository_issue', 'passed_with_minor_runtime_guidance') from pre-simplification iterations. These do not affect structural validation or gameplay.",
-      "affectedFiles": [
-        {
-          "path": "games/quick-001-the-clock-in-the-locked-study/game-package.json",
-          "jsonPointer": "/caseMetadata/validationStatus"
-        }
-      ],
-      "affectedIds": {},
-      "playerImpact": "None during gameplay.",
-      "recommendedFix": "Normalize historical metadata status strings when updating catalog index in future lifecycle steps.",
-      "blocksGameplay": false,
-      "blocksValidation": false,
-      "relatedFindingIds": []
-    },
-    {
-      "findingId": "find-002-asset-fallback-coverage",
-      "severity": "advisory",
-      "category": "image_canon_violation",
-      "title": "Asset manifest text fallback coverage",
-      "description": "Visual definitions for asset-display-case and asset-tallcase-clock include full text fallbacks and comply with pre-runtime image safety rules.",
-      "affectedFiles": [
-        {
-          "path": "games/quick-001-the-clock-in-the-locked-study/game-package.json",
-          "jsonPointer": "/visualDefinitions"
-        }
-      ],
-      "affectedIds": {
-        "imageIds": [
-          "asset-display-case",
-          "asset-tallcase-clock"
-        ]
-      },
-      "playerImpact": "Ensures text-only players receive complete visual descriptions.",
-      "recommendedFix": "None required.",
-      "blocksGameplay": false,
-      "blocksValidation": false,
-      "relatedFindingIds": []
-    }
-  ],
+  "findings": [],
   "clueCoverage": {
     "status": "pass",
     "summary": "All 10 essential and supporting clues are discoverable through valid discovery rules.",
@@ -155,16 +108,14 @@
   },
   "imageSafetyCoverage": {
     "status": "pass",
-    "summary": "Visual definitions have complete text fallbacks.",
+    "summary": "Visual definitions for asset-display-case and asset-tallcase-clock comply with image safety rules and include complete text fallbacks.",
     "checkedIds": [
       "asset-display-case",
       "asset-tallcase-clock"
     ],
     "missingIds": [],
     "riskIds": [],
-    "relatedFindingIds": [
-      "find-002-asset-fallback-coverage"
-    ]
+    "relatedFindingIds": []
   },
   "runtimeReadinessCoverage": {
     "status": "pass",
@@ -187,7 +138,7 @@
     "priorityFindingIds": [],
     "recommendedFilesToReview": [],
     "recommendedNextRole": "ai_playtester",
-    "notesForRevisionEngine": "No revision needed; case is ready for AI playtesting."
+    "notesForRevisionEngine": "No revision needed; case passes validation cleanly."
   },
   "notes": "Revalidated in Step 6B using simplified AI_IF Validator role and tools/validate.py."
 }
