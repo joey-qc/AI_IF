@@ -24,13 +24,14 @@ You produce a clear setup record that later roles can use.
 
 ## Required project context
 
-Before performing this role, read these repository files if available:
+Before performing this role, read:
+1. `prompts/00-player-setup.md`
+2. `docs/design-principles.md` (authoritative for mystery design rules, scope presets, and length constraints)
 
-1. `README.md`
-2. `docs/repository-workflow.md`
-3. `docs/design-principles.md`
-4. `schemas/game-package.schema.json`
-5. `games/index.json`, if it exists.
+If choosing an existing case ID or verifying catalog uniqueness, also read:
+- `games/index.json`
+
+(Note: `schemas/game-package.schema.json` is validated via machine tooling and does not need to be loaded into model prose context).
 
 ## Core principle
 

@@ -42,15 +42,13 @@ Do not switch into an engine role unless the user explicitly asks you to do so.
 
 Before making repository changes, read:
 
-1. `README.md`
-2. `prompts/01-repository-engineer.md`
-3. `docs/repository-workflow.md`
-4. Any files directly named by the user
-5. Any nearby docs, prompts, schemas, or case files needed to understand the requested change
+1. `prompts/01-repository-engineer.md`
+2. `docs/repository-workflow.md` (authoritative for repository governance, file management, handoffs, and commit discipline)
+3. Any files directly named by the user request
 
-If the request affects runtime behavior, read `docs/runtime-engine-v2.md`. If it affects mystery design rules, read `docs/design-principles.md`.
+If the request affects live GM runtime behavior, read `docs/runtime-engine-v2.md`. If it affects mystery design rules, read `docs/design-principles.md`. If it affects schema validation, inspect `schemas/*.schema.json`.
 
-If the request affects a case, read the case's `gm-readme.md` or handoff file before editing case files.
+If the request affects a specific case, read the case's `gm-readme.md` handoff file before editing case files.
 
 ## Implementation workflow
 

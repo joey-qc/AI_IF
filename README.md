@@ -4,13 +4,13 @@ Welcome to the **AI Interactive Fiction (AI_IF)** repository.
 
 This repository contains the durable architecture specifications, machine JSON schemas, operational role prompts, and case package data for a repository-backed interactive mystery system.
 
-`README.md` is the authoritative bootstrap router for the project. All AI agents, local development tools (Codex / Repository Engineer), and human contributors start here.
+`README.md` is the authoritative bootstrap router for the project. When starting a session without an assigned role prompt, start here to navigate to your role. Once an AI role is explicitly invoked with its operational prompt, it loads only its minimal startup contract and does not reread `README.md`.
 
 ---
 
 ## Core Idea
 
-AI_IF decouples authoring, validation, and gameplay into separate role phases:
+AI_IF decouples authoring, validation, playtesting, revision, and gameplay into separate role phases:
 
 1. **Author the mystery**: Define complete canonical truth before play.
 2. **Validate the mystery**: Verify solvability, clue closure, timeline coherence, and proof thresholds before play.
@@ -37,7 +37,7 @@ Sole structural authority for JSON validation:
 - **`schemas/validation-report.schema.json`**: Structural authority for `validation-report.json`.
 - **`schemas/runtime-fidelity-report.schema.json`**: Structural authority for `runtime-fidelity-report.json`.
 
-> Note: `schemas/game-package-schema.md` is a non-authoritative human reference guide. `schemas/game-package.schema.json` is the sole structural authority.
+> Note: Machine schemas are validated via tooling and are not loaded as conversational prose reading during role startup.
 
 ### 3. Operational Prompts (`prompts/`)
 Instructions for AI execution of specific roles:
@@ -56,46 +56,56 @@ Case packages and session state:
 - `games/index.json` - Master catalog of all cases.
 - `games/<caseId>-<slug>/game-package.json` - Canonical case truth.
 - `games/<caseId>-<slug>/gm-readme.md` - Case readiness handoff.
-- `games/<caseId>-<slug>/runtime-state.json` - Session state during play.
-- `games/<caseId>-<slug>/case-board-current.json` - Player-facing investigation board during play.
-
-### 5. Supporting & Historical Context
-- `docs/playtest-findings.md` - Master project lessons log.
-- `docs/classic-whodunit-pattern-v1.md` - Reference pattern for manor whodunits.
-- `docs/technical-and-forensic-test-support-v1.md` - Domain reference for specialized tests.
-- `docs/human-playtest-review-template-v1.md` - Postgame human review template.
+- `games/<caseId>-<slug>/runtime-state.json` - Session state during active play.
+- `games/<caseId>-<slug>/case-board-current.json` - Player-facing investigation board during active play.
 
 ---
 
-## Role Startup Routing
+## Minimal Role Startup Routing
 
-Select your role below and proceed to the designated prompt and authoritative specification:
+Roles operate under a **minimum necessary context** model. Once invoked with an operational prompt, a role loads only its designated minimal startup contract:
 
 ### Repository Engineer / Local Developer
-- Operational Prompt: `prompts/01-repository-engineer.md`
-- Authoritative Spec: `docs/repository-workflow.md`
+- **Operational Prompt**: `prompts/01-repository-engineer.md`
+- **Always Required Spec**: `docs/repository-workflow.md`
+- **Conditionally Required**: `docs/design-principles.md` (authoring rules), `docs/runtime-engine-v2.md` (runtime rules)
+- **Machine Checks**: `schemas/*.schema.json` (when maintaining schemas/tooling)
 
 ### Player Setup
-- Operational Prompt: `prompts/00-player-setup.md`
-- Authoritative Specs: `docs/repository-workflow.md`, `docs/design-principles.md`
+- **Operational Prompt**: `prompts/00-player-setup.md`
+- **Always Required Spec**: `docs/design-principles.md`
+- **Conditionally Required**: `games/index.json` (to verify case ID uniqueness or select case)
+- **Machine Checks**: `schemas/game-package.schema.json`
 
 ### Story Author
-- Operational Prompt: `prompts/02-story-author.md`
-- Authoritative Specs: `docs/design-principles.md`, `schemas/game-package.schema.json`
+- **Operational Prompt**: `prompts/02-story-author.md`
+- **Always Required Spec**: `docs/design-principles.md`
+- **Case-Specific Inputs**: `games/<case>/player-config.json` or setup constraints
+- **Machine Checks**: `schemas/game-package.schema.json`
 
 ### Validator
-- Operational Prompt: `prompts/03-validator.md`
-- Authoritative Specs: `docs/design-principles.md`, `schemas/game-package.schema.json`, `schemas/validation-report.schema.json`
+- **Operational Prompt**: `prompts/03-validator.md`
+- **Always Required Spec**: `docs/design-principles.md`
+- **Conditionally Required**: `docs/repository-workflow.md` (catalog/readiness metadata)
+- **Case-Specific Inputs**: Target draft case files (`game-package.json`, `solution.md`, etc.)
+- **Machine Checks**: `schemas/game-package.schema.json`, `schemas/validation-report.schema.json`
 
 ### AI Playtester
-- Operational Prompt: `prompts/04-ai-playtester.md`
-- Authoritative Specs: `docs/runtime-engine-v2.md`, `schemas/runtime-fidelity-report.schema.json`
+- **Operational Prompt**: `prompts/04-ai-playtester.md`
+- **Always Required Spec**: `docs/runtime-engine-v2.md`
+- **Case-Specific Inputs**: Target case package (`game-package.json`), validation report if available
+- **Machine Checks**: `schemas/runtime-fidelity-report.schema.json`
 
 ### Revision Engine
-- Operational Prompt: `prompts/05-revision-engine.md`
-- Authoritative Specs: `docs/design-principles.md`, `schemas/game-package.schema.json`
+- **Operational Prompt**: `prompts/05-revision-engine.md`
+- **Always Required Spec**: `docs/design-principles.md`
+- **Conditionally Required**: `docs/runtime-engine-v2.md` (if repairing GM execution flaws)
+- **Case-Specific Inputs**: Target case package (`game-package.json`), defect report (`validation-report.md`, `playtest-report.md`)
+- **Machine Checks**: `schemas/game-package.schema.json`
 
 ### Game Master
-- Operational Prompt: `prompts/06-game-master.md`
-- Authoritative Spec: `docs/runtime-engine-v2.md`
-- Case Data: `games/<caseId>-<slug>/gm-readme.md`, `game-package.json`
+- **Operational Prompt**: `prompts/06-game-master.md`
+- **Always Required Spec**: `docs/runtime-engine-v2.md`
+- **Case-Specific Inputs**: `games/<caseId>-<slug>/gm-readme.md`, `game-package.json`
+- **Conditionally Required**: `runtime-state.json`, `case-board-current.json` (when resuming active play)
+- **Machine Checks**: None (interprets authored case package)

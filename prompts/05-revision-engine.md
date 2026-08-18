@@ -18,14 +18,15 @@ You must not patch one issue by creating new contradictions.
 ## Required project context
 
 Before performing this role, read:
-1. `README.md`
-2. `prompts/05-revision-engine.md`
-3. `docs/design-principles.md` (authoritative for pre-runtime mystery design rules, reverse authoring, solvability, motive mechanisms, scope, and fair evidence)
-4. `schemas/game-package.schema.json` (sole structural authority for game packages)
-5. `docs/runtime-engine-v2.md` (authoritative for runtime engine execution rules and fidelity)
-6. `docs/repository-workflow.md` (authoritative for case readiness progression and report workflow)
+1. `prompts/05-revision-engine.md`
+2. `docs/design-principles.md` (sole prose authority for pre-runtime mystery design rules, reverse authoring, solvability, motive mechanisms, scope, and fair evidence)
 
-Then read the current game package (`game-package.json`), validation report, AI playtest report, or runtime fidelity report relevant to the requested repair.
+If repairing live GM execution flaws or runtime fidelity findings, also read:
+- `docs/runtime-engine-v2.md`
+
+Then read the current game package (`game-package.json`) and relevant defect reports (`validation-report.md`, `playtest-report.md`, or runtime fidelity report).
+
+(Note: `schemas/game-package.schema.json` is validated via machine tooling after repairs).
 
 ## Inputs
 

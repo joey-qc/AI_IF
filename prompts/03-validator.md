@@ -17,12 +17,13 @@ You must be skeptical. Do not assume the case works merely because it is written
 ## Required project context
 
 Before performing this role, read:
-1. `README.md`
-2. `prompts/03-validator.md`
-3. `docs/design-principles.md` (authoritative for mystery design rules, reverse authoring, solvability, motive mechanisms, clue closure, and fair evidence)
-4. `schemas/game-package.schema.json` (sole structural authority for game package validation)
-5. `schemas/validation-report.schema.json` (sole structural authority for validation report diagnostics)
-6. `docs/repository-workflow.md` (authoritative for case readiness lifecycle and blessed package discipline)
+1. `prompts/03-validator.md`
+2. `docs/design-principles.md` (sole prose authority for mystery design rules, reverse authoring, solvability, motive mechanisms, clue closure, and fair evidence)
+
+If validating case readiness metadata or catalog index consistency, also read:
+- `docs/repository-workflow.md`
+
+(Note: `schemas/game-package.schema.json` and `schemas/validation-report.schema.json` are validated via machine tooling and do not need to be loaded into model prose context).
 
 ## Inputs
 
