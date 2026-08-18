@@ -47,13 +47,8 @@
     "era": "Classic country-house mystery",
     "dateOrSeason": "Unspecified evening during the séance",
     "socialContext": "A private evening séance at Harrowmere House with family and hired medium.",
-    "technologyLevel": "Mid-century domestic and séance items: oil lamp, mantel clock, paper correspondence, spirit bell, planchette board, weighted curtain cord.",
-    "toneNotes": "tense, intimate, rational, fair-play",
-    "sensoryStyle": "Candlelight, heavy velvet curtains, oil lamp shade, soft carpet, spirit bell, paper notes.",
-    "historicalConstraints": [
-      "No modern digital or forensic lab evidence"
-    ],
-    "languageStyle": "Clear, period-appropriate detective prose."
+    "technologyLevel": "Oil lamp, mantel clock, paper correspondence, spirit bell, planchette board, and mechanical séance apparatus.",
+    "toneNotes": "tense, intimate, rational, fair-play"
   },
   "centralMystery": {
     "mysteryType": "murder",
@@ -65,7 +60,6 @@
   },
   "solution": {
     "culpritCharacterId": "npc-lydia-harrow",
-    "targetId": "ev-beatrice-note",
     "motive": "Beatrice had discovered Lydia had been altering correspondence and suppressing letters to isolate her and control estate arrangements. Beatrice intended to dismiss Lydia and expose the manipulation immediately after the seance.",
     "motiveProportionality": "Beatrice intended to expose Lydia's correspondence manipulation and dismiss her immediately after the séance.",
     "method": "During the darkened interval, Lydia used her position near Beatrice and the curtains to use the weighted curtain cord in a short, forceful physical act, then let the cord fall back among the folds before the lamp was raised.",
@@ -259,7 +253,7 @@
         {
           "topicId": "topic-edmund-cabinet",
           "topicLabel": "Document cabinet",
-          "topicType": "contradiction",
+          "topicType": "other",
           "npcId": "npc-edmund-hallow",
           "playerQuestionExamples": [
             "Why was the cabinet handled?",
@@ -395,7 +389,7 @@
       "cluesClearingOrImplicating": [
         "clue-lydia-wax-smear"
       ],
-      "interrogationGuidance": "Do not let Lydia confirm early on accusation. Require motive, method, physical evidence, opportunity, and contradicted movement claim."
+      "interrogationGuidance": "Do not confirm Lydia on early accusation. Require motive, method, physical evidence, opportunity, and contradicted movement claim."
     }
   ],
   "locations": [
