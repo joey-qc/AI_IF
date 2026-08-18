@@ -1,4 +1,12 @@
-# Schema Cleanup Report — 2026-06-27
+# Schema Cleanup Report (2026-06-27)
+
+> [!NOTE]
+> Status: Superseded / non-authoritative.
+>
+> Canonical rules formerly maintained here have been consolidated into:
+> `docs/repository-workflow.md`
+>
+> This file is retained temporarily for cleanup verification and must not be used as an active startup/runtime authority.
 
 ## Context
 

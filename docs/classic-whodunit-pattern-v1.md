@@ -1,5 +1,10 @@
 # Classic Whodunit Pattern v1
 
+> [!NOTE]
+> Status: Reference / non-authoritative.
+> Not required for normal role startup.
+
+
 ## Purpose
 
 This document defines AI_IF support for classic contained whodunit mysteries, including murder mysteries in the Agatha Christie and Sherlock Holmes tradition.

@@ -2,304 +2,214 @@
 
 ## Purpose
 
-This document defines the core design principles for the AI Interactive Fiction project.
+This document is the sole durable prose authority for **pre-runtime mystery design**, reverse mystery authoring, fair-play solvability, clue closure, motive strength, human engagement, scope matching, suspect deception, red herrings, whodunit patterns, specialized test boundaries, authored player agency, and pre-runtime image definitions for the AI Interactive Fiction project.
 
-These principles are derived from the first full playtest and should guide future schemas, prompt files, validators, game packages, and eventual application design.
+---
 
-## 1. The player-facing experience should remain conversational
+## 1. Conversational human interactive fiction
 
-The player enjoyed interacting with an AI Game Master through natural language.
+Interactive mysteries are human stories first and puzzles second.
 
-The final system should preserve this strength.
+The player interacts with an AI Game Master in natural language. The mystery must offer emotionally legible stakes: people want, fear, betray, protect, envy, resent, or regret something concrete. 
 
-The player should be able to:
+A case that is technically solvable can still fail if it feels like a procedural checklist of logs, devices, and abstract business numbers rather than an engaging human story.
 
-- ask open-ended questions;
-- inspect evidence;
-- interview characters;
-- revisit locations;
-- request summaries;
-- ask for images or documents;
-- test theories;
-- proceed at their own pace.
+---
 
-A custom application may eventually exist, but the core interaction should still feel like a conversation with an intelligent Game Master.
+## 2. Canonical solution before play and reverse authoring
 
-Mysteries are human stories first and puzzles second. The player should care because people want, fear, hide, betray, protect, resent, or regret something concrete. A technically solvable case can still fail if it feels like a checklist of logs, devices, and abstractions rather than an interactive human mystery.
+The complete solution must exist in `game-package.json` before gameplay begins.
 
-## 2. The mystery must have a complete solution before play begins
+The culprit, victim, motive, method, opportunity, timeline, clue chain, evidence provenance, red herring explanations, and proof threshold must be fixed before play. The Game Master must never invent or alter facts during gameplay.
 
-The culprit, motive, method, timeline, clue structure, and proof must exist before the first scene is shown to the player.
+### Reverse mystery authoring
 
-The system must not decide the culprit during play.
+All mysteries must be authored **backward from canonical truth**:
 
-The system must not invent the motive after the player asks for the solution.
+1. Define what actually happened (the hidden timeline and central crime).
+2. Define who is responsible (the culprit) and their concrete motive mechanism.
+3. Define how the crime was executed (method and physical opportunity).
+4. Define what mistakes were made and what evidence was created.
+5. Define how the truth can be discovered and proved.
+6. Author scenes, NPC dialogue, images, red herrings, and discovery rules that derive from this canonical truth model.
 
-The Game Master may improvise surface narration, but not core facts.
+### Final Resolution Contract
 
-Mysteries should be authored backward from the canonical truth. The Story Author must define what actually happened, who is responsible, why, how, when, what evidence was created, and how the truth can be proved before writing scenes, NPC dialogue, images, red herrings, or gameplay flow.
+Every authored package must satisfy the Final Resolution Contract. The package must contain enough canonical data for the Game Master to explain:
+- Culprit or responsible party.
+- Motive and motive mechanism.
+- Method and opportunity.
+- Exact chronological timeline.
+- Required clues and supporting evidence.
+- Red herring explanations and false leads.
+- Innocent suspect clearance.
+- Proof chain and accusation prerequisites.
+- Canonical endgame explanation.
+- Authoritative fallback solution reveal.
 
-## 3. Authoring, validation, revision, and gameplay must be separate phases
+---
 
-The first playtest showed that one AI conversation should not be responsible for all phases simultaneously.
+## 3. Motive strength and concrete motive mechanism
 
-Separate roles are required:
+The motive must be proportional to the crime.
 
-- Template Designer
-- Story Author
-- Game Package Builder
-- Validator
-- AI Playtester
-- Revision Engine
-- Game Master
-- Case Board Manager
-- Asset Library Manager
+For major crimes (such as murder, arson, major theft, or blackmail), the culprit must face severe, life-altering consequences if they fail, such as:
+- Financial ruin or inheritance loss.
+- Exposure of fraud or criminal liability.
+- Institutional collapse or loss of life's work.
+- Blackmail, ruinous scandal, or destruction of family name.
+- Protection of a prior major crime.
 
-Each role should have its own instructions, inputs, outputs, and failure conditions.
+### Concrete motive mechanism requirement
 
-## 4. The final reveal must answer who, why, how, and proof
+Generic motive labels (e.g., "jealousy", "financial trouble", "career pressure") are insufficient. Every authored case must define the culprit's concrete action plan:
+1. What specific benefit the culprit expected.
+2. Why they acted *now* (triggering event).
+3. How the crime solved their specific problem.
+4. What would happen if they failed.
+5. Why they chose this specific method over lesser actions.
 
-A mystery is not resolved until the player can understand:
+---
 
-1. Who committed the central crime?
-2. Why did they do it?
-3. How did they do it?
-4. What evidence proves it?
+## 4. Fair-play solvability, clue closure, and evidence provenance
 
-A dramatic climax is not enough. A hidden secret is not enough. A confession is not enough unless it is supported by evidence already present in the case.
+Every mystery must be solvable by a careful player through observation, investigation, and deduction without guessing or luck.
 
-Final solution completeness is non-negotiable. Every package must contain enough canonical material for the Game Master to explain the culprit or responsible party, motive, method, opportunity, timeline, clue meanings, red herrings, innocent suspect clearance, proof chain, accusation requirements, and fallback solution reveal without inventing anything.
+### Clue closure matrix
 
-## 5. The final reveal should confirm the solution, not invent it
+Every significant clue introduced in the story must have explicit closure:
+- Connected to the culprit's actions (essential or supporting clue); or
+- Connected to an innocent suspect's secret (red herring with innocent explanation); or
+- Clearly marked as atmospheric background.
 
-The ending should make prior clues click into place.
+Unexplained or dangling major clues are blocker-level authoring failures.
 
-The player should feel that the answer was available, even if they did not fully solve it themselves.
+### Proof chain and proof threshold
 
-The ending should not introduce a new culprit, new motive, or new decisive evidence that was impossible to anticipate.
+The case author must define `proofRequiredForAccusation`:
+- Minimum essential clues required before an accusation succeeds.
+- Deductions the player must articulate.
+- Pre-authored insufficient-proof response to handle early correct guesses without confirming or denying guilt.
 
-## 6. Every major clue needs closure
+### Evidence provenance
 
-Every significant clue must be explained by the final solution or explicitly marked as a red herring with a grounded explanation.
+Evidence must not appear spontaneously to suit plot convenience. Every piece of physical or documentary evidence must specify:
+- Who created it and when (timeline event).
+- Where it was stored and who had access.
+- How it reached its discovery location.
+- Why it was not destroyed, hidden, or previously discovered.
 
-Required clue metadata should include:
+---
 
-- clue ID;
-- player-facing description;
-- true meaning;
-- source/provenance;
-- discovery location;
-- required discovery conditions;
-- associated suspect, location, or event;
-- whether it is essential, supporting, or red herring;
-- how it is resolved.
+## 5. Scope matching and budget presets
 
-A game package should not pass validation if important clues remain unexplained.
+A mystery package must strictly fit its chosen length and difficulty preset.
 
-## 7. Motive must be proportional to the crime
+### Presets and limits
 
-The motive must plausibly justify the culprit's actions.
+- **`quick_mystery`** (10-25 min play time):
+  - Primary locations: **Exactly 1**.
+  - Major NPCs/suspects: **Max 3**.
+  - Essential clues: **Max 10**.
+  - Red herrings: **Max 1**.
+  - Nested secrets: **0**.
+  - *Must not sprawl into multi-location investigations.*
 
-For serious crimes such as murder, the motive should involve serious consequences, such as:
+- **`one_sitting`** (30-60 min play time):
+  - Primary locations: 4-6.
+  - Major NPCs/suspects: 3-5.
+  - Essential clues: 6-12.
+  - Red herrings: 1-3.
+  - Nested secrets: 0-1.
 
-- financial ruin;
-- exposure of fraud;
-- criminal liability;
-- loss of inheritance;
-- blackmail;
-- institutional collapse;
-- personal disgrace with major consequences;
-- protection of a prior crime;
-- political or social catastrophe within the story world.
+- **`standard_case`** & **`extended_case`**:
+  - Expanded scope permitted only with explicit runtime budget declarations.
 
-A merely interesting secret is not enough.
+### Canonical asset inventory & runtime budgets
 
-## 8. Chronology must be explicit and validated
+Every authored package must declare:
+- `canonicalAssetInventory`: Explicit list of allowed NPC IDs, location IDs, object IDs, evidence IDs, document IDs, image IDs, discovery rule IDs, and interview topic IDs.
+- `runtimeBudgets`: Hard and soft limits on major NPCs, interviewable NPCs, searchable objects, evidence items, documents, images, hints, and player-facing branches.
 
-The true timeline must exist before gameplay begins.
+---
 
-Every major event must include:
+## 6. Suspect deception and red herring discipline
 
-- date/time or relative sequence;
-- location;
-- participants;
-- cause;
-- effect;
-- player-facing evidence generated by the event.
+### Suspect deception requirements
 
-The validator must check that documents, witness statements, travel, discoveries, and object movements match the timeline.
+For every major suspect, the package must author:
+- Alibi claim vs. alibi truth.
+- Truthful statements vs. lies or omissions.
+- Concrete reason for lying (e.g., shame, lesser secret, protecting another person).
+- Discoverable evidence or contradiction that exposes the lie.
+- What clears or implicates the suspect.
 
-## 9. Physical plausibility must be checked
+*Do not author a lie unless the player can discover, challenge, or resolve it.*
 
-Dramatic events require physical preconditions.
+### Red herring discipline
 
-Before an event appears in the story, the system should know:
+Red herrings must mislead fairly:
+- Must have a grounded innocent explanation.
+- Must be clearable through discoverable evidence.
+- Must not block the canonical solution or force the player into absurd assumptions.
 
-- where the characters are;
-- what objects are present;
-- what tools are available;
-- how access is gained;
-- how evidence moves;
-- how exits and entries occur;
-- whether the action is physically possible.
+---
 
-If a character burns a document, the ignition source must exist. If someone is hidden in a crate, the method of confinement, air, access, and discovery must make sense.
+## 7. Contained whodunit patterns
 
-## 10. Evidence must have provenance
+For contained whodunits (e.g., locked room, isolated house, private gathering):
+- The crime must occur within a closed environment with a fixed suspect pool.
+- Physical entry and exit routes must be accounted for in the true timeline.
+- Suspect alibis and opportunity windows must be physically testable.
+- Atmospheric elements (weather, house creaks, closed curtains) are encouraged, but supernatural or unauthored external factors are strictly forbidden as solutions.
 
-Evidence should not appear merely because the story needs a clue.
+---
 
-For each important piece of evidence, the system should answer:
+## 8. Specialized technical, forensic, and medical test boundaries
 
-- Who created it?
-- When was it created?
-- Why was it created?
-- Where was it stored?
-- Who had access to it?
-- How did it reach its discovery location?
-- Why can the player find it now?
-- Why was it not already destroyed, hidden, or found?
+If a mystery involves specialized mechanisms (forensic analysis, toxicology, computer logs, financial ledgers, mechanical devices, medical records):
+- The case must define what the player can inspect/test and what is out of scope.
+- Plain-language explanations must be authored for all technical concepts.
+- Safe refusal responses must be pre-authored for dangerous or out-of-scope actions (e.g., tasting unknown poison, requesting off-site lab work).
+- The solution **must be solvable through authored clues** within the play area, without depending on unauthored external lab results, police experts, or specialized domain knowledge.
 
-## 11. Scope must match the selected game length and difficulty
+---
 
-A one-sitting game cannot support unlimited suspects, locations, clue chains, and nested secrets.
+## 9. Player agency and fair evidence (Authoring Rules)
 
-Each difficulty/length preset should constrain:
+### Stable observable evidence
 
-- number of suspects;
-- number of primary locations;
-- number of essential clues;
-- number of red herrings;
-- number of interviews;
-- number of major twists;
-- number of optional side leads;
-- expected time to resolution.
+Ordinary observable evidence must remain physically stable.
 
-Easy games should converge earlier and provide clearer clue relationships.
+An observable mark, stain, smell, missing part, label, damage, unusual placement, ordinary content, or physical oddity present in a scene must be authored as observable upon fair close inspection. Do not hide physical observations behind interpretation prerequisites.
 
-## 12. Images are supportive, not canonical
+### Observation vs. Interpretation boundary
 
-Images may enrich the experience, but the game must remain playable without them.
+Authoring must separate:
+1. **Observation**: Physical facts visible or discoverable on inspection.
+2. **Witness Claim**: Testimony given by NPCs.
+3. **Document Fact**: Text written in discovered documents.
+4. **Interpretation**: Meaning, theory, or clue synthesis (gated by prerequisites).
 
-Rules for images:
+### Neutral case board seeding
 
-- Images should not contain hidden clues that are absent from text.
-- Images should not replace narration.
-- Images should not contain gameplay instructions, dialogue choices, or essential text unless that text is also provided in the conversation.
-- Images are best used for artifacts, locations, portraits, maps, and documents.
-- The player should control whether images appear.
-- Generated images should be recorded in an asset manifest so they can be retrieved later.
+`caseBoardSeed` entries must use neutral language (e.g., `Known fact`, `Known claim`, `Known evidence`, `Unresolved significance`). Authors must not seed the case board with leading language that performs deductions for the player.
 
-## 13. The player should have access to a case board
+---
 
-The system should maintain a structured case board throughout play.
+## 10. Image and visual asset authoring rules
 
-The case board should track:
+### Supportive, not canonical
 
-- suspects;
-- evidence;
-- discovered clues;
-- locations;
-- open leads;
-- contradictions;
-- timeline summary;
-- player theories;
-- unresolved questions;
-- assets seen by the player.
+Images enrich the visual experience, but text remains canonical.
+- No essential clue may exist exclusively in an image without text fallback.
+- Images must not replace descriptive text narration.
 
-The player should be able to ask for the case board at any time.
+### Visual definitions (`visualDefinitions`)
 
-## 14. The Game Master must distinguish game actions from out-of-game feedback
-
-During playtests, the player may provide design feedback.
-
-The Game Master should distinguish:
-
-- in-game actions;
-- in-game questions;
-- out-of-game notes;
-- design feedback;
-- requests to pause, revise, or evaluate the system.
-
-A convention such as `Out of game:` or `Note to ChatGPT:` should be honored.
-
-## 15. The Game Master should not hide behind ambiguity
-
-A detective story may contain ambiguity during investigation, but the final case explanation must be definite.
-
-At the end, the Game Master should be able to answer:
-
-- Who did it?
-- Why?
-- How?
-- What proves it?
-- What did each clue mean?
-- What were the red herrings?
-- What happened to each major character?
-
-If those answers are unavailable, the game package has failed.
-
-## 16. Validation failure is preferable to a bad playthrough
-
-If a generated case does not validate, it should not be played.
-
-The system should be willing to reject or revise a case before presenting it to the player.
-
-A failed validation report is useful. A failed mystery ending is frustrating.
-
-## 17. Preserve player trust
-
-The player must trust that the case is solvable.
-
-To preserve that trust:
-
-- do not change the culprit mid-game;
-- do not invent decisive evidence after the fact;
-- do not contradict already established facts;
-- do not use images as hidden clue containers;
-- do not create fake complexity that has no resolution;
-- do not end with unexplained mysteries unless intentionally designed as a sequel hook and clearly outside the central case.
-
-## 18. Build from files, not memory alone
-
-Long conversations become slow and context becomes fragile.
-
-Project knowledge should be stored in repository files whenever possible.
-
-The repository should contain:
-
-- architecture documents;
-- design principles;
-- schema files;
-- prompt files;
-- generated game packages;
-- validation reports;
-- playtest reports;
-- asset manifests;
-- handoff/start-here documentation.
-
-Future conversations should start from repository files rather than relying only on conversational memory.
-
-## 19. Prompts are part of the system, not the whole system
-
-The original project was prompt-centered. The next version should be system-centered.
-
-Prompts remain important, but they should operate within a structured workflow using durable files, schemas, validation reports, and version control.
-
-## 20. Start simple, then harden
-
-The project should not begin by building a full application.
-
-The recommended near-term path is:
-
-1. Define architecture documents.
-2. Define game package schema.
-3. Write phase-specific prompts.
-4. Generate one small mystery package.
-5. Validate it.
-6. AI-playtest it.
-7. Revise it.
-8. Run a second human playtest.
-9. Decide whether custom code is warranted.
-
-The architecture should remain compatible with a future coded application, but the immediate goal is to prove the workflow.
+When image mode is enabled or optional, the package must author visual definitions for major scenes, close-ups, evidence photos, maps, and portraits:
+- `requiredVisibleObjectIds`: Objects that must be depicted.
+- `forbiddenObjectIds`: Objects that must not appear (prevents unauthored clue visual drift).
+- `fixedGeometryNotes` & `continuityAnchor`: Fixed physical layout for repeated scene renders.
+- `hiddenElementRules`: Concealed mechanisms, compartments, or internal details must not be rendered before discovery.
+- `textFallback`: Full textual description for every visual asset.

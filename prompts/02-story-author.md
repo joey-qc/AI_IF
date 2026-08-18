@@ -16,21 +16,14 @@ You must work from the solution outward. The culprit, motive, method, timeline, 
 
 ## Required project context
 
-Before performing this role, start with the Story Author startup path in `README.md`.
+Before performing this role, read:
+1. `README.md`
+2. `prompts/02-story-author.md`
+3. `docs/design-principles.md` (authoritative for pre-runtime mystery design, reverse authoring, solvability, motive mechanisms, scope, suspect deception, red herrings, and pre-runtime image rules)
+4. `schemas/game-package.schema.json` (sole structural authority for game packages)
+5. `docs/repository-workflow.md` (authoritative for file ownership and lifecycle status)
 
-Then read any existing game package files, validation reports, or user-provided constraints relevant to the case.
-
-When authoring or revising package content, use stable canonical IDs and validation notes so future diagnostics can cite exact clues, evidence, NPC topics, discovery rules, assets, and timeline events.
-
-Use `docs/canonical-assets-and-runtime-budgets-v1.md` to define `canonicalAssetInventory` and `runtimeBudgets` for each new case package.
-
-Use `docs/image-fidelity-contract-v1.md` when image mode is enabled or available, so visual definitions, reuse rules, evidence photos, cutaways, and text fallbacks are authored before runtime.
-
-Use `docs/reverse-mystery-authoring-and-resolution-v1.md` to author the mystery backward from canonical truth and to complete the Final Resolution Contract before writing scenes or gameplay flow.
-
-Use `docs/human-engagement-and-playability-v1.md` to ensure the case passes the Human Engagement Gate and Motive Mechanism Requirement before validation.
-
-Use `docs/player-agency-and-fair-evidence-v1.md` to keep observable evidence stable, separate facts from interpretation, and protect the player's right to form deductions.
+Then read any existing case setup (`player-config.json`), prior validation reports, or user-provided constraints relevant to the case.
 
 ## Authorship prerequisite
 
@@ -246,7 +239,7 @@ The solution must include:
 - how the final reveal should unfold;
 - the fallback solution reveal to use if gameplay stops early or the player asks out of game for the canonical answer.
 
-The package must satisfy the Final Resolution Contract in `docs/reverse-mystery-authoring-and-resolution-v1.md`, including culprit or responsible party, motive, method, opportunity, exact timeline, required clues, supporting clues, red herrings and why they are false, innocent suspect clearance, proof chain, final accusation requirements, canonical endgame explanation, and fallback solution reveal.
+The package must satisfy the Final Resolution Contract in `docs/design-principles.md`, including culprit or responsible party, motive, method, opportunity, exact timeline, required clues, supporting clues, red herrings and why they are false, innocent suspect clearance, proof chain, final accusation requirements, canonical endgame explanation, and fallback solution reveal.
 
 ## Motive rule
 
@@ -314,7 +307,7 @@ For each key clue or evidence reveal, classify player-facing text as one or more
 
 Ordinary observable evidence must be stable on fair inspection. Do not make an observable mark, stain, smell, missing part, label, damage, unusual placement, ordinary content, or immediate physical oddity appear only after the player discovers its meaning unless access, tools, lighting, permission, movement, or inspection method changed.
 
-Use `docs/discovery-rules-v1.md` and `schemas/game-package.schema.json`.
+Use `docs/design-principles.md` and `schemas/game-package.schema.json`.
 
 Do not rely only on prose discovery notes.
 
@@ -395,7 +388,7 @@ Each major suspect must include:
 
 Important NPCs must include structured interview topics and knowledge boundaries.
 
-Use `docs/npc-interview-model-v1.md` and `schemas/game-package.schema.json`.
+Use `docs/design-principles.md` and `schemas/game-package.schema.json`.
 
 For each important NPC, define topics that cover expected questioning:
 

@@ -1,5 +1,14 @@
 # Case Library and Identity Schema
 
+> [!NOTE]
+> Status: Superseded / non-authoritative.
+>
+> Canonical rules formerly maintained here have been consolidated into:
+> `docs/repository-workflow.md`
+>
+> This file is retained temporarily for cleanup verification and must not be used as an active startup/runtime authority.
+
+
 ## Purpose
 
 This document defines the case identity and game library index conventions for the AI Interactive Fiction project.

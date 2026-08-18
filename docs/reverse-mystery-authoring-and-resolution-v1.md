@@ -1,5 +1,14 @@
 # Reverse Mystery Authoring and Resolution v1
 
+> [!NOTE]
+> Status: Superseded / non-authoritative.
+>
+> Canonical rules formerly maintained here have been consolidated into:
+> `docs/design-principles.md`
+>
+> This file is retained temporarily for cleanup verification and must not be used as an active startup/runtime authority.
+
+
 ## Purpose
 
 This specification defines the authoring and validation rule that every AI_IF mystery must be built from canonical truth outward and must contain a complete final resolution before validation, playtesting, or human play.

@@ -1,10 +1,11 @@
 # Game Package Schema
 
+> [!NOTE]
+> Status: Non-authoritative human-readable reference. `schemas/game-package.schema.json` is the sole structural authority.
+
 ## Purpose
 
 This document defines the human-readable structure of a game package for the AI Interactive Fiction project.
-
-A game package is the durable, validated source of truth for a playable mystery. It should contain everything the Story Author, Validator, AI Playtester, Revision Engine, and Game Master need to generate, test, revise, and run the case.
 
 ## Core principle
 

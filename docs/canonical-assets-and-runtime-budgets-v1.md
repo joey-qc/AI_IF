@@ -1,5 +1,14 @@
 # Canonical Assets and Runtime Budgets v1
 
+> [!NOTE]
+> Status: Superseded / non-authoritative.
+>
+> Canonical rules formerly maintained here have been consolidated into:
+> `docs/runtime-engine-v2.md` and `schemas/game-package.schema.json`
+>
+> This file is retained temporarily for cleanup verification and must not be used as an active startup/runtime authority.
+
+
 ## Purpose
 
 This specification defines how AI_IF packages declare what investigative assets exist and how far the Game Master may expand runtime interaction.

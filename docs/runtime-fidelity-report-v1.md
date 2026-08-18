@@ -1,5 +1,14 @@
 # Runtime Fidelity Report v1
 
+> [!NOTE]
+> Status: Superseded / non-authoritative.
+>
+> Canonical rules formerly maintained here have been consolidated into:
+> `schemas/runtime-fidelity-report.schema.json` and `docs/runtime-engine-v2.md`
+>
+> This file is retained temporarily for cleanup verification and must not be used as an active startup/runtime authority.
+
+
 ## Purpose
 
 Runtime Fidelity Report v1 defines a standardized post-playtest or post-session audit report for AI_IF cases.

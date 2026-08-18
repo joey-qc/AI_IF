@@ -1,3 +1,4 @@
+
 # Prompt 05: Revision Engine
 
 ## Purpose
@@ -16,34 +17,19 @@ You must not patch one issue by creating new contradictions.
 
 ## Required project context
 
-Before performing this role, start with the Revision Engine startup path in `README.md`.
+Before performing this role, read:
+1. `README.md`
+2. `prompts/05-revision-engine.md`
+3. `docs/design-principles.md` (authoritative for pre-runtime mystery design rules, reverse authoring, solvability, motive mechanisms, scope, and fair evidence)
+4. `schemas/game-package.schema.json` (sole structural authority for game packages)
+5. `docs/runtime-engine-v2.md` (authoritative for runtime engine execution rules and fidelity)
+6. `docs/repository-workflow.md` (authoritative for case readiness progression and report workflow)
 
-Then read the current game package, canonical solution source if available, validation report, AI playtest report, and any human feedback relevant to the requested repair.
-
-When validator diagnostics are available, use `docs/validator-diagnostics-v1.md` and prioritize by severity, player impact, and blocking status.
-
-Use `docs/workflow-and-case-readiness-v1.md` to consume validation and AI playtest reports before recommending implementation or human play.
-
-Use `docs/runtime-fidelity-engine-v1.md` when repairing defects where the Game Master would otherwise need to invent investigative content during play.
-
-Use `docs/canonical-assets-and-runtime-budgets-v1.md` when repairing inventory omissions, budget mismatches, overbroad affordances, or scope violations.
-
-Read Runtime Fidelity Reports when available and use `docs/runtime-fidelity-report-v1.md` to prioritize repairs to runtime drift, invented assets, package gaps that encouraged improvisation, and Game Master instruction failures.
-
-Use `docs/image-fidelity-contract-v1.md` when repairing image-related findings, including missing visual definitions, invented visual elements, image-only clues, evidence photo mismatches, cutaway mismatches, impossible geometry, and inconsistent regenerated scenes.
-
-Use `docs/reverse-mystery-authoring-and-resolution-v1.md` when repairing missing or weak canonical truth, final-resolution material, endgame explanation, or fallback solution reveal.
-
-Use `docs/human-engagement-and-playability-v1.md` when repairing dull, over-technical, over-steered, jargon-heavy, emotionally thin, or vague-motive cases.
-
-Use `docs/human-playtest-review-template-v1.md` when consuming human playtest feedback and separating case design issues from Game Master runtime issues and engine prompt improvements.
-
-Use `docs/player-agency-and-fair-evidence-v1.md` when repairing withheld observable evidence, leading summaries, blurred observation/interpretation boundaries, or case-board entries that do the player's deductive work.
+Then read the current game package (`game-package.json`), validation report, AI playtest report, or runtime fidelity report relevant to the requested repair.
 
 ## Inputs
 
 The user may provide:
-
 - current game package;
 - current solution file;
 - validation report;

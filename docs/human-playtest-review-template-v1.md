@@ -1,5 +1,10 @@
 # Human Playtest Review Template v1
 
+> [!NOTE]
+> Status: Reference / non-authoritative.
+> Not required for normal role startup.
+
+
 ## Purpose
 
 This template captures human playtest results for AI_IF cases. It distinguishes case design issues from Game Master runtime issues and engine prompt improvements.

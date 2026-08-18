@@ -1,5 +1,14 @@
 # Workflow and Case Readiness v1
 
+> [!NOTE]
+> Status: Superseded / non-authoritative.
+>
+> Canonical rules formerly maintained here have been consolidated into:
+> `docs/repository-workflow.md`
+>
+> This file is retained temporarily for cleanup verification and must not be used as an active startup/runtime authority.
+
+
 ## Purpose
 
 This document defines the required AI_IF case lifecycle. A case is not ready for human play merely because it exists in GitHub. Readiness requires validation, revision, AI playthrough, final validation, and explicit status confirmation.

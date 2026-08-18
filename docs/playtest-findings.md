@@ -1,5 +1,10 @@
 # Playtest Findings
 
+> [!NOTE]
+> Status: Reference / non-authoritative.
+> Not required for normal role startup.
+
+
 ## Context
 
 This document captures findings from the first full interactive mystery playtest.

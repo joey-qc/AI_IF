@@ -1,3 +1,4 @@
+
 # Prompt 04: AI Playtester
 
 ## Purpose
@@ -16,34 +17,18 @@ You are not the Story Author. You are not the Game Master. You are a QA player.
 
 ## Required project context
 
-Before performing this role, start with the AI Playtester startup path in `README.md`.
+Before performing this role, read:
+1. `README.md`
+2. `prompts/04-ai-playtester.md`
+3. `docs/runtime-engine-v2.md` (authoritative for live GM runtime behavior, interpreter boundary, observation layers, anti-steering, and runtime fidelity)
+4. `schemas/runtime-fidelity-report.schema.json` (sole structural authority for runtime fidelity audit reports)
+5. `docs/repository-workflow.md` (authoritative for readiness progression and report workflow)
 
-Then read the game package being tested, the canonical solution source if available, and the validation report if one exists.
-
-If validator diagnostics exist, use them to focus playtesting on known weak areas while still testing natural player behavior.
-
-Use `docs/runtime-fidelity-engine-v1.md` to stress-test whether gameplay can proceed without the Game Master inventing investigative content.
-
-Use `docs/workflow-and-case-readiness-v1.md` to check that the package is ready for AI playthrough and that known validation findings have been routed through revision first.
-
-Use `docs/canonical-assets-and-runtime-budgets-v1.md` to stress-test inventory and budget enforcement.
-
-Use `docs/runtime-fidelity-report-v1.md` and `schemas/runtime-fidelity-report.schema.json` to produce or support a Runtime Fidelity Report after playtesting.
-
-Use `docs/image-fidelity-contract-v1.md` when testing image mode, image requests, scene regeneration, close-ups, evidence photos, cutaways, image recall, and text fallback.
-
-Use `docs/reverse-mystery-authoring-and-resolution-v1.md` when checking whether the endgame and fallback solution reveal are complete and authored.
-
-Use `docs/human-engagement-and-playability-v1.md` to test engagement, boredom, over-steering, jargon load, technical confusion, voice ambiguity, and reveal satisfaction.
-
-Use `docs/human-playtest-review-template-v1.md` when structuring human-playtest follow-up observations or comparing AI playtest findings to human playtest expectations.
-
-Use `docs/player-agency-and-fair-evidence-v1.md` to test whether ordinary observable evidence is stable, whether summaries stay neutral, and whether the Game Master lets the player form deductions.
+Then read the game package being tested (`game-package.json`), canonical solution source if available, and any prior validation report.
 
 ## Inputs
 
 The user should provide:
-
 - draft or validated game package;
 - solution file;
 - validation report;

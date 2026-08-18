@@ -1,453 +1,101 @@
 # AI Interactive Fiction
 
-This repository contains the design documents, prompt modules, schemas, and game packages for an AI-assisted interactive fiction system.
+Welcome to the **AI Interactive Fiction (AI_IF)** repository.
 
-`README.md` is the authoritative bootstrap document for the repository. New AI conversations, human contributors, and Codex/local repository sessions should start here, choose the relevant role path below, and then continue into the role prompt or case files named by that path.
+This repository contains the durable architecture specifications, machine JSON schemas, operational role prompts, and case package data for a repository-backed interactive mystery system.
 
-## Core idea
+`README.md` is the authoritative bootstrap router for the project. All AI agents, local development tools (Codex / Repository Engineer), and human contributors start here.
 
-The system separates three jobs that were previously combined in one conversation:
+---
 
-1. Author the mystery.
-2. Validate the mystery.
-3. Run the mystery for the player.
+## Core Idea
 
-The player-facing Game Master should not invent the mystery during gameplay. It should reveal and manage a prebuilt, validated game package.
+AI_IF decouples authoring, validation, and gameplay into separate role phases:
 
-## Current status
+1. **Author the mystery**: Define complete canonical truth before play.
+2. **Validate the mystery**: Verify solvability, clue closure, timeline coherence, and proof thresholds before play.
+3. **AI Playtest & Revise**: Simulate interactive play, surface defects, and repair the package.
+4. **Run the mystery**: A conversational Game Master interprets the prebuilt, validated package without inventing investigative facts during play.
 
-This repository is in early engine-hardening stage.
+---
 
-Completed foundations include:
+## System Architecture: Four Conceptual Layers
 
-- repository architecture;
-- design principles and playtest findings;
-- gameplay setup and scope presets;
-- game package schemas;
-- Discovery Rules v1;
-- Validator Diagnostics v1;
-- Repository Engineer workflow for local implementation;
-- Workflow and Case Readiness v1;
-- Human Playtest Review Template v1;
-- role prompts for authoring, validation, playtesting, revision, and gameplay;
-- Runtime Engine v2;
-- Runtime Fidelity Engine v1;
-- Player Agency and Fair Evidence v1;
-- Canonical Asset and Runtime Budget Enforcement v1;
-- Runtime State v1 specification and schema;
-- Game Master v2.
+The repository's prose rules live in **exactly four authoritative contracts**. Machine structural constraints are governed by JSON schemas.
 
-Next work should harden the existing engine architecture and repository workflow before generating additional cases.
+### 1. Authoritative Specifications (`docs/`)
+- **`README.md`**: System bootstrap router and entry point.
+- **`docs/repository-workflow.md`**: Sole prose authority for repository governance, case folder naming (`games/<caseId>-<slug>/`), catalog index (`games/index.json`), file ownership, canonical lifecycle states, readiness rules, and commit discipline.
+- **`docs/design-principles.md`**: Sole prose authority for pre-runtime mystery design, reverse authoring, solvability, motive mechanisms, scope budgets, suspect deception, red herrings, contained whodunits, specialized test boundaries, authored player agency, and pre-runtime image definitions.
+- **`docs/runtime-engine-v2.md`**: Sole prose authority for live Game Master execution, interpreter boundary (no unauthored asset invention), observation layers, typed discovery rules, NPC interview topics, negative investigation, case board & runtime state mechanics, anti-steering, deduction mode, image fidelity & recall, runtime self-checks, and post-session fidelity auditing.
 
-## Repository structure
+### 2. Machine Structural Schemas (`schemas/`)
+Sole structural authority for JSON validation:
+- **`schemas/game-package.schema.json`**: Structural authority for `game-package.json`.
+- **`schemas/runtime-state.schema.json`**: Structural authority for `runtime-state.json`.
+- **`schemas/case-board-current.schema.json`**: Structural authority for `case-board-current.json`.
+- **`schemas/validation-report.schema.json`**: Structural authority for `validation-report.json`.
+- **`schemas/runtime-fidelity-report.schema.json`**: Structural authority for `runtime-fidelity-report.json`.
 
-```text
-AI_IF/
-  README.md
+> Note: `schemas/game-package-schema.md` is a non-authoritative human reference guide. `schemas/game-package.schema.json` is the sole structural authority.
 
-  docs/
-    engine-overview.md
-    project-architecture.md
-    playtest-findings.md
-    design-principles.md
-    gameplay-setup-and-scope-presets.md
-    repository-workflow.md
-    workflow-and-case-readiness-v1.md
-    runtime-engine-v2.md
-    runtime-fidelity-engine-v1.md
-    reverse-mystery-authoring-and-resolution-v1.md
-    human-engagement-and-playability-v1.md
-    human-playtest-review-template-v1.md
-    suspect-deception-and-red-herring-discipline-v1.md
-    classic-whodunit-pattern-v1.md
-    player-agency-and-fair-evidence-v1.md
-    canonical-assets-and-runtime-budgets-v1.md
-    image-fidelity-contract-v1.md
-    image-runtime-gallery-v1.md
-    technical-and-forensic-test-support-v1.md
-    discovery-rules-v1.md
-    npc-interview-model-v1.md
-    validator-diagnostics-v1.md
-    runtime-fidelity-report-v1.md
-    runtime-state-v1.md
-    case-board-current-v1.md
+### 3. Operational Prompts (`prompts/`)
+Instructions for AI execution of specific roles:
+- `prompts/00-player-setup.md` - Player Setup role.
+- `prompts/01-repository-engineer.md` - Repository Engineer (local Codex implementation).
+- `prompts/02-story-author.md` - Story Author role.
+- `prompts/03-validator.md` - Validator role.
+- `prompts/04-ai-playtester.md` - AI Playtester role.
+- `prompts/05-revision-engine.md` - Revision Engine role.
+- `prompts/06-game-master.md` - Game Master role.
 
-  prompts/
-    00-player-setup.md
-    01-repository-engineer.md
-    01-template-designer.md
-    02-story-author.md
-    03-validator.md
-    04-ai-playtester.md
-    05-revision-engine.md
-    06-game-master.md
+> Note: `prompts/01-template-designer.md` is deprecated and non-operational.
 
-  schemas/
-    game-package-schema.md
-    game-package.schema.json
-    runtime-state.schema.json
-    case-board-current.schema.json
-    validation-report.schema.json
-    runtime-fidelity-report.schema.json
+### 4. Case Data (`games/<caseId>-<slug>/`)
+Case packages and session state:
+- `games/index.json` - Master catalog of all cases.
+- `games/<caseId>-<slug>/game-package.json` - Canonical case truth.
+- `games/<caseId>-<slug>/gm-readme.md` - Case readiness handoff.
+- `games/<caseId>-<slug>/runtime-state.json` - Session state during play.
+- `games/<caseId>-<slug>/case-board-current.json` - Player-facing investigation board during play.
 
-  games/
-    index.json
-    <caseId>-<slug>/
-      gm-readme.md
-      game-package.json
-      case-board-seed.json
-      asset-manifest.json
-      validation-report.md
-      playtest-report.md
-      runtime-state.json
-      case-board-current.json
-```
+### 5. Supporting & Historical Context
+- `docs/playtest-findings.md` - Master project lessons log.
+- `docs/classic-whodunit-pattern-v1.md` - Reference pattern for manor whodunits.
+- `docs/technical-and-forensic-test-support-v1.md` - Domain reference for specialized tests.
+- `docs/human-playtest-review-template-v1.md` - Postgame human review template.
 
-This structure may change as the design matures.
+---
 
-## General startup path
+## Role Startup Routing
 
-All roles should begin with this file, then follow the role-specific startup path below.
+Select your role below and proceed to the designated prompt and authoritative specification:
 
-Core project documents:
+### Repository Engineer / Local Developer
+- Operational Prompt: `prompts/01-repository-engineer.md`
+- Authoritative Spec: `docs/repository-workflow.md`
 
-1. `docs/project-architecture.md`
-2. `docs/design-principles.md`
-3. `docs/playtest-findings.md`
-4. `docs/repository-workflow.md`
-5. `docs/workflow-and-case-readiness-v1.md`
-6. `docs/engine-overview.md`
-
-Use `docs/repository-workflow.md` for file ownership, case naming, report locations, runtime state handling, and commit discipline.
-Use `docs/workflow-and-case-readiness-v1.md` for lifecycle state, blessed package discipline, readiness metadata, consolidated Codex handoffs, and final report expectations.
-
-A case is not ready for human play merely because it exists under `games/`. Readiness depends on validation, AI playthrough, resolved findings, final validation, and status metadata.
-
-AI_IF supports suspect deception, but only as authored, bounded, discoverable character behavior. Suspects may lie; the Game Master may not. Classic whodunit cases are supported when motive, method, opportunity, alibi, red herrings, and innocent clearances are fully authored.
-
-AI_IF treats images as optional visualizations, not hidden evidence. Shown images should be tracked for recall through a runtime gallery. AI_IF also requires technical, forensic, medical, financial, mechanical, and other specialized tests to have authored boundaries so rational player requests can be answered safely without uncontrolled external branches.
-
-## Role layers
-
-AI_IF separates engine roles from the development role that manages repository implementation.
-
-Engine roles create, validate, revise, test, and run mysteries:
-
-- Story Author
-- Validator
-- AI Playtester
-- Revision Engine
-- Game Master
-
-Development role:
-
-- Repository Engineer / Codex
-
-Codex should read `README.md` first. Before making repository changes, Codex should then read `prompts/01-repository-engineer.md` and follow its local implementation workflow.
-
-## Role startup paths
-
-### Repository Engineer / Codex
-
-Use this path when implementing approved changes in the local repository.
-
-Read:
-
-1. `README.md`
-2. `prompts/01-repository-engineer.md`
-3. `docs/repository-workflow.md`
-4. `docs/workflow-and-case-readiness-v1.md`, when implementing workflow, readiness, handoff, or final-report changes
-5. Any files directly named by the user
-6. Any nearby docs, prompts, schemas, or case files needed to understand the requested change
-
-The Repository Engineer manages source files and implementation. It does not act as Story Author, Validator, AI Playtester, Revision Engine, or Game Master unless explicitly instructed.
-
-### Engine Architect
-
-Use this path when changing durable project architecture, engine behavior, schemas, workflow rules, or role responsibilities.
-
-Read:
-
-1. `README.md`
-2. `docs/engine-overview.md`
-3. `docs/project-architecture.md`
-4. `docs/design-principles.md`
-5. `docs/playtest-findings.md`
-6. `docs/repository-workflow.md`
-7. `docs/workflow-and-case-readiness-v1.md`
-8. `docs/runtime-engine-v2.md`
-9. `docs/runtime-fidelity-engine-v1.md`
-10. `docs/reverse-mystery-authoring-and-resolution-v1.md`
-11. `docs/human-engagement-and-playability-v1.md`
-12. `docs/human-playtest-review-template-v1.md`
-13. `docs/suspect-deception-and-red-herring-discipline-v1.md`
-14. `docs/classic-whodunit-pattern-v1.md`
-15. `docs/player-agency-and-fair-evidence-v1.md`
-16. `docs/canonical-assets-and-runtime-budgets-v1.md`
-17. `docs/image-fidelity-contract-v1.md`
-18. `docs/image-runtime-gallery-v1.md`
-19. `docs/technical-and-forensic-test-support-v1.md`
-20. `docs/discovery-rules-v1.md`
-21. `docs/npc-interview-model-v1.md`
-22. `docs/validator-diagnostics-v1.md`
-23. `docs/runtime-fidelity-report-v1.md`
-24. `docs/runtime-state-v1.md`
-25. `docs/case-board-current-v1.md`
-26. `schemas/game-package.schema.json`
-27. `schemas/runtime-state.schema.json`
-28. `schemas/case-board-current.schema.json`
-29. `schemas/validation-report.schema.json`
-30. `schemas/runtime-fidelity-report.schema.json`
-
-Then inspect whichever prompt, schema, or case files are directly affected by the requested architecture change.
+### Player Setup
+- Operational Prompt: `prompts/00-player-setup.md`
+- Authoritative Specs: `docs/repository-workflow.md`, `docs/design-principles.md`
 
 ### Story Author
-
-Use this path when creating or revising authored mystery content from setup constraints.
-
-Read:
-
-1. `README.md`
-2. `docs/design-principles.md`
-3. `docs/playtest-findings.md`
-4. `docs/gameplay-setup-and-scope-presets.md`
-5. `docs/repository-workflow.md`
-6. `docs/workflow-and-case-readiness-v1.md`
-7. `docs/discovery-rules-v1.md`
-8. `docs/npc-interview-model-v1.md`
-9. `docs/reverse-mystery-authoring-and-resolution-v1.md`
-10. `docs/human-engagement-and-playability-v1.md`
-11. `docs/suspect-deception-and-red-herring-discipline-v1.md`
-12. `docs/classic-whodunit-pattern-v1.md`
-13. `docs/player-agency-and-fair-evidence-v1.md`
-14. `docs/canonical-assets-and-runtime-budgets-v1.md`
-15. `docs/image-fidelity-contract-v1.md`
-16. `docs/image-runtime-gallery-v1.md`
-17. `docs/technical-and-forensic-test-support-v1.md`
-18. `schemas/game-package-schema.md`
-19. `schemas/game-package.schema.json`
-20. `prompts/02-story-author.md`
-21. `games/<caseId>-<slug>/player-config.json`, if continuing an existing setup
-
-The Story Author writes case content but does not approve it for play.
+- Operational Prompt: `prompts/02-story-author.md`
+- Authoritative Specs: `docs/design-principles.md`, `schemas/game-package.schema.json`
 
 ### Validator
-
-Use this path when checking whether a mystery package is coherent, fair, complete, and ready for playtesting or human play.
-
-Read:
-
-1. `README.md`
-2. `docs/design-principles.md`
-3. `docs/playtest-findings.md`
-4. `docs/gameplay-setup-and-scope-presets.md`
-5. `docs/repository-workflow.md`
-6. `docs/workflow-and-case-readiness-v1.md`
-7. `docs/discovery-rules-v1.md`
-8. `docs/npc-interview-model-v1.md`
-9. `docs/runtime-fidelity-engine-v1.md`
-10. `docs/reverse-mystery-authoring-and-resolution-v1.md`
-11. `docs/human-engagement-and-playability-v1.md`
-12. `docs/suspect-deception-and-red-herring-discipline-v1.md`
-13. `docs/classic-whodunit-pattern-v1.md`
-14. `docs/player-agency-and-fair-evidence-v1.md`
-15. `docs/canonical-assets-and-runtime-budgets-v1.md`
-16. `docs/image-fidelity-contract-v1.md`
-17. `docs/image-runtime-gallery-v1.md`
-18. `docs/technical-and-forensic-test-support-v1.md`
-19. `docs/validator-diagnostics-v1.md`
-20. `docs/runtime-fidelity-report-v1.md`
-21. `schemas/game-package-schema.md`
-22. `schemas/game-package.schema.json`
-23. `schemas/validation-report.schema.json`
-24. `schemas/runtime-fidelity-report.schema.json`
-25. `prompts/03-validator.md`
-26. `docs/case-board-current-v1.md`
-27. `schemas/case-board-current.schema.json`
-28. `games/<caseId>-<slug>/game-package.json`
-29. `games/<caseId>-<slug>/solution.md`, if canonical or required by the case handoff
-30. `games/<caseId>-<slug>/case-board-seed.json`
-31. `games/<caseId>-<slug>/asset-manifest.json`
-
-The Validator diagnoses. The Revision Engine repairs.
+- Operational Prompt: `prompts/03-validator.md`
+- Authoritative Specs: `docs/design-principles.md`, `schemas/game-package.schema.json`, `schemas/validation-report.schema.json`
 
 ### AI Playtester
-
-Use this path when simulating player investigation against a drafted or validated case.
-
-Read:
-
-1. `README.md`
-2. `docs/design-principles.md`
-3. `docs/playtest-findings.md`
-4. `docs/repository-workflow.md`
-5. `docs/workflow-and-case-readiness-v1.md`
-6. `docs/runtime-fidelity-engine-v1.md`
-7. `docs/reverse-mystery-authoring-and-resolution-v1.md`
-8. `docs/human-engagement-and-playability-v1.md`
-9. `docs/human-playtest-review-template-v1.md`
-10. `docs/suspect-deception-and-red-herring-discipline-v1.md`
-11. `docs/classic-whodunit-pattern-v1.md`
-12. `docs/player-agency-and-fair-evidence-v1.md`
-13. `docs/canonical-assets-and-runtime-budgets-v1.md`
-14. `docs/image-fidelity-contract-v1.md`
-15. `docs/image-runtime-gallery-v1.md`
-16. `docs/technical-and-forensic-test-support-v1.md`
-17. `docs/discovery-rules-v1.md`
-18. `docs/npc-interview-model-v1.md`
-19. `docs/validator-diagnostics-v1.md`
-20. `docs/runtime-fidelity-report-v1.md`
-21. `docs/case-board-current-v1.md`
-22. `schemas/case-board-current.schema.json`
-23. `schemas/runtime-fidelity-report.schema.json`
-24. `prompts/04-ai-playtester.md`
-25. `games/<caseId>-<slug>/game-package.json`
-26. `games/<caseId>-<slug>/solution.md`, if canonical or required by the case handoff
-27. `games/<caseId>-<slug>/validation-report*.md`, if available
-
-The AI Playtester tests how the case behaves in practice and reports defects.
+- Operational Prompt: `prompts/04-ai-playtester.md`
+- Authoritative Specs: `docs/runtime-engine-v2.md`, `schemas/runtime-fidelity-report.schema.json`
 
 ### Revision Engine
-
-Use this path when repairing a case based on validation, AI playtest, or human feedback.
-
-Read:
-
-1. `README.md`
-2. `docs/design-principles.md`
-3. `docs/playtest-findings.md`
-4. `docs/repository-workflow.md`
-5. `docs/workflow-and-case-readiness-v1.md`
-6. `docs/discovery-rules-v1.md`
-7. `docs/npc-interview-model-v1.md`
-8. `docs/runtime-fidelity-engine-v1.md`
-9. `docs/reverse-mystery-authoring-and-resolution-v1.md`
-10. `docs/human-engagement-and-playability-v1.md`
-11. `docs/human-playtest-review-template-v1.md`
-12. `docs/suspect-deception-and-red-herring-discipline-v1.md`
-13. `docs/classic-whodunit-pattern-v1.md`
-14. `docs/player-agency-and-fair-evidence-v1.md`
-15. `docs/canonical-assets-and-runtime-budgets-v1.md`
-16. `docs/image-fidelity-contract-v1.md`
-17. `docs/image-runtime-gallery-v1.md`
-18. `docs/technical-and-forensic-test-support-v1.md`
-19. `docs/validator-diagnostics-v1.md`
-20. `docs/runtime-fidelity-report-v1.md`
-21. `schemas/validation-report.schema.json`
-22. `schemas/runtime-fidelity-report.schema.json`
-23. `docs/case-board-current-v1.md`
-24. `schemas/case-board-current.schema.json`
-25. `prompts/05-revision-engine.md`
-26. `games/<caseId>-<slug>/game-package.json`
-27. `games/<caseId>-<slug>/solution.md`, if canonical or required by the case handoff
-28. `games/<caseId>-<slug>/validation-report*.md`, if available
-29. `games/<caseId>-<slug>/validation-report.json`, if available
-30. `games/<caseId>-<slug>/runtime-fidelity-report*.md`, if available
-31. `games/<caseId>-<slug>/runtime-fidelity-report*.json`, if available
-32. `games/<caseId>-<slug>/playtest-report.md`, if available
-33. Any human feedback or postgame report supplied by the user
-
-The Revision Engine should preserve intended experience while fixing defects.
+- Operational Prompt: `prompts/05-revision-engine.md`
+- Authoritative Specs: `docs/design-principles.md`, `schemas/game-package.schema.json`
 
 ### Game Master
-
-Use this path when running a validated, repository-backed mystery for a human player.
-
-Read:
-
-1. `README.md`
-2. `docs/design-principles.md`
-3. `docs/playtest-findings.md`
-4. `docs/repository-workflow.md`
-5. `docs/workflow-and-case-readiness-v1.md`
-6. `docs/runtime-engine-v2.md`
-7. `docs/runtime-fidelity-engine-v1.md`
-8. `docs/reverse-mystery-authoring-and-resolution-v1.md`
-9. `docs/human-engagement-and-playability-v1.md`
-10. `docs/human-playtest-review-template-v1.md`, if reviewing human playtest results
-11. `docs/suspect-deception-and-red-herring-discipline-v1.md`
-12. `docs/classic-whodunit-pattern-v1.md`
-13. `docs/player-agency-and-fair-evidence-v1.md`
-14. `docs/canonical-assets-and-runtime-budgets-v1.md`
-15. `docs/image-fidelity-contract-v1.md`
-16. `docs/image-runtime-gallery-v1.md`
-17. `docs/technical-and-forensic-test-support-v1.md`
-18. `docs/investigation-model.md`
-19. `docs/discovery-rules-v1.md`
-20. `docs/npc-interview-model-v1.md`
-21. `docs/validator-diagnostics-v1.md`, if reviewing validation or postgame report context
-22. `docs/runtime-fidelity-report-v1.md`, if reviewing or producing post-session QA
-23. `docs/image-system-v2.md`
-24. `docs/case-board-v2.md`
-25. `docs/runtime-state-v1.md`
-26. `docs/case-board-current-v1.md`
-27. `docs/runtime-self-checks.md`
-28. `schemas/runtime-state.schema.json`
-29. `schemas/case-board-current.schema.json`
-30. `schemas/runtime-fidelity-report.schema.json`, if producing post-session QA
-31. `prompts/06-game-master.md`
-32. `games/index.json`
-33. `games/<caseId>-<slug>/gm-readme.md`
-34. `games/<caseId>-<slug>/game-package.json`
-35. `games/<caseId>-<slug>/case-board-seed.json`
-36. `games/<caseId>-<slug>/case-board-current.json`, if resuming active play
-37. `games/<caseId>-<slug>/asset-manifest.json`
-38. `games/<caseId>-<slug>/validation-report*.md`, if available
-39. `games/<caseId>-<slug>/playtest-report.md`, if available
-40. `games/<caseId>-<slug>/runtime-fidelity-report*.md`, if available
-41. `games/<caseId>-<slug>/runtime-state.json`, if resuming active play
-
-If `gm-readme.md` identifies a canonical source, follow it. Do not rely on stale companion files unless the case handoff says they are canonical.
-
-Runtime player-session state is governed by:
-
-```text
-docs/runtime-state-v1.md
-schemas/runtime-state.schema.json
-```
-
-Runtime state belongs in:
-
-```text
-games/<caseId>-<slug>/runtime-state.json
-```
-
-Current player-facing case board state is governed by:
-
-```text
-docs/case-board-current-v1.md
-schemas/case-board-current.schema.json
-```
-
-The current case board belongs in:
-
-```text
-games/<caseId>-<slug>/case-board-current.json
-```
-
-Do not write player progress back into `game-package.json`.
-
-## Intended workflow
-
-A future game should move through these phases:
-
-1. Define or select the game package structure.
-2. Capture player setup and scope constraints.
-3. Author a complete mystery from that structure.
-4. Validate the mystery for chronology, motive, clues, causality, and solvability.
-5. Simulate playthroughs with one or more AI playtesters.
-6. Feed failures back into revision.
-7. Approve a game package for play.
-8. Run the validated package through an AI Game Master.
-9. Maintain player-facing state through runtime state, case board, session log, and asset library files.
-
-A game package is a blessed package for human play only after validation, revision, AI playthrough, resolved findings, final validation, and consistent readiness metadata. Validation and playtest reports are working artifacts; they should feed revision rather than sit unused.
-
-## Design stance
-
-This project may eventually become either:
-
-- a prompt-driven workflow using Markdown files and structured JSON; or
-- a coded application that uses AI models through an API and stores game packages in this repository.
-
-The architecture should support both paths until implementation decisions are made.
+- Operational Prompt: `prompts/06-game-master.md`
+- Authoritative Spec: `docs/runtime-engine-v2.md`
+- Case Data: `games/<caseId>-<slug>/gm-readme.md`, `game-package.json`

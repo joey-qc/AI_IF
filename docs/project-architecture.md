@@ -1,5 +1,14 @@
 # Project Architecture
 
+> [!NOTE]
+> Status: Superseded / non-authoritative.
+>
+> Canonical rules formerly maintained here have been consolidated into:
+> `README.md`, `docs/repository-workflow.md`, and `docs/design-principles.md`
+>
+> This file is retained temporarily for cleanup verification and must not be used as an active startup/runtime authority.
+
+
 ## Purpose
 
 This document describes the proposed architecture for the AI Interactive Fiction project.

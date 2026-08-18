@@ -1,5 +1,14 @@
 # Gameplay Setup and Scope Presets
 
+> [!NOTE]
+> Status: Superseded / non-authoritative.
+>
+> Canonical rules formerly maintained here have been consolidated into:
+> `docs/design-principles.md` and `schemas/game-package.schema.json`
+>
+> This file is retained temporarily for cleanup verification and must not be used as an active startup/runtime authority.
+
+
 ## Purpose
 
 This document defines the player-facing setup choices that must be collected before game authorship begins, plus the scope presets that constrain game size, complexity, and validation expectations.

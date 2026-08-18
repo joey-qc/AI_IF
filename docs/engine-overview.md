@@ -1,8 +1,12 @@
-# AI_IF Engine Overview
+# Engine Overview
 
-## Purpose
-
-`README.md` is the authoritative bootstrap entry point for the AI_IF repository. New AI conversations and new contributors should begin there, then use this document for the compact engine overview.
+> [!NOTE]
+> Status: Superseded / non-authoritative.
+>
+> Canonical rules formerly maintained here have been consolidated into:
+> `README.md` and `docs/repository-workflow.md`
+>
+> This file is retained temporarily for cleanup verification and must not be used as an active startup/runtime authority.
 
 ## Vision
 

@@ -2,11 +2,7 @@
 
 ## Purpose
 
-This document defines how repository files should be managed across the AI Interactive Fiction project.
-
-The project uses GitHub as persistent shared storage for architecture documents, prompt modules, schemas, generated game packages, validation reports, playtest reports, revision notes, runtime state, assets, and postgame findings.
-
-The goal is to prevent the repository from becoming disorganized as multiple AI roles create and update files over time.
+This document is the sole prose authority for repository governance, case identity, file ownership, game catalog indexing (`games/index.json`), case lifecycle vocabulary, readiness progression, handoff standards, and commit discipline for the AI Interactive Fiction project.
 
 ## Core rule
 
@@ -14,114 +10,88 @@ Separate project-level knowledge from case-level knowledge.
 
 ```text
 Project-level lesson -> docs/
-Case-specific issue  -> games/<caseId>-<slug>/
+Case-specific data    -> games/<caseId>-<slug>/
 ```
 
-The master documents in `docs/` should evolve slowly and intentionally.
+The master documents in `docs/` evolve slowly and intentionally.
 
-Per-game files under `games/<caseId>-<slug>/` should capture the setup, authored package, hidden solution, validation, playtesting, revisions, runtime state, assets, and postgame findings for one specific story.
+Per-game folders under `games/<caseId>-<slug>/` capture the setup, authored package, hidden solution, validation, playtesting, revisions, runtime state, assets, and postgame findings for a single mystery.
+
+## Four-layer authority model
+
+The project operates under four conceptual layers:
+
+1. **`README.md`**: System bootstrap and router. Sends roles to operational prompts and authoritative specifications.
+2. **`docs/repository-workflow.md`**: Sole prose authority for repository governance, lifecycle states, handoffs, and file management.
+3. **`docs/design-principles.md`**: Sole prose authority for pre-runtime mystery design, reverse authoring, solvability, and fair-play rules.
+4. **`docs/runtime-engine-v2.md`**: Sole prose authority for live Game Master runtime execution, interpreter boundary, and runtime fidelity.
+
+Machine structural authority remains exclusively with JSON schemas (`schemas/*.schema.json`).
+
+---
 
 ## Case identity and naming
 
-Every authored game/story must have three identity fields.
+Every authored game/story must maintain three stable identity fields:
 
 ### caseId
 
-A stable machine-friendly identifier.
+A stable, machine-friendly identifier.
 
-Examples:
-
-```text
-quick-001
-one-001
-standard-001
-extended-001
-```
+Examples: `quick-001`, `quick-002`, `one-001`, `standard-001`.
 
 Rules:
-
-- must be unique in the repository;
-- should not change after creation;
-- should not depend on the final title;
-- should be used for references, reports, commits, and internal IDs.
+- Must be unique across the repository.
+- Must not change after creation.
+- Should not depend on the final story title.
+- Must be used in internal references, schemas, reports, and commits.
 
 ### title
 
 A human-friendly story title.
 
-Examples:
-
-```text
-The Case of the Missing Melody
-The Clock in the Locked Study
-The Vanishing Guest at Table Three
-```
+Examples: *The Clock in the Locked Study*, *The Second Toast*, *The Third Knock*.
 
 Rules:
-
-- should be memorable;
-- may be changed before final approval;
-- should be shown in game menus, setup summaries, and postgame reports;
-- should be stored in `caseMetadata.title`.
+- Should be human-readable and memorable.
+- May be refined during authoring or revision before final approval.
+- Stored in `caseMetadata.title`.
 
 ### slug
 
-A URL/file-safe version of the title.
+A URL- and file-safe version of the title.
 
-Examples:
-
-```text
-the-missing-melody
-the-clock-in-the-locked-study
-the-vanishing-guest-at-table-three
-```
+Examples: `the-clock-in-the-locked-study`, `the-second-toast`, `the-third-knock`.
 
 Rules:
+- Lowercase, words separated by hyphens, no spaces or special characters.
+- Stored in `caseMetadata.slug`.
 
-- lowercase;
-- words separated by hyphens;
-- no spaces;
-- no punctuation except hyphens;
-- should be stored in `caseMetadata.slug`.
+### Game folder naming convention
 
-## Game folder naming convention
-
-Each game folder should use this format:
+Each game folder uses the standard format:
 
 ```text
 games/<caseId>-<slug>/
 ```
 
-Example:
+Example: `games/quick-001-the-clock-in-the-locked-study/`
 
-```text
-games/quick-001-the-clock-in-the-locked-study/
-```
+Do not rename the folder after creation if the title changes cosmetically unless explicitly instructed by the user. Prefer path stability over cosmetic folder renames.
 
-Rationale:
+---
 
-- `caseId` keeps references stable.
-- `slug` makes the folder readable.
-- The folder remains manageable even when many games exist.
+## Game library index (`games/index.json`)
 
-If the title changes after folder creation, do not automatically rename the folder unless the user requests it. Prefer stable paths over cosmetic renames.
+The repository maintains a master catalog index of all cases at `games/index.json`.
 
-## Game library index
+### Purpose
 
-The repository should maintain a game library index:
+- List all authored cases in the repository.
+- Allow AI roles and human users to discover and inspect available cases.
+- Track case metadata, length preset, difficulty, image mode, and lifecycle status.
 
-```text
-games/index.json
-```
-
-Purpose:
-
-- list all authored games;
-- make games browsable by title;
-- track status, difficulty, length, and folder path;
-- help future ChatGPT conversations locate available games quickly.
-
-Recommended structure:
+### Authoritative index schema structure
 
 ```json
 [
@@ -134,715 +104,187 @@ Recommended structure:
     "difficulty": "easy",
     "genre": "classic detective",
     "tone": "lighthearted",
-    "status": "draft",
-    "validationStatus": "not_validated",
-    "playtestStatus": "not_playtested",
-    "lastUpdatedAt": "",
-    "notes": ""
+    "status": "ready_for_human_play",
+    "validationStatus": "passed_with_minor_issues",
+    "playtestStatus": "passed_with_issues",
+    "humanPlayStatus": "not_played",
+    "lastUpdatedAt": "2026-06-27",
+    "estimatedPlayTimeMinutes": 20,
+    "imageMode": "player_requested_only",
+    "interactionMode": "text_first",
+    "notes": "Ready for GM."
   }
 ]
 ```
 
-Update `games/index.json` when a new case is created, renamed, approved, completed, archived, or materially revised.
+### Mandatory update triggers
 
-## Repository layers
+Update `games/index.json` whenever:
+- A new case setup is created.
+- A case package title or configuration changes.
+- Validation status changes.
+- Playtest status changes.
+- A case is marked `ready_for_human_play`.
+- Active human play begins or completes.
+- A case is archived or materially revised.
 
-## 1. Project-level documents
+---
 
-Project-level documents describe the whole system.
+## Single canonical lifecycle vocabulary
 
-Examples:
-
-```text
-README.md
-docs/project-architecture.md
-docs/design-principles.md
-docs/playtest-findings.md
-docs/gameplay-setup-and-scope-presets.md
-docs/repository-workflow.md
-docs/roadmap.md
-```
-
-These files should be updated only when a durable project-level decision, lesson, or architecture change is made.
-
-They should not be used as live logs.
-
-## 2. Prompt modules
-
-Prompt modules define reusable AI roles.
-
-Examples:
+Every case package progresses through a single, canonical lifecycle state sequence:
 
 ```text
-prompts/00-player-setup.md
-prompts/01-repository-engineer.md
-prompts/01-template-designer.md
-prompts/02-story-author.md
-prompts/03-validator.md
-prompts/04-ai-playtester.md
-prompts/05-revision-engine.md
-prompts/06-game-master.md
+draft -> validation_failed / validated -> playtest_failed / playtested -> ready_for_human_play -> in_play -> completed -> archived
 ```
 
-These files should change when the workflow changes, not every time a game is generated.
+### Canonical status values
 
-### Repository Engineer implementation conventions
+- **`draft`**: Case setup or package authoring is in progress; not yet ready for validation.
+- **`validation_failed`**: Package was validated and found to contain blocker or major defects requiring revision.
+- **`validated`**: Package passed validation checks (or passed with minor issues); ready for AI playtest.
+- **`playtest_failed`**: Package underwent AI playtest and encountered gameplay, solvability, or runtime defects requiring revision.
+- **`playtested`**: Package passed AI playtest; ready for final review and approval.
+- **`ready_for_human_play`**: Blessed package; all validation and playtest requirements are met. Approved for human play.
+- **`in_play`**: Human gameplay session is currently active.
+- **`completed`**: Human play session finished; postgame findings recorded.
+- **`archived`**: Case retired or superseded by a newer version.
 
-`prompts/01-repository-engineer.md` defines the local Codex implementation workflow.
+### Standardized metadata status fields
 
-The Repository Engineer is a development role, not an engine role. It reads the local repository, implements approved changes, edits files, runs available checks, shows diffs before commits, creates focused commits after approval, and pushes only when instructed.
+Every `game-package.json` (`caseMetadata`) and `games/index.json` entry must use these standardized fields:
 
-Engine roles create, validate, revise, test, and run mysteries. The Repository Engineer manages source files and should not generate mystery content unless explicitly instructed.
+- **`status`**: Overall lifecycle state (`draft`, `validated`, `playtested`, `ready_for_human_play`, `in_play`, `completed`, `archived`).
+- **`validationStatus`**: Diagnostic verdict (`not_validated`, `passed`, `passed_with_minor_issues`, `failed`).
+- **`playtestStatus`**: Playtest verdict (`not_playtested`, `passed`, `passed_with_issues`, `failed`).
+- **`humanPlayStatus`**: Human session state (`not_played`, `in_play`, `completed`).
 
-## 3. Schemas
+---
 
-Schemas define the structure of game packages and related files.
+## Readiness progression and blessed package rules
 
-Examples:
+### GitHub package is not automatically playable
 
-```text
-schemas/game-package-schema.md
-schemas/game-package.schema.json
-schemas/case-board-current.schema.json
-schemas/validation-report.schema.json
-schemas/runtime-fidelity-report.schema.json
-schemas/character.schema.json
-schemas/clue.schema.json
-schemas/location.schema.json
-schemas/timeline.schema.json
-schemas/asset.schema.json
-```
+A case existing under `games/` is **not** automatically ready for human play. The Game Master must inspect case metadata and `gm-readme.md` before starting play.
 
-Schemas should be treated as shared contracts between AI roles.
+If a case has `status: draft`, `validationStatus: not_validated`, or `playtestStatus: not_playtested`, the Game Master must refuse to present it as ready for human play unless the user explicitly requests playing an unvalidated package.
 
-Changing a schema may require updating prompts, validators, and existing game packages.
+### Blessed package definition
 
-## 4. Game packages
+A case package is considered **blessed** and ready for human play only when all of the following criteria are satisfied:
 
-Each authored game should have its own folder.
+1. The package files exist in the repository under `games/<caseId>-<slug>/`.
+2. Package validation has passed (`validationStatus: passed` or `passed_with_minor_issues`).
+3. AI playthrough has passed (`playtestStatus: passed` or `passed_with_issues`).
+4. All blocker and major findings from validation and playtesting have been resolved.
+5. Case metadata (`caseMetadata.status`) explicitly states `ready_for_human_play`.
+6. Case `gm-readme.md` explicitly reflects readiness and identifies `game-package.json` as canonical truth.
+7. No unresolved blocker or major findings remain.
 
-Example:
+### Validation before AI playthrough
 
-```text
-games/quick-001-the-clock-in-the-locked-study/
-  setup.md
-  player-config.json
-  game-package.json
-  solution.md
-  case-board-seed.json
-  asset-manifest.json
-  validation-report.md
-  playtest-report.md
-  revision-notes.md
-  runtime-state.json
-  case-board-current.json
-  session-log.md
-  postgame-report.md
-  runtime-fidelity-report.md
-  runtime-fidelity-report.json
-  assets/
-```
+Do not run an AI playtest on a known-flawed package unless the explicit purpose is to reproduce a specific reported defect.
 
-These files are case-specific.
+If validation identifies material defects:
+1. Revise the working package.
+2. Re-validate.
+3. Only then execute AI playtesting.
 
-Problems found in one case should usually be recorded in that case's reports first, not immediately promoted to master project documents.
+### Reports must be consumed
 
-## 5. Archive
+Validation reports and AI playtest reports are working artifacts. The Revision Engine must consume reports and apply repairs before asking the user to proceed. Reports must not be left unaddressed in the repository.
 
-Historical or obsolete prompt files should be preserved under `archive/` when useful.
+### Local working draft rule
 
-Example:
+Story design, validation analysis, and revision planning may be managed in temporary working state during step execution. Code/file changes should be committed to GitHub when a coherent iteration or consolidated package is ready, preventing noisy partial-patch commit logs.
 
-```text
-archive/v1-playtest-prompts/
-```
-
-Archived files are reference material. They are not active instructions unless explicitly reactivated.
+---
 
 ## File ownership by AI role
 
-## Player Setup role
+### Player Setup role (`prompts/00-player-setup.md`)
+- **Reads**: `README.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `games/index.json`.
+- **Writes**: `games/<caseId>-<slug>/setup.md`, `games/<caseId>-<slug>/player-config.json`, updates `games/index.json`.
 
-### Reads
+### Story Author role (`prompts/02-story-author.md`)
+- **Reads**: `README.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `schemas/game-package.schema.json`, `games/<caseId>-<slug>/player-config.json`.
+- **Writes**: `games/<caseId>-<slug>/game-package.json`, `games/<caseId>-<slug>/case-board-seed.json`, `games/<caseId>-<slug>/asset-manifest.json`, `games/<caseId>-<slug>/author-notes.md`, updates `games/index.json`.
 
-```text
-README.md
-docs/gameplay-setup-and-scope-presets.md
-docs/design-principles.md
-docs/repository-workflow.md
-games/index.json
-```
+### Validator role (`prompts/03-validator.md`)
+- **Reads**: `README.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `schemas/game-package.schema.json`, `schemas/validation-report.schema.json`, `games/<caseId>-<slug>/game-package.json`.
+- **Writes**: `games/<caseId>-<slug>/validation-report.json`, `games/<caseId>-<slug>/validation-report.md`, updates `games/index.json`.
 
-### Writes
+### AI Playtester role (`prompts/04-ai-playtester.md`)
+- **Reads**: `README.md`, `docs/repository-workflow.md`, `docs/runtime-engine-v2.md`, `schemas/runtime-fidelity-report.schema.json`, `games/<caseId>-<slug>/game-package.json`.
+- **Writes**: `games/<caseId>-<slug>/playtest-report.md`, `games/<caseId>-<slug>/runtime-fidelity-report.json`, updates `games/index.json`.
 
-```text
-games/<caseId>-<slug>/setup.md
-games/<caseId>-<slug>/player-config.json
-games/index.json
-```
+### Revision Engine role (`prompts/05-revision-engine.md`)
+- **Reads**: `README.md`, `docs/repository-workflow.md`, `docs/design-principles.md`, `schemas/game-package.schema.json`, `games/<caseId>-<slug>/game-package.json`, validation and playtest reports.
+- **Writes**: `games/<caseId>-<slug>/game-package.json`, `games/<caseId>-<slug>/case-board-seed.json`, `games/<caseId>-<slug>/asset-manifest.json`, `games/<caseId>-<slug>/revision-notes.md`, updates `games/index.json`.
 
-### May recommend updates to
+### Game Master role (`prompts/06-game-master.md`)
+- **Reads**: `prompts/06-game-master.md`, `docs/runtime-engine-v2.md`, `games/<caseId>-<slug>/gm-readme.md`, `games/<caseId>-<slug>/game-package.json`, and active session files if resuming (`runtime-state.json`, `case-board-current.json`).
+- **Writes**: `games/<caseId>-<slug>/runtime-state.json`, `games/<caseId>-<slug>/case-board-current.json`, `games/<caseId>-<slug>/session-log.md`, `games/<caseId>-<slug>/postgame-report.md`, updates `games/index.json`.
 
-```text
-docs/gameplay-setup-and-scope-presets.md
-```
-
-### Should not directly update
-
-```text
-docs/playtest-findings.md
-schemas/
-prompts/
-```
-
-Unless explicitly instructed.
-
-## Template Designer role
-
-### Reads
+---
 
-```text
-README.md
-docs/project-architecture.md
-docs/design-principles.md
-docs/playtest-findings.md
-docs/gameplay-setup-and-scope-presets.md
-docs/repository-workflow.md
-```
+## Repository Engineer / Codex handoff standards
 
-### Writes or updates
-
-```text
-schemas/game-package-schema.md
-schemas/game-package.schema.json
-```
+The Repository Engineer (`prompts/01-repository-engineer.md`) is a development role responsible for local repository file edits, checks, diff reviews, and git commits.
 
-### May recommend updates to
+### Consolidated Handoff Standard
 
-```text
-prompts/01-template-designer.md
-docs/project-architecture.md
-```
+A task instruction to the Repository Engineer must specify:
+- Target files allowed to be created or modified.
+- Forbidden files or paths (e.g., do not touch case files during engine updates).
+- Whether story content generation is allowed (default: forbidden).
+- Verification commands or checks to run.
+- Required report format.
 
-### Should not write
+### Final Report Standard
 
-```text
-games/<caseId>-<slug>/game-package.json
-```
+After completing repository work, the Repository Engineer must report:
+- Changed files.
+- Commit hash and message.
+- Git working tree status (clean / dirty).
+- Remote branch status (ahead / up to date).
+- Confirmation that forbidden paths were not altered.
 
-The Template Designer defines structure; it does not author cases.
+---
 
-## Story Author role
+## Case-level report conventions
 
-### Reads
-
-```text
-README.md
-docs/design-principles.md
-docs/playtest-findings.md
-docs/gameplay-setup-and-scope-presets.md
-docs/repository-workflow.md
-schemas/game-package-schema.md
-schemas/game-package.schema.json
-prompts/02-story-author.md
-games/<caseId>-<slug>/player-config.json
-```
+Each case folder maintains its diagnostic and QA artifacts locally:
 
-### Writes
+- **`validation-report.json` / `validation-report.md`**: Pre-play formal consistency, solvability, and structural report created by the Validator.
+- **`playtest-report.md`**: Interactive playtest log, simulated player path, and stress test report created by the AI Playtester.
+- **`revision-notes.md`**: Changelog of repairs, defect finding IDs addressed, and re-validation notes created by the Revision Engine.
+- **`runtime-fidelity-report.json` / `runtime-fidelity-report.md`**: Post-session audit comparing runtime transcript behavior against canonical package data to detect GM drift.
+- **`postgame-report.md`**: Human playtest observations, player friction points, and recommendations created after active human play.
 
-```text
-games/<caseId>-<slug>/game-package.json
-games/<caseId>-<slug>/solution.md
-games/<caseId>-<slug>/case-board-seed.json
-games/<caseId>-<slug>/asset-manifest.json
-games/<caseId>-<slug>/author-notes.md
-games/index.json
-```
+---
 
-### Should not update
+## Managing project-level lessons (`docs/playtest-findings.md`)
 
-```text
-docs/playtest-findings.md
-prompts/
-schemas/
-```
-
-Unless explicitly instructed.
-
-The Story Author may identify possible project-level lessons, but they should be written first to `author-notes.md` or surfaced to the user for approval.
-
-## Validator role
-
-### Reads
-
-```text
-README.md
-docs/design-principles.md
-docs/playtest-findings.md
-docs/gameplay-setup-and-scope-presets.md
-docs/repository-workflow.md
-schemas/game-package-schema.md
-schemas/game-package.schema.json
-prompts/03-validator.md
-games/<caseId>-<slug>/game-package.json
-games/<caseId>-<slug>/solution.md
-games/<caseId>-<slug>/case-board-seed.json
-games/<caseId>-<slug>/asset-manifest.json
-```
-
-### Writes
-
-```text
-games/<caseId>-<slug>/validation-report.md
-games/index.json
-```
-
-### May recommend updates to
-
-```text
-docs/playtest-findings.md
-docs/design-principles.md
-schemas/game-package-schema.md
-prompts/03-validator.md
-```
-
-### Should not directly update
-
-```text
-games/<caseId>-<slug>/game-package.json
-```
-
-The Validator diagnoses. The Revision Engine repairs.
-
-## AI Playtester role
-
-### Reads
-
-```text
-README.md
-docs/design-principles.md
-docs/playtest-findings.md
-docs/repository-workflow.md
-prompts/04-ai-playtester.md
-games/<caseId>-<slug>/game-package.json
-games/<caseId>-<slug>/solution.md
-games/<caseId>-<slug>/validation-report.md
-```
-
-### Writes
-
-```text
-games/<caseId>-<slug>/playtest-report.md
-games/index.json
-```
-
-### May recommend updates to
-
-```text
-docs/playtest-findings.md
-docs/design-principles.md
-prompts/04-ai-playtester.md
-```
-
-### Should not directly update
-
-```text
-games/<caseId>-<slug>/game-package.json
-docs/playtest-findings.md
-```
+`docs/playtest-findings.md` is a master project-level lessons log. It records durable architectural findings derived from playtests that apply across all cases.
 
-unless explicitly instructed.
+### Promotion workflow
 
-## Revision Engine role
+A case-specific defect is promoted to `docs/playtest-findings.md` only when:
+1. The issue recurs across multiple cases.
+2. The issue reveals a gap in system design principles or runtime engine specifications.
+3. The issue requires a schema or prompt update.
+4. The user explicitly requests promoting the lesson.
 
-### Reads
+Do not record narrow case-specific bugs (e.g., "Clue 4 in case 1 was hard to find") in `docs/playtest-findings.md`.
 
-```text
-README.md
-docs/design-principles.md
-docs/playtest-findings.md
-docs/repository-workflow.md
-prompts/05-revision-engine.md
-games/<caseId>-<slug>/game-package.json
-games/<caseId>-<slug>/solution.md
-games/<caseId>-<slug>/validation-report.md
-games/<caseId>-<slug>/playtest-report.md
-```
-
-### Writes or updates
-
-```text
-games/<caseId>-<slug>/game-package.json
-games/<caseId>-<slug>/solution.md
-games/<caseId>-<slug>/case-board-seed.json
-games/<caseId>-<slug>/asset-manifest.json
-games/<caseId>-<slug>/revision-notes.md
-games/index.json
-```
-
-### May recommend updates to
-
-```text
-docs/playtest-findings.md
-docs/design-principles.md
-schemas/
-prompts/
-```
-
-### Should not mark a case as approved
-
-Approval requires validation and, ideally, AI playtesting after revision.
-
-## Game Master role
-
-### Reads
-
-```text
-README.md
-docs/design-principles.md
-docs/repository-workflow.md
-prompts/06-game-master.md
-games/index.json
-games/<caseId>-<slug>/game-package.json
-games/<caseId>-<slug>/solution.md
-games/<caseId>-<slug>/case-board-seed.json
-games/<caseId>-<slug>/asset-manifest.json
-games/<caseId>-<slug>/validation-report.md
-games/<caseId>-<slug>/playtest-report.md
-```
-
-### Writes during active gameplay
-
-Prefer writing active play state to files such as:
-
-```text
-games/<caseId>-<slug>/runtime-state.json
-games/<caseId>-<slug>/case-board-current.json
-games/<caseId>-<slug>/session-log.md
-games/<caseId>-<slug>/postgame-report.md
-games/index.json
-```
-
-### May update
-
-```text
-games/<caseId>-<slug>/asset-manifest.json
-```
-
-only when a new player-facing asset is generated or recorded.
-
-### Should not directly update
-
-```text
-docs/playtest-findings.md
-docs/design-principles.md
-schemas/
-prompts/
-```
-
-unless the user explicitly says to record a project-level finding.
-
-## Managing `docs/playtest-findings.md`
-
-`docs/playtest-findings.md` is a master project-level lessons document.
-
-It should contain durable findings that affect the design of the engine, not every defect from every case.
-
-### Appropriate entries
-
-Add to `docs/playtest-findings.md` when a finding is broadly applicable.
-
-Examples:
-
-- Final reveals must answer who, why, how, and proof.
-- Images must not contain hidden clues absent from text.
-- Player setup must occur before authorship.
-- Quick Mystery needs hard scope limits.
-- Evidence provenance must be validated.
-- Game Master must not invent the solution during play.
-- Each authored game needs a stable `caseId`, human-friendly title, slug, and folder.
-
-### Inappropriate entries
-
-Do not add narrow case-specific defects.
-
-Examples:
-
-- `clue-004 in quick-001 was too hard to find.`
-- `NPC Alice gave an inconsistent answer in scene-003.`
-- `The library map asset should be renamed.`
-- `The red glove clue in case-002 was confusing.`
-
-Those belong in the case's reports.
-
-## Promotion workflow
-
-A case-specific issue may be promoted to a project-level finding only when one of these is true:
-
-1. The issue appears in multiple cases.
-2. The issue reveals a missing schema requirement.
-3. The issue reveals a missing prompt instruction.
-4. The issue affects the Game Master architecture.
-5. The user explicitly marks it as a project-level lesson.
-6. The issue would likely recur unless the system is changed.
-
-### Promotion path
-
-Use this path:
-
-```text
-Case issue found
-  -> games/<caseId>-<slug>/playtest-report.md or validation-report.md
-  -> games/<caseId>-<slug>/revision-notes.md if repaired
-  -> user reviews whether it is broader
-  -> docs/playtest-findings.md if promoted
-  -> docs/design-principles.md, schemas/, or prompts/ if it changes rules
-```
-
-## Case-level reports
-
-Each case should maintain its own reports.
-
-### validation-report.md
-
-Created by the Validator.
-
-Purpose:
-
-- formal consistency review;
-- clue closure matrix;
-- timeline review;
-- motive review;
-- solvability review;
-- pass/fail decision.
-
-Validation reports may be stored as:
-
-```text
-games/<caseId>-<slug>/validation-report.md
-games/<caseId>-<slug>/validation-report-v*.md
-games/<caseId>-<slug>/validation-report.json
-```
-
-Structured validation reports should follow:
-
-```text
-docs/validator-diagnostics-v1.md
-schemas/validation-report.schema.json
-```
-
-Validation reports are diagnostic artifacts, not canonical truth. They should reference canonical IDs rather than duplicate canonical package content.
-
-### playtest-report.md
-
-Created by the AI Playtester.
-
-Purpose:
-
-- simulated player behavior;
-- discoverability problems;
-- dead ends;
-- premature solution risks;
-- Game Master stress points.
-
-### revision-notes.md
-
-Created by the Revision Engine.
-
-Purpose:
-
-- what changed;
-- why it changed;
-- which defects were fixed;
-- remaining risks;
-- files affected.
-
-### postgame-report.md
-
-Created after human gameplay.
-
-Purpose:
-
-- what happened during actual play;
-- what confused the player;
-- what worked;
-- where the Game Master struggled;
-- proposed case-level and project-level lessons.
-
-### runtime-fidelity-report.md / runtime-fidelity-report.json
-
-Created after an AI playtest, human gameplay session, or runtime audit.
-
-Purpose:
-
-- compare authored package contents against actual runtime behavior;
-- identify invented NPCs, locations, objects, evidence, documents, clues, images, or discovery paths;
-- identify missed authored assets or discovery rules;
-- identify runtime budget violations;
-- identify case-board, runtime-state, image, NPC interview, and final reveal drift;
-- feed Revision Engine repairs.
-
-Runtime fidelity reports may be stored as:
-
-```text
-games/<caseId>-<slug>/runtime-fidelity-report.md
-games/<caseId>-<slug>/runtime-fidelity-report.json
-games/<caseId>-<slug>/runtime-fidelity-report-v*.md
-games/<caseId>-<slug>/runtime-fidelity-report-v*.json
-```
-
-Structured reports should follow:
-
-```text
-docs/runtime-fidelity-report-v1.md
-schemas/runtime-fidelity-report.schema.json
-```
-
-Runtime Fidelity Reports are QA artifacts, not canonical truth. They should reference canonical IDs rather than duplicate canonical story content.
-
-They may contain spoilers. A player who wants to remain spoiler-free should not open them before play.
-
-## Asset management workflow
-
-Each case should maintain an asset manifest.
-
-```text
-games/<caseId>-<slug>/asset-manifest.json
-```
-
-The manifest should track:
-
-- asset ID;
-- title;
-- type;
-- associated clue, character, or location;
-- discovery condition;
-- text fallback;
-- retrieval label;
-- whether the player has seen it;
-- whether it contains hidden clues.
-
-The Game Master may add to this file during play if a new generated image or document is created.
-
-The Game Master must not use images as the only source of essential clues.
-
-## Runtime state workflow
-
-The canonical game package should remain stable during play.
-
-Use separate runtime files for changing state:
-
-```text
-games/<caseId>-<slug>/runtime-state.json
-games/<caseId>-<slug>/case-board-current.json
-games/<caseId>-<slug>/session-log.md
-games/<caseId>-<slug>/postgame-report.md
-games/<caseId>-<slug>/runtime-fidelity-report.md
-games/<caseId>-<slug>/runtime-fidelity-report.json
-```
-
-`runtime-state.json` tracks broader gameplay/session state.
-
-`case-board-current.json` tracks the evolving player-facing investigation board and should follow:
-
-```text
-docs/case-board-current-v1.md
-schemas/case-board-current.schema.json
-```
-
-Do not write discovered clues, visited locations, inspected objects, ruled-out leads, or current case-board state back into `game-package.json` unless deliberately producing a revised package.
-
-## Suggested case status workflow
-
-Use this lifecycle:
-
-```text
-draft
-  -> validation_failed
-  -> validated
-  -> playtest_failed
-  -> playtested
-  -> ready_for_human_play
-  -> in_play
-  -> completed
-  -> archived
-```
-
-Status should be stored in `game-package.json` under `caseMetadata.status` and mirrored in `games/index.json`.
+---
 
 ## Commit discipline
 
-When using the GitHub connector, prefer small commits with clear messages.
-
-Examples:
-
-```text
-Add Quick Mystery setup preset
-Add game package schema draft
-Add validator report for quick-001
-Revise quick-001 timeline and clue closure
-Add game library index
-Promote image handling finding to design principles
-```
-
-Avoid vague commit messages such as:
-
-```text
-updates
-changes
-fix stuff
-```
-
-## Safe update rules
-
-Before updating an existing file:
-
-1. Fetch the current file.
-2. Preserve existing useful content.
-3. Make the smallest coherent update.
-4. Commit with a descriptive message.
-5. Report what changed to the user.
-
-Do not overwrite large files casually.
-
-If a requested change is ambiguous, prefer adding a new report or notes file rather than rewriting a master document.
-
-## Current recommended next files
-
-The next missing project file is likely:
-
-```text
-docs/roadmap.md
-```
-
-The next missing game library file is:
-
-```text
-games/index.json
-```
-
-The next missing case structure is likely:
-
-```text
-games/quick-001-the-clock-in-the-locked-study/
-  setup.md
-  player-config.json
-  game-package.json
-  solution.md
-  case-board-seed.json
-  asset-manifest.json
-```
-
-## Summary
-
-Use `docs/` for durable project-level knowledge.
-
-Use `prompts/` for reusable AI role instructions.
-
-Use `schemas/` for shared data contracts.
-
-Use `games/index.json` for the human-friendly game library.
-
-Use `games/<caseId>-<slug>/` for one complete authored story, including setup, game package, validation, playtesting, revision, runtime state, assets, and postgame reports.
-
-Promote lessons upward only when they change the system, not merely because one case had a defect.
+When executing repository commits:
+- Use small, focused, coherent commits with descriptive messages.
+- Format commit messages clearly (e.g., `Consolidate AI_IF authoritative contracts`, `Update game library index for quick-005`).
+- Never use vague messages like `update`, `fix`, or `changes`.
+- Verify `git status` and diffs before committing.
+- Do not push commits unless explicitly instructed by the user or task workflow.

@@ -1,5 +1,13 @@
 # Prompt 01: Template Designer
 
+> [!NOTE]
+> Status: Deprecated / non-operational.
+>
+> Operational implementation is managed via `prompts/01-repository-engineer.md`. Package schemas are governed by `schemas/game-package.schema.json`.
+>
+> This file is retained temporarily for cleanup verification and must not be used as an active operational prompt.
+
+
 ## Purpose
 
 Use this prompt when you want the AI to define or revise the structural template for an interactive mystery game package.

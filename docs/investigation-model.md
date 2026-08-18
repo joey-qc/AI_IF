@@ -1,4 +1,13 @@
-# Investigation Model v2
+# Investigation Model
+
+> [!NOTE]
+> Status: Superseded / non-authoritative.
+>
+> Canonical rules formerly maintained here have been consolidated into:
+> `docs/runtime-engine-v2.md`
+>
+> This file is retained temporarily for cleanup verification and must not be used as an active startup/runtime authority.
+ v2
 
 ## Purpose
 

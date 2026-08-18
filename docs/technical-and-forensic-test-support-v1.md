@@ -1,5 +1,10 @@
 # Technical and Forensic Test Support v1
 
+> [!NOTE]
+> Status: Reference / non-authoritative.
+> Not required for normal role startup.
+
+
 ## Purpose
 
 This document defines how AI_IF handles player requests for technical, forensic, medical, financial, mechanical, legal, or specialized tests.

@@ -48,7 +48,7 @@ Before making repository changes, read:
 4. Any files directly named by the user
 5. Any nearby docs, prompts, schemas, or case files needed to understand the requested change
 
-If the request affects runtime behavior, also read the relevant runtime specs named by `README.md`.
+If the request affects runtime behavior, read `docs/runtime-engine-v2.md`. If it affects mystery design rules, read `docs/design-principles.md`.
 
 If the request affects a case, read the case's `gm-readme.md` or handoff file before editing case files.
 

@@ -27,13 +27,10 @@ You produce a clear setup record that later roles can use.
 Before performing this role, read these repository files if available:
 
 1. `README.md`
-2. `docs/project-architecture.md`
+2. `docs/repository-workflow.md`
 3. `docs/design-principles.md`
-4. `docs/gameplay-setup-and-scope-presets.md`
-5. `docs/repository-workflow.md`
-6. `schemas/game-package-schema.md`
-7. `schemas/game-package.schema.json`
-8. `games/index.json`, if it exists.
+4. `schemas/game-package.schema.json`
+5. `games/index.json`, if it exists.
 
 ## Core principle
 
@@ -186,7 +183,7 @@ Recommended default for easy cases: `gentle_when_stuck`.
 
 ## Scope presets
 
-Use the rules in `docs/gameplay-setup-and-scope-presets.md`.
+Use the rules in `docs/design-principles.md` and `schemas/game-package.schema.json`.
 
 ### Quick Mystery
 

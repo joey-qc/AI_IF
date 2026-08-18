@@ -1,5 +1,14 @@
 # NPC Interview Model v1
 
+> [!NOTE]
+> Status: Superseded / non-authoritative.
+>
+> Canonical rules formerly maintained here have been consolidated into:
+> `docs/runtime-engine-v2.md` and `schemas/game-package.schema.json`
+>
+> This file is retained temporarily for cleanup verification and must not be used as an active startup/runtime authority.
+
+
 ## Purpose
 
 NPC Interview Model v1 defines how AI_IF game packages describe what each NPC knows, withholds, lies about, evades, reveals, and can be contradicted on during gameplay.

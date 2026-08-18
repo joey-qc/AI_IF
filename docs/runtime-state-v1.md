@@ -1,5 +1,14 @@
 # Runtime State v1
 
+> [!NOTE]
+> Status: Superseded / non-authoritative.
+>
+> Canonical rules formerly maintained here have been consolidated into:
+> `docs/runtime-engine-v2.md` and `schemas/runtime-state.schema.json`
+>
+> This file is retained temporarily for cleanup verification and must not be used as an active startup/runtime authority.
+
+
 ## Purpose
 
 Runtime State v1 defines how the Game Master records changing player-session state during gameplay.

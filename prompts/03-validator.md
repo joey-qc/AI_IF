@@ -16,32 +16,17 @@ You must be skeptical. Do not assume the case works merely because it is written
 
 ## Required project context
 
-Before performing this role, start with the Validator startup path in `README.md`.
-
-Then read any draft game package, solution, case-board, asset, schema, author-note, or prior validation files provided by the user.
-
-Use `docs/validator-diagnostics-v1.md` and `schemas/validation-report.schema.json` for validation diagnostics.
-
-Use `docs/workflow-and-case-readiness-v1.md` to validate lifecycle status, readiness metadata, report consumption, and blessed package discipline.
-
-Use `docs/runtime-fidelity-engine-v1.md` to check whether the Game Master can run the case as an interpreter without inventing investigative content.
-
-Use `docs/canonical-assets-and-runtime-budgets-v1.md` to validate canonical inventory completeness and runtime budget consistency.
-
-Use `docs/runtime-fidelity-report-v1.md` to check whether the package is structured well enough to support future Runtime Fidelity Reports.
-
-Use `docs/image-fidelity-contract-v1.md` to validate canonical visual definitions, image reuse, evidence photos, cutaways, hidden-element rules, and image fallback safety.
-
-Use `docs/reverse-mystery-authoring-and-resolution-v1.md` to treat missing final-resolution material as a blocker-level validation failure.
-
-Use `docs/human-engagement-and-playability-v1.md` to validate engagement, motive concreteness, technical-test support, anti-steering risk, voice ambiguity handling, and opening consistency.
-
-Use `docs/player-agency-and-fair-evidence-v1.md` to validate stable observable evidence, neutral case-board language, discovery-vs-interpretation prerequisites, spatial-summary neutrality, and player inference protection.
+Before performing this role, read:
+1. `README.md`
+2. `prompts/03-validator.md`
+3. `docs/design-principles.md` (authoritative for mystery design rules, reverse authoring, solvability, motive mechanisms, clue closure, and fair evidence)
+4. `schemas/game-package.schema.json` (sole structural authority for game package validation)
+5. `schemas/validation-report.schema.json` (sole structural authority for validation report diagnostics)
+6. `docs/repository-workflow.md` (authoritative for case readiness lifecycle and blessed package discipline)
 
 ## Inputs
 
 The user should provide one or more of:
-
 - `game-package.json`;
 - `solution.md`;
 - `case-board-seed.json`;
@@ -362,13 +347,48 @@ The seed and current board must not expose:
 - red herring explanations;
 - final proof.
 
+### 12. Game Master readiness
+
+Check whether the Game Master has enough information to answer likely player questions without inventing core facts.
+
+The package should support:
+
+- interrogation answers;
+- evidence inspection;
+- scene revisits;
+- case board summaries;
+- final reveal;
+- post-game explanation.
+
+Also check runtime fidelity:
+
+- unauthored background characters cannot become investigative sources;
+- unsupported searches can receive natural negative responses;
+- no likely player path requires inventing witnesses, evidence, documents, locations, clue paths, timeline events, or access routes;
+- the package gives the GM enough authored leads to transition to deduction mode rather than invent more content.
+
+### 13. Case board safety
+
+Check whether `case-board-seed.json` and any `case-board-current.json` conventions are player-safe.
+
+The seed and current board must not expose:
+
+- hidden culprit;
+- hidden motive;
+- hidden method;
+- undiscovered clue meanings;
+- undiscovered evidence provenance;
+- secret timeline events;
+- red herring explanations;
+- final proof.
+
 If a current board is present, check it against `schemas/case-board-current.schema.json` when schema validation is available.
 
 The current board should distinguish discovered evidence from player theory, pending leads from closed leads, and observed objects from interpreted clues.
 
 ### 14. Discovery rule integrity
 
-Check typed discovery rules against `docs/discovery-rules-v1.md`.
+Check typed discovery rules against `docs/design-principles.md` and `schemas/game-package.schema.json`.
 
 The Validator should verify:
 
@@ -386,7 +406,7 @@ The Validator should verify:
 
 ### 14a. Player agency and fair evidence
 
-Check player agency and fair evidence against `docs/player-agency-and-fair-evidence-v1.md`.
+Check player agency and fair evidence against `docs/design-principles.md` and `docs/runtime-engine-v2.md`.
 
 The Validator should verify:
 
@@ -399,7 +419,7 @@ The Validator should verify:
 
 ### 15. NPC interview integrity
 
-Check NPC interview topics against `docs/npc-interview-model-v1.md`.
+Check NPC interview topics against `docs/design-principles.md` and `schemas/game-package.schema.json`.
 
 The Validator should verify:
 
@@ -415,7 +435,7 @@ The Validator should verify:
 
 ### 16. Validation diagnostics
 
-Produce diagnostics according to `docs/validator-diagnostics-v1.md`.
+Produce diagnostics according to `schemas/validation-report.schema.json`.
 
 Check and report:
 
@@ -462,7 +482,7 @@ Verify:
 
 ### 18. Workflow and readiness integrity
 
-Check workflow and readiness against `docs/workflow-and-case-readiness-v1.md`.
+Check workflow and readiness against `docs/repository-workflow.md`.
 
 The Validator should verify:
 
@@ -474,7 +494,7 @@ The Validator should verify:
 
 ### 19. Final accusation threshold integrity
 
-Check accusation and reveal discipline against `docs/reverse-mystery-authoring-and-resolution-v1.md`, `docs/discovery-rules-v1.md`, and `docs/runtime-fidelity-engine-v1.md`.
+Check accusation and reveal discipline against `docs/design-principles.md` and `docs/runtime-engine-v2.md`.
 
 The Validator should verify:
 

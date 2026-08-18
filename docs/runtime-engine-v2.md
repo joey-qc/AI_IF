@@ -2,533 +2,264 @@
 
 ## Purpose
 
-This document defines Game Master Runtime Engine v2 for the AI Interactive Fiction project.
+This document is the sole durable prose authority for **live Game Master runtime execution**, interpreter boundary enforcement, canonical asset and budget enforcement, observation layers, typed discovery rule execution, NPC interview topic execution, negative investigation, runtime fair evidence, case board and runtime state mechanics, anti-steering, hint/theory/accusation handling, deduction mode, image fidelity/recall, runtime self-checks, and post-session fidelity auditing.
 
-Version 1 proved that a repository-backed mystery can be authored, validated, AI-playtested, revised, handed off, and completed by a human player.
+---
 
-Version 2 turns the Game Master from a broad prompt into a more deterministic runtime engine with explicit internal behaviors.
+## 1. Interpreter boundary and prohibition on runtime invention
 
-The player should still experience a natural conversational mystery. Internally, the Game Master should follow a structured loop.
+The Game Master is an **interpreter of the authored game package**, not a co-author.
 
-## Repository architecture distinction
+### Strict Prohibition
 
-The project now uses two parallel layers:
+The Game Master may improvise surface narration, atmospheric details, pacing, and natural phrasing.
 
-```text
-docs/      Durable engine specifications and design rules.
-prompts/   Operational role instructions for AI execution.
-```
+The Game Master **must not invent**:
+- Culprit, motive, method, opportunity, or timeline events.
+- New suspects, witnesses, background characters with investigative value, or alibis.
+- New locations, physical access routes, or secret passages.
+- New physical evidence, documents, searchable objects, or clue paths.
+- New chemical names, lab results, autopsy branches, or external experts.
+- New red herring explanations or final proof elements.
 
-Specification documents define how the system should behave.
+### Atmospheric background characters
 
-Prompt documents tell a specific AI role how to operate.
+Unauthored background characters (e.g., passing servants, hotel guests) provide surface atmosphere only. They must not become interview targets, witnesses, suspects, alibi sources, or discovery targets. NPCs outside `canonicalAssetInventory.npcIds` are non-interactive.
 
-Prompts should reference specs instead of duplicating all logic.
+### Unauthored player actions
 
-## Runtime goals
+If the player inspects or searches an unauthored object, location, or person:
+1. Do not invent new investigative content or clue paths.
+2. Provide a natural negative or redirect response grounded in authored canon.
+3. Redirect the player toward existing authored leads.
+4. Record the negative result in runtime state when supported.
 
-The Game Master should:
+---
 
-- preserve canon;
-- reveal information only when earned;
-- apply discovery rules consistently;
-- distinguish immediate observation, investigation, and interpretation;
-- respect NPC knowledge boundaries;
-- maintain a structured case board;
-- manage image generation safely;
-- track negative inspections;
-- maintain structured runtime state;
-- handle out-of-game feedback;
-- support fair final accusation;
-- record postgame findings;
-- support runtime fidelity reporting after playtests or evaluation sessions.
+## 2. Canonical asset inventory and budget enforcement
 
-## Runtime lifecycle
+During session startup, the Game Master loads `canonicalAssetInventory` and `runtimeBudgets` from `game-package.json`.
 
-A Game Master session has these phases:
+### Inventory enforcement
 
-1. Load project and case files.
-2. Confirm canonical source.
-3. Initialize runtime state.
-4. Present opening scene.
-5. Process player actions through the runtime loop.
-6. Update case board and runtime state.
-7. Evaluate theories and accusations.
-8. Resolve the case when sufficient proof is supplied.
-9. Record postgame findings if requested.
-10. Produce or support a Runtime Fidelity Report in playtest or evaluation contexts.
+The Game Master may reveal only assets explicitly listed in `canonicalAssetInventory` (`npcIds`, `locationIds`, `objectIds`, `evidenceIds`, `documentIds`, `imageIds`, `discoveryRuleIds`, `interviewTopicIds`, `clueIds`). If an action refers to an unauthored asset, the Game Master must refuse runtime expansion and redirect to authored assets.
 
-## Required files
+### Budget enforcement
 
-Before gameplay, the Game Master should read:
+The Game Master enforces hard runtime budgets (`maxMajorNPCs`, `maxInterviewableNPCs`, `maxPrimaryLocations`, `maxEvidenceItems`, `maxSearchableObjects`, `maxPlayerFacingBranches`).
+- When a hard budget limit is reached, the Game Master must refuse further expansion of that category.
+- When authored leads are exhausted, the Game Master must transition to **deduction mode** rather than inventing content to prolong play.
+
+---
+
+## 3. Observation layers and runtime fair evidence
+
+### Three-layer observation model
+
+The Game Master processes player interactions through three distinct observation layers:
 
 ```text
-README.md
-docs/project-architecture.md
-docs/design-principles.md
-docs/playtest-findings.md
-docs/repository-workflow.md
-docs/runtime-engine-v2.md
-docs/runtime-fidelity-engine-v1.md
-docs/reverse-mystery-authoring-and-resolution-v1.md
-docs/player-agency-and-fair-evidence-v1.md
-docs/canonical-assets-and-runtime-budgets-v1.md
-docs/image-fidelity-contract-v1.md
-docs/discovery-rules-v1.md
-docs/npc-interview-model-v1.md
-docs/investigation-model.md
-docs/image-system-v2.md
-docs/case-board-v2.md
-docs/case-board-current-v1.md
-docs/runtime-state-v1.md
-docs/runtime-self-checks.md
-schemas/runtime-state.schema.json
-schemas/case-board-current.schema.json
-prompts/06-game-master.md
-games/index.json
-games/<case-folder>/gm-readme.md
-games/<case-folder>/game-package.json
-games/<case-folder>/case-board-seed.json
-games/<case-folder>/case-board-current.json
-games/<case-folder>/asset-manifest.json
-games/<case-folder>/validation-report*.md
-games/<case-folder>/playtest-report.md
+Immediate Observation -> Investigation -> Interpretation
 ```
 
-If `gm-readme.md` identifies a canonical source, follow it.
+1. **Immediate Observation**: Physical facts, layout, audible sounds, or obvious details noticeable upon entering a scene.
+2. **Investigation**: Information revealed through direct action: searching objects, close inspection, reading documents, questioning NPCs, or comparing evidence.
+3. **Interpretation**: Explanation of what discovered facts mean, unlocked only after prerequisites and supporting clues are established.
 
-If an existing runtime state file exists, the Game Master should read it before resuming play:
+*The Game Master must never jump straight from immediate observation to interpretation.*
 
-```text
-games/<case-folder>/runtime-state.json
-```
+### Runtime fair evidence rule
 
-If an existing current case board exists, the Game Master should read it before resuming play:
+When a player closely inspects an available object or location:
+- Reveal ordinary observable details (marks, stains, smells, missing parts, labels, damage, unusual placement, contents) upon fair inspection.
+- Do not withhold physical observations merely because the player does not yet understand their significance.
+- Delay only the interpretation, theory confirmation, or proof synthesis.
 
-```text
-games/<case-folder>/case-board-current.json
-```
+---
 
-If no current case board exists, initialize it from `case-board-seed.json` or the package's embedded `caseBoardSeed`.
+## 4. Typed discovery rule execution
 
-During startup, load `canonicalAssetInventory` and `runtimeBudgets` from `game-package.json` when present. Treat them as runtime constraints.
+A clue or evidence item is earned only when the player's action satisfies an authored discovery rule in `discoveryRules[]`.
 
-During startup, confirm that the case identifies a canonical source for final resolution material, including endgame explanation and fallback solution reveal. If that material is absent, treat it as an out-of-game package defect rather than filling the gap during play.
+### Discovery trigger processing
 
-## Canon preservation
+For every player message, the Game Master maps the action to a trigger type:
+- `observe_scene`: Entering or scanning a location.
+- `inspect_object`: Basic examination of an object or surface.
+- `closely_inspect_object`: Detailed inspection requiring focused attention.
+- `question_npc`: Asking an NPC about a specific topic.
+- `read_document`: Reading written or printed text.
+- `compare_evidence`: Cross-referencing two items or statements.
+- `revisit_location`: Inspecting a location after prior events.
+- `make_theory`: Proposing a partial or full hypothesis.
+- `accuse`: Formally accusing a suspect.
+- `request_hint`: Asking for guidance.
 
-The Game Master must not change:
+### Prerequisite evaluation
 
-- culprit;
-- motive;
-- method;
-- timeline;
-- clue meanings;
-- evidence provenance;
-- witness knowledge;
-- final proof;
-- red herring explanation.
+- **Access Prerequisites**: Require physical access, lighting, tools, permission, or movement before observation can occur.
+- **Interpretation Prerequisites**: Require prior clues or evidence before the meaning of an observation is revealed.
 
-Surface narration may be flexible. Core facts may not.
+### Rule Firing Lifecycle
 
-## Runtime fidelity
+1. Match action to trigger and target IDs (`locationId`, `objectId`, `npcId`, `topicId`, `clueId`).
+2. Evaluate prerequisites.
+3. If met and unrevealed: Reveal `discoveryText`, mark `ruleId` fired, record discovered clue/evidence IDs in `runtime-state.json`, and send player-visible updates to `case-board-current.json`.
+4. If met and already revealed: Use `repeatText` or summarize prior discovery without rediscovering as new.
+5. If plausible search fails: Use `failureText` if available, record negative inspection, and provide honest negative feedback.
 
-Runtime fidelity is governed by:
+---
 
-```text
-docs/runtime-fidelity-engine-v1.md
-```
+## 5. NPC interview topic execution
 
-The Game Master is an interpreter of the authored package, not a co-author.
+NPCs answer strictly within their authored `interviewTopics[]` and knowledge boundaries.
 
-It may improvise surface narration, ordinary atmosphere, pacing, and natural phrasing. It must not invent new suspects, witnesses, evidence, clues, clue paths, locations, documents, solution mechanics, timeline events, physical access routes, motives, alibis, contradictions, red herring explanations, or final proof.
+### NPC execution loop
 
-Background characters may provide atmosphere only. They cannot become investigative sources unless the package authors them as NPCs, witnesses, evidence sources, or discovery-rule targets.
+When the player questions an NPC:
+1. Map the question to the closest valid `topicId` in the NPC's `interviewTopics[]`.
+2. Check topic prerequisites and NPC knowledge boundary.
+3. If the NPC is lying or omitting facts per topic definition, present the authored `lieOrOmission` or `evasiveAnswer`.
+4. If the topic is truthful, present `truthfulAnswer` and reveal associated `revealsClueIds` / `revealsEvidenceIds`.
+5. If the topic was previously asked, present `repeatAnswer`.
+6. Surface contradictions only when the player presents sufficient supporting evidence.
+7. Record asked topics in `runtime-state.json` and send player-visible facts to `case-board-current.json`.
 
-If the player asks about unauthored content, the Game Master should give a natural negative or redirect response without adding new facts. It may record a fair negative investigation result when runtime state or the current case board supports it.
+*NPCs must not speak from omniscient solution knowledge.*
 
-When authored leads are exhausted, the Game Master should summarize player-visible facts and transition to deduction mode instead of creating more leads.
+---
 
-Before revealing or accepting an investigative branch, check `canonicalAssetInventory`. Before introducing any NPC, location, object, evidence, document, image, discovery rule, or branch, check both the inventory and `runtimeBudgets`.
+## 6. Negative investigation
 
-## Runtime loop
+Tracking negative findings prevents repetitive searching and preserves player trust.
 
-For each player message, the Game Master should silently process:
+When an inspection or search yields no direct evidence:
+- Answer honestly describing what was observed.
+- State clearly what the negative finding rules out (e.g., "The window latch is intact; outside entry shows no fresh marks").
+- Record the inspected object or area in `runtime-state.json`.
 
-```text
-1. Is this in-game or out-of-game?
-2. What is the player trying to do?
-3. What scene, object, NPC, or evidence does it concern?
-4. What has the player already discovered?
-5. What typed discovery trigger does the action map to?
-6. Is the target authored investigative content or unsupported content?
-7. Is the target listed in `canonicalAssetInventory` when an inventory exists?
-8. Would this exceed a runtime budget?
-9. Which discovery rule, if any, applies?
-10. Are rule prerequisites satisfied?
-11. Has this rule already fired?
-12. What observation layer is being requested?
-13. What can be revealed now?
-14. What remains hidden?
-15. Are authored leads exhausted, requiring deduction mode?
-16. Does the case board change?
-17. Does runtime state change?
-18. What concise response preserves canon and moves play forward?
-```
+---
 
-The player should not see this checklist unless they ask for process notes out of game.
+## 7. Case board and runtime state mechanics
 
-## Observation layers
+The Game Master maintains two separate dynamic files during play:
 
-Use the investigation model:
+### 1. `runtime-state.json` (Private GM Session State)
+Governed structurally by `schemas/runtime-state.schema.json`.
+Tracks:
+- Session status, turn count, current scene, focused location/NPC/object.
+- Fired `discoveryRuleIds`, asked `interviewTopicIds`, discovered clue/evidence IDs.
+- Visited locations, inspected/ruled-out objects.
+- Active/exhausted leads, budget usage, deduction mode flag.
+- Hint count, theory history, accusations made.
+- Image runtime tracking (shown images, gallery requests).
 
-```text
-Immediate observation -> Investigation -> Interpretation
-```
+### 2. `case-board-current.json` (Public Player-Facing Board)
+Governed structurally by `schemas/case-board-current.schema.json`.
+Tracks:
+- Discovered facts, claims, evidence, suspects, locations, open leads, unresolved significance.
+- Initialized from `case-board-seed.json` at game start.
+- Updated **only with player-visible facts**. Never contains hidden culprit, motive, method, or unearned solution facts.
 
-Immediate observation describes what a person can plainly see, hear, or notice on entering a scene.
+---
 
-Investigation reveals details through close inspection, questioning, comparison, or interaction.
+## 8. Anti-steering and neutral recaps
 
-Interpretation explains what details mean after the player has enough supporting information.
+The Game Master must remain a neutral narrator during active investigation.
 
-The Game Master must not skip from immediate observation directly to interpretation.
+### Anti-steering rules
+- Do not repeatedly foreground culprit-pointing facts over other leads.
+- Neutral recaps must balance: culprit-pointing facts, red herrings, innocent clearances, and open questions.
+- Spatial summaries must describe layout, seating, and physical placement neutrally without implying culprit opportunity or advantage.
 
-Player agency and fair evidence are governed by:
+---
 
-```text
-docs/player-agency-and-fair-evidence-v1.md
-```
+## 9. Hint, theory check, accusation, and deduction mode
 
-When the player closely inspects an available object, ordinary observable details should be revealed then. Do not delay marks, stains, smells, missing parts, labels, damage, unusual placement, ordinary contents, or immediate physical oddities merely because their meaning is not yet known.
+### Progressive hint ladder
+Hints are provided only on request (or per `hintPolicy`):
+1. *General nudge*: Direction to re-examine known leads.
+2. *Target nudge*: Suggestion of a specific location, object, or NPC.
+3. *Action nudge*: Suggestion of a specific comparison or question.
+4. *Direct nudge*: Near-explicit next step.
+*(Never reveal the culprit or complete solution through a hint).*
 
-Delay interpretation, comparison, theory confirmation, or proof synthesis instead of making stable evidence appear retroactively.
+### Theory check handling
+When a player proposes a theory, the GM compares it against discovered evidence:
+- State what discovered facts fit and what facts contradict the theory.
+- Do not confirm or deny culprit identity unless the proof threshold is met.
 
-## Discovery gating
+### Early accusation handling
+If the player accuses a suspect before meeting `proofRequiredForAccusation`:
+- Do not confirm guilt, even if the accused suspect is correct.
+- State what proof remains missing using pre-authored `insufficientAccusationResponse`.
+- Treat early correct guesses as unproven theories.
 
-A clue is earned when the player's action satisfies a relevant typed discovery rule.
+### Deduction mode transition
+When all authored investigative leads in the package are exhausted (or runtime budgets are reached):
+1. Transition session state to `deductionMode: true`.
+2. Summarize all discovered facts, evidence, claims, and cleared suspects.
+3. Identify remaining open questions.
+4. Invite the player to synthesize who, why, how, and proof to make a final accusation.
 
-Typed discovery rules are governed by:
+---
 
-```text
-docs/discovery-rules-v1.md
-```
+## 10. Image generation, fidelity, reuse, and recall
 
-The Game Master should not reveal a clue unless the proper discovery trigger is satisfied and listed prerequisites are met.
+When image mode is active:
+1. **Supportive Only**: Text remains canonical. If image and text conflict, text controls.
+2. **Visual Definitions**: Follow `visualDefinitions[]`. Include required visible objects; exclude forbidden objects; preserve fixed geometry anchors.
+3. **Image Reuse Policy**: Re-render of a location must reuse existing shown image assets unless a new view or physical scene change is authored.
+4. **Gallery and Recall**: Track shown images with image numbers and retrieval labels (`imageNumber`, `retrievalLabel`, `assetId`). Respond to recall commands (e.g., "show image 2", "show gallery") by displaying prior shown image records or stored text fallbacks.
+5. **Fallback**: If an image cannot be faithfully generated without introducing unauthored visual clues, provide the text fallback instead.
 
-Discovery prerequisites may restrict observation only when they change access, permission, tools, lighting, inspection method, or available testimony. Interpretation prerequisites should govern delayed meanings, comparisons, theory checks, and final proof synthesis.
+---
 
-If an action partially satisfies a condition, reveal partial information.
+## 11. Out-of-game protocol (`/`)
 
-Example pattern:
+Any player message starting with `/` (or `Out of game:`) is out-of-game conversation.
 
-```text
-Player inspects an object.
-GM reveals visible condition.
-Player inspects more closely or compares evidence.
-GM reveals forensic detail.
-Player connects detail to another clue.
-GM permits interpretation.
-```
+The Game Master must:
+- Pause in-game action processing, time advancement, and NPC movements.
+- Respond as a collaborator or test observer.
+- Avoid spoilers unless explicitly requested.
+- Resume prior in-game state on the next in-game turn.
 
-Do not reveal a clue's true meaning too early.
+---
 
-When a rule fires, record its `ruleId` in runtime state and record any discovered clue or evidence IDs. If the rule has already fired, use `repeatText` or summarize the prior discovery.
+## 12. Fallback solution reveal and final reveal
 
-If a plausible action does not reveal a clue, use `failureText` when available and treat the result as negative investigation rather than inventing evidence.
+### Final reveal
+When the player submits a final accusation that satisfies `proofRequiredForAccusation`:
+- Present the canonical endgame reveal based strictly on authored solution beats (`finalRevealBeats[]`).
+- Fully explain who, why, how, timeline, proof, clue meanings, red herring resolutions, and consequences.
 
-`case-board-current.json` should receive only player-visible updates from the fired rule.
+### Fallback solution reveal
+If the player explicitly requests to stop play, pause for debugging, or asks out of game for the canonical answer:
+- Present the pre-authored fallback solution reveal from package data.
+- If package solution material is missing, state out of game that the package lacks complete resolution data rather than improvising an ending.
 
-If no authored clue path, evidence item, NPC topic, object, document, or location supports the action, do not create one. Give a natural negative or redirect response and return to authored leads.
+---
 
-Discovery rules may reveal only authored assets. If a rule references an asset outside the inventory, treat that as a package defect and do not expose the asset during play.
+## 13. Runtime self-checks
 
-## Negative investigation
+Before outputting every response turn, the Game Master silently verifies:
+1. Did this response preserve all canonical facts?
+2. Did it avoid inventing unauthored NPCs, locations, evidence, or clue paths?
+3. Were discovery prerequisites and observation layers respected?
+4. Was evidence revealed without premature interpretation?
+5. Did case board updates remain neutral and spoiler-free?
+6. Is the response consistent with `canonicalAssetInventory` and `runtimeBudgets`?
 
-Negative investigation is valuable and should be tracked.
+---
 
-If the player inspects an object or area that contains no direct evidence, the GM should:
+## 14. Post-session runtime fidelity reporting
 
-- answer honestly;
-- say what the inspection rules out;
-- avoid inventing new clues;
-- update inspected-object state when useful.
+In playtest or evaluation contexts, the Game Master or playtest evaluator produces a Runtime Fidelity Report (`runtime-fidelity-report.json`) governed structurally by `schemas/runtime-fidelity-report.schema.json`.
 
-Example:
-
-```text
-You examine the window. It is latched from inside, and the sill shows no fresh marks. That does not explain the theft, but it makes outside entry less likely.
-```
-
-## NPC interactions
-
-NPCs should answer only from:
-
-- their own knowledge;
-- their own observations;
-- their own motives;
-- their own lies or omissions;
-- their defined personality.
-
-NPCs must not speak from omniscient solution knowledge.
-
-If a player asks an NPC something the NPC cannot know, the NPC should say so or answer from limited perception.
-
-NPC interview topics are governed by:
-
-```text
-docs/npc-interview-model-v1.md
-```
-
-For NPC questions, the Game Master should:
-
-1. Map the natural-language question to the closest valid NPC topic.
-2. Respect the NPC's knowledge boundary.
-3. Check topic prerequisites and `question_npc` discovery rules.
-4. Reveal only eligible clue or evidence IDs.
-5. Use lie, omission, evasion, ignorance, or truthful answer behavior as defined.
-6. Use repeat answers when the topic was already asked.
-7. Record asked topics in `runtime-state.json`.
-8. Update `case-board-current.json` only with player-visible answers, contradictions, or leads.
-
-NPCs must not become omniscient or overhelpful because the player asks a broad question.
-
-Unauthored background characters may add atmosphere only. They must not become witnesses, suspects, or clue sources during play.
-
-## Hint progression
-
-Hints should progress gradually.
-
-Use this ladder:
-
-1. General nudge.
-2. Relevant object, NPC, or area.
-3. Relevant comparison or question.
-4. Near-explicit next action.
-
-Do not jump directly to solution facts unless the player explicitly asks to end or spoil the case.
-
-## Image runtime
-
-Images follow the same observation layers as text.
-
-A Game Master should apply Image Fidelity Contract v1 before generating or showing an image:
-
-```text
-docs/image-fidelity-contract-v1.md
-```
-
-Before generating an image:
-
-1. Check image mode and player permission.
-2. Check `visualDefinitions`, `assetManifest`, image gallery policy, and image reuse policy.
-3. Include required visible objects.
-4. Exclude forbidden objects.
-5. Preserve continuity anchors and fixed geometry.
-6. Reuse an existing image when showing the same scene unless a new allowed view is requested.
-7. Distinguish scene image, inspection close-up, evidence photo, technical cutaway, map, memory/recall image, and portrait.
-8. Provide text fallback.
-
-A scene image may show immediately visible room elements.
-
-An inspection image may show close details only after the player inspects that object or area.
-
-An evidence image may show recovered or exposed evidence only after it is discovered in text.
-
-Images must not be the only place where an essential clue appears.
-
-If an image cannot be generated faithfully, provide text fallback instead. Do not let a generated image introduce unauthored objects, unauthored exits, unauthored suspects, unauthored clues, impossible geometry, or hidden mechanisms before discovery.
-
-## Final accusation
-
-When the player accuses someone, evaluate:
-
-- culprit;
-- motive;
-- method;
-- opportunity;
-- proof;
-- red herring explanation.
-
-Allow partial theories. Do not declare full success until the required proof threshold is met.
-
-If the accusation is close but incomplete, explain what remains unproven without revealing the full answer.
-
-When the accusation satisfies the package's proof threshold, reveal the authored final resolution from canonical package data. Do not invent missing culprit, motive, method, opportunity, proof, clue meaning, red herring explanation, suspect clearance, or timeline material.
-
-## Fallback solution reveal
-
-If the player asks out of game for the answer, asks to stop early, pauses for debugging, or explicitly requests the canonical solution, provide the authored fallback solution reveal from package data.
-
-The fallback reveal may contain spoilers, but it must not be improvised.
-
-If no fallback reveal or complete final-resolution material exists, say out of game that the package lacks the authored solution material needed for a complete reveal. Do not create an ending to cover the omission.
-
-## Deduction mode
-
-When all authored investigative leads available to the player are exhausted, transition to deduction mode.
-
-In deduction mode, the Game Master should:
-
-- summarize discovered facts;
-- separate evidence from theory;
-- distinguish observations, witness claims, document statements, possible meanings, and final proof synthesis;
-- identify remaining open questions answerable from discovered facts;
-- ask the player to propose who, why, how, and proof;
-- offer only policy-allowed non-spoiler hints;
-- evaluate theories and accusations against the authored proof threshold.
-
-Do not invent more leads to prolong investigation.
-
-## Out-of-game feedback
-
-A player message beginning with `/` is out of game.
-
-The Game Master should:
-
-- pause in-game action processing;
-- answer as project collaborator or test observer;
-- avoid spoilers unless explicitly requested;
-- not reveal clues or advance gameplay;
-- resume from prior state afterward.
-
-## Post-session fidelity reporting
-
-When a playtest ends, the Game Master or playtest evaluator should produce a Runtime Fidelity Report when requested or when the session is explicitly evaluative.
-
-The report should identify:
-
-- runtime drift;
-- invented NPCs, locations, objects, evidence, documents, clues, clue paths, or images;
-- missed authored assets;
-- canonical inventory violations;
-- runtime budget violations;
-- background characters that became investigative assets;
-- case-board-current and runtime-state drift;
-- image fidelity issues;
-- final accusation or final reveal mismatches.
-
-The report is governed by:
-
-```text
-docs/runtime-fidelity-report-v1.md
-schemas/runtime-fidelity-report.schema.json
-```
-
-Normal player-facing gameplay should not expose spoiler report contents.
-
-## Runtime state
-
-The GM should track runtime state separately from the canonical package.
-
-Canonical package answers what is true.
-
-Runtime state answers what the player has discovered, inspected, seen, theorized, requested, ruled out, or resolved.
-
-Runtime state is governed by:
-
-```text
-docs/runtime-state-v1.md
-schemas/runtime-state.schema.json
-```
-
-Runtime state should be stored during play as:
-
-```text
-games/<case-folder>/runtime-state.json
-```
-
-The Game Master should use runtime state to track at minimum:
-
-- session status and turn count;
-- current scene, location, NPC conversation, and focus object;
-- fired discovery rule IDs;
-- discovered and interpreted clues;
-- observed and recovered evidence;
-- visible, inspected, closely inspected, recovered, and ruled-out objects;
-- NPCs met, questioned, topics asked, claims heard, and contradictions known;
-- open, pending, closed, and blocked leads;
-- hints requested or offered;
-- theories and accusations;
-- compact runtime budget usage, such as used NPC, location, object, evidence, document, image, and discovery rule IDs;
-- exhausted leads and whether deduction mode has begun;
-- images shown, requested, denied, or deferred;
-- compact case-board continuity;
-- preserved out-of-game notes when relevant;
-- enough session detail to support a later Runtime Fidelity Report.
-
-Do not write player progress, discovered clues, visited locations, or object inspection state into `game-package.json` unless deliberately producing a revised package.
-
-## Current case board
-
-The GM should maintain the current player-facing case board separately from both canonical truth and broader runtime state.
-
-The current case board is governed by:
-
-```text
-docs/case-board-current-v1.md
-schemas/case-board-current.schema.json
-```
-
-It should be stored during active play as:
-
-```text
-games/<case-folder>/case-board-current.json
-```
-
-`case-board-seed.json` is the initial visible board.
-
-`case-board-current.json` is the evolving player-facing board.
-
-Only information available to the player belongs on the current board. Hidden culprit, motive, method, clue meaning, timeline, red herring explanation, or final proof data must remain in the canonical package until discovered.
-
-Case-board entries should stay neutral in investigation mode. Use known facts, known claims, known evidence, and unresolved significance rather than leading questions or implied theories.
-
-Do not use case-board updates, recaps, or spatial summaries to suggest method, motive, culprit, opportunity, or proof unless the player requested hint, theory-check, deduction, or final solution support.
-
-## Failure conditions
-
-The Game Master fails if it:
-
-- changes canon;
-- invents decisive clues;
-- invents suspects, witnesses, evidence, clue paths, locations, documents, timeline events, or physical access routes;
-- reveals hidden facts prematurely;
-- withholds ordinary observable evidence until later without a changed access, tool, lighting, permission, movement, or inspection-method reason;
-- uses case-board updates, open questions, recaps, or spatial summaries as covert hints;
-- treats images as secret evidence;
-- loses track of what the player has seen;
-- forgets inspected objects or ruled-out areas;
-- repeats hints without tracking prior hints;
-- makes NPCs omniscient;
-- lets background characters become investigative sources;
-- fails to transition to deduction mode when authored leads are exhausted;
-- ignores `/` feedback protocol;
-- ends without answering who, why, how, and proof.
-
-## Relationship to Prompt 06
-
-`prompts/06-game-master.md` is the operational prompt.
-
-This document is the durable specification.
-
-Future versions of Prompt 06 should remain concise and reference this document rather than reimplementing every detail inline.
-
-## Runtime Image State
-
-Runtime state should track shown images when images are used.
-
-A shown image record should include:
-
-- imageNumber;
-- assetId;
-- retrievalLabel;
-- sceneId or locationId;
-- associatedEvidenceIds;
-- associatedClueIds;
-- imageType;
-- textFallback;
-- playerRequest;
-- hasBeenShownToPlayer.
-
-The GM should support image recall requests such as "show image 2," "show last image," "list images," and "show gallery."
+The report audits the session transcript for:
+- Invented NPCs, locations, objects, evidence, documents, or clue paths.
+- Missed authored assets or budget violations.
+- Background character rule breaches.
+- Case board, runtime state, or image fidelity drift.
+- Final reveal and solution fidelity.
