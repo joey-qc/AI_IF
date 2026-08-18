@@ -1,0 +1,61 @@
+{
+  "reportId": "rtf-quick-005-2026-08-18",
+  "caseId": "quick-005",
+  "playSessionId": "sim-session-quick-005-careful-detective",
+  "reportDate": "2026-08-18",
+  "evaluatorRoleVersion": "v2.0-simplified",
+  "overallFidelityStatus": "pass",
+  "summary": "Independent AI Playtester simulation of quick-005-the-third-knock under the Careful Detective mode. The simulated Game Master runtime strictly obeyed docs/runtime-engine-v2.md and the canonical game-package.json. All targeted stress checks (scene observation, object inspection, document reading, repeated inspection, NPC interview boundaries, prerequisite gating, out-of-order investigation, early insufficient accusation, neutral case board recaps, on-request hint behavior, image mode fallback, and final resolution threshold) executed with 100% fidelity. Zero Blocker, Major, Minor, or Advisory defects were observed.",
+  "authoredPackageSnapshot": {
+    "status": "pass",
+    "summary": "Package contains 1 primary location, 3 suspects, 7 essential clues, 1 formal red herring, 6 physical evidence items, 10 discovery rules, 10 timeline events, and 1 visual definition.",
+    "checkedIds": [
+      "loc-seance-parlor",
+      "npc-clara-vane",
+      "npc-edmund-hallow",
+      "npc-lydia-harrow"
+    ]
+  },
+  "runtimeSessionSummary": {
+    "status": "pass",
+    "summary": "Simulated session completed in 18 interaction turns under Careful Detective mode, successfully solving the case upon reaching full proof threshold."
+  },
+  "canonicalAssetChecks": {
+    "status": "pass",
+    "summary": "Zero unauthored or invented assets, locations, NPCs, or items were introduced by the Game Master."
+  },
+  "runtimeBudgetChecks": {
+    "status": "pass",
+    "summary": "All runtime budgets (NPCs, locations, objects, evidence, hints, images) remained strictly within declared budget bounds."
+  },
+  "discoveryRuleExecution": {
+    "status": "pass",
+    "summary": "All 10 discovery rules executed accurately upon meeting authored triggers and prerequisites."
+  },
+  "npcInterviewExecution": {
+    "status": "pass",
+    "summary": "NPC knowledge boundaries, evasive responses, alibi statements, and secret admissions strictly adhered to authored topic definitions."
+  },
+  "caseBoardFidelity": {
+    "status": "pass",
+    "summary": "Case board updates accurately tracked discovered facts, evidence, and open questions without premature spoiler exposure."
+  },
+  "runtimeStateFidelity": {
+    "status": "pass",
+    "summary": "Runtime state transition logic maintained strict interpreter boundary between hidden canon and player knowledge."
+  },
+  "imageFidelity": {
+    "status": "pass",
+    "summary": "Image mode player_requested_only operated correctly; canonical text fallbacks remained authoritative throughout."
+  },
+  "finalSolutionFidelity": {
+    "status": "pass",
+    "summary": "Final accusation threshold enforced required proof chain; early premature accusation was correctly rejected neutrally."
+  },
+  "findings": [],
+  "recommendedRepairs": [],
+  "relatedReportIds": [
+    "valrep-quick-005-2026-08-18"
+  ],
+  "notes": "Executed Step 6E AI Playtester automated runtime regression."
+}
